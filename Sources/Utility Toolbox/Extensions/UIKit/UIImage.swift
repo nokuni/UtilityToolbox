@@ -52,7 +52,7 @@ public extension UIImage {
             }
         }
         /// Returns a UIImage defined by its dimension,  points and colors.
-        static func image(withBounds: CGRect, points: Points, colors: [CGColor]) -> UIImage {
+        public static func image(withBounds: CGRect, points: Points, colors: [CGColor]) -> UIImage {
             
             // Configure the gradient layer based on input
             let gradientLayer = CAGradientLayer()
