@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Bundle {
+public extension Bundle {
     
     enum BundleError: Error { case wrongURL, noData, wrongData }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     var isToday: Bool {
         let calendar = Calendar.current
         return calendar.isDateInToday(self)

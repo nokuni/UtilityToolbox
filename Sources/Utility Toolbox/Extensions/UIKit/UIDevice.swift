@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIDevice {
+public extension UIDevice {
     static var isOnPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     static var isOnPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
 }
