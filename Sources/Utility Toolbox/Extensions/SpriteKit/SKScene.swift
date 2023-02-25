@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-extension SKScene {
+public extension SKScene {
     
     /// Setup the scene with basic arguments.
     func setup(name: String? = nil,

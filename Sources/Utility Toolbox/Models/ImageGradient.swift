@@ -8,9 +8,18 @@
 import UIKit
 
 public struct ImageGradient {
-    var rect: CGRect
-    var points: Points
-    var colors: [UIColor]
+    
+    public init(rect: CGRect,
+                points: ImageGradient.Points = .topToBottom,
+                colors: [UIColor] = [.blue, .red]) {
+        self.rect = rect
+        self.points = points
+        self.colors = colors
+    }
+    
+    public var rect: CGRect
+    public var points: Points
+    public var colors: [UIColor]
     
     /// Points of the UIImage Gradient
     public enum Points {

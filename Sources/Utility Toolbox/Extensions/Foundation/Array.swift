@@ -16,17 +16,11 @@ public extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
-    
-    /// Returns different random elements randomly ordered.
-    func randomSamples(count: Int) -> [Element] { self.randomSample(count: count) }
-    
-    /// Returns different random elements while retaining their order.
-    func randomStableSamples(count: Int) -> [Element] { self.randomStableSample(count: count) }
 }
 
 // MARK: - Comparable
 
-extension Array where Element: Comparable {
+public extension Array where Element: Comparable {
     
     /// Returns the index of the maximum value.
     func maxIndex() -> Int? {
@@ -38,7 +32,7 @@ extension Array where Element: Comparable {
 
 // MARK: - Equatable
 
-extension Array where Element: Equatable {
+public extension Array where Element: Equatable {
     
     /// Remove an element from the collection.
     mutating func remove(_ element: Element) {
