@@ -90,7 +90,7 @@ public extension SKNode {
     func cornerPosition(corner: QuadrilateralCorner,
                         node: SKNode,
                         padding: CGFloat = 0,
-                        hasAlignment: Bool = false) -> CGPoint {
+                        hasAlignment: Bool = true) -> CGPoint {
         let position = cornerOrigin(corner)
         let withoutAlignmentPosition = CGPoint(
             x: position.x + node.frame.size.width,
