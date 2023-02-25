@@ -11,18 +11,38 @@ import SpriteKit
 
 public extension SKNode {
     
+    // MARK: - BASIC
+    
+    /// Returns nodes with a specific name.
+    func childNodes(named name: String) -> [SKNode] {
+        let nodes = self.children.filter { $0.name?.contains(name) ?? false }
+        return nodes
+    }
+    
+    /// Removes nodes with a specific name.
+    func removeAllChildNodes(named name: String) {
+        childNodes(named: name).forEach { $0.removeFromParent() }
+    }
+    
+    /// Returns true if a node with a specific name is existing and false otherwise.
+    func isExistingChildNode(named name: String) -> Bool {
+        self.childNode(withName: name) != nil
+    }
+    
+    /// Returns the amount of nodes with a specific name.
+    func childNodesCount(named name: String) -> Int {
+        let nodes = childNodes(named: name)
+        return nodes.count
+    }
+    
+    // MARK: - Quadrilateral Corners
+    
     /// Represents the four corners of a quadrilateral shape.
     enum QuadrilateralCorner {
         case topLeft
         case topRight
         case bottomRight
         case bottomLeft
-    }
-    
-    struct Gradient {
-        var rect: CGRect
-        var points: UIImage.Gradient.Points
-        var colors: [UIColor]
     }
     
     private func cornerOrigin(_ corner: QuadrilateralCorner) -> CGPoint {

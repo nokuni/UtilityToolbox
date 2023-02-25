@@ -10,9 +10,9 @@ import SpriteKit
 public extension SKTexture {
     
     /// Create a gradient texture.
-    convenience init(gradient: SKNode.Gradient) {
+    convenience init(gradient: ImageGradient) {
         let cgColors = gradient.colors.map { $0.cgColor }
-        let image: UIImage = UIImage.Gradient.image(withBounds: gradient.rect, points: gradient.points, colors: cgColors)
+        let image: UIImage = ImageGradient.image(withBounds: gradient.rect, points: gradient.points, colors: cgColors)
         self.init(image: image)
     }
     
