@@ -13,6 +13,10 @@ public extension SKNode {
     
     // MARK: - BASIC
     
+    var isScene: Bool {
+        self is SKScene
+    }
+    
     /// Returns nodes with a specific name.
     func childNodes(named name: String) -> [SKNode] {
         let nodes = self.children.filter { $0.name?.contains(name) ?? false }
@@ -55,27 +59,31 @@ public extension SKNode {
     }
     
     private var bottomLeftCornerOrigin: CGPoint {
+        return isScene ?
+        CGPoint.zero :
         CGPoint(x: -(self.frame.size.width / 2),
-                y: -(self.frame.size.height / 2)
-        )
+                y: -(self.frame.size.height / 2))
     }
     
     private var bottomRightCornerOrigin: CGPoint {
+        return isScene ?
+        CGPoint(x: self.frame.size.width, y: 0) :
         CGPoint(x: -(self.frame.size.width / 2) + self.frame.size.width,
-                y: -(self.frame.size.height / 2)
-        )
+                y: -(self.frame.size.height / 2))
     }
     
     private var topLeftCornerOrigin: CGPoint {
+        return isScene ?
+        CGPoint(x: 0, y: self.frame.size.height) :
         CGPoint(x: -(self.frame.size.width / 2),
-                y: -(self.frame.size.height / 2) + self.frame.size.height
-        )
+                y: -(self.frame.size.height / 2) + self.frame.size.height)
     }
     
     private var topRightCornerOrigin: CGPoint {
+        return isScene ?
+        CGPoint(x: self.frame.size.width, y: self.frame.size.height) :
         CGPoint(x: -(self.frame.size.width / 2) + self.frame.size.width,
-                y: -(self.frame.size.height / 2) + self.frame.size.height
-        )
+                y: -(self.frame.size.height / 2) + self.frame.size.height)
     }
     
     /// Returns the corner position of a quadrilateral shape.
