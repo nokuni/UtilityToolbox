@@ -40,6 +40,10 @@ public extension Array {
         let randomIndex = indices.randomElement()!
         self.remove(at: randomIndex)
     }
+    
+    mutating func preprend(_ element: Element) {
+        self.insert(element, at: 0)
+    }
 }
 
 // MARK: - Comparable

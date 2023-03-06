@@ -11,8 +11,6 @@ public extension UIFont {
     
     /// A random font name from the system
     static var firstSystemFontName: String? {
-        let families = UIFont.familyNames
-        let font = UIFont.fontNames(forFamilyName: families.first!)
         guard let randomFamily = SystemFontFamily.allCases.first else { return nil }
         guard let randomFont = randomFamily.fonts.first else { return nil }
         return randomFont.rawValue
