@@ -16,6 +16,10 @@ public extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
+    
+    mutating func preprend(_ element: Element) {
+        self.insert(element, at: 0)
+    }
 }
 
 // MARK: - Comparable

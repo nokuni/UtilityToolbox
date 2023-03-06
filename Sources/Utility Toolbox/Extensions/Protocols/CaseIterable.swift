@@ -8,6 +8,7 @@
 import Foundation
 
 public extension CaseIterable where Self: Equatable {
+    /// Set to the next case.
     mutating func next() {
         let allCases = Self.allCases
         // just a sanity check, as the possibility of a enum case to not be

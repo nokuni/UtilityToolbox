@@ -15,6 +15,7 @@ public extension String {
         return NSExpression(format: self)
     }
     
+    /// Returns the numbers in the string.
     var extractedNumber: Int? {
         Int(self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
     }

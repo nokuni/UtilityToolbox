@@ -8,5 +8,6 @@
 import Foundation
 
 public extension Numeric where Self: LosslessStringConvertible {
+    /// The digits from an Int value.
     var digits: [Int] { string.digits }
 }

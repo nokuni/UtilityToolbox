@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Font families from the system.
 public enum SystemFontFamily: String, CaseIterable {
     case academyEngravedLET = "Academy Engraved LET"
     case alNile = "Al Nile"

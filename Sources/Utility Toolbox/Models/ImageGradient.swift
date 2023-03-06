@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Gradient image.
 public struct ImageGradient {
     
     public init(rect: CGRect,

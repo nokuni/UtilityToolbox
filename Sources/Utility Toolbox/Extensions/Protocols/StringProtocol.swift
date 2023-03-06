@@ -8,5 +8,6 @@
 import Foundation
 
 public extension StringProtocol  {
+    /// The digits from a String value.
     var digits: [Int] { compactMap(\.wholeNumberValue) }
 }

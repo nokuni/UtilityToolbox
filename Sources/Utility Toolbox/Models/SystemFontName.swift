@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Font names from the system font families.
 public enum SystemFontName: String {
     case academyEngravedLetPlain = "AcademyEngravedLetPlain"
     
