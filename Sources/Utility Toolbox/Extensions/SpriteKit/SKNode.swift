@@ -13,6 +13,7 @@ public extension SKNode {
     
     // MARK: - BASIC
     
+    /// Returns true if the node is a SKScene and false otherwise.
     var isScene: Bool {
         self is SKScene
     }
@@ -37,6 +38,20 @@ public extension SKNode {
     func childNodesCount(named name: String) -> Int {
         let nodes = childNodes(named: name)
         return nodes.count
+    }
+    
+    /// Returns the nodes touched on screen.
+    func touchedNodes(_ touches: Set<UITouch>) -> [SKNode] {
+        guard let touch = touches.first else { return [] }
+        let location = touch.location(in: self)
+        let touchedNodes = nodes(at: location)
+        guard !touchedNodes.isEmpty else { return [] }
+        return touchedNodes
+    }
+    
+    /// Adds safely a node to the end of the receiver's list of child nodes.
+    func addChildSafely(_ node: SKNode) {
+        if !children.contains(node) { addChild(node) }
     }
     
     // MARK: - Quadrilateral Corners
