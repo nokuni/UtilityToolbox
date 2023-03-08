@@ -43,6 +43,7 @@ public extension Array {
         self.remove(at: randomIndex)
     }
     
+    /// Adds a new element at the start of the array.
     mutating func preprend(_ element: Element) {
         self.insert(element, at: 0)
     }
@@ -91,7 +92,7 @@ public extension Array where Element: Equatable {
 
 public extension Array where Element: RawRepresentable {
 
-    /// Returns a UInt32 value from enum values.
+    /// Returns a UInt32 value from a enum array of UInt32 raw values.
     func withXOROperators() -> UInt32? {
         guard !self.isEmpty else { return nil }
         let stringArray = self.compactMap { "\($0.rawValue)" }
@@ -101,7 +102,7 @@ public extension Array where Element: RawRepresentable {
     }
 
     /// Returns a dictionary containing UInt32 values from enum values.
-    func intoDictionary() -> [Int: UInt32] {
+    private func intoDictionary() -> [Int: UInt32] {
         var dictionary: [Int: UInt32] = [:]
         for (index, element) in self.enumerated() {
             if let number = element.rawValue as? UInt32 {
