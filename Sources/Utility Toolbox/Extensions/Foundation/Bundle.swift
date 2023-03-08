@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Bundle.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 22/02/23.
@@ -9,7 +9,7 @@ import Foundation
 
 public extension Bundle {
     
-    enum BundleError: String, Error {
+    private enum BundleError: String, Error {
         case wrongURL = "The file name does not exists."
         case noData = "The data from the file does not exists."
         case wrongData = "Something wrong happened during decoding the data. Check the JSON file or the data model."

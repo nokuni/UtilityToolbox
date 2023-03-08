@@ -1,5 +1,5 @@
 //
-//  File 2.swift
+//  StringProtocol.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 26/02/23.

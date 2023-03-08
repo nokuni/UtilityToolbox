@@ -8,6 +8,8 @@
 import Foundation
 import Algorithms
 
+// MARK: - Basic
+
 public extension Array {
 
     /// Returns a default value if the index is out of bounds.

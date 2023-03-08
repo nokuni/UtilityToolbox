@@ -8,5 +8,6 @@
 import Foundation
 
 public extension LosslessStringConvertible {
+    /// String access through Int.
     var string: String { .init(self) }
 }

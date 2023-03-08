@@ -1,11 +1,9 @@
 //
-//  File.swift
+//  SKNode.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 22/02/23.
 //
-
-import Foundation
 
 import SpriteKit
 

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RoundedCorner.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 22/02/23.
