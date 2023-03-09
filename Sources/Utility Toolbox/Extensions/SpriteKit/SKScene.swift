@@ -17,4 +17,10 @@ public extension SKScene {
         self.size = size
         self.physicsWorld.gravity = gravity
     }
+    
+    func update(_ update: (() -> Void)?) {
+        removeAllActions()
+        removeAllChildren()
+        update?()
+    }
 }
