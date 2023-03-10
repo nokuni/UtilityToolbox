@@ -111,4 +111,19 @@ public extension SKAction {
         ])
         return move
     }
+    
+    static func follow(_ followedNode: SKNode, duration: TimeInterval) -> SKAction {
+        
+        let customAction = { (node: SKNode, elapsedTime: CGFloat) in
+            let dx = followedNode.position.x - node.position.x
+            let dy = followedNode.position.y - node.position.y
+            let angle = atan2(dx,dy)
+            node.position.x += sin(angle) * 0.5
+            node.position.y += cos(angle) * 0.5
+        }
+        
+        let followAction = SKAction.customAction(withDuration: duration, actionBlock: customAction)
+        
+        return followAction
+    }
 }
