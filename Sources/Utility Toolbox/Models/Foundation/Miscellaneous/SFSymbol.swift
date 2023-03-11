@@ -7,18 +7,20 @@
 
 import Foundation
 
-struct SFSymbol {
+public struct SFSymbol {
     
-    static var allNames: [String] {
+    public init() { }
+    
+    public static var allNames: [String] {
         let names = [gamingNames].joined().map { $0 }
         return names
     }
     
-    static var gaming: [SFGamingSymbol] {
+    public static var gaming: [SFGamingSymbol] {
         SFGamingSymbol.allCases
     }
     
-    static var gamingNames: [String] {
+    public static var gamingNames: [String] {
         SFSymbol.gaming.map { $0.rawValue }
     }
 }

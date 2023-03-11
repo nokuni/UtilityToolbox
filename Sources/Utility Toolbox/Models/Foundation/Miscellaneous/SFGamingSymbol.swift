@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SFGamingSymbol: String, CaseIterable {
+public enum SFGamingSymbol: String, CaseIterable {
     case circleSquare = "circle.square"
     case circleSquareFill = "circle.square.fill"
     case rectangleOnRectangle = "rectangle.on.rectangle"
