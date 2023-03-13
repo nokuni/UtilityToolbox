@@ -16,8 +16,8 @@ public extension Bundle {
     }
     
     /// Decode a JSON and returns the data.
-    func decodeJSON<T: Codable>(_ resource: String) throws -> T {
-        guard let url = Bundle.main.url(forResource: resource, withExtension: nil) else {
+    func decodeJSON<T: Codable>(_ fileName: String, fileExtension: String? = nil) throws -> T {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
             throw BundleError.wrongURL.rawValue
         }
         guard let data = try? Data(contentsOf: url) else {

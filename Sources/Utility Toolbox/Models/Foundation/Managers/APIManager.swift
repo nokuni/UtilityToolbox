@@ -1,0 +1,102 @@
+//
+//  APIManager.swift
+//  
+//
+//  Created by Yann Christophe MAERTENS on 13/03/2023.
+//
+
+import Foundation
+
+class APIManager {
+
+    enum HTTPMethod: String {
+        case get = "GET"
+        case post = "POST"
+        case put = "PUT"
+        case delete = "DELETE"
+    }
+
+    enum APIError: String {
+        case badURL = "The URL for the request is wrong"
+        case badResponse = "Server ERROR"
+        case noData = "No DATA"
+    }
+
+    func getRequest<M: Codable>(url: String,
+                                cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+                                model: M.Type) async throws -> M {
+
+        guard let url = URL(string: url) else {
+            throw APIError.badURL.rawValue
+        }
+
+        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
+        urlRequest.httpMethod = HTTPMethod.get.rawValue
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                throw APIError.badResponse.rawValue
+            }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+            let result = try decoder.decode(M.self, from: data)
+            return result
+        } catch {
+            throw APIError.noData.rawValue
+        }
+    }
+
+    func postRequest<M: Codable>(url: String,
+                                 cachePolicy: URLRequest.CachePolicy,
+                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+                                 model: M.Type,
+                                 body: [String: Any]) async throws -> M {
+
+        guard let url = URL(string: url) else {
+            throw APIError.badURL.rawValue
+        }
+
+        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
+        urlRequest.httpMethod = HTTPMethod.post.rawValue
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let result = try decoder.decode(M.self, from: data)
+        return result
+    }
+
+    func putRequest<M: Codable>(url: String,
+                                cachePolicy: URLRequest.CachePolicy,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+                                model: M.Type,
+                                body: [String: Any]) async throws -> M {
+        guard let url = URL(string: url) else {
+            throw APIError.badURL.rawValue
+        }
+
+        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
+        urlRequest.httpMethod = HTTPMethod.put.rawValue
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let result = try decoder.decode(M.self, from: data)
+        return result
+    }
+}
