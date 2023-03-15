@@ -7,20 +7,47 @@
 
 import SpriteKit
 
+extension SKScene: SKPhysicsContactDelegate { }
+
 public extension SKScene {
     
-    /// Setup the scene with basic arguments.
-    func setup(name: String? = nil,
-               size: CGSize = CGSize.screen,
-               gravity: CGVector = CGVector.zero) {
-        self.name = name
-        self.size = size
-        self.physicsWorld.gravity = gravity
+    struct SceneConfiguration {
+        public init(name: String? = nil,
+                    size: CGSize = .screen,
+                    backgroundColor: UIColor = .black,
+                    camera: SKCameraNode = SKCameraNode(),
+                    hasPhysicsContact: Bool = true,
+                    gravity: CGVector = .zero) {
+            self.name = name
+            self.size = size
+            self.backgroundColor = backgroundColor
+            self.camera = camera
+            self.hasPhysicsContact = hasPhysicsContact
+            self.gravity = gravity
+        }
+        
+        public var name: String?
+        public var size: CGSize
+        public var backgroundColor: UIColor
+        public var camera: SKCameraNode
+        public var hasPhysicsContact: Bool
+        public var gravity: CGVector
+    }
+    
+    /// Setup the scene.
+    func setup(configuration: SceneConfiguration = SceneConfiguration()) {
+        name = configuration.name
+        size = configuration.size
+        backgroundColor = configuration.backgroundColor
+        physicsWorld.gravity = configuration.gravity
+        addChildSafely(configuration.camera)
+        camera = configuration.camera
+        if configuration.hasPhysicsContact {
+            self.physicsWorld.contactDelegate = self
+        }
     }
     
     func update(_ update: (() -> Void)?) {
-        removeAllActions()
-        removeAllChildren()
         update?()
     }
 }
