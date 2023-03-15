@@ -23,6 +23,18 @@ public extension SKAction {
         return action
     }
     
+    
+    static func start(actionOnLaunch: (() -> Void)? = nil,
+                      animation: SKAction,
+                      node: SKNode,
+                      actionOnEnd: (() -> Void)? = nil) {
+        let group = DispatchGroup()
+        group.enter()
+        actionOnLaunch?()
+        node.run(animation) { group.leave() }
+        group.notify(queue: .main) { actionOnEnd?() }
+    }
+    
     /// Creates an action that changes filtered sprite's texture.
     static func setTexture(_ texture: SKTexture,
                            with filteringMode: SKTextureFilteringMode = .linear) -> SKAction {
