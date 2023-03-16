@@ -7,22 +7,24 @@
 
 import Foundation
 
-class APIManager {
+public class APIManager {
+    
+    public init() { }
 
-    enum HTTPMethod: String {
+    public enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
         case delete = "DELETE"
     }
 
-    enum APIError: String {
+    private enum APIError: String {
         case badURL = "The URL for the request is wrong"
         case badResponse = "Server ERROR"
         case noData = "No DATA"
     }
 
-    func getRequest<M: Codable>(url: String,
+    public func getRequest<M: Codable>(url: String,
                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                 model: M.Type) async throws -> M {
@@ -51,7 +53,7 @@ class APIManager {
         }
     }
 
-    func postRequest<M: Codable>(url: String,
+    public func postRequest<M: Codable>(url: String,
                                  cachePolicy: URLRequest.CachePolicy,
                                  keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                  model: M.Type,
@@ -76,7 +78,7 @@ class APIManager {
         return result
     }
 
-    func putRequest<M: Codable>(url: String,
+    public func putRequest<M: Codable>(url: String,
                                 cachePolicy: URLRequest.CachePolicy,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                 model: M.Type,
