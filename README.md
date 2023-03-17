@@ -5,7 +5,7 @@
 ### **Array & Collections**
 
 **Default value subscript**
-```ruby
+```swift
 let values: [Int] = []
 print(values[0, default: "No values"])
 // "No values"
