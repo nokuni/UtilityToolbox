@@ -10,11 +10,10 @@ import UIKit
 public extension UIImage {
     
     /// UIImage with a color and a size.
-    convenience init?(origin: CGPoint,
-                      color: UIColor,
+    convenience init?(color: UIColor,
                       size: CGSize) {
-        let rect = CGRect(origin: origin, size: size)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContext(rect.size)
         color.setFill()
         UIRectFill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -25,11 +24,10 @@ public extension UIImage {
     }
     
     /// Returns an UIImage of a rectangle.
-    static func rectangle(origin: CGPoint,
-                          size: CGSize,
+    static func rectangle(size: CGSize,
                           color: UIColor,
                           cornerRadius: CGFloat) -> UIImage? {
-        var image = UIImage(origin: origin, color: color, size: size)
+        var image = UIImage(color: color, size: size)
         image = image?.withRoundedCorners(radius: cornerRadius)
         return image
     }
