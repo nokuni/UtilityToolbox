@@ -104,6 +104,7 @@ print(values.contains(["Ash", "Pikachu"]))
 func withXOROperators() -> UInt32?
 ```
 Each category of bitmask represents an enum value of a UInt32.
+
 The object could be [0x1 << 0], the player [0x1 << 1] and the npc [0x1 << 2]
 ```swift
 var categories: [BitmaskCategory] = [.object, .player, .npc]
