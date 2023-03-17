@@ -12,21 +12,24 @@ print(values[0, default: "No values"])
 ```
 
 **Safe subscript**
-```
+```swift
 let values: [Int] = []
 print(values[safe: 0])
 // nil
 ```
 
-**Splitted** *func splitted(into size: Int) -> [[Element]]*
+**Splitted**
+```swift
+func splitted(into size: Int) -> [[Element]]
 ```
+```swift
 let values: [Int] = [0, 1, 2, 3, 4, 5]
 let splittedValues = values.splitted(into: 2)
 print(splittedValues)
 // [[0, 1], [2, 3], [4, 5]]
 ```
 
-**Swap** *mutating func swap(between valueA: Int, and valueB: Int)*
+**Swap** | *mutating func swap(between valueA: Int, and valueB: Int)*
 
 Example:
 /* var values: [Int] = [0, 11, 2, 3, 44, 5] */
