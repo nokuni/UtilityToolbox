@@ -2,9 +2,9 @@
 
 ## Extensions
 
-## Array & Collections
+### Array & Collections
 
-[1] - Default value subscript
+***Default value subscript***
 
 Example:
 ```
