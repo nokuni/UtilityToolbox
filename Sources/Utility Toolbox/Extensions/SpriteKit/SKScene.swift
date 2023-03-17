@@ -14,7 +14,7 @@ public extension SKScene {
     struct SceneConfiguration {
         public init(name: String? = nil,
                     size: CGSize = .screen,
-                    backgroundColor: UIColor = .black,
+                    backgroundColor: UIColor = .clear,
                     camera: SKCameraNode = SKCameraNode(),
                     hasPhysicsContact: Bool = true,
                     gravity: CGVector = .zero) {
