@@ -18,7 +18,7 @@ print(values[safe: 0])
 // nil
 ```
 
-**Splitted**
+**Split an array**
 ```swift
 func splitted(into size: Int) -> [[Element]]
 ```
@@ -29,62 +29,95 @@ print(splittedValues)
 // [[0, 1], [2, 3], [4, 5]]
 ```
 
-**Swap** | *mutating func swap(between valueA: Int, and valueB: Int)*
+**Swap**
+```swift
+mutating func swap(between valueA: Int, and valueB: Int)
+```
+```swift
+var values: [Int] = [0, 11, 2, 3, 44, 5]
+values.swap(between: 1, and: 4)
+print(values)
+// [0, 44, 2, 3, 11, 5]
+```
 
+**Remove a random element**
+```swift
+mutating func removeRandomElement()
+```
+
+**Prepend**
+```swift
+mutating func preprend(_ element: Element)
+```
+```swift
+var values: [Int] = [0, 1, 2, 3, 4, 5]
+values.prepend(99)
+print(values)
+// [99, 0, 1, 2, 3, 4, 5]
+```
+
+**Max index**
+```swift
+func maxIndex() -> Int?
+```
+```swift
+let values: [Int] = [0, 1, 2, 99, 4, 5]
+let maxIndex = values.maxIndex()
+print(maxIndex)
+// Optional(3)
+```
+
+**Remove element**
+```swift
+mutating func remove(_ element: Element)
+```
+```swift
+var names: [String] = ["Ash", "Brock, "Misty"]
+names.remove("Brock")
+print(names)
+// ["Ash", "Misty"]
+```
+
+**Contains at least**
+```swift
+func containsAtLeast(_ requirement: [Element]) -> Bool
+```
+```swift
+let names: [String] = ["Ash", "Brock, "Misty"]
+print(values.containsAtLeast(["Misty", "Misty", "Brock"]))
+// false
+```
+
+**Contains elements**
+```swift
+func contains(_ elements: [Element]) -> Bool
+```
+```swift
 Example:
-/* var values: [Int] = [0, 11, 2, 3, 44, 5] */
-/* values.swap(between: 1, and: 4) */
-/* Result: [0, 44, 2, 3, 11, 5] */
+let names: [String] = ["Ash", "Brock, "Misty"]
+print(values.contains(["Ash", "Pikachu"]))
+// false
+```
 
-**Remove random element** *mutating func removeRandomElement()*
-
-**Prepend** *mutating func preprend(_ element: Element)*
-
-Example:
-/* var values: [Int] = [0, 1, 2, 3, 4, 5] */
-/* values.prepend(99) */
-/* Result: [99, 0, 1, 2, 3, 4, 5] */
-
-[7] - Max index - /* func maxIndex() -> Int? */
-
-Example:
-/* let values: [Int] = [0, 1, 2, 99, 4, 5] */
-/* let maxIndex = values.maxIndex() */
-/* Result: Optional(3) */
-
-[8] - Remove element - /* mutating func remove(_ element: Element) */
-
-Example:
-/* var names: [String] = ["Ash", "Brock, "Misty"] */
-/* names.remove("Brock") */
-/* Result: ["Ash", "Misty"] */
-
-[9] - Contains at least - /* func containsAtLeast(_ requirement: [Element]) -> Bool */
-
-Example:
-/* var names: [String] = ["Ash", "Brock, "Misty"] */
-/* values.containsAtLeast(["Misty", "Misty", "Brock"]) */
-/* Result: false */
-
-[10] - Contains elements - /* func contains(_ elements: [Element]) -> Bool */
-
-Example:
-/* var names: [String] = ["Ash", "Brock, "Misty"] */
-/* values.contains(["Ash", "Pikachu"]) */
-/* Result: false */
-
-[11] - With XOR operators - /* func withXOROperators() -> UInt32? */
-
-Example:
+**With XOR operators**
+```swift
+func withXOROperators() -> UInt32?
+```
 Each category of bitmask represents an enum value of a UInt32.
 The object could be [0x1 << 0], the player [0x1 << 1] and the npc [0x1 << 2]
-/* var categories: [BitmaskCategory] = [.object, .player, .npc] */
-/* let categoryValue = categories.withXOROperators() */
-/* Result: object | player | npc */
+```swift
+var categories: [BitmaskCategory] = [.object, .player, .npc]
+let categoryValue = categories.withXOROperators()
+// The result is "object | player | npc" and is an UInt32.
+```
 
-[12] - Element frequencies - /* func elementFrequencies() -> [Element : Int] */
-
-Example:
-/* let values: [Int] = [1, 2, 2, 2, 3, 3, 4, 4] */
-/* let frequencies = values.elementFrequencies() */
-/* Result: [[1: 1], [2: 3], [3: 2], [4: 2]] */
+**Element frequencie**
+```swift
+func elementFrequencies() -> [Element : Int]
+```
+```swift
+let values: [Int] = [1, 2, 2, 2, 3, 3, 4, 4]
+let frequencies = values.elementFrequencies()
+print(frequencies)
+// [[1: 1], [2: 3], [3: 2], [4: 2]]
+```
