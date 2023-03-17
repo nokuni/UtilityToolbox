@@ -11,8 +11,6 @@ public extension SKSpriteNode {
     
     /// Creates a sprite with a gradient texture.
     convenience init(gradient: ImageGradient) {
-        self.init(
-            texture: SKTexture(gradient: gradient)
-        )
+        self.init(texture: SKTexture(gradient: gradient))
     }
 }

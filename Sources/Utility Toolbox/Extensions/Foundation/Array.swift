@@ -27,18 +27,18 @@ public extension Array {
 
     /// Using their indices, swap two elements in the array.
     mutating func swap(between valueA: Int, and valueB: Int) {
-        guard !self.isEmpty else { return }
+        guard !isEmpty else { return }
         guard valueA >= 0 else { return }
         guard valueB >= 0 else { return }
-        guard valueA < self.count else { return }
-        guard valueB < self.count else { return }
+        guard valueA < count else { return }
+        guard valueB < count else { return }
         self.swapAt(valueA, valueB)
     }
 
     /// Remove a random element from the array.
     mutating func removeRandomElement() {
-        guard !self.isEmpty else { return }
-        let indices = self.indices
+        guard !isEmpty else { return }
+        let indices = indices
         let randomIndex = indices.randomElement()!
         self.remove(at: randomIndex)
     }
@@ -56,7 +56,7 @@ public extension Array where Element: Comparable {
     /// Returns the index of the maximum value.
     func maxIndex() -> Int? {
         guard let highest = self.max() else { return nil }
-        guard let index = self.firstIndex(where: { $0 == highest }) else { return nil }
+        guard let index = firstIndex(where: { $0 == highest }) else { return nil }
         return index
     }
 }
@@ -75,7 +75,7 @@ public extension Array where Element: Equatable {
     func containsAtLeast(_ requirement: [Element]) -> Bool {
         var count = 0
         for element in requirement {
-            if self.contains(where: { $0 == element }) {
+            if contains(where: { $0 == element }) {
                 count += 1
             }
         }
@@ -83,7 +83,7 @@ public extension Array where Element: Equatable {
     }
 
     func contains(_ elements: [Element]) -> Bool {
-        let result = elements.map { self.contains($0) }
+        let result = elements.map { contains($0) }
         return result.allSatisfy { $0 }
     }
 }
@@ -94,17 +94,17 @@ public extension Array where Element: RawRepresentable {
 
     /// Returns a UInt32 value from a enum array of UInt32 raw values.
     func withXOROperators() -> UInt32? {
-        guard !self.isEmpty else { return nil }
-        let stringArray = self.compactMap { "\($0.rawValue)" }
+        guard !isEmpty else { return nil }
+        let stringArray = compactMap { "\($0.rawValue)" }
         let string = stringArray.joined(separator: " | ")
-        let dictionary = self.intoDictionary()
+        let dictionary = intoDictionary()
         return string.intoUInt32(from: dictionary)
     }
 
     /// Returns a dictionary containing UInt32 values from enum values.
     private func intoDictionary() -> [Int: UInt32] {
         var dictionary: [Int: UInt32] = [:]
-        for (index, element) in self.enumerated() {
+        for (index, element) in enumerated() {
             if let number = element.rawValue as? UInt32 {
                 dictionary[index] = number
             }
@@ -117,7 +117,7 @@ public extension Array where Element: RawRepresentable {
 
 public extension Array where Element: Hashable {
     func elementFrequencies() -> [Element : Int] {
-        let mappedItems = self.map { ($0, 1) }
+        let mappedItems = map { ($0, 1) }
         let counts = Dictionary(mappedItems, uniquingKeysWith: +)
         return counts
     }

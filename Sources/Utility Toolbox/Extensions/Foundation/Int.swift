@@ -17,11 +17,11 @@ public extension Int {
     
     /// Returns true if this value is even and false otherwise.
     var isEven: Bool {
-        self.isMultiple(of: 2)
+        isMultiple(of: 2)
     }
     
     /// Returns true if this value is odd and false otherwise.
     var isOdd: Bool {
-        !self.isMultiple(of: 2)
+        !isMultiple(of: 2)
     }
 }

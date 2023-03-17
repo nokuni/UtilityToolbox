@@ -17,12 +17,12 @@ public extension String {
     
     /// Returns the numbers in the string.
     var extractedNumber: Int? {
-        Int(self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+        Int(components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
     }
 
     /// Returns an UInt32 from the string.
     func intoUInt32(from dictionary: [Int: UInt32]) -> UInt32? {
-        let number = self.expression.expressionValue(with: dictionary, context: nil) as? UInt32
+        let number = expression.expressionValue(with: dictionary, context: nil) as? UInt32
         return number
     }
 }
