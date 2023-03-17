@@ -72,7 +72,7 @@ print(maxIndex)
 mutating func remove(_ element: Element)
 ```
 ```swift
-var names: [String] = ["Ash", "Brock, "Misty"]
+var names: [String] = ["Ash", "Brock", "Misty"]
 names.remove("Brock")
 print(names)
 // ["Ash", "Misty"]
@@ -83,7 +83,7 @@ print(names)
 func containsAtLeast(_ requirement: [Element]) -> Bool
 ```
 ```swift
-let names: [String] = ["Ash", "Brock, "Misty"]
+let names: [String] = ["Ash", "Brock", "Misty"]
 print(values.containsAtLeast(["Misty", "Misty", "Brock"]))
 // false
 ```
@@ -94,7 +94,7 @@ func contains(_ elements: [Element]) -> Bool
 ```
 ```swift
 Example:
-let names: [String] = ["Ash", "Brock, "Misty"]
+let names: [String] = ["Ash", "Brock", "Misty"]
 print(values.contains(["Ash", "Pikachu"]))
 // false
 ```
