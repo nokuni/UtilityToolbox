@@ -2,41 +2,40 @@
 
 ## Extensions
 
-### Array & Collections
+### **Array & Collections**
 
-***Default value subscript***
-
-Example:
+**Default value subscript**
 ```
 let values: [Int] = []
 print(values[0, default: "No values"])
 // "No values"
 ```
 
-[2] - Safe subscript
+**Safe subscript**
+```
+let values: [Int] = []
+print(values[safe: 0])
+// nil
+```
 
-Example:
-/* let values: [Int] = [] */
-/* print(values[safe: 0]) */
-/* Result: nil */
+**Splitted** *func splitted(into size: Int) -> [[Element]]*
+```
+let values: [Int] = [0, 1, 2, 3, 4, 5]
+let splittedValues = values.splitted(into: 2)
+print(splittedValues)
+// [[0, 1], [2, 3], [4, 5]]
+```
 
-[3] - Splitted - /* func splitted(into size: Int) -> [[Element]] */
-
-Example:
-/* let values: [Int] = [0, 1, 2, 3, 4, 5] */
-/* let splittedValues = values.splitted(into: 2) */
-/* Result: [[0, 1], [2, 3], [4, 5]] */
-
-[4] - Swap - /* mutating func swap(between valueA: Int, and valueB: Int) */
+**Swap** *mutating func swap(between valueA: Int, and valueB: Int)*
 
 Example:
 /* var values: [Int] = [0, 11, 2, 3, 44, 5] */
 /* values.swap(between: 1, and: 4) */
 /* Result: [0, 44, 2, 3, 11, 5] */
 
-[5] - Remove random element - /* mutating func removeRandomElement() */
+**Remove random element** *mutating func removeRandomElement()*
 
-[6] - Prepend - /* mutating func preprend(_ element: Element) */
+**Prepend** *mutating func preprend(_ element: Element)*
 
 Example:
 /* var values: [Int] = [0, 1, 2, 3, 4, 5] */
