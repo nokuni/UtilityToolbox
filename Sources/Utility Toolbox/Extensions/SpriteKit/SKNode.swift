@@ -102,34 +102,26 @@ public extension SKNode {
     /// Returns the corner position of a quadrilateral shape.
     func cornerPosition(corner: QuadrilateralCorner,
                         node: SKNode,
-                        padding: CGFloat = 0,
-                        hasAlignment: Bool = true) -> CGPoint {
+                        padding: CGFloat = 0) -> CGPoint {
         let position = cornerOrigin(corner)
         
-        let withoutAlignmentPosition = CGPoint(
-            x: position.x + node.frame.size.width,
-            y: position.y + node.frame.size.height
-        )
-        
-        var withAlignmentPosition: CGPoint = .zero
+        var alignedPosition: CGPoint = .zero
         
         switch corner {
         case .topLeft:
-            withAlignmentPosition = CGPoint(x: position.x + padding,
-                                            y: position.y - padding)
+            alignedPosition = CGPoint(x: position.x + padding,
+                                      y: position.y - padding)
         case .topRight:
-            withAlignmentPosition = CGPoint(x: position.x - padding,
-                                            y: position.y - padding)
+            alignedPosition = CGPoint(x: position.x - padding,
+                                      y: position.y - padding)
         case .bottomRight:
-            withAlignmentPosition = CGPoint(x: position.x + padding,
-                                            y: position.y + padding)
+            alignedPosition = CGPoint(x: position.x + padding,
+                                      y: position.y + padding)
         case .bottomLeft:
-            withAlignmentPosition = CGPoint(x: position.x - padding,
-                                            y: position.y + padding)
+            alignedPosition = CGPoint(x: position.x - padding,
+                                      y: position.y + padding)
         }
         
-        return hasAlignment ?
-        withAlignmentPosition :
-        withoutAlignmentPosition
+        return alignedPosition
     }
 }
