@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import SwiftUI
 
 public extension SKNode {
     
@@ -102,24 +103,24 @@ public extension SKNode {
     /// Returns the corner position of a quadrilateral shape.
     func cornerPosition(corner: QuadrilateralCorner,
                         node: SKNode,
-                        padding: CGFloat = 0) -> CGPoint {
+                        padding: EdgeInsets) -> CGPoint {
         let position = cornerOrigin(corner)
         
         var alignedPosition: CGPoint = .zero
         
         switch corner {
         case .topLeft:
-            alignedPosition = CGPoint(x: position.x + padding,
-                                      y: position.y - padding)
+            alignedPosition = CGPoint(x: position.x + padding.leading,
+                                      y: position.y - padding.top)
         case .topRight:
-            alignedPosition = CGPoint(x: position.x - padding,
-                                      y: position.y - padding)
+            alignedPosition = CGPoint(x: position.x - padding.trailing,
+                                      y: position.y - padding.top)
         case .bottomRight:
-            alignedPosition = CGPoint(x: position.x + padding,
-                                      y: position.y + padding)
+            alignedPosition = CGPoint(x: position.x + padding.trailing,
+                                      y: position.y + padding.bottom)
         case .bottomLeft:
-            alignedPosition = CGPoint(x: position.x - padding,
-                                      y: position.y + padding)
+            alignedPosition = CGPoint(x: position.x - padding.leading,
+                                      y: position.y + padding.bottom)
         }
         
         return alignedPosition
