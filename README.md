@@ -7,9 +7,11 @@
 [1] - Default value subscript
 
 Example:
-/* let values: [Int] = [] */
-/* print(values[0, default: "No values"]) */
-/* Result: "No values" */
+```
+let values: [Int] = []
+print(values[0, default: "No values"])
+// "No values"
+```
 
 [2] - Safe subscript
 
