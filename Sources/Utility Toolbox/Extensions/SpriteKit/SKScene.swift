@@ -40,6 +40,7 @@ public extension SKScene {
         size = configuration.size
         backgroundColor = configuration.backgroundColor
         physicsWorld.gravity = configuration.gravity
+        configuration.camera.position = .center
         addChildSafely(configuration.camera)
         camera = configuration.camera
         if configuration.hasPhysicsContact {
