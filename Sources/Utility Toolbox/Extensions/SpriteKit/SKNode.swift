@@ -116,10 +116,10 @@ public extension SKNode {
             alignedPosition = CGPoint(x: position.x - padding.trailing,
                                       y: position.y - padding.top)
         case .bottomRight:
-            alignedPosition = CGPoint(x: position.x + padding.trailing,
+            alignedPosition = CGPoint(x: position.x - padding.trailing,
                                       y: position.y + padding.bottom)
         case .bottomLeft:
-            alignedPosition = CGPoint(x: position.x - padding.leading,
+            alignedPosition = CGPoint(x: position.x + padding.leading,
                                       y: position.y + padding.bottom)
         }
         
