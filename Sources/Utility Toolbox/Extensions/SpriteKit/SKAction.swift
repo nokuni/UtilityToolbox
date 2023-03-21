@@ -23,7 +23,8 @@ public extension SKAction {
         return action
     }
     
-    
+
+    /// Creates an action that animates with a starting and ending completion block.
     static func start(actionOnLaunch: (() -> Void)? = nil,
                       animation: SKAction,
                       node: SKNode,
@@ -33,6 +34,33 @@ public extension SKAction {
         actionOnLaunch?()
         node.run(animation) { group.leave() }
         group.notify(queue: .main) { actionOnEnd?() }
+    }
+
+    /// Creates an action that animate a shape wave scaling up and fading out.
+    static func shapeWave(on node: SKNode,
+                          shape: SKShapeNode,
+                          scale: CGFloat = 2,
+                          scaleDuration: CGFloat = 0.5,
+                          fadeOutDuration: CGFloat = 0.5,
+                          repeatCount: Int = 5,
+                          isRepeatingForever: Bool = false) {
+        let sequence = SKAction.sequence([
+            SKAction.scale(to: scale, duration: scaleDuration),
+            SKAction.fadeOut(withDuration: fadeOutDuration),
+            SKAction.scale(to: 1, duration: 0),
+            SKAction.fadeIn(withDuration: 0)
+        ])
+        node.addChildSafely(shape)
+
+        switch true {
+        case isRepeatingForever:
+            shape.run(SKAction.repeatForever(sequence))
+        case repeatCount > 0:
+            shape.run(SKAction.repeat(sequence, count: repeatCount))
+        default:
+            shape.removeFromParent()
+            return
+        }
     }
     
     /// Creates an action that changes filtered sprite's texture.
