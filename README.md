@@ -7,8 +7,8 @@
 **Default value subscript**
 ```swift
 let values: [Int] = []
-print(values[0, default: "No values"])
-// "No values"
+print(values[0, default: 99])
+// 99
 ```
 
 **Safe subscript**
@@ -47,7 +47,7 @@ mutating func removeRandomElement()
 
 **Prepend**
 ```swift
-mutating func preprend(_ element: Element)
+mutating func prepend(_ element: Element)
 ```
 ```swift
 var values: [Int] = [0, 1, 2, 3, 4, 5]
@@ -84,7 +84,7 @@ func containsAtLeast(_ requirement: [Element]) -> Bool
 ```
 ```swift
 let names: [String] = ["Ash", "Brock", "Misty"]
-print(values.containsAtLeast(["Misty", "Misty", "Brock"]))
+print(names.containsAtLeast(["Misty", "Misty", "Brock"]))
 // false
 ```
 
@@ -95,7 +95,7 @@ func contains(_ elements: [Element]) -> Bool
 ```swift
 Example:
 let names: [String] = ["Ash", "Brock", "Misty"]
-print(values.contains(["Ash", "Pikachu"]))
+print(names.contains(["Ash", "Pikachu"]))
 // false
 ```
 

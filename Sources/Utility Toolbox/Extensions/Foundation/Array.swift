@@ -44,7 +44,7 @@ public extension Array {
     }
     
     /// Adds a new element at the start of the array.
-    mutating func preprend(_ element: Element) {
+    mutating func prepend(_ element: Element) {
         self.insert(element, at: 0)
     }
 }
@@ -73,11 +73,11 @@ public extension Array where Element: Equatable {
 
     /// Returns true if contains the requirement, false otherwise.
     func containsAtLeast(_ requirement: [Element]) -> Bool {
+        var array = self
         var count = 0
-        for element in requirement {
-            if contains(where: { $0 == element }) {
-                count += 1
-            }
+        for element in requirement where array.contains(where: { $0 == element }) {
+            count += 1
+            array.remove(element)
         }
         return count == requirement.count
     }
