@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct TextLimiterModifier: ViewModifier {
-    @Binding var text: String
-    var limit: Int
-    func body(content: Content) -> some View {
+public struct TextLimiterModifier: ViewModifier {
+    @Binding public var text: String
+    public var limit: Int
+    public func body(content: Content) -> some View {
         content
             .onChange(of: text, perform: { newValue in
                 if text.count < limit { text = newValue } else {

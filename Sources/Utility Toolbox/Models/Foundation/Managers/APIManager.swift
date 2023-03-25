@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class APIManager {
+public final class APIManager {
     
     public init() { }
 

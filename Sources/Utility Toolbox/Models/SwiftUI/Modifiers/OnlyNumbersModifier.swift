@@ -8,9 +8,9 @@
 import SwiftUI
 import Combine
 
-struct OnlyNumbersModifier: ViewModifier {
-    @Binding var text: String
-    func body(content: Content) -> some View {
+public struct OnlyNumbersModifier: ViewModifier {
+    @Binding public var text: String
+    public func body(content: Content) -> some View {
         content
             .keyboardType(.numberPad)
             .onReceive(Just(text)) { newValue in

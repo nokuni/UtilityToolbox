@@ -9,13 +9,13 @@ import Foundation
 
 /// Limit the number of elements an array can have
 @propertyWrapper
-struct LimitSized<Element> {
-    var limit: Int
-    init(_ limit: Int) {
+public struct LimitSized<Element> {
+    public var limit: Int
+    public init(_ limit: Int) {
         self.limit = limit
     }
     private var elements = [Element]()
-    var wrappedValue: [Element] {
+    public var wrappedValue: [Element] {
         get {
             return elements
         }

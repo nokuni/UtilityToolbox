@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class TimerManager: ObservableObject {
+public final class TimerManager: ObservableObject {
     
     private var timer: Timer?
     public var configuration = TimerConfiguration()
