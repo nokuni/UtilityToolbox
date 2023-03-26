@@ -17,6 +17,14 @@ public extension SKNode {
         self is SKScene
     }
     
+    func flipHorizontally() {
+        self.xScale = self.xScale > 0 ? -1 : 1
+    }
+    
+    func flipVertically() {
+        self.yScale = self.yScale > 0 ? -1 : 1
+    }
+    
     /// Returns nodes with a specific name.
     func childNodes(named name: String) -> [SKNode] {
         let nodes = children.filter { $0.name?.contains(name) ?? false }
