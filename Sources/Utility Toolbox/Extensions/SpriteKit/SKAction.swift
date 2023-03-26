@@ -142,12 +142,16 @@ public extension SKAction {
     
     /// Move forth and back a node.
     static func moveForthAndBack(startPoint: CGPoint,
+                                 startAction: (() -> Void)? = nil,
                                  endPoint: CGPoint,
+                                 endAction: (() -> Void)? = nil,
                                  startDuration: TimeInterval = 0.5,
                                  endDuration: TimeInterval = 0.5) -> SKAction {
         let move = SKAction.sequence([
             SKAction.move(to: endPoint, duration: startDuration),
-            SKAction.move(to: startPoint, duration: endDuration)
+            SKAction.run { endAction?() },
+            SKAction.move(to: startPoint, duration: endDuration),
+            SKAction.run { startAction?() },
         ])
         return move
     }
