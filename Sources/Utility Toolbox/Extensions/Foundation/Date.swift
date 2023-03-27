@@ -9,6 +9,13 @@ import Foundation
 
 public extension Date {
     
+    /// Returns the date in the format dd/mm/yyyy (example: 01/01/2000).
+    var ddmmyyyy: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d/MM/yyyy"
+        return formatter.string(from: self)
+    }
+    
     /// Returns true if the date is today and false otherwise.
     var isToday: Bool {
         let calendar = Calendar.current

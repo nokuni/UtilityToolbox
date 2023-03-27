@@ -91,4 +91,11 @@ final class UtilityToolboxTests: XCTestCase {
         
         XCTAssertFalse(result)
     }
+    
+    // MARK: - Date
+    
+    func testDDMMYYDate() {
+        let date = Date()
+        print(date.ddmmyyyy)
+    }
 }
