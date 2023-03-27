@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Image {
+public extension Image {
 
     /// Zoomed center of an image
     func centerCropped(radius: CGFloat) -> some View {
