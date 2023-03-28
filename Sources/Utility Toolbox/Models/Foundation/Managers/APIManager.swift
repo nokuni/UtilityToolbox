@@ -27,6 +27,7 @@ public final class APIManager {
     public func getRequest<M: Codable>(url: String,
                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                       dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                        model: M.Type) async throws -> M {
         
@@ -47,6 +48,7 @@ public final class APIManager {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = keyDecodingStrategy
             decoder.dateDecodingStrategy = dateDecodingStrategy
+            decoder.dataDecodingStrategy = dataDecodingStrategy
             
             let result = try decoder.decode(M.self, from: data)
             print("Success")
