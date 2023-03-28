@@ -30,6 +30,19 @@ public extension String {
         let number = expression.expressionValue(with: dictionary, context: nil) as? UInt32
         return number
     }
+    
+    func withoutHTMLEncoding() throws -> String? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        let attr = try NSAttributedString(
+            data: data,
+            options: [
+                .documentType: NSAttributedString.DocumentType.html,
+                .characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)
+            ],
+            documentAttributes: nil
+        )
+        return attr.string
+    }
 }
 
 // MARK: - LocalizedError
