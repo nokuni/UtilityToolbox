@@ -9,6 +9,8 @@ import Foundation
 
 public final class TimerManager: ObservableObject {
     
+    init() { }
+    
     private var timer: Timer?
     public var configuration = TimerConfiguration()
     
