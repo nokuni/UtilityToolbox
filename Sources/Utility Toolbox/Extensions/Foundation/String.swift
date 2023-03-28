@@ -19,6 +19,11 @@ public extension String {
     var extractedNumber: Int? {
         Int(components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
     }
+    
+    /// Used to convert strings of hex code. ex: "0x00FF00" into 0x00FF00
+    var uInt: UInt {
+        return UInt(self.dropFirst(2), radix: 16) ?? 0
+    }
 
     /// Returns an UInt32 from the string.
     func intoUInt32(from dictionary: [Int: UInt32]) -> UInt32? {

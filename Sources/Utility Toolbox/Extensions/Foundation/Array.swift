@@ -8,7 +8,7 @@
 import Foundation
 import Algorithms
 
-// MARK: - Basic
+// MARK: - Core
 
 public extension Array {
 
@@ -47,6 +47,8 @@ public extension Array {
     mutating func prepend(_ element: Element) {
         self.insert(element, at: 0)
     }
+    
+    
 }
 
 // MARK: - Comparable
@@ -88,6 +90,23 @@ public extension Array where Element: Equatable {
     }
 }
 
+// MARK: - Int
+
+public extension Array where Element == Int {
+    
+    func additionSum() -> Int {
+        self.reduce(0, +)
+    }
+    
+    func substractionSum() -> Int {
+        self.reduce(0, -)
+    }
+    
+    func multiplicationSum() -> Int {
+        self.reduce(1, *)
+    }
+}
+
 // MARK: - RawRepresentable
 
 public extension Array where Element: RawRepresentable {
@@ -120,5 +139,18 @@ public extension Array where Element: Hashable {
         let mappedItems = map { ($0, 1) }
         let counts = Dictionary(mappedItems, uniquingKeysWith: +)
         return counts
+    }
+}
+
+// MARK: - Optionals
+
+public extension Array where Element == Optional<Any> {
+    
+    /// Returns the nil values replaced by a value.
+    mutating func removedNull(by element: Element) -> [Element] {
+        for index in self.indices where self[index] == nil {
+            self[index] = element
+        }
+        return self.compactMap { $0 }
     }
 }
