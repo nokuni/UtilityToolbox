@@ -11,7 +11,7 @@ import Algorithms
 // MARK: - Core
 
 public extension Array {
-
+    
     /// Returns a default value if the index is out of bounds.
     subscript(index: Int, default defaultValue: @autoclosure () -> Element) -> Element {
         guard index >= 0, index < endIndex else { return defaultValue() }
@@ -24,7 +24,7 @@ public extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
-
+    
     /// Using their indices, swap two elements in the array.
     mutating func swap(between valueA: Int, and valueB: Int) {
         guard !isEmpty else { return }
@@ -34,7 +34,14 @@ public extension Array {
         guard valueB < count else { return }
         self.swapAt(valueA, valueB)
     }
-
+    
+    func split() -> (first: [Element], last: [Element]) {
+        let half = count / 2
+        let firstSplit = self[0 ..< half]
+        let lastSplit = self[half ..< count]
+        return (first: Array(firstSplit), last: Array(lastSplit))
+    }
+    
     /// Remove a random element from the array.
     mutating func removeRandomElement() {
         guard !isEmpty else { return }
@@ -72,7 +79,7 @@ public extension Array where Element: Equatable {
         guard let index = firstIndex(of: element) else { return }
         remove(at: index)
     }
-
+    
     /// Returns true if contains the requirement, false otherwise.
     func containsAtLeast(_ requirement: [Element]) -> Bool {
         var array = self
@@ -83,7 +90,7 @@ public extension Array where Element: Equatable {
         }
         return count == requirement.count
     }
-
+    
     func contains(_ elements: [Element]) -> Bool {
         let result = elements.map { contains($0) }
         return result.allSatisfy { $0 }
@@ -110,7 +117,7 @@ public extension Array where Element == Int {
 // MARK: - RawRepresentable
 
 public extension Array where Element: RawRepresentable {
-
+    
     /// Returns a UInt32 value from a enum array of UInt32 raw values.
     func withXOROperators() -> UInt32? {
         guard !isEmpty else { return nil }
@@ -119,7 +126,7 @@ public extension Array where Element: RawRepresentable {
         let dictionary = intoDictionary()
         return string.intoUInt32(from: dictionary)
     }
-
+    
     /// Returns a dictionary containing UInt32 values from enum values.
     private func intoDictionary() -> [Int: UInt32] {
         var dictionary: [Int: UInt32] = [:]
