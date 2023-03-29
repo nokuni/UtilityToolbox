@@ -99,18 +99,22 @@ public extension Array where Element: Equatable {
 
 // MARK: - Int
 
-public extension Array where Element == Int {
+public extension Array where Element: Numeric {
     
-    func additionSum() -> Int {
+    var additionSum: Element {
         self.reduce(0, +)
     }
     
-    func substractionSum() -> Int {
+    var substractionSum: Element {
         self.reduce(0, -)
     }
     
-    func multiplicationSum() -> Int {
+    var multiplicationSum: Element {
         self.reduce(1, *)
+    }
+    
+    var numericValue: Element? {
+        self.reduce(0, { $0 * 10 + $1 })
     }
 }
 
