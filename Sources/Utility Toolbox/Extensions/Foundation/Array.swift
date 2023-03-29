@@ -35,11 +35,11 @@ public extension Array {
         self.swapAt(valueA, valueB)
     }
     
-    func split() -> (first: [Element], last: [Element]) {
+    func split() -> (firstPart: [Element], lastPart: [Element]) {
         let half = count / 2
         let firstSplit = self[0 ..< half]
         let lastSplit = self[half ..< count]
-        return (first: Array(firstSplit), last: Array(lastSplit))
+        return (firstPart: Array(firstSplit), lastPart: Array(lastSplit))
     }
     
     /// Remove a random element from the array.
