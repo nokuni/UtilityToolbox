@@ -28,8 +28,7 @@ public final class APIManager {
                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-                                       model: M.Type) async throws -> M {
+                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -61,7 +60,6 @@ public final class APIManager {
     public func postRequest<M: Codable>(url: String,
                                         cachePolicy: URLRequest.CachePolicy,
                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-                                        model: M.Type,
                                         body: [String: Any]) async throws -> M {
         
         guard let url = URL(string: url) else {
@@ -86,7 +84,6 @@ public final class APIManager {
     public func putRequest<M: Codable>(url: String,
                                        cachePolicy: URLRequest.CachePolicy,
                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-                                       model: M.Type,
                                        body: [String: Any]) async throws -> M {
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue

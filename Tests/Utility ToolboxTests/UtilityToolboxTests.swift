@@ -158,7 +158,7 @@ final class UtilityToolboxTests: XCTestCase {
         }
         
         let apiManager = APIManager()
-        let wikipedia = try? await apiManager.getRequest(url: "", model: Wikipedia.self)
+        let wikipedia: Wikipedia? = try? await apiManager.getRequest(url: "")
         let query = wikipedia?.query
         
         let expectedResult = ""
