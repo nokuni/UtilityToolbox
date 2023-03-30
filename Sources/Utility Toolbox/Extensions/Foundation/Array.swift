@@ -25,6 +25,13 @@ public extension Array {
         }
     }
     
+    func split() -> (firstPart: [Element], lastPart: [Element]) {
+        let half = count / 2
+        let firstSplit = self[0 ..< half]
+        let lastSplit = self[half ..< count]
+        return (firstPart: Array(firstSplit), lastPart: Array(lastSplit))
+    }
+    
     /// Using their indices, swap two elements in the array.
     mutating func swap(between valueA: Int, and valueB: Int) {
         guard !isEmpty else { return }
@@ -33,13 +40,6 @@ public extension Array {
         guard valueA < count else { return }
         guard valueB < count else { return }
         self.swapAt(valueA, valueB)
-    }
-    
-    func split() -> (firstPart: [Element], lastPart: [Element]) {
-        let half = count / 2
-        let firstSplit = self[0 ..< half]
-        let lastSplit = self[half ..< count]
-        return (firstPart: Array(firstSplit), lastPart: Array(lastSplit))
     }
     
     /// Remove a random element from the array.
@@ -55,7 +55,12 @@ public extension Array {
         self.insert(element, at: 0)
     }
     
-    
+    /// Returns the nil values replaced by a value.
+    mutating func replaceAllNil<T>(by element: T) where Element == Optional<T> {
+        for index in self.indices where self[index] == nil {
+            self[index] = element
+        }
+    }
 }
 
 // MARK: - Comparable
@@ -113,8 +118,9 @@ public extension Array where Element: Numeric {
         self.reduce(1, *)
     }
     
-    var numericValue: Element? {
-        self.reduce(0, { $0 * 10 + $1 })
+    var intValue: Int? {
+        let string = self.map { "\($0)" }.joined()
+        return Int(string)
     }
 }
 
@@ -150,18 +156,5 @@ public extension Array where Element: Hashable {
         let mappedItems = map { ($0, 1) }
         let counts = Dictionary(mappedItems, uniquingKeysWith: +)
         return counts
-    }
-}
-
-// MARK: - Optionals
-
-public extension Array where Element == Optional<Any> {
-    
-    /// Returns the nil values replaced by a value.
-    mutating func removedNull(by element: Element) -> [Element] {
-        for index in self.indices where self[index] == nil {
-            self[index] = element
-        }
-        return self.compactMap { $0 }
     }
 }

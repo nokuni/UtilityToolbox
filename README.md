@@ -29,6 +29,19 @@ print(splittedValues)
 // [[0, 1], [2, 3], [4, 5]]
 ```
 
+**Split**
+```swift
+func split -> (firstPart: [Element], lastPart: [Element])
+```
+```swift
+var values: [Int] = [0, 1, 2, 3, 4, 5]
+let splittedValues = values.split()
+print(splittedValues.firstPart)
+print(splittedValues.lastPart)
+// [0, 1, 2]
+// [3, 4, 5]
+```
+
 **Swap**
 ```swift
 mutating func swap(between valueA: Int, and valueB: Int)
@@ -54,6 +67,17 @@ var values: [Int] = [0, 1, 2, 3, 4, 5]
 values.prepend(99)
 print(values)
 // [99, 0, 1, 2, 3, 4, 5]
+```
+
+**Replace all nil**
+```swift
+mutating func replaceAllNil<T>(by element: T) where Element == Optional<T>
+```
+```swift
+var values = [75, nil, 40, 90, nil, 10]
+values.replaceAllNil(by: 100)
+print(values)
+// [75, 100, 40, 90, 100, 10]
 ```
 
 **Max index**

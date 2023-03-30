@@ -13,9 +13,9 @@ public final class SaveManager {
         self.container = container
     }
     
-    private enum SaveError: Error {
-        case unableToFetch
-        case unableToSave
+    private enum SaveError: String {
+        case unableToFetch = "Unable to fetch the data."
+        case unableToSave = "Unable to save."
     }
     
     public var container: NSPersistentContainer
@@ -25,7 +25,7 @@ public final class SaveManager {
             let request = NSFetchRequest<R>(entityName: entityName)
             return try container.viewContext.fetch(request)
         } catch {
-            throw SaveError.unableToFetch
+            throw SaveError.unableToFetch.rawValue
         }
     }
     
@@ -33,11 +33,12 @@ public final class SaveManager {
         do {
             try container.viewContext.save()
         } catch {
-            throw SaveError.unableToSave
+            throw SaveError.unableToSave.rawValue
         }
     }
     
     public func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
+        try? save()
     }
 }
