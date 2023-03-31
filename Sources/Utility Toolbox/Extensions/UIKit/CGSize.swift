@@ -15,18 +15,18 @@ public extension CGSize {
     }
     
     static func + (size: CGSize, value: CGFloat) -> CGSize {
-        return CGSize(width: size.width + value, height: size.width + value)
+        return CGSize(width: size.width + value, height: size.height + value)
     }
     
     static func - (size: CGSize, value: CGFloat) -> CGSize {
-        return CGSize(width: size.width - value, height: size.width - value)
+        return CGSize(width: size.width - value, height: size.height - value)
     }
     
     static func * (size: CGSize, value: CGFloat) -> CGSize {
-        return CGSize(width: size.width * value, height: size.width * value)
+        return CGSize(width: size.width * value, height: size.height * value)
     }
     
     static func / (size: CGSize, value: CGFloat) -> CGSize {
-        return CGSize(width: size.width / value, height: size.width / value)
+        return CGSize(width: size.width / value, height: size.height / value)
     }
 }
