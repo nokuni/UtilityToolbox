@@ -110,7 +110,6 @@ public extension SKNode {
     
     /// Returns the corner position of a quadrilateral shape.
     func cornerPosition(corner: QuadrilateralCorner,
-                        node: SKNode,
                         padding: EdgeInsets) -> CGPoint {
         let position = cornerOrigin(corner)
         
