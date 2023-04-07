@@ -18,6 +18,21 @@ public extension Array {
         return self[index]
     }
     
+    /// Returns true if the index of the collection exists, false otherwise.
+    func isIndexInBounds(_ index: Int) -> Bool {
+        index < self.count && index >= 0
+    }
+    
+    /// Returns true if the next index exists, false otherwise.
+    func canGoNext(_ index: Int) -> Bool {
+        index < (self.count - 1)
+    }
+    
+    /// Returns true if the previous index exists, false otherwise.
+    func canGoPrevious(_ index: Int) -> Bool {
+        index > 0
+    }
+    
     /// Returns a splitted array with parts of the same size.
     func splitted(into size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {
@@ -100,24 +115,66 @@ public extension Array where Element: Equatable {
         let result = elements.map { contains($0) }
         return result.allSatisfy { $0 }
     }
+    
+    /// Returns the next element of the collection from an index.
+    func nextFrom(index: Int) -> Element? {
+        guard let index = self.indices.first(where: { $0 == index }) else {
+            return nil
+        }
+        let nextIndex = index + 1
+        guard isIndexInBounds(nextIndex) else { return nil }
+        
+        return self[nextIndex]
+    }
+    
+    /// Returns the next element of the collection from an element.
+    func nextFrom(element: Element) -> Element? {
+        guard let index = self.firstIndex(where: { $0 == element }) else {
+            return nil
+        }
+        return nextFrom(index: index)
+    }
+    
+    /// Returns the previous element of the collection from an index.
+    func previousFrom(index: Int) -> Element? {
+        guard let index = self.indices.first(where: { $0 == index }) else {
+            return nil
+        }
+        let previousIndex = index - 1
+        guard isIndexInBounds(previousIndex) else { return nil }
+        
+        return self[previousIndex]
+    }
+    
+    /// Returns the previous element of the collection from an element.
+    func previousFrom(element: Element) -> Element? {
+        guard let index = self.firstIndex(where: { $0 == element }) else {
+            return nil
+        }
+        return previousFrom(index: index)
+    }
 }
 
 // MARK: - Int
 
 public extension Array where Element: Numeric {
     
+    /// Sum all element in the collection.
     var additionSum: Element {
         self.reduce(0, +)
     }
     
+    /// Substract all element in the collection.
     var substractionSum: Element {
         self.reduce(0, -)
     }
     
+    /// Multiply all element in the collection.
     var multiplicationSum: Element {
         self.reduce(1, *)
     }
     
+    /// Returns the number in the collection.
     var intValue: Int? {
         let string = self.map { "\($0)" }.joined()
         return Int(string)
