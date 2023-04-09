@@ -23,7 +23,7 @@ public extension SKAction {
         return action
     }
     
-
+    
     /// Creates an action that animates with a starting and ending completion block.
     static func start(actionOnLaunch: (() -> Void)? = nil,
                       animation: SKAction,
@@ -35,7 +35,7 @@ public extension SKAction {
         node.run(animation) { group.leave() }
         group.notify(queue: .main) { actionOnEnd?() }
     }
-
+    
     /// Creates an action that animate a shape wave scaling up and fading out.
     static func shapeWave(on node: SKNode,
                           shape: SKShapeNode,
@@ -51,7 +51,7 @@ public extension SKAction {
             SKAction.fadeIn(withDuration: 0)
         ])
         node.addChildSafely(shape)
-
+        
         switch true {
         case isRepeatingForever:
             shape.run(SKAction.repeatForever(sequence))
@@ -103,7 +103,7 @@ public extension SKAction {
     /// Move a node from a position to another at constant speed.
     static func move(from pointA: CGPoint,
                      to pointB: CGPoint,
-                     at speed: CGFloat) -> SKAction {
+                     speed: CGFloat) -> SKAction {
         let duration = SKAction.constantDuration(pointA: pointA, pointB: pointB, speed: speed)
         let action = SKAction.move(to: pointB, duration: duration)
         return action
