@@ -23,32 +23,31 @@ public extension SKAction {
         return action
     }
     
-    /// Creates a sequence of actions with different nodes.
-    static func sequenceStart(animations: [(SKAction, SKNode)], index: Int = 0) {
-        guard !animations.isEmpty else { return }
-        guard animations.isIndexInBounds(index) else {
-            print("Animations done")
-            return
-        }
+    /// Creates a sequence of actions with their respective node.
+    static func nodesSequence(sequence: [(SKAction, SKNode)],
+                              index: Int = 0,
+                              endCompletion: (() -> Void)? = nil) {
+        guard !sequence.isEmpty else { return }
+        guard sequence.isIndexInBounds(index) else { return }
         let group = DispatchGroup()
         group.enter()
-        animations[index].1.run(animations[index].0) { group.leave() }
+        sequence[index].1.run(sequence[index].0) { group.leave() }
         group.notify(queue: .main) {
-            print("Animations in progress")
-            sequenceStart(animations: animations, index: index + 1)
+            nodesSequence(sequence: sequence, index: index + 1)
+            if index == sequence.indices.last { endCompletion?() }
         }
     }
     
     /// Creates an action that animates with a starting and ending completion block.
-    static func start(actionOnLaunch: (() -> Void)? = nil,
-                      animation: SKAction,
-                      node: SKNode,
-                      actionOnEnd: (() -> Void)? = nil) {
+    static func animate(startCompletion: (() -> Void)? = nil,
+                        action: SKAction,
+                        node: SKNode,
+                        endCompletion: (() -> Void)? = nil) {
         let group = DispatchGroup()
         group.enter()
-        actionOnLaunch?()
-        node.run(animation) { group.leave() }
-        group.notify(queue: .main) { actionOnEnd?() }
+        startCompletion?()
+        node.run(action) { group.leave() }
+        group.notify(queue: .main) { endCompletion?() }
     }
     
     /// Creates an action that animate a shape wave scaling up and fading out.

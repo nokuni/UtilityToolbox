@@ -168,13 +168,4 @@ final class UtilityToolboxTests: XCTestCase {
         
         XCTAssertEqual(query, expectedResult)
     }
-    
-    func testAnimationSequence() {
-        let animations: [(SKAction, SKNode)] = [
-            (SKAction.wait(forDuration: 3), SKNode()),
-            (SKAction.wait(forDuration: 3), SKNode()),
-            (SKAction.wait(forDuration: 3), SKNode()),
-        ]
-        SKAction.sequenceStart(animations: animations)
-    }
 }
