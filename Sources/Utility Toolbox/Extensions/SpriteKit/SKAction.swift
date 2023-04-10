@@ -34,7 +34,7 @@ public extension SKAction {
         sequence[index].1.run(sequence[index].0) { group.leave() }
         group.notify(queue: .main) {
             nodesSequence(sequence: sequence, index: index + 1)
-            if index == sequence.indices.last { endCompletion?() }
+            if (index + 1) == sequence.indices.last { endCompletion?() }
         }
     }
     
