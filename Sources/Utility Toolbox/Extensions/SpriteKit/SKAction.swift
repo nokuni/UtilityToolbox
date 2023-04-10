@@ -30,9 +30,11 @@ public extension SKAction {
         group.enter()
         animations[index].1.run(animations[index].0) { group.leave() }
         group.notify(queue: .main) {
-            if animations.canGoNext(index) {
-                print("Animation done")
+            if animations.isIndexInBounds(index) {
+                print("Animations in progress")
                 sequenceStart(animations: animations, index: index + 1)
+            } else {
+                print("Animations finished")
             }
         }
     }
