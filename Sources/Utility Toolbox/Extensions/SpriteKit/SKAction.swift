@@ -26,16 +26,16 @@ public extension SKAction {
     /// Creates a sequence of actions with different nodes.
     static func sequenceStart(animations: [(SKAction, SKNode)], index: Int = 0) {
         guard !animations.isEmpty else { return }
+        guard animations.isIndexInBounds(index) else {
+            print("Animations done")
+            return
+        }
         let group = DispatchGroup()
         group.enter()
         animations[index].1.run(animations[index].0) { group.leave() }
         group.notify(queue: .main) {
-            if animations.isIndexInBounds(index) {
-                print("Animations in progress")
-                sequenceStart(animations: animations, index: index + 1)
-            } else {
-                print("Animations finished")
-            }
+            print("Animations in progress")
+            sequenceStart(animations: animations, index: index + 1)
         }
     }
     
