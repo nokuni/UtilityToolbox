@@ -23,6 +23,19 @@ public extension SKAction {
         return action
     }
     
+    /// Creates a sequence of actions with different nodes.
+    static func sequenceStart(animations: [(SKAction, SKNode)], index: Int = 0) {
+        guard !animations.isEmpty else { return }
+        let group = DispatchGroup()
+        group.enter()
+        animations[index].1.run(animations[index].0) { group.leave() }
+        group.notify(queue: .main) {
+            if animations.canGoNext(index) {
+                print("Animation done")
+                sequenceStart(animations: animations, index: index + 1)
+            }
+        }
+    }
     
     /// Creates an action that animates with a starting and ending completion block.
     static func start(actionOnLaunch: (() -> Void)? = nil,

@@ -1,7 +1,10 @@
 import XCTest
+import SpriteKit
 @testable import Utility_Toolbox
 
 final class UtilityToolboxTests: XCTestCase {
+    
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
@@ -164,5 +167,14 @@ final class UtilityToolboxTests: XCTestCase {
         let expectedResult = ""
         
         XCTAssertEqual(query, expectedResult)
+    }
+    
+    func testAnimationSequence() {
+        let animations: [(SKAction, SKNode)] = [
+            (SKAction.wait(forDuration: 3), SKNode()),
+            (SKAction.wait(forDuration: 3), SKNode()),
+            (SKAction.wait(forDuration: 3), SKNode()),
+        ]
+        SKAction.sequenceStart(animations: animations)
     }
 }
