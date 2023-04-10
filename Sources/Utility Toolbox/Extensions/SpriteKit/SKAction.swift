@@ -28,13 +28,15 @@ public extension SKAction {
                               index: Int = 0,
                               endCompletion: (() -> Void)? = nil) {
         guard !sequence.isEmpty else { return }
-        guard sequence.isIndexInBounds(index) else { return }
+        guard sequence.isIndexInBounds(index) else {
+            endCompletion?()
+            return
+        }
         let group = DispatchGroup()
         group.enter()
         sequence[index].1.run(sequence[index].0) { group.leave() }
         group.notify(queue: .main) {
-            nodesSequence(sequence: sequence, index: index + 1)
-            if sequence.isIndexInBounds(index + 1) { endCompletion?() }
+            nodesSequence(sequence: sequence, index: index + 1, endCompletion: endCompletion)
         }
     }
     
