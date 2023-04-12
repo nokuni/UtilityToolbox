@@ -215,3 +215,12 @@ public extension Array where Element: Hashable {
         return counts
     }
 }
+
+// MARK: - String Element
+
+public extension Array where Element == String {
+    func replacingOccurences(character: String, newCharacter: String) -> [String] {
+        let result = self.map { $0.replacingOccurrences(of: character, with: newCharacter) }
+        return result
+    }
+}
