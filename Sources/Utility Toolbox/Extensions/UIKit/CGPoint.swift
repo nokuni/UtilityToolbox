@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public extension CGPoint {
 
@@ -30,23 +31,23 @@ public extension CGPoint {
         return CGPoint(x: point.x / value, y: point.y / value)
     }
     
-    var bottomLeftCorner: CGPoint {
-        return CGPoint(x: self.x - (CGSize.screen.width / 2),
-                       y: self.y - (CGSize.screen.height / 2))
+    func bottomLeftCorner(padding: EdgeInsets) -> CGPoint {
+        return CGPoint(x: self.x - (CGSize.screen.width / 2) + padding.leading - padding.trailing,
+                       y: self.y - (CGSize.screen.height / 2) + padding.bottom - padding.top)
     }
     
-    var bottomRightCorner: CGPoint {
-        return CGPoint(x: self.x + (CGSize.screen.width / 2),
-                       y: self.y - (CGSize.screen.height / 2))
+    func bottomRightCorner(padding: EdgeInsets) -> CGPoint {
+        return CGPoint(x: self.x + (CGSize.screen.width / 2) + padding.leading - padding.trailing,
+                       y: self.y - (CGSize.screen.height / 2) + padding.bottom - padding.top)
     }
     
-    var topLeftCorner: CGPoint {
-        return CGPoint(x: self.x - (CGSize.screen.width / 2),
-                       y: self.y + (CGSize.screen.height / 2))
+    func topLeftCorner(padding: EdgeInsets) -> CGPoint {
+        return CGPoint(x: self.x - (CGSize.screen.width / 2) + padding.leading - padding.trailing,
+                       y: self.y + (CGSize.screen.height / 2) + padding.bottom - padding.top)
     }
     
-    var topRightCorner: CGPoint {
-        return CGPoint(x: self.x + (CGSize.screen.width / 2),
-                       y: self.y + (CGSize.screen.height / 2))
+    func topRightCorner(padding: EdgeInsets) -> CGPoint {
+        return CGPoint(x: self.x + (CGSize.screen.width / 2) + padding.leading - padding.trailing,
+                       y: self.y + (CGSize.screen.height / 2) + padding.bottom - padding.top)
     }
 }
