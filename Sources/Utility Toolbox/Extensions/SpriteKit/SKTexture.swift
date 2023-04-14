@@ -24,6 +24,7 @@ public extension SKTexture {
     
     static func filtered(_ image: String, by filter: SKTextureFilteringMode) -> SKTexture {
         let texture = SKTexture(imageNamed: image)
+        texture.usesMipmaps = true
         texture.filteringMode = filter
         return texture
     }
