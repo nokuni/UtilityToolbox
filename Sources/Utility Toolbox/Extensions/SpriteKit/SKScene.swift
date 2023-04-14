@@ -17,13 +17,15 @@ public extension SKScene {
                     backgroundColor: UIColor = .clear,
                     camera: SKCameraNode = SKCameraNode(),
                     hasPhysicsContact: Bool = true,
-                    gravity: CGVector = .zero) {
+                    gravity: CGVector = .zero,
+                    isIgnoringSiblingOrder: Bool = false) {
             self.name = name
             self.size = size
             self.backgroundColor = backgroundColor
             self.camera = camera
             self.hasPhysicsContact = hasPhysicsContact
             self.gravity = gravity
+            self.isIgnoringSiblingOrder = isIgnoringSiblingOrder
         }
         
         public var name: String?
@@ -32,12 +34,14 @@ public extension SKScene {
         public var camera: SKCameraNode
         public var hasPhysicsContact: Bool
         public var gravity: CGVector
+        public var isIgnoringSiblingOrder: Bool
     }
     
     /// Setup the scene.
     func setup(configuration: SceneConfiguration = SceneConfiguration()) {
         name = configuration.name
         size = configuration.size
+        view?.ignoresSiblingOrder = configuration.isIgnoringSiblingOrder
         backgroundColor = configuration.backgroundColor
         physicsWorld.gravity = configuration.gravity
         configuration.camera.position = .center
