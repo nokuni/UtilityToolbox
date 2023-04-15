@@ -186,4 +186,16 @@ public extension SKAction {
         
         return followAction
     }
+    
+    static func repeating(action: SKAction,
+                          node: SKNode,
+                          count: Int = 1,
+                          isRepeatingForever: Bool = false) {
+        switch true {
+        case isRepeatingForever:
+            node.run(SKAction.repeatForever(action))
+        default:
+            node.run(SKAction.repeat(action, count: count))
+        }
+    }
 }
