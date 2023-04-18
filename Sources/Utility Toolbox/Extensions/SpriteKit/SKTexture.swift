@@ -21,7 +21,8 @@ public extension SKTexture {
         let comps = description.components(separatedBy: "'")
         return comps.count > 1 ? comps[1] : nil
     }
-    
+
+    /// Returns a filtered texture.
     static func filtered(_ image: String, by filter: SKTextureFilteringMode) -> SKTexture {
         let texture = SKTexture(imageNamed: image)
         texture.filteringMode = filter

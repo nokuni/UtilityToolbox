@@ -16,11 +16,13 @@ public extension SKNode {
     var isScene: Bool {
         self is SKScene
     }
-    
+
+    /// Flips horizontally the node.
     func flipHorizontally() {
         self.xScale = self.xScale > 0 ? -1 : 1
     }
-    
+
+    /// Flips vertically the node.
     func flipVertically() {
         self.yScale = self.yScale > 0 ? -1 : 1
     }
@@ -29,6 +31,12 @@ public extension SKNode {
     func childNodes(named name: String) -> [SKNode] {
         let nodes = children.filter { $0.name?.contains(name) ?? false }
         return nodes
+    }
+
+    /// Removes a node with a specific name.
+    func removeChilNode(named name: String) {
+        let node = childNode(withName: name)
+        node?.removeFromParent()
     }
     
     /// Removes nodes with a specific name.

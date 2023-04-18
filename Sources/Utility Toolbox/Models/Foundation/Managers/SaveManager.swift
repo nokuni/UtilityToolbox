@@ -19,7 +19,8 @@ public final class SaveManager {
     }
     
     public var container: NSPersistentContainer
-    
+
+    /// Returns all objects from the 
     public func fetchedObjects<R: NSFetchRequestResult>(entityName: String) throws -> [R] {
         do {
             let request = NSFetchRequest<R>(entityName: entityName)
@@ -28,7 +29,8 @@ public final class SaveManager {
             throw SaveError.unableToFetch.rawValue
         }
     }
-    
+
+    /// Save container changes.
     public func save() throws {
         do {
             try container.viewContext.save()
@@ -36,7 +38,8 @@ public final class SaveManager {
             throw SaveError.unableToSave.rawValue
         }
     }
-    
+
+    /// Delete an object from the container and save.
     public func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
         try? save()

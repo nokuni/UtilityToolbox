@@ -48,6 +48,7 @@ public struct ImageGradient {
             }
         }
     }
+    
     /// Returns a UIImage defined by its dimension,  points and colors.
     public static func image(withBounds: CGRect, points: Points, colors: [CGColor]) -> UIImage {
         

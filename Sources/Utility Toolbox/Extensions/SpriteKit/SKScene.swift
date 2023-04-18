@@ -51,8 +51,4 @@ public extension SKScene {
             self.physicsWorld.contactDelegate = self
         }
     }
-    
-    func update(_ update: (() -> Void)?) {
-        update?()
-    }
 }

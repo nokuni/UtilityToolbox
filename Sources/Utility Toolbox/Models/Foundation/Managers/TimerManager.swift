@@ -16,25 +16,25 @@ public final class TimerManager: ObservableObject {
     
     public struct TimerConfiguration {
         public init(duration: TimeInterval? = nil,
-                    startAction: (() -> Void)? = nil,
-                    whileAction: (() -> Void)? = nil,
-                    endAction: (() -> Void)? = nil) {
+                    startCompletion: (() -> Void)? = nil,
+                    whileCompletion: (() -> Void)? = nil,
+                    endCompletion: (() -> Void)? = nil) {
             self.duration = duration
-            self.startAction = startAction
-            self.whileAction = whileAction
-            self.endAction = endAction
+            self.startCompletion = startCompletion
+            self.whileCompletion = whileCompletion
+            self.endCompletion = endCompletion
         }
         
         public var duration: TimeInterval?
-        public var startAction: (() -> Void)?
-        public var whileAction: (() -> Void)?
-        public var endAction: (() -> Void)?
+        public var startCompletion: (() -> Void)?
+        public var whileCompletion: (() -> Void)?
+        public var endCompletion: (() -> Void)?
     }
     
     public func configure(_ configuration: TimerConfiguration = TimerConfiguration(),
                           timeInterval: TimeInterval = 1) {
         self.configuration = configuration
-        self.configuration.startAction?()
+        self.configuration.startCompletion?()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { timer in
             self.update(timer: timer, timeInterval: timeInterval)
         }
@@ -45,11 +45,11 @@ public final class TimerManager: ObservableObject {
     private func update(timer: Timer, timeInterval: TimeInterval = 1) {
         if let duration = configuration.duration {
             if duration > 0 {
-                configuration.whileAction?()
+                configuration.whileCompletion?()
                 configuration.duration! -= timeInterval
             } else {
                 timer.invalidate()
-                configuration.endAction?()
+                configuration.endCompletion?()
             }
         }
     }

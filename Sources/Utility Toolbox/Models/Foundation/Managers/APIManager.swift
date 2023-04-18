@@ -10,7 +10,8 @@ import Foundation
 public final class APIManager {
     
     public init() { }
-    
+
+    /// All HTTP methods to initiate a request.
     public enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
@@ -23,7 +24,8 @@ public final class APIManager {
         case badResponse = "Server ERROR"
         case noData = "No DATA"
     }
-    
+
+    /// Returns the data from the GET request.
     public func getRequest<M: Codable>(url: String,
                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
@@ -50,13 +52,13 @@ public final class APIManager {
             decoder.dataDecodingStrategy = dataDecodingStrategy
             
             let result = try decoder.decode(M.self, from: data)
-            print("Success")
             return result
         } catch {
             throw APIError.noData.rawValue
         }
     }
-    
+
+    /// Returns the data from the POST request.
     public func postRequest<M: Codable>(url: String,
                                         cachePolicy: URLRequest.CachePolicy,
                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
@@ -80,7 +82,8 @@ public final class APIManager {
         let result = try decoder.decode(M.self, from: data)
         return result
     }
-    
+
+    /// Returns the data from the PUT request.
     public func putRequest<M: Codable>(url: String,
                                        cachePolicy: URLRequest.CachePolicy,
                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
