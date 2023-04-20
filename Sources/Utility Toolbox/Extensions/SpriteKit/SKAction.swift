@@ -144,7 +144,6 @@ public extension SKAction {
                                with scaleUpDuration: TimeInterval = 0.5,
                                to secondScale: CGFloat,
                                with scaleDownDuration: TimeInterval = 0.5,
-                               during duration: TimeInterval,
                                repeating repeatCount: Int = 1,
                                isRepeatingForever: Bool = false) -> SKAction {
         let sequence = SKAction.sequence([
