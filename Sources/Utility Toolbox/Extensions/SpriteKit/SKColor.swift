@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-extension SKColor {
+public extension SKColor {
     
     static let defaultHue = SKColor(hue: 0.5,
                                     saturation: 1,
