@@ -14,9 +14,9 @@ public protocol DecodableDefaultSource {
 
 public enum DecodableDefault { }
 
-extension DecodableDefault {
+public extension DecodableDefault {
     @propertyWrapper
-    public struct Wrapper<Source: DecodableDefaultSource> {
+    struct Wrapper<Source: DecodableDefaultSource> {
         
         public init(wrappedValue: Source.Value = Source.defaultValue) {
             self.wrappedValue = wrappedValue
@@ -34,19 +34,19 @@ extension DecodableDefault.Wrapper: Decodable {
     }
 }
 
-extension KeyedDecodingContainer {
+public extension KeyedDecodingContainer {
     func decode<T>(_ type: DecodableDefault.Wrapper<T>.Type,
                    forKey key: Key) throws -> DecodableDefault.Wrapper<T> {
         try decodeIfPresent(type, forKey: key) ?? .init()
     }
 }
 
-extension DecodableDefault {
-    public typealias Source = DecodableDefaultSource
-    public typealias List = Decodable & ExpressibleByArrayLiteral
-    public typealias Map = Decodable & ExpressibleByDictionaryLiteral
+public extension DecodableDefault {
+    typealias Source = DecodableDefaultSource
+    typealias List = Decodable & ExpressibleByArrayLiteral
+    typealias Map = Decodable & ExpressibleByDictionaryLiteral
     
-    public enum Sources {
+    enum Sources {
         public enum True: Source {
             public static var defaultValue: Bool { true }
         }
@@ -69,12 +69,12 @@ extension DecodableDefault {
     }
 }
 
-extension DecodableDefault {
-    public typealias True = Wrapper<Sources.True>
-    public typealias False = Wrapper<Sources.False>
-    public typealias EmptyString = Wrapper<Sources.EmptyString>
-    public typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
-    public typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
+public extension DecodableDefault {
+    typealias True = Wrapper<Sources.True>
+    typealias False = Wrapper<Sources.False>
+    typealias EmptyString = Wrapper<Sources.EmptyString>
+    typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
+    typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
 }
 
 extension DecodableDefault.Wrapper: Equatable where Value: Equatable { }
