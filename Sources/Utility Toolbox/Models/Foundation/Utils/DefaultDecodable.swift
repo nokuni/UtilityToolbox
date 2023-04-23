@@ -12,31 +12,14 @@ public protocol DecodableDefaultSource {
     static var defaultValue: Value { get }
 }
 
-public enum DecodableDefault { }
-
-extension DecodableDefault {
+public enum DecodableDefault {
+    
     @propertyWrapper
     struct Wrapper<Source: DecodableDefaultSource> {
         typealias Value = Source.Value
         var wrappedValue = Source.defaultValue
     }
-}
-
-extension DecodableDefault.Wrapper: Decodable {
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        wrappedValue = try container.decode(Value.self)
-    }
-}
-
-extension KeyedDecodingContainer {
-    func decode<T>(_ type: DecodableDefault.Wrapper<T>.Type,
-                   forKey key: Key) throws -> DecodableDefault.Wrapper<T> {
-        try decodeIfPresent(type, forKey: key) ?? .init()
-    }
-}
-
-extension DecodableDefault {
+    
     typealias Source = DecodableDefaultSource
     typealias List = Decodable & ExpressibleByArrayLiteral
     typealias Map = Decodable & ExpressibleByDictionaryLiteral
@@ -62,9 +45,7 @@ extension DecodableDefault {
             static var defaultValue: T { [:] }
         }
     }
-}
-
-extension DecodableDefault {
+    
     typealias True = Wrapper<Sources.True>
     typealias False = Wrapper<Sources.False>
     typealias EmptyString = Wrapper<Sources.EmptyString>
@@ -72,9 +53,23 @@ extension DecodableDefault {
     typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
 }
 
-extension DecodableDefault.Wrapper: Equatable where Value: Equatable {}
+extension DecodableDefault.Wrapper: Decodable {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        wrappedValue = try container.decode(Value.self)
+    }
+}
 
-extension DecodableDefault.Wrapper: Hashable where Value: Hashable {}
+extension KeyedDecodingContainer {
+    func decode<T>(_ type: DecodableDefault.Wrapper<T>.Type,
+                   forKey key: Key) throws -> DecodableDefault.Wrapper<T> {
+        try decodeIfPresent(type, forKey: key) ?? .init()
+    }
+}
+
+extension DecodableDefault.Wrapper: Equatable where Value: Equatable { }
+
+extension DecodableDefault.Wrapper: Hashable where Value: Hashable { }
 
 extension DecodableDefault.Wrapper: Encodable where Value: Encodable {
     func encode(to encoder: Encoder) throws {
