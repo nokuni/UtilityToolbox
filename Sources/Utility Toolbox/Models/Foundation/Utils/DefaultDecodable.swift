@@ -12,50 +12,19 @@ public protocol DecodableDefaultSource {
     static var defaultValue: Value { get }
 }
 
-public enum DecodableDefault {
-    
+public enum DecodableDefault { }
+
+extension DecodableDefault {
     @propertyWrapper
-    struct Wrapper<Source: DecodableDefaultSource> {
+    public struct Wrapper<Source: DecodableDefaultSource> {
         
         public init(wrappedValue: Source.Value = Source.defaultValue) {
             self.wrappedValue = wrappedValue
         }
         
-        typealias Value = Source.Value
-        var wrappedValue: Source.Value
+        public typealias Value = Source.Value
+        public var wrappedValue: Source.Value
     }
-    
-    typealias Source = DecodableDefaultSource
-    typealias List = Decodable & ExpressibleByArrayLiteral
-    typealias Map = Decodable & ExpressibleByDictionaryLiteral
-    
-    enum Sources {
-        enum True: Source {
-            static var defaultValue: Bool { true }
-        }
-        
-        enum False: Source {
-            static var defaultValue: Bool { false }
-        }
-        
-        enum EmptyString: Source {
-            static var defaultValue: String { "" }
-        }
-        
-        enum EmptyList<T: List>: Source {
-            static var defaultValue: T { [] }
-        }
-        
-        enum EmptyMap<T: Map>: Source {
-            static var defaultValue: T { [:] }
-        }
-    }
-    
-    typealias True = Wrapper<Sources.True>
-    typealias False = Wrapper<Sources.False>
-    typealias EmptyString = Wrapper<Sources.EmptyString>
-    typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
-    typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
 }
 
 extension DecodableDefault.Wrapper: Decodable {
@@ -72,12 +41,48 @@ extension KeyedDecodingContainer {
     }
 }
 
+extension DecodableDefault {
+    public typealias Source = DecodableDefaultSource
+    public typealias List = Decodable & ExpressibleByArrayLiteral
+    public typealias Map = Decodable & ExpressibleByDictionaryLiteral
+    
+    public enum Sources {
+        public enum True: Source {
+            public static var defaultValue: Bool { true }
+        }
+        
+        public enum False: Source {
+            public static var defaultValue: Bool { false }
+        }
+        
+        public enum EmptyString: Source {
+            public static var defaultValue: String { "" }
+        }
+        
+        public enum EmptyList<T: List>: Source {
+            public static var defaultValue: T { [] }
+        }
+        
+        public enum EmptyMap<T: Map>: Source {
+            public static var defaultValue: T { [:] }
+        }
+    }
+}
+
+extension DecodableDefault {
+    public typealias True = Wrapper<Sources.True>
+    public typealias False = Wrapper<Sources.False>
+    public typealias EmptyString = Wrapper<Sources.EmptyString>
+    public typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
+    public typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
+}
+
 extension DecodableDefault.Wrapper: Equatable where Value: Equatable { }
 
 extension DecodableDefault.Wrapper: Hashable where Value: Hashable { }
 
 extension DecodableDefault.Wrapper: Encodable where Value: Encodable {
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(wrappedValue)
     }
