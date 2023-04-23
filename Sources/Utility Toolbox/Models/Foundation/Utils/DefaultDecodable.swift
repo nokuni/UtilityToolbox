@@ -66,6 +66,22 @@ public extension DecodableDefault {
         public enum EmptyMap<T: Map>: Source {
             public static var defaultValue: T { [:] }
         }
+        
+        public enum ZeroInt: Source {
+            public static var defaultValue: Int { 0 }
+        }
+        
+        public enum OneInt: Source {
+            public static var defaultValue: Int { 1 }
+        }
+        
+        public enum ZeroFloat: Source {
+            public static var defaultValue: Double { 0.0 }
+        }
+        
+        public enum OneFloat: Source {
+            public static var defaultValue: Double { 1.0 }
+        }
     }
 }
 
@@ -75,6 +91,10 @@ public extension DecodableDefault {
     typealias EmptyString = Wrapper<Sources.EmptyString>
     typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
     typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
+    typealias ZeroInt = Wrapper<Sources.ZeroInt>
+    typealias OneInt = Wrapper<Sources.OneInt>
+    typealias ZeroFloat = Wrapper<Sources.ZeroFloat>
+    typealias OneFloat = Wrapper<Sources.OneFloat>
 }
 
 extension DecodableDefault.Wrapper: Equatable where Value: Equatable { }
