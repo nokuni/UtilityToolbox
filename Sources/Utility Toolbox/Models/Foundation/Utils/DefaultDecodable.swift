@@ -54,7 +54,7 @@ public enum DecodableDefault {
 }
 
 extension DecodableDefault.Wrapper: Decodable {
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         wrappedValue = try container.decode(Value.self)
     }
