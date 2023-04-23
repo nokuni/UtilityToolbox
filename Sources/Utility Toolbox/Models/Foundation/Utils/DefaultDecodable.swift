@@ -16,8 +16,13 @@ public enum DecodableDefault {
     
     @propertyWrapper
     struct Wrapper<Source: DecodableDefaultSource> {
+        
+        public init(wrappedValue: Source.Value = Source.defaultValue) {
+            self.wrappedValue = wrappedValue
+        }
+        
         typealias Value = Source.Value
-        var wrappedValue = Source.defaultValue
+        var wrappedValue: Source.Value
     }
     
     typealias Source = DecodableDefaultSource
