@@ -24,4 +24,8 @@ public extension Int {
     var isOdd: Bool {
         !isMultiple(of: 2)
     }
+    
+    func percentageValue(percentage: Int) -> Int {
+        return (percentage * self) / 100
+    }
 }
