@@ -60,7 +60,7 @@ public final class APIManager {
 
     /// Returns the data from the POST request.
     public func postRequest<M: Codable>(url: String,
-                                        cachePolicy: URLRequest.CachePolicy,
+                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                         body: [String: Any]) async throws -> M {
         
@@ -85,7 +85,7 @@ public final class APIManager {
 
     /// Returns the data from the PUT request.
     public func putRequest<M: Codable>(url: String,
-                                       cachePolicy: URLRequest.CachePolicy,
+                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                        body: [String: Any]) async throws -> M {
         guard let url = URL(string: url) else {
