@@ -24,6 +24,12 @@ public final class APIManager {
         case badResponse = "Server ERROR"
         case noData = "No DATA"
     }
+    
+    public func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(value)
+        return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+    }
 
     /// Returns the data from the GET request.
     public func getRequest<M: Codable>(url: String,
@@ -60,9 +66,9 @@ public final class APIManager {
 
     /// Returns the data from the POST request.
     public func postRequest<M: Codable>(url: String,
+                                        value: M,
                                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-                                        body: [String: Any]) async throws -> M {
+                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -72,7 +78,10 @@ public final class APIManager {
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        let object = try encode(value)
+        
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
@@ -85,9 +94,9 @@ public final class APIManager {
 
     /// Returns the data from the PUT request.
     public func putRequest<M: Codable>(url: String,
+                                       value: M,
                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-                                       body: [String: Any]) async throws -> M {
+                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
         }
@@ -96,7 +105,10 @@ public final class APIManager {
         urlRequest.httpMethod = HTTPMethod.put.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        let object = try encode(value)
+        
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
