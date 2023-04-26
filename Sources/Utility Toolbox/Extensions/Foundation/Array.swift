@@ -47,6 +47,12 @@ public extension Array {
         return (firstPart: Array(firstSplit), lastPart: Array(lastSplit))
     }
     
+    func split(from index: Int) -> (firstPart: [Element], secondPart: [Element]) {
+        let firstSplit = self[0 ..< index]
+        let lastSplit = self[index ..< count]
+        return (Array(firstSplit), Array(lastSplit))
+    }
+    
     /// Using their indices, swap two elements in the array.
     mutating func swap(between valueA: Int, and valueB: Int) {
         guard !isEmpty else { return }
