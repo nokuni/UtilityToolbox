@@ -49,7 +49,7 @@ public extension Array {
     
     func split(from index: Int) -> (firstPart: [Element], secondPart: [Element]) {
         let firstSplit = self[0 ..< index]
-        let lastSplit = self[index ..< count]
+        let lastSplit = self[(index + 1) ..< count]
         return (Array(firstSplit), Array(lastSplit))
     }
     
