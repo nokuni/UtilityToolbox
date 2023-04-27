@@ -230,4 +230,15 @@ public extension Array where Element == String {
         let result = self.map { $0.replacingOccurrences(of: character, with: newCharacter) }
         return result
     }
+    
+    static var alphabet: [String] {
+        String.alphabet.map { String($0) }
+    }
+    
+    static func alphabetDictionary(until limit: Int = 27) -> [[Int: String]] {
+        alphabet.enumerated().map { [$0 : $1] }.filter {
+            if let key = $0.keys.first { return $0.keys.first! < limit }
+            return false
+        }
+    }
 }
