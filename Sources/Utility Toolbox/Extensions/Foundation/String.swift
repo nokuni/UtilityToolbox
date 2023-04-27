@@ -17,6 +17,8 @@ public extension String {
     
     static var alphabet: String { "abcdefghijklmnopqrstuvwxyz" }
     
+    var isNotEmpty: Bool { !self.isEmpty }
+    
     /// Returns the numbers in the string.
     var extractedNumber: Int? {
         Int(components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
