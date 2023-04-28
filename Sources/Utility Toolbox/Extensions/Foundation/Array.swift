@@ -94,6 +94,11 @@ public extension Array where Element: Comparable {
 
 public extension Array where Element: Equatable {
     
+    func count(of element: Element) -> Int {
+        let filteredArray = self.filter { $0 == element }
+        return filteredArray.count
+    }
+    
     func split(from element: Element) -> (firstPart: [Element], secondPart: [Element])? {
         guard let elementIndex = self.firstIndex(of: element) else { return nil }
         let firstSplit = self[0 ..< elementIndex]
