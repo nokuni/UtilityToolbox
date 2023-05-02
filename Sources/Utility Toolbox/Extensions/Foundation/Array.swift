@@ -94,6 +94,18 @@ public extension Array where Element: Comparable {
 
 public extension Array where Element: Equatable {
     
+    func count(of element: Element) -> Int {
+        let filteredArray = self.filter { $0 == element }
+        return filteredArray.count
+    }
+    
+    func split(from element: Element) -> (firstPart: [Element], secondPart: [Element])? {
+        guard let elementIndex = self.firstIndex(of: element) else { return nil }
+        let firstSplit = self[0 ..< elementIndex]
+        let lastSplit = self[(elementIndex + 1) ..< count]
+        return (Array(firstSplit), Array(lastSplit))
+    }
+    
     /// Remove an element from the collection.
     mutating func remove(_ element: Element) {
         guard let index = firstIndex(of: element) else { return }
@@ -222,5 +234,16 @@ public extension Array where Element == String {
     func replacingOccurences(character: String, newCharacter: String) -> [String] {
         let result = self.map { $0.replacingOccurrences(of: character, with: newCharacter) }
         return result
+    }
+    
+    static var alphabet: [String] {
+        String.alphabet.map { String($0) }
+    }
+    
+    static func alphabetDictionary(until limit: Int = 27) -> [[Int: String]] {
+        alphabet.enumerated().map { [$0 : $1] }.filter {
+            if let key = $0.keys.first { return $0.keys.first! < limit }
+            return false
+        }
     }
 }

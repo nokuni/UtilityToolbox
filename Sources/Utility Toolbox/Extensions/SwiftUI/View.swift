@@ -32,4 +32,16 @@ public extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
+    
+    // MARK: - Utils
+    
+    @MainActor func image() -> UIImage? {
+        if #available(iOS 16, *) {
+            let renderer = ImageRenderer(content: self)
+            renderer.scale = UIScreen.main.scale
+            let renderedImage = renderer.uiImage
+            return renderedImage
+        }
+        return nil
+    }
 }
