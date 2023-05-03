@@ -39,6 +39,10 @@ public extension View {
         modifier(InvertedMaskModifier(additionalContent: content))
     }
     
+    func outline(color: Color, radius: CGFloat) -> some View {
+        modifier(OutlineModifier(color: color, radius: radius))
+    }
+    
     // MARK: - Utils
 
     /// Returns a snapshot of a view as an image.
