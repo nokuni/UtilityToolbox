@@ -33,6 +33,20 @@ public extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
     
+    func invertedMask<Content : View>(_ content: Content) -> some View {
+        self
+            .mask(
+                ZStack {
+                    self
+                        .brightness(1)
+                    content
+                        .brightness(-1)
+                }
+                    .compositingGroup()
+                    .luminanceToAlpha()
+            )
+    }
+    
     // MARK: - Utils
     
     @MainActor func image() -> UIImage? {
