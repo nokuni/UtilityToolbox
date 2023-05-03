@@ -46,13 +46,15 @@ public extension View {
     
     func defaultTextFieldStyle<Field: RawRepresentable & Hashable>(
         text: Binding<String>,
-        textColor: Color,
-        backgroundColor: Color,
-        height: CGFloat,
+        cornerRadius: CGFloat = 8,
+        textColor: Color = .primary,
+        backgroundColor: Color = .gray5,
+        height: CGFloat = CGSize.screen.height * 0.05,
         focusField: FocusState<Field?>.Binding,
         focusAction: (() -> Void)?,
         cancelAction: (() -> Void)?) -> some View {
             modifier(TextFieldModifier(text: text,
+                                       cornerRadius: cornerRadius,
                                        textColor: textColor,
                                        backgroundColor: backgroundColor,
                                        height: height,

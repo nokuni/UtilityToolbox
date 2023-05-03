@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Color {
+public extension Color {
     
     /// Allow to use hex codes in the color initialization.
     init(hex: UInt, alpha: Double = 1) {
