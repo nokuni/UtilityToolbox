@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct OutlineModifier: ViewModifier {
+public struct OutlineModifier: ViewModifier {
     var color: Color
     var radius: CGFloat
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .shadow(color: color, radius: radius)
             .shadow(color: color, radius: radius)
