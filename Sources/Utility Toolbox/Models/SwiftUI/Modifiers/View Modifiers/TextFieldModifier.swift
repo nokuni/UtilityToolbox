@@ -67,6 +67,5 @@ struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
             .onChange(of: focusField.wrappedValue) { _ in
                 if focusField.wrappedValue != nil { focusAction?() }
             }
-            .focused(focusField, equals: focusField.wrappedValue)
     }
 }
