@@ -51,8 +51,8 @@ public extension View {
         backgroundColor: Color = .gray5,
         height: CGFloat = CGSize.screen.height * 0.05,
         focusField: FocusState<Field?>.Binding,
-        focusAction: (() -> Void)?,
-        cancelAction: (() -> Void)?) -> some View {
+        focusAction: (() -> Void)? = nil,
+        cancelAction: (() -> Void)? = nil) -> some View {
             modifier(TextFieldModifier(text: text,
                                        cornerRadius: cornerRadius,
                                        textColor: textColor,
