@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  InvertedMaskModifier.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 03/05/23.

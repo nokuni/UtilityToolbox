@@ -20,5 +20,6 @@ struct OutlineModifier: ViewModifier {
             .shadow(color: color, radius: radius)
             .shadow(color: color, radius: radius)
             .shadow(color: color, radius: radius)
+            .invertedMask(content)
     }
 }

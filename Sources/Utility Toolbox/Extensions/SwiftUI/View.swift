@@ -36,17 +36,7 @@ public extension View {
     }
     
     func invertedMask<Content : View>(_ content: Content) -> some View {
-        self
-            .mask(
-                ZStack {
-                    self
-                        .brightness(1)
-                    content
-                        .brightness(-1)
-                }
-                    .compositingGroup()
-                    .luminanceToAlpha()
-            )
+        modifier(InvertedMaskModifier(additionalContent: content))
     }
     
     // MARK: - Utils
