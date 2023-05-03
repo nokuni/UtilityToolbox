@@ -39,8 +39,8 @@ public extension View {
         modifier(InvertedMaskModifier(additionalContent: content))
     }
     
-    func outline(color: Color, radius: CGFloat) -> some View {
-        modifier(OutlineModifier(color: color, radius: radius))
+    func outline(color: Color, radius: CGFloat, isTranparentInside: Bool) -> some View {
+        modifier(OutlineModifier(color: color, radius: radius, isTransparentInside: isTranparentInside))
     }
     
     // MARK: - Utils

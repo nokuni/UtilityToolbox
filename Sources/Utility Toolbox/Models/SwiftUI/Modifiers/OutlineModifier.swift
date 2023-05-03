@@ -10,6 +10,7 @@ import SwiftUI
 public struct OutlineModifier: ViewModifier {
     var color: Color
     var radius: CGFloat
+    var isTransparentInside: Bool
     public func body(content: Content) -> some View {
         content
             .shadow(color: color, radius: radius)
@@ -20,6 +21,6 @@ public struct OutlineModifier: ViewModifier {
             .shadow(color: color, radius: radius)
             .shadow(color: color, radius: radius)
             .shadow(color: color, radius: radius)
-            .invertedMask(content)
+            .invertedMask(isTransparentInside ? content : nil)
     }
 }
