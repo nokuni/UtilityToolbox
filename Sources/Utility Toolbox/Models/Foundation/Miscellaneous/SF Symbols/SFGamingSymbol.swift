@@ -8,7 +8,9 @@
 import Foundation
 
 public enum SFGamingSymbol: String, CaseIterable, SFSymbolProtocol {
+    /// 􀧺
     case circleSquare = "circle.square"
+    /// 􀧻
     case circleSquareFill = "circle.square.fill"
     case rectangleOnRectangle = "rectangle.on.rectangle"
     case rectangleFillOnRectangleFill = "rectangle.fill.on.rectangle.fill"

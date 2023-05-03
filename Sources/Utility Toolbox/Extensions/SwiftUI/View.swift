@@ -16,12 +16,14 @@ public extension View {
         modifier(OnlyNumbersModifier(text: text))
     }
     
-    /// Limit the text of the binded string by a specific amount.
+    /// Limit the text © of the binded string by a specific amount.
     func limitText(text: Binding<String>, limit: Int) -> some View {
         modifier(TextLimiterModifier(text: text, limit: limit))
     }
     
     // MARK: - Button Style
+
+    /// Press button effect.
     func pressEffect(pressure: CGFloat = 0.95) -> some View {
         buttonStyle(PressEffectButtonStyle(pressure: pressure))
     }
@@ -48,7 +50,8 @@ public extension View {
     }
     
     // MARK: - Utils
-    
+
+    /// Returns a snapshot of a view as an image.
     @MainActor func image() -> UIImage? {
         if #available(iOS 16, *) {
             let renderer = ImageRenderer(content: self)

@@ -27,4 +27,8 @@ public extension Image {
         }
         return nil
     }
+
+    init(sfSymbol: SFSymbolProtocol) {
+        self.init(systemName: sfSymbol.rawValue)
+    }
 }
