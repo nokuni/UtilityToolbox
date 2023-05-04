@@ -242,7 +242,7 @@ public extension Array where Element == String {
     
     static func alphabetDictionary(until limit: Int = 27) -> [[Int: String]] {
         alphabet.enumerated().map { [$0 : $1] }.filter {
-            if let key = $0.keys.first { return $0.keys.first! < limit }
+            if $0.keys.first != nil { return $0.keys.first! < limit }
             return false
         }
     }

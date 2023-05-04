@@ -22,7 +22,7 @@ public extension View {
     }
     
     // MARK: - Button Style
-
+    
     /// Press button effect.
     func pressEffect(pressure: CGFloat = 0.95) -> some View {
         buttonStyle(PressEffectButtonStyle(pressure: pressure))
@@ -35,8 +35,37 @@ public extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
     
+    func invertedMask<Content : View>(_ content: Content) -> some View {
+        modifier(InvertedMaskModifier(additionalContent: content))
+    }
+    
+    /// Outline a view.
+    func outline(color: Color, radius: CGFloat, isTranparentInside: Bool) -> some View {
+        modifier(OutlineModifier(color: color, radius: radius, isTransparentInside: isTranparentInside))
+    }
+    
+    func defaultTextFieldStyle<Field: RawRepresentable & Hashable>(
+        text: Binding<String>,
+        cornerRadius: CGFloat = 8,
+        textColor: Color = .primary,
+        backgroundColor: Color = .gray5,
+        height: CGFloat = CGSize.screen.height * 0.05,
+        focusField: FocusState<Field?>.Binding,
+        focusAction: (() -> Void)? = nil,
+        cancelAction: (() -> Void)? = nil) -> some View {
+            modifier(TextFieldModifier(text: text,
+                                       cornerRadius: cornerRadius,
+                                       textColor: textColor,
+                                       backgroundColor: backgroundColor,
+                                       height: height,
+                                       focusField: focusField,
+                                       focusAction: focusAction,
+                                       cancelAction: cancelAction)
+            )
+        }
+    
     // MARK: - Utils
-
+    
     /// Returns a snapshot of a view as an image.
     @MainActor func image() -> UIImage? {
         if #available(iOS 16, *) {
