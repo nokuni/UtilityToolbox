@@ -18,7 +18,7 @@ import os
 
 // In your app target, add mac as a supported destination. It will automatically unlock App Sandbox in Signing and Capabilities. You will need to enable Incoming Connections (server) and Outgoing Connections (client).
 
-public class MultipeerSessionManager: NSObject, ObservableObject {
+public class MultipeerSessionManager: NSObject {
     private var myPeerID: MCPeerID
 
     public var configuration: ServiceConfiguration
