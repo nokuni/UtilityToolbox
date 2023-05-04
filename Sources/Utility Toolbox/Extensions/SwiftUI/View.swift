@@ -16,7 +16,7 @@ public extension View {
         modifier(OnlyNumbersModifier(text: text))
     }
     
-    /// Limit the text © of the binded string by a specific amount.
+    /// Limit the text of the binded string by a specific amount.
     func limitText(text: Binding<String>, limit: Int) -> some View {
         modifier(TextLimiterModifier(text: text, limit: limit))
     }

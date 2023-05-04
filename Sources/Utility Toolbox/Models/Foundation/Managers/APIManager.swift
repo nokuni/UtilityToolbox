@@ -25,7 +25,7 @@ public final class APIManager {
         case noData = "No DATA"
     }
     
-    public func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {
+    private func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {
         let encoder = JSONEncoder()
         let data = try encoder.encode(value)
         return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]

@@ -7,21 +7,25 @@
 
 import SwiftUI
 
-class SweetAnimation {
+public class SweetAction {
     
-    init(frames: [String], isRepeatingForever: Bool = false) {
+    init(frames: [String],
+         timePerFrame: TimeInterval,
+         isRepeatingForever: Bool = false) {
         self.frames = frames
+        self.timePerFrame = timePerFrame
         self.isRepeatingForever = isRepeatingForever
     }
     
     var frames: [String]
+    var timePerFrame: TimeInterval
     var isRepeatingForever: Bool
     
     var timer: Timer?
     var currentIndex: Int = 0
     
     func play() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: timePerFrame, repeats: true, block: { _ in
             self.animate()
         })
     }

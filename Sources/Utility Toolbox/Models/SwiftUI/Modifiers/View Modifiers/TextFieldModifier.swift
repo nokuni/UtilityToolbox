@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
-    var text: Binding<String>
-    var cornerRadius: CGFloat
-    var textColor: Color
-    var backgroundColor: Color
-    var height: CGFloat
-    var focusField: FocusState<Field?>.Binding
-    var focusAction: (() -> Void)?
-    var cancelAction: (() -> Void)?
+public struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
+    public var text: Binding<String>
+    public var cornerRadius: CGFloat
+    public var textColor: Color
+    public var backgroundColor: Color
+    public var height: CGFloat
+    public var focusField: FocusState<Field?>.Binding
+    public var focusAction: (() -> Void)?
+    public var cancelAction: (() -> Void)?
     
-    init(text: Binding<String>,
-         cornerRadius: CGFloat = 8,
-         textColor: Color = .black,
-         backgroundColor: Color = .gray5,
-         height: CGFloat = CGSize.screen.height * 0.05,
-         focusField: FocusState<Field?>.Binding,
-         focusAction: (() -> Void)?,
-         cancelAction: (() -> Void)?) {
+    public init(text: Binding<String>,
+                cornerRadius: CGFloat = 8,
+                textColor: Color = .black,
+                backgroundColor: Color = .gray5,
+                height: CGFloat = CGSize.screen.height * 0.05,
+                focusField: FocusState<Field?>.Binding,
+                focusAction: (() -> Void)?,
+                cancelAction: (() -> Void)?) {
         self.text = text
         self.cornerRadius = cornerRadius
         self.textColor = textColor
@@ -35,7 +35,7 @@ struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
         self.cancelAction = cancelAction
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .foregroundColor(backgroundColor)
             .frame(maxWidth: UIScreen.main.bounds.width,

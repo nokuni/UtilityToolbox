@@ -34,7 +34,8 @@ public extension String {
         let number = expression.expressionValue(with: dictionary, context: nil) as? UInt32
         return number
     }
-    
+
+    /// Returns a decoded HTML string.
     func withoutHTMLEncoding() throws -> String? {
         guard let data = self.data(using: .utf8) else { return nil }
         let attr = try NSAttributedString(

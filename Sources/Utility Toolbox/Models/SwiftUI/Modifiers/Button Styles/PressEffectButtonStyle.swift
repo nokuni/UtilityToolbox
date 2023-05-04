@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PressEffectButtonStyle: ButtonStyle {
-    var pressure: CGFloat
-    func makeBody(configuration: Configuration) -> some View {
+public struct PressEffectButtonStyle: ButtonStyle {
+    public var pressure: CGFloat
+    public func makeBody(configuration: Configuration) -> some View {
         configuration
             .label.scaleEffect(configuration.isPressed ? pressure : 1)
     }
