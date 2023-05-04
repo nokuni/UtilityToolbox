@@ -26,12 +26,12 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
     public let serviceBrowser: MCNearbyServiceBrowser
     public let session: MCSession
     
-    @Published var availablePeers: [MCPeerID] = []
-    @Published var receivedData: Data = Data()
-    @Published var hasReceivedInvite: Bool = false
-    @Published var receivedInviteFrom: MCPeerID? = nil
-    @Published var paired: Bool = false
-    @Published var invitationHandler: ((Bool, MCSession?) -> Void)?
+    @Published public var availablePeers: [MCPeerID] = []
+    @Published public var receivedData: Data = Data()
+    @Published public var hasReceivedInvite: Bool = false
+    @Published public var receivedInviteFrom: MCPeerID? = nil
+    @Published public var paired: Bool = false
+    @Published public var invitationHandler: ((Bool, MCSession?) -> Void)?
 
     private let log = Logger()
 
