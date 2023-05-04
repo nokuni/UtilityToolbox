@@ -27,7 +27,7 @@ public struct GradientContent<Content: View>: View {
     public var endRadiusFraction: CGFloat?
     public var content: Content
 
-    /// Initialize the properties of the the linear gradient.
+    /// Initialize the properties for the Linear gradient.
     public init(gradient: Gradient,
                 startPoint: UnitPoint,
                 endPoint: UnitPoint,
@@ -39,7 +39,7 @@ public struct GradientContent<Content: View>: View {
         self.content = content()
     }
 
-    /// Initialize the properties of the the radial gradient.
+    /// Initialize the properties for the radial gradient.
     public init(gradient: Gradient,
                 center: UnitPoint,
                 startRadius: CGFloat,
@@ -53,7 +53,7 @@ public struct GradientContent<Content: View>: View {
         self.content = content()
     }
 
-    /// Initialize the properties of the the angular gradient.
+    /// Initialize the properties for the angular gradient.
     public init(gradient: Gradient,
                 center: UnitPoint,
                 angle: Angle,
@@ -65,7 +65,7 @@ public struct GradientContent<Content: View>: View {
         self.content = content()
     }
 
-    /// Initialize the properties of the the elliptical gradient.
+    /// Initialize the properties for the elliptical gradient.
     public init(gradient: Gradient,
                 center: UnitPoint,
                 startRadiusFraction: CGFloat,
