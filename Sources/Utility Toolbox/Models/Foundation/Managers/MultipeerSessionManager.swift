@@ -18,55 +18,32 @@ import os
 
 // In your app target, add mac as a supported destination. It will automatically unlock App Sandbox in Signing and Capabilities. You will need to enable Incoming Connections (server) and Outgoing Connections (client).
 
-public class MultipeerSessionManager: NSObject {
+public class MultipeerSessionManager: NSObject, ObservableObject {
+    private var serviceType: String
     private var myPeerID: MCPeerID
-
-    public var configuration: ServiceConfiguration
     
     public let serviceAdvertiser: MCNearbyServiceAdvertiser
     public let serviceBrowser: MCNearbyServiceBrowser
     public let session: MCSession
+    
+    @Published var availablePeers: [MCPeerID] = []
+    @Published var receivedData: Data = Data()
+    @Published var hasReceivedInvite: Bool = false
+    @Published var receivedInviteFrom: MCPeerID? = nil
+    @Published var paired: Bool = false
+    @Published var invitationHandler: ((Bool, MCSession?) -> Void)?
 
     private let log = Logger()
 
-    public struct ServiceConfiguration {
-        public init(serviceType: String,
-                    data: Data,
-                    receivedData: Data = Data(),
-                    availablePeers: [MCPeerID] = [],
-                    hasReceivedInvite: Bool = false,
-                    receivedInviteFrom: MCPeerID? = nil,
-                    paired: Bool = false,
-                    invitationHandler: ((Bool, MCSession?) -> Void)? = nil) {
-            self.serviceType = serviceType
-            self.data = data
-            self.receivedData = receivedData
-            self.availablePeers = availablePeers
-            self.hasReceivedInvite = hasReceivedInvite
-            self.receivedInviteFrom = receivedInviteFrom
-            self.paired = paired
-            self.invitationHandler = invitationHandler
-        }
+    public init(serviceType: String, username: String) {
+        self.serviceType = serviceType
         
-        public let serviceType: String
-        public var data: Data
-        public var receivedData: Data
-        public var availablePeers: [MCPeerID]
-        public var hasReceivedInvite: Bool
-        public var receivedInviteFrom: MCPeerID?
-        public var paired: Bool
-        public var invitationHandler: ((Bool, MCSession?) -> Void)?
-    }
-
-    public init(configuration: ServiceConfiguration, username: String) {
-        self.configuration = configuration
-
         let peerID = MCPeerID(displayName: username)
         self.myPeerID = peerID
 
         self.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: configuration.serviceType)
-        self.serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: configuration.serviceType)
+        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
+        self.serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType)
 
         super.init()
 
@@ -83,11 +60,11 @@ public class MultipeerSessionManager: NSObject {
         serviceBrowser.stopBrowsingForPeers()
     }
 
-    public func send() {
+    public func send(data: Data) {
         if !session.connectedPeers.isEmpty {
-            log.info("sendMove: \(String(describing: self.configuration.data)) to \(self.session.connectedPeers[0].displayName)")
+            log.info("sendMove: \(String(describing: data)) to \(self.session.connectedPeers[0].displayName)")
             do {
-                try session.send(configuration.data, toPeers: session.connectedPeers, with: .reliable)
+                try session.send(data, toPeers: session.connectedPeers, with: .reliable)
             } catch {
                 log.error("Error sending: \(String(describing: error))")
             }
@@ -106,11 +83,11 @@ extension MultipeerSessionManager: MCNearbyServiceAdvertiserDelegate {
 
         DispatchQueue.main.async {
             // Tell PairView to show the invitation alert
-            self.configuration.hasReceivedInvite = true
+            self.hasReceivedInvite = true
             // Give PairView the peerID of the peer who invited us
-            self.configuration.receivedInviteFrom = peerID
+            self.receivedInviteFrom = peerID
             // Give PairView the `invitationHandler` so it can accept/deny the invitation
-            self.configuration.invitationHandler = invitationHandler
+            self.invitationHandler = invitationHandler
         }
     }
 }
@@ -125,7 +102,7 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
         log.info("ServiceBrowser found peer: \(peerID)")
         // Add the peer to the list of available peers
         DispatchQueue.main.async {
-            self.configuration.availablePeers.append(peerID)
+            self.availablePeers.append(peerID)
         }
     }
 
@@ -133,7 +110,7 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
         log.info("ServiceBrowser lost peer: \(peerID)")
         // Remove lost peer from list of available peers
         DispatchQueue.main.async {
-            self.configuration.availablePeers.removeAll(where: {
+            self.availablePeers.removeAll(where: {
                 $0 == peerID
             })
         }
@@ -148,7 +125,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
         case MCSessionState.notConnected:
             // Peer disconnected
             DispatchQueue.main.async {
-                self.configuration.paired = false
+                self.paired = false
             }
             // Peer disconnected, start accepting invitaions again
             serviceAdvertiser.startAdvertisingPeer()
@@ -156,7 +133,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
         case MCSessionState.connected:
             // Peer connected
             DispatchQueue.main.async {
-                self.configuration.paired = true
+                self.paired = true
             }
             // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
@@ -164,7 +141,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
         default:
             // Peer connecting or something else
             DispatchQueue.main.async {
-                self.configuration.paired = false
+                self.paired = false
             }
             break
         }
@@ -173,7 +150,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         log.info("didReceive \(data)")
         DispatchQueue.main.async {
-            self.configuration.receivedData = data
+            self.receivedData = data
         }
     }
 
