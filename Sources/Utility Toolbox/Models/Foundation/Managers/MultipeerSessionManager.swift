@@ -22,14 +22,15 @@ public class MultipeerSessionManager: NSObject {
     private var myPeerID: MCPeerID
 
     public var configuration: ServiceConfiguration
+    
+    public let serviceAdvertiser: MCNearbyServiceAdvertiser
+    public let serviceBrowser: MCNearbyServiceBrowser
+    public let session: MCSession
 
     private let log = Logger()
 
     public struct ServiceConfiguration {
-        public init(serviceAdvertiser: MCNearbyServiceAdvertiser,
-                    serviceBrowser: MCNearbyServiceBrowser,
-                    session: MCSession,
-                    serviceType: String,
+        public init(serviceType: String,
                     data: Data,
                     receivedData: Data = Data(),
                     availablePeers: [MCPeerID] = [],
@@ -37,9 +38,6 @@ public class MultipeerSessionManager: NSObject {
                     receivedInviteFrom: MCPeerID? = nil,
                     paired: Bool = false,
                     invitationHandler: ((Bool, MCSession?) -> Void)? = nil) {
-            self.serviceAdvertiser = serviceAdvertiser
-            self.serviceBrowser = serviceBrowser
-            self.session = session
             self.serviceType = serviceType
             self.data = data
             self.receivedData = receivedData
@@ -49,10 +47,7 @@ public class MultipeerSessionManager: NSObject {
             self.paired = paired
             self.invitationHandler = invitationHandler
         }
-
-        public var serviceAdvertiser: MCNearbyServiceAdvertiser
-        public var serviceBrowser: MCNearbyServiceBrowser
-        public var session: MCSession
+        
         public let serviceType: String
         public var data: Data
         public var receivedData: Data
@@ -69,30 +64,30 @@ public class MultipeerSessionManager: NSObject {
         let peerID = MCPeerID(displayName: username)
         self.myPeerID = peerID
 
-        self.configuration.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
-        self.configuration.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: configuration.serviceType)
-        self.configuration.serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: configuration.serviceType)
+        self.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
+        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: configuration.serviceType)
+        self.serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: configuration.serviceType)
 
         super.init()
 
-        configuration.session.delegate = self
-        configuration.serviceAdvertiser.delegate = self
-        configuration.serviceBrowser.delegate = self
+        session.delegate = self
+        serviceAdvertiser.delegate = self
+        serviceBrowser.delegate = self
 
-        configuration.serviceAdvertiser.startAdvertisingPeer()
-        configuration.serviceBrowser.startBrowsingForPeers()
+        serviceAdvertiser.startAdvertisingPeer()
+        serviceBrowser.startBrowsingForPeers()
     }
 
     deinit {
-        configuration.serviceAdvertiser.stopAdvertisingPeer()
-        configuration.serviceBrowser.stopBrowsingForPeers()
+        serviceAdvertiser.stopAdvertisingPeer()
+        serviceBrowser.stopBrowsingForPeers()
     }
 
     public func send() {
-        if !configuration.session.connectedPeers.isEmpty {
-            log.info("sendMove: \(String(describing: self.configuration.data)) to \(self.configuration.session.connectedPeers[0].displayName)")
+        if !session.connectedPeers.isEmpty {
+            log.info("sendMove: \(String(describing: self.configuration.data)) to \(self.session.connectedPeers[0].displayName)")
             do {
-                try configuration.session.send(configuration.data, toPeers: configuration.session.connectedPeers, with: .reliable)
+                try session.send(configuration.data, toPeers: session.connectedPeers, with: .reliable)
             } catch {
                 log.error("Error sending: \(String(describing: error))")
             }
@@ -156,7 +151,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
                 self.configuration.paired = false
             }
             // Peer disconnected, start accepting invitaions again
-            configuration.serviceAdvertiser.startAdvertisingPeer()
+            serviceAdvertiser.startAdvertisingPeer()
             break
         case MCSessionState.connected:
             // Peer connected
@@ -164,7 +159,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
                 self.configuration.paired = true
             }
             // We are paired, stop accepting invitations
-            configuration.serviceAdvertiser.stopAdvertisingPeer()
+            serviceAdvertiser.stopAdvertisingPeer()
             break
         default:
             // Peer connecting or something else
