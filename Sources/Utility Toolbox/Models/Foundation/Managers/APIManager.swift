@@ -68,6 +68,8 @@ public final class APIManager {
     public func postRequest<M: Codable>(url: String,
                                         value: M,
                                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
@@ -86,7 +88,9 @@ public final class APIManager {
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.keyDecodingStrategy = keyDecodingStrategy
+        decoder.dateDecodingStrategy = dateDecodingStrategy
+        decoder.dataDecodingStrategy = dataDecodingStrategy
         
         let result = try decoder.decode(M.self, from: data)
         return result
