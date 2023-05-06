@@ -10,7 +10,7 @@ import Foundation
 public final class APIManager {
     
     public init() { }
-
+    
     /// All HTTP methods to initiate a request.
     public enum HTTPMethod: String {
         case get = "GET"
@@ -30,13 +30,13 @@ public final class APIManager {
         let data = try encoder.encode(value)
         return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
     }
-
+    
     /// Returns the data from the GET request.
-    public func getRequest<M: Codable>(url: String,
-                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                       dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                       dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+    private func getRequest<M: Codable>(url: String,
+                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -63,14 +63,14 @@ public final class APIManager {
             throw APIError.noData.rawValue
         }
     }
-
+    
     /// Returns the data from the POST request.
-    public func postRequest<M: Codable>(url: String,
-                                        value: M,
-                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+    private func postRequest<M: Codable>(url: String,
+                                         value: M,
+                                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                         dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                         dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -95,12 +95,12 @@ public final class APIManager {
         let result = try decoder.decode(M.self, from: data)
         return result
     }
-
+    
     /// Returns the data from the PUT request.
-    public func putRequest<M: Codable>(url: String,
-                                       value: M,
-                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+    private func putRequest<M: Codable>(url: String,
+                                        value: M,
+                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
         }
@@ -121,5 +121,75 @@ public final class APIManager {
         
         let result = try decoder.decode(M.self, from: data)
         return result
+    }
+    
+    func get<M: Codable>(url: String,
+                         successCompletion: (() -> Void)? = nil,
+                         failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await getRequest(url: url)
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error
+        }
+    }
+    
+    func get<M: Codable>(url: String,
+                         id: Int,
+                         successCompletion: (() -> Void)? = nil,
+                         failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await getRequest(url: url + "\(id)")
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error
+        }
+    }
+    
+    func post<M: Codable>(url: String,
+                          value: M,
+                          successCompletion: (() -> Void)? = nil,
+                          failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await postRequest(url: url, value: value)
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error
+        }
+    }
+    
+    func put<M: Codable>(url: String,
+                         value: M,
+                         successCompletion: (() -> Void)? = nil,
+                         failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await putRequest(url: url, value: value)
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error
+        }
+    }
+    
+    func put<M: Codable>(url: String,
+                         id: Int,
+                         value: M,
+                         successCompletion: (() -> Void)? = nil,
+                         failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await putRequest(url: url + "\(id)", value: value)
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error
+        }
     }
 }
