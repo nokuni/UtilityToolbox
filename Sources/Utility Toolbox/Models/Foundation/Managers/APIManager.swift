@@ -123,7 +123,7 @@ public final class APIManager {
         return result
     }
     
-    func get<M: Codable>(url: String,
+    public func get<M: Codable>(url: String,
                          successCompletion: (() -> Void)? = nil,
                          failureCompletion: (() -> Void)? = nil) async throws -> M {
         do {
@@ -136,7 +136,7 @@ public final class APIManager {
         }
     }
     
-    func get<M: Codable>(url: String,
+    public func get<M: Codable>(url: String,
                          id: Int,
                          successCompletion: (() -> Void)? = nil,
                          failureCompletion: (() -> Void)? = nil) async throws -> M {
@@ -150,7 +150,7 @@ public final class APIManager {
         }
     }
     
-    func post<M: Codable>(url: String,
+    public func post<M: Codable>(url: String,
                           value: M,
                           successCompletion: (() -> Void)? = nil,
                           failureCompletion: (() -> Void)? = nil) async throws -> M {
@@ -164,7 +164,7 @@ public final class APIManager {
         }
     }
     
-    func put<M: Codable>(url: String,
+    public func put<M: Codable>(url: String,
                          value: M,
                          successCompletion: (() -> Void)? = nil,
                          failureCompletion: (() -> Void)? = nil) async throws -> M {
@@ -178,7 +178,7 @@ public final class APIManager {
         }
     }
     
-    func put<M: Codable>(url: String,
+    public func put<M: Codable>(url: String,
                          id: Int,
                          value: M,
                          successCompletion: (() -> Void)? = nil,
