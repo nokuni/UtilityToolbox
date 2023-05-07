@@ -33,10 +33,10 @@ public final class APIManager {
     
     /// Returns the data from the GET request.
     public func getRequest<M: Codable>(url: String,
-                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                       dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                       dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -66,11 +66,11 @@ public final class APIManager {
     
     /// Returns the data from the POST request.
     public func postRequest<M: Codable>(url: String,
-                                         value: M,
-                                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                         dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                         dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+                                        value: M,
+                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
@@ -98,9 +98,9 @@ public final class APIManager {
     
     /// Returns the data from the PUT request.
     public func putRequest<M: Codable>(url: String,
-                                        value: M,
-                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+                                       value: M,
+                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         guard let url = URL(string: url) else {
             throw APIError.badURL.rawValue
         }
@@ -121,6 +121,39 @@ public final class APIManager {
         
         let result = try decoder.decode(M.self, from: data)
         return result
+    }
+    
+    /// Delete the data from the DELETE request.
+    public func deleteRequest<M: Codable>(url: String,
+                                          cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                          dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                          dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                          keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        
+        guard let url = URL(string: url) else {
+            throw APIError.badURL.rawValue
+        }
+        
+        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
+        urlRequest.httpMethod = HTTPMethod.delete.rawValue
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                throw APIError.badResponse.rawValue
+            }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            decoder.dateDecodingStrategy = dateDecodingStrategy
+            decoder.dataDecodingStrategy = dataDecodingStrategy
+            
+            let result = try decoder.decode(M.self, from: data)
+            return result
+        } catch {
+            throw APIError.noData.rawValue
+        }
     }
     
     public func get<M: Codable>(url: String,
@@ -185,6 +218,20 @@ public final class APIManager {
                                 failureCompletion: (() -> Void)? = nil) async throws -> M {
         do {
             let data: M = try await putRequest(url: url + "\(id)", value: value)
+            successCompletion?()
+            return data
+        } catch let error {
+            failureCompletion?()
+            throw error.localizedDescription
+        }
+    }
+    
+    public func delete<M: Codable>(url: String,
+                                   id: Int,
+                                   successCompletion: (() -> Void)? = nil,
+                                   failureCompletion: (() -> Void)? = nil) async throws -> M {
+        do {
+            let data: M = try await deleteRequest(url: url + "\(id)")
             successCompletion?()
             return data
         } catch let error {
