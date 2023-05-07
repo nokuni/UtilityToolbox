@@ -116,15 +116,20 @@ public final class APIManager {
         
         urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
         
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = keyDecodingStrategy
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.dataDecodingStrategy = dataDecodingStrategy
-        
-        let result = try decoder.decode(M.self, from: data)
-        return result
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            decoder.dateDecodingStrategy = dateDecodingStrategy
+            decoder.dataDecodingStrategy = dataDecodingStrategy
+            
+            let result = try decoder.decode(M.self, from: data)
+            return result
+        } catch let error {
+            print(error.localizedDescription)
+            throw error.localizedDescription
+        }
     }
     
     /// Delete the data from the DELETE request.
