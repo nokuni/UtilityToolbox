@@ -71,6 +71,7 @@ public extension View {
         if #available(iOS 16, *) {
             let renderer = ImageRenderer(content: self)
             renderer.scale = UIScreen.main.scale
+            renderer.isOpaque = true
             let renderedImage = renderer.uiImage
             return renderedImage
         }
