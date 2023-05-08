@@ -13,3 +13,9 @@ public func repeatWhile(limit: Int = 10000, condition: Bool, repeatedCompletion:
         repeatedCompletion?()
     } while condition
 }
+
+public func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {
+    let encoder = JSONEncoder()
+    let data = try encoder.encode(value)
+    return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+}
