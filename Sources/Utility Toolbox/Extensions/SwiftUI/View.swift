@@ -76,7 +76,6 @@ extension View {
         cornerRadius: CGFloat = 8,
         textColor: Color = .primary,
         backgroundColor: Color = .gray5,
-        height: CGFloat = CGSize.screen.height * 0.05,
         focusField: FocusState<Field?>.Binding,
         focusAction: (() -> Void)? = nil,
         cancelAction: (() -> Void)? = nil) -> some View {
@@ -84,7 +83,6 @@ extension View {
                                            cornerRadius: cornerRadius,
                                            textColor: textColor,
                                            backgroundColor: backgroundColor,
-                                           height: height,
                                            focusField: focusField,
                                            focusAction: focusAction,
                                            cancelAction: cancelAction)
