@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ScrollableText: View {
+public struct ScrollableText: View {
     @State private var scrollViewContentSize: CGSize = .zero
-    var text: String
-    var body: some View {
+    public var text: String
+    public var body: some View {
         ScrollView {
             Text(text)
                 .background(
