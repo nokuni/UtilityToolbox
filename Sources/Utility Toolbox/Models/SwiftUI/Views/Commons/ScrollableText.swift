@@ -11,7 +11,7 @@ public struct ScrollableText: View {
     @State private var scrollViewContentSize: CGSize = .zero
     public var text: String
 
-    public init(scrollViewContentSize: CGSize, text: String) {
+    public init(text: String) {
         self.text = text
     }
 
