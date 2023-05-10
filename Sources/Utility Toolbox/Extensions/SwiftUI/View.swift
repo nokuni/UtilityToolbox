@@ -71,7 +71,7 @@ extension View {
     }
     
     /// Custom implementation of a textfield.
-    public func defaultTextFieldStyle<Field: RawRepresentable & Hashable>(
+    public func completeTextFieldStyle<Field: RawRepresentable & Hashable>(
         text: Binding<String>,
         cornerRadius: CGFloat = 8,
         textColor: Color = .primary,
@@ -80,14 +80,14 @@ extension View {
         focusField: FocusState<Field?>.Binding,
         focusAction: (() -> Void)? = nil,
         cancelAction: (() -> Void)? = nil) -> some View {
-            modifier(TextFieldModifier(text: text,
-                                       cornerRadius: cornerRadius,
-                                       textColor: textColor,
-                                       backgroundColor: backgroundColor,
-                                       height: height,
-                                       focusField: focusField,
-                                       focusAction: focusAction,
-                                       cancelAction: cancelAction)
+            modifier(CompleteFieldModifier(text: text,
+                                           cornerRadius: cornerRadius,
+                                           textColor: textColor,
+                                           backgroundColor: backgroundColor,
+                                           height: height,
+                                           focusField: focusField,
+                                           focusAction: focusAction,
+                                           cancelAction: cancelAction)
             )
         }
 }

@@ -1,5 +1,5 @@
 //
-//  TextFieldModifier.swift
+//  CompleteFieldModifier.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 03/05/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
+public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewModifier {
     public var text: Binding<String>
     public var cornerRadius: CGFloat
     public var textColor: Color
@@ -16,6 +16,8 @@ public struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifie
     public var focusField: FocusState<Field?>.Binding
     public var focusAction: (() -> Void)?
     public var cancelAction: (() -> Void)?
+    
+    @State private var scrollViewContentSize: CGSize = .zero
     
     public init(text: Binding<String>,
                 cornerRadius: CGFloat = 8,
@@ -44,6 +46,14 @@ public struct TextFieldModifier<Field: RawRepresentable & Hashable>: ViewModifie
             .overlay(
                 HStack {
                     content
+                        .background(
+                            GeometryReader { geo -> Color in
+                                DispatchQueue.main.async {
+                                    scrollViewContentSize = geo.size
+                                }
+                                return Color.clear
+                            }
+                        )
                     if !text.wrappedValue.isEmpty {
                         Button(action: {
                             self.text.wrappedValue = ""
