@@ -12,7 +12,6 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public var cornerRadius: CGFloat
     public var textColor: Color
     public var backgroundColor: Color
-    public var height: CGFloat
     public var focusField: FocusState<Field?>.Binding
     public var focusAction: (() -> Void)?
     public var cancelAction: (() -> Void)?
@@ -23,7 +22,6 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
                 cornerRadius: CGFloat = 8,
                 textColor: Color = .black,
                 backgroundColor: Color = .gray5,
-                height: CGFloat = CGSize.screen.height * 0.05,
                 focusField: FocusState<Field?>.Binding,
                 focusAction: (() -> Void)?,
                 cancelAction: (() -> Void)?) {
@@ -31,7 +29,6 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
         self.cornerRadius = cornerRadius
         self.textColor = textColor
         self.backgroundColor = backgroundColor
-        self.height = height
         self.focusField = focusField
         self.focusAction = focusAction
         self.cancelAction = cancelAction
@@ -40,9 +37,6 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public func body(content: Content) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .foregroundColor(backgroundColor)
-            .frame(maxWidth: UIScreen.main.bounds.width,
-                   minHeight: height,
-                   maxHeight: height)
             .overlay(
                 HStack {
                     content
