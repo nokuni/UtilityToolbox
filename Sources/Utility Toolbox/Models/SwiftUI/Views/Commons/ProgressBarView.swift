@@ -1,5 +1,5 @@
 //
-//  ProgressBarView.swift
+//  ProgressBar.swift
 //  
 //
 //  Created by Yann Christophe MAERTENS on 09/05/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ProgressBarView: View {
+public struct ProgressBar: View {
     
     @Binding public var value: CGFloat
     public var cornerRadius: CGFloat
