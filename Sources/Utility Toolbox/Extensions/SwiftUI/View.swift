@@ -42,7 +42,7 @@ extension View {
     }
     
     /// Show a window aside with a content inside.
-    @ViewBuilder func tooltip<Content: View>(
+    @ViewBuilder public func tooltip<Content: View>(
         isPresented: Binding<Bool>,
         padding: CGFloat = 20,
         arrowDirection: UIPopoverArrowDirection,
