@@ -9,9 +9,16 @@ import SwiftUI
 
 public class CanvasManager: ObservableObject {
     
-    public init() { }
+    public init(lineColor: Color = .black, lineWidth: Double = 5.0) {
+        self.lineColor = lineColor
+        self.lineWidth = lineWidth
+        configuration = LineConfiguration(currentLine: Line(color: lineColor, lineWidth: lineWidth))
+    }
     
     @Published public var configuration = LineConfiguration()
+    
+    var lineColor: Color
+    var lineWidth: Double
     
     public struct LineConfiguration {
         public init(currentLine: Line = Line(),
@@ -61,7 +68,7 @@ public class CanvasManager: ObservableObject {
             })
             .onEnded({ value in
                 self.configuration.lines.append(self.configuration.currentLine)
-                self.configuration.currentLine = Line()
+                self.configuration.currentLine = Line(color: self.lineColor, lineWidth: self.lineWidth)
             })
     }
     
