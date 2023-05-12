@@ -56,7 +56,15 @@ public class CanvasManager: ObservableObject {
     
     @ViewBuilder
     private var canvas: some View {
-        Canvas(renderer: canvasRenderer)
+        Canvas { context, _ in
+            for line in self.configuration.lines {
+                var path = Path()
+                path.addLines(line.points)
+                context.stroke(path,
+                               with: .color(line.color),
+                               lineWidth: line.lineWidth)
+            }
+        }
     }
     
     private var canvasGesture: some Gesture {
@@ -70,15 +78,5 @@ public class CanvasManager: ObservableObject {
                 self.configuration.lines.append(self.configuration.currentLine)
                 self.configuration.currentLine = Line(color: self.lineColor, lineWidth: self.lineWidth)
             })
-    }
-    
-    private func canvasRenderer(context: inout GraphicsContext, size: CGSize) {
-        for line in configuration.lines {
-            var path = Path()
-            path.addLines(line.points)
-            context.stroke(path,
-                           with: .color(line.color),
-                           lineWidth: line.lineWidth)
-        }
     }
 }
