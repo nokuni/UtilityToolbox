@@ -11,7 +11,7 @@ public class CanvasManager: ObservableObject {
     
     public init() { }
     
-    @Published var configuration = LineConfiguration()
+    @Published public var configuration = LineConfiguration()
     
     public struct LineConfiguration {
         public init(currentLine: Line = Line(),
