@@ -11,6 +11,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public var text: Binding<String>
     public var cornerRadius: CGFloat
     public var textColor: Color
+    public var backgroundPadding: CGFloat
     public var backgroundColor: Color
     public var focusField: FocusState<Field?>.Binding
     public var focusAction: (() -> Void)?
@@ -21,6 +22,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public init(text: Binding<String>,
                 cornerRadius: CGFloat = 8,
                 textColor: Color = .black,
+                backgroundPadding: CGFloat = 20,
                 backgroundColor: Color = .gray5,
                 focusField: FocusState<Field?>.Binding,
                 focusAction: (() -> Void)?,
@@ -28,6 +30,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
         self.text = text
         self.cornerRadius = cornerRadius
         self.textColor = textColor
+        self.backgroundPadding = backgroundPadding
         self.backgroundColor = backgroundColor
         self.focusField = focusField
         self.focusAction = focusAction
@@ -43,6 +46,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
             .overlay(
                 HStack {
                     content
+                        .padding(backgroundPadding)
                         .background(
                             GeometryReader { geo -> Color in
                                 DispatchQueue.main.async {
