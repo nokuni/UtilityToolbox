@@ -28,7 +28,7 @@ public struct FXAnimation: View {
         default:
             Image(frames[index])
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .onAppear {
                     animation.animate(frames: frames,
                                       whileAction: incrementIndex,
