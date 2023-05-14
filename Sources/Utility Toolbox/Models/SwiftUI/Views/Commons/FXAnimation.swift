@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  FXAnimation.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 14/05/23.
@@ -9,14 +9,17 @@ import SwiftUI
 
 public struct FXAnimation: View {
     @State private var index = 0
+    private let animation = UIAnimation()
     public var frames: [String]
     public var isRepeatingForever: Bool
-    private let animation = UIAnimation()
+    public var completion: (() -> Void)?
     
     public init(frames: [String],
-                isRepeatingForever: Bool = false) {
+                isRepeatingForever: Bool = false,
+                completion: (() -> Void)? = nil) {
         self.frames = frames
         self.isRepeatingForever = isRepeatingForever
+        self.completion = completion
     }
     public var body: some View {
         switch true {
@@ -29,6 +32,7 @@ public struct FXAnimation: View {
                 .onAppear {
                     animation.animate(frames: frames,
                                       whileAction: incrementIndex,
+                                      endAction: completion,
                                       isRepeatingForever: isRepeatingForever,
                                       timeInterval: 0.1)
                 }
