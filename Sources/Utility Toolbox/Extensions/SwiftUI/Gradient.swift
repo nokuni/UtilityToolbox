@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Gradient.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 14/05/23.
