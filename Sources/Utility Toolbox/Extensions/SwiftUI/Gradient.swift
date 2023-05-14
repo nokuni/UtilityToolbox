@@ -9,6 +9,9 @@ import SwiftUI
 
 public extension Gradient {
     static let rainbow = Gradient(colors: [.red, .orange, .yellow, .green, .blue, .indigo, .purple])
+    static let lightRainbow = Gradient(colors: [
+        Color(hex: 0xffb6c1), Color(hex: 0xe0b0ff), Color(hex: 0x7df9ff), Color(hex: 0xdfff00), Color(hex: 0xdffff8f), Color(hex: 0xffbf00)
+    ])
     static let summerBreeze = Gradient(colors: [Color(hex: 0xf9c58d), Color(hex: 0xf492f0)])
     static let blueSea = Gradient(colors: [Color(hex: 0x0061ff), Color(hex: 0x60efff)])
     static let sunset = Gradient(colors: [Color(hex: 0xffcf67), Color(hex: 0xd3321d)])
