@@ -45,4 +45,22 @@ public struct SFSymbol {
     public static var weatherNames: [String] {
         SFSymbol.weather.map { $0.rawValue }
     }
+
+    public static var weatherSymbols: [String] {
+        SFSymbol.weather.map { $0.symbol }
+    }
+
+    // MARK: - Accessibility
+
+    public static var accessibility: [SFAccessibilitySymbol] {
+        SFAccessibilitySymbol.allCases
+    }
+
+    public static var accessibilityNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+
+    public static var accessibilitySymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
 }
