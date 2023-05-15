@@ -12,55 +12,70 @@ public protocol SFSymbolProtocol {
 }
 
 public struct SFSymbol {
-    
     public init() { }
+}
 
+// MARK: - All
+extension SFSymbol {
     public static var all: [[SFSymbolProtocol]] {
-        [gaming, weather]
+        [gaming, weather, accessibility, time]
     }
-    
     public static var allNames: [String] {
-        let names = [gamingNames].joined().map { $0 }
-        return names
+        [gamingNames, weatherNames, accessibilityNames, timeNames].joined().map { $0 }
     }
+    public static var allSymbols: [String] {
+        [gamingSymbols, weatherSymbols, accessibilitySymbols, timeSymbols].joined().map { $0 }
+    }
+}
 
-    // MARK: - Gaming
+// MARK: - Gaming
+extension SFSymbol {
     public static var gaming: [SFGamingSymbol] {
         SFGamingSymbol.allCases
     }
-    
     public static var gamingNames: [String] {
         SFSymbol.gaming.map { $0.rawValue }
     }
-
     public static var gamingSymbols: [String] {
         SFSymbol.gaming.map { $0.symbol }
     }
+}
 
-    // MARK: - Weather
+// MARK: - Weather
+extension SFSymbol {
     public static var weather: [SFWeatherSymbol] {
         SFWeatherSymbol.allCases
     }
-
     public static var weatherNames: [String] {
         SFSymbol.weather.map { $0.rawValue }
     }
-
     public static var weatherSymbols: [String] {
         SFSymbol.weather.map { $0.symbol }
     }
+}
 
-    // MARK: - Accessibility
-
+// MARK: - Accessibility
+extension SFSymbol {
     public static var accessibility: [SFAccessibilitySymbol] {
         SFAccessibilitySymbol.allCases
     }
-
     public static var accessibilityNames: [String] {
         SFSymbol.accessibility.map { $0.rawValue }
     }
-
     public static var accessibilitySymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
+
+// MARK: - Time
+extension SFSymbol {
+    public static var time: [SFTimeSymbol] {
+        SFTimeSymbol.allCases
+    }
+    public static var timeNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var timeSymbols: [String] {
         SFSymbol.accessibility.map { $0.symbol }
     }
 }
