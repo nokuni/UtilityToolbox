@@ -7,10 +7,10 @@
 
 import Foundation
 
-class AsyncManager {
+public class AsyncManager {
 
     /// Load a content asynchronously.
-    static func loadContent(content: @escaping () async throws -> Void,
+    public static func loadContent(content: @escaping () async throws -> Void,
                             completion: (() -> Void)?) {
         Task {
             try await content()
