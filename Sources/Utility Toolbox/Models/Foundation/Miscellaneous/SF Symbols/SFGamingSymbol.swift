@@ -196,9 +196,9 @@ public enum SFGamingSymbol: String, CaseIterable, SFSymbolProtocol {
     case zrRectangleRoundedtop = "zr.rectangle.roundedtop"
     /// 􀨞
     case zrRectangleRoundedtopFill = "zr.rectangle.roundedtop.fill"
-    /// 􀾈
+    /// 􀾈 This symbol may not be modified and may only be used to refer to Sony's PlayStation.
     case playstationLogo = "playstation.logo"
-    /// 􀾉
+    /// 􀾉 This symbol may not be modified and may only be used to refer to Microsoft's Xbox.
     case xboxLogo = "xbox.logo"
     /// 􀧱
     case line3HorizontalCircle = "line.3.horizontal.circle"
