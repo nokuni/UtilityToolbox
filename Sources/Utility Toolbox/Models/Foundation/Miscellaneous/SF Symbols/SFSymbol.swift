@@ -79,3 +79,16 @@ extension SFSymbol {
         SFSymbol.accessibility.map { $0.symbol }
     }
 }
+
+// MARK: - Privacy & Security
+extension SFSymbol {
+    public static var privacyAndSecurity: [SFPrivacyAndSecuritySymbol] {
+        SFPrivacyAndSecuritySymbol.allCases
+    }
+    public static var privacyAndSecurityNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var privacyAndSecuritySymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
