@@ -105,3 +105,16 @@ extension SFSymbol {
         SFSymbol.accessibility.map { $0.symbol }
     }
 }
+
+// MARK: - Shapes
+extension SFSymbol {
+    public static var shapes: [SFShapesSymbol] {
+        SFShapesSymbol.allCases
+    }
+    public static var shapesNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var shapesSymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
