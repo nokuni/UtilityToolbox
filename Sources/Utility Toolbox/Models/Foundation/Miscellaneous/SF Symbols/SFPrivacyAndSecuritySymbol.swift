@@ -175,13 +175,13 @@ public enum SFPrivacyAndSecuritySymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀼞
     case lockOpenLaptopComputer = "lock.open.laptopcomputer"
     /// 􀼔
-    case lockIPhone = "lock.iphone"
+    case lockIphone = "lock.iphone"
     /// 􀼟
-    case lockOpenIPhone = "lock.open.iphone"
+    case lockOpenIphone = "lock.open.iphone"
     /// 􀼕
-    case lockIPad = "lock.ipad"
+    case lockIpad = "lock.ipad"
     /// 􀼠
-    case lockOpenIPad = "lock.open.ipad"
+    case lockOpenIpad = "lock.open.ipad"
     /// 􀵅 This symbol may not be modified and may only be used to refer to Apple Watch.
     case lockAppleWatch = "lock.applewatch"
     /// 􀼡 This symbol may not be modified and may only be used to refer to Apple Watch.
@@ -447,13 +447,13 @@ public enum SFPrivacyAndSecuritySymbol: String, CaseIterable, SFSymbolProtocol {
             return "􀼓"
         case .lockOpenLaptopComputer:
             return "􀼞"
-        case .lockIPhone:
+        case .lockIphone:
             return "􀼔"
-        case .lockOpenIPhone:
+        case .lockOpenIphone:
             return "􀼟"
-        case .lockIPad:
+        case .lockIpad:
             return "􀼕"
-        case .lockOpenIPad:
+        case .lockOpenIpad:
             return "􀼠"
         case .lockAppleWatch:
             return "􀵅"

@@ -92,3 +92,29 @@ extension SFSymbol {
         SFSymbol.accessibility.map { $0.symbol }
     }
 }
+
+// MARK: - Devices
+extension SFSymbol {
+    public static var devices: [SFDevicesSymbol] {
+        SFDevicesSymbol.allCases
+    }
+    public static var devicesNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var devicesSymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
+
+// MARK: - Shapes
+extension SFSymbol {
+    public static var shapes: [SFShapesSymbol] {
+        SFShapesSymbol.allCases
+    }
+    public static var shapesNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var shapesSymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
