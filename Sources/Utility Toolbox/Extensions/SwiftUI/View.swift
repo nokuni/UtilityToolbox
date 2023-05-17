@@ -48,7 +48,7 @@ extension View {
     }
     
     /// Outline a view.
-    public func outline(color: Color, radius: CGFloat, isTranparentInside: Bool) -> some View {
+    public func outline(color: Color, radius: CGFloat, isTranparentInside: Bool = false) -> some View {
         modifier(OutlineModifier(color: color, radius: radius, isTransparentInside: isTranparentInside))
     }
     
