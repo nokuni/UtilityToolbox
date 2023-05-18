@@ -103,7 +103,7 @@ extension View {
 // MARK: - Buttons
 extension View {
     /// Press button effect.
-    public func pressEffect(pressure: CGFloat = 0.95, completion: (() -> Void)?) -> some View {
-        buttonStyle(PressEffectButtonStyle(pressure: pressure, completion: completion))
+    public func pressEffect(pressure: CGFloat = 0.95) -> some View {
+        buttonStyle(PressEffectButtonStyle(pressure: pressure))
     }
 }
