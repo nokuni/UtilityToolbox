@@ -47,11 +47,6 @@ extension View {
         modifier(InvertedMaskModifier(additionalContent: content))
     }
     
-    /// Outline a view.
-    public func outline(color: Color, radius: CGFloat, isTranparentInside: Bool = false) -> some View {
-        modifier(OutlineModifier(color: color, radius: radius, isTransparentInside: isTranparentInside))
-    }
-    
     /// Show a window aside with a content inside.
     @ViewBuilder public func tooltip<Content: View>(
         isPresented: Binding<Bool>,
