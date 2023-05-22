@@ -13,6 +13,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public var textColor: Color
     public var backgroundPadding: CGFloat
     public var backgroundColor: Color
+    public var shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat)
     public var focusField: FocusState<Field?>.Binding
     public var focusAction: (() -> Void)?
     public var cancelAction: (() -> Void)?
@@ -20,10 +21,11 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     @State private var scrollViewContentSize: CGSize = .zero
     
     public init(text: Binding<String>,
-                cornerRadius: CGFloat = 8,
-                textColor: Color = .black,
-                backgroundPadding: CGFloat = 20,
-                backgroundColor: Color = .gray5,
+                cornerRadius: CGFloat,
+                textColor: Color,
+                backgroundPadding: CGFloat,
+                backgroundColor: Color,
+                shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat),
                 focusField: FocusState<Field?>.Binding,
                 focusAction: (() -> Void)?,
                 cancelAction: (() -> Void)?) {
@@ -32,6 +34,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
         self.textColor = textColor
         self.backgroundPadding = backgroundPadding
         self.backgroundColor = backgroundColor
+        self.shadow = shadow
         self.focusField = focusField
         self.focusAction = focusAction
         self.cancelAction = cancelAction
@@ -43,6 +46,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
             .frame(maxWidth: UIScreen.main.bounds.width,
                    minHeight: scrollViewContentSize.height,
                    maxHeight: scrollViewContentSize.height)
+            .shadow(color: shadow.0, radius: shadow.1, x: shadow.2, y: shadow.3)
             .overlay(
                 HStack {
                     content

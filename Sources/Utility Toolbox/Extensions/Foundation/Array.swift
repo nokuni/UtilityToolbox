@@ -76,6 +76,10 @@ public extension Array {
             self[index] = element
         }
     }
+    
+    var isNotEmpty: Bool {
+        !self.isEmpty
+    }
 }
 
 // MARK: - Comparable

@@ -11,6 +11,7 @@ public struct PressEffectButtonStyle: ButtonStyle {
     public var pressure: CGFloat
     public func makeBody(configuration: Configuration) -> some View {
         configuration
-            .label.scaleEffect(configuration.isPressed ? pressure : 1)
+            .label
+            .scaleEffect(configuration.isPressed ? pressure : 1)
     }
 }

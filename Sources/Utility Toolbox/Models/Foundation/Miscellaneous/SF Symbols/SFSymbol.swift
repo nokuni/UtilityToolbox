@@ -118,3 +118,16 @@ extension SFSymbol {
         SFSymbol.accessibility.map { $0.symbol }
     }
 }
+
+// MARK: - Aroows
+extension SFSymbol {
+    public static var arrows: [SFArrowsSymbol] {
+        SFArrowsSymbol.allCases
+    }
+    public static var arrowsNames: [String] {
+        SFSymbol.accessibility.map { $0.rawValue }
+    }
+    public static var arrowsSymbols: [String] {
+        SFSymbol.accessibility.map { $0.symbol }
+    }
+}
