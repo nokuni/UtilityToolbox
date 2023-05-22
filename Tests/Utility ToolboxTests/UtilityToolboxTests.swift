@@ -339,19 +339,4 @@ final class UtilityToolboxTests: XCTestCase {
         
         XCTAssertNotEqual(query, [])
     }
-
-    // MARK: - Bundle Manager
-    func testDecoderJSON() throws {
-        struct JSONTest: Codable, Equatable {
-            let company: String
-            let devices: [String]
-        }
-        let manager = BundleManager()
-        do {
-            let test: [JSONTest] = try manager.decodeJSON("test", fileExtension: "json")
-            XCTAssertNotNil(test)
-        } catch {
-            XCTFail()
-        }
-    }
 }

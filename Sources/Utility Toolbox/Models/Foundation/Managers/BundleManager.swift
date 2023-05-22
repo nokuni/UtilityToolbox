@@ -17,7 +17,7 @@ public class BundleManager {
 
     /// Decode a JSON and returns the data.
     public func decodeJSON<T: Codable>(_ fileName: String, fileExtension: String? = nil) throws -> T {
-        guard let url = Bundle.module.url(forResource: fileName, withExtension: fileExtension) else {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
             throw BundleError.wrongURL.rawValue
         }
         guard let data = try? Data(contentsOf: url) else {

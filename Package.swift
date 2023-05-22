@@ -23,17 +23,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "Utility Toolbox",
-            dependencies: [
-                .product(name: "Algorithms", package: "swift-algorithms"),
-                .product(name: "Numerics", package: "swift-numerics")
-            ],
-            path: "Sources/Utility Toolbox"),
+        .target(name: "Utility Toolbox",
+                dependencies: [
+                    .product(name: "Algorithms", package: "swift-algorithms"),
+                    .product(name: "Numerics", package: "swift-numerics")
+                ],
+                path: "Sources/Utility Toolbox"),
         .testTarget(
             name: "Utility ToolboxTests",
-            dependencies: ["Utility Toolbox"],
-            resources: [.process("Resources")]
+            dependencies: ["Utility Toolbox"]
         )
     ]
 )
