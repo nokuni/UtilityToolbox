@@ -82,7 +82,7 @@ extension View {
         cornerRadius: CGFloat = 8,
         textColor: Color = .primary,
         backgroundPadding: CGFloat = 20,
-        backgroundColor: Color = .gray5,
+        backgroundColor: Color = .ultraLightGray,
         shadow: (color: Color, radius: CGFloat, x: CGFloat, y: CGFloat) = (.clear, 0, 0, 0),
         focusField: FocusState<Field?>.Binding,
         focusAction: (() -> Void)? = nil,

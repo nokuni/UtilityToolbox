@@ -18,19 +18,19 @@ public extension Color {
     }
     
     /// A sixth-level shade of gray that adapts to the environment.
-    static let gray6 = Color(UIColor.systemGray6)
+    static let whiteGray = Color(UIColor.systemGray6)
     
     /// A fifth-level shade of gray that adapts to the environment.
-    static let gray5 = Color(UIColor.systemGray5)
+    static let ultraLightGray = Color(UIColor.systemGray5)
     
     /// A fourth-level shade of gray that adapts to the environment.
-    static let gray4 = Color(UIColor.systemGray4)
+    static let veryLightGray = Color(UIColor.systemGray4)
     
     /// A third-level shade of gray that adapts to the environment.
-    static let gray3 = Color(UIColor.systemGray3)
+    static let lightGray = Color(UIColor.systemGray3)
     
     /// A second-level shade of gray that adapts to the environment.
-    static let gray2 = Color(UIColor.systemGray2)
+    static let regularGray = Color(UIColor.systemGray2)
     
     /// The color for the main background of your interface.
     static let background = Color(UIColor.systemBackground)

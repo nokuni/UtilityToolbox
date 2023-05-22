@@ -16,7 +16,7 @@ public struct ProgressBar: View {
     
     public init(value: Binding<CGFloat>,
                 cornerRadius: CGFloat = 10,
-                underColor: Color = .gray5,
+                underColor: Color = .ultraLightGray,
                 progressColor: Color = .blue) {
         self._value = value
         self.cornerRadius = cornerRadius

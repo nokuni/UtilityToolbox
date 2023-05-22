@@ -53,7 +53,7 @@ public struct CircularProgressBar: View {
     public init(value: Binding<CGFloat>,
                 lineWidth: CGFloat,
                 lineCap: CGLineCap = .square,
-                underColor: Color = .gray5,
+                underColor: Color = .ultraLightGray,
                 progressColor: Color = .blue,
                 position: LoadingPosition = .top,
                 direction: LoadingDirection = .toRight) {

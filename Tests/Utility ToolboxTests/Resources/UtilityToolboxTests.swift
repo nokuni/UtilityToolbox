@@ -186,7 +186,45 @@ final class UtilityToolboxTests: XCTestCase {
         XCTAssertEqual(letter, expectedResult)
     }
 
+    func testStringRangeSubscript() {
+        // Given
+        let word = "Señorita"
+        // When
+        let letter: Substring = word[2..<6]
+        // Then
+        let expectedResult: Substring = "ñori"
+        XCTAssertEqual(letter, expectedResult)
+    }
+
     // MARK: - Int
+
+    func testIsEven() {
+        // Given
+        let number: Int = 982
+        // When
+        let isEven = number.isEven
+        // Then
+        XCTAssertTrue(isEven)
+    }
+
+    func testIsOdd() {
+        // Given
+        let number: Int = 983
+        // When
+        let isOdd = number.isOdd
+        // Then
+        XCTAssertTrue(isOdd)
+    }
+
+    func testDigits() {
+        // Given
+        let number: Int = 5429182
+        // When
+        let digits: [Int] = number.digits
+        // Then
+        let expectedResult: Int = 7
+        XCTAssertEqual(digits.count, expectedResult)
+    }
 
     func testLeadingZeros() {
         // Given
@@ -281,9 +319,9 @@ final class UtilityToolboxTests: XCTestCase {
         XCTAssertTrue(expectedResult)
     }
     
-    // MARK: - Managers
+    // MARK: - API Manager
     
-    func testGetAPIManager() async throws {
+    func testGetRequest() async throws {
         
         struct Response: Codable {
             var results: [Result]
@@ -300,5 +338,20 @@ final class UtilityToolboxTests: XCTestCase {
         let query = response.results
         
         XCTAssertNotEqual(query, [])
+    }
+
+    // MARK: - Bundle Manager
+    func testDecoderJSON() throws {
+        struct JSONTest: Codable, Equatable {
+            let company: String
+            let devices: [String]
+        }
+        let manager = BundleManager()
+        do {
+            let test: [JSONTest] = try manager.decodeJSON("test", fileExtension: "json")
+            XCTAssertNotNil(test)
+        } catch {
+            XCTFail()
+        }
     }
 }

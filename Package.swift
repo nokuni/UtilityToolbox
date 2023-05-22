@@ -32,6 +32,8 @@ let package = Package(
             path: "Sources/Utility Toolbox"),
         .testTarget(
             name: "Utility ToolboxTests",
-            dependencies: ["Utility Toolbox"]),
+            dependencies: ["Utility Toolbox"],
+            resources: [.process("Resources")]
+        )
     ]
 )
