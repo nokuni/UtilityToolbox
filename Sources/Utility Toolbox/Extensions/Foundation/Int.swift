@@ -11,7 +11,7 @@ public extension Int {
     
     /// Returns a string with an amount of leading zeros (number included).
     func leadingZeros(amount: Int) -> String {
-        let result = String(format: "%0\(amount)d", self)
+        let result = String(format: "%0\(self.digits.count + amount)d", self)
         return result
     }
     

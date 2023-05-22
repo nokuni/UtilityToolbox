@@ -8,10 +8,13 @@
 import Foundation
 
 /// Repeat an action following a condtion. The amount of repeated actions is limited to 10000 by default.
-public func repeatWhile(limit: Int = 10000, condition: Bool, repeatedCompletion: (() -> Void)?) {
+public func repeatWhile(limit: Int, repeatedCompletion: (() -> Void)? = nil, endCompletion: (() -> Void)? = nil) {
+    var currentLimit = limit
     repeat {
+        currentLimit -= 1
         repeatedCompletion?()
-    } while condition
+        if currentLimit <= 0 { endCompletion?() }
+    } while currentLimit > 0
 }
 
 public func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {

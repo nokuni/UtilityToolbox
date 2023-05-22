@@ -129,7 +129,7 @@ final class UtilityToolboxTests: XCTestCase {
         XCTAssertEqual(sum, expectedResult)
     }
     
-    func testNumericValue() {
+    func testIntValue() {
         let values = [145, 657]
         let numericValue = values.intValue
         let expectedResult = 145657
@@ -144,6 +144,101 @@ final class UtilityToolboxTests: XCTestCase {
         
         XCTAssertEqual(values, expectedResult)
     }
+
+    // MARK: - String
+
+    func testIsNotEmpty() {
+        // Given
+        let company = "Apple"
+        // When
+        let result = company.isNotEmpty
+        // Then
+        XCTAssertTrue(result)
+    }
+
+    func testExtractedNumber() {
+        // Given
+        let address = "10, street of testing 90100 City"
+        // When
+        let extractedNumber = address.extractedNumber
+        // Then
+        let expectedResult = 1090100
+        XCTAssertEqual(extractedNumber, expectedResult)
+    }
+
+    func testUInt() {
+        // Given
+        let colorHexString = "0x00FF00"
+        // When
+        let colorHex = colorHexString.uInt
+        // Then
+        let expectedResult: UInt = 0x00FF00
+        XCTAssertEqual(colorHex, expectedResult)
+    }
+
+    func testStringSubscript() {
+        // Given
+        let word = "Señorita"
+        // When
+        let letter: Character = word[2]
+        // Then
+        let expectedResult: Character = "ñ"
+        XCTAssertEqual(letter, expectedResult)
+    }
+
+    // MARK: - Int
+
+    func testLeadingZeros() {
+        // Given
+        let number: Int = 39831
+        // When
+        let leadingZeros: String = number.leadingZeros(amount: 2)
+        // Then
+        let expectedResult: String = "0039831"
+        XCTAssertEqual(leadingZeros, expectedResult)
+    }
+
+    func testPercentageValue() {
+        // Given
+        let value: Int = 100
+        // When
+        let percentageValue: Int = value.percentageValue(percentage: 31)
+        // Then
+        let expectedResult: Int = 31
+        XCTAssertEqual(percentageValue, expectedResult)
+    }
+
+    // MARK: - Protocol Case Iterable
+
+    func testNextCase() {
+        enum Order: CaseIterable {
+            case first
+            case second
+            case third
+        }
+        // Given
+        let order: Order = .first
+        // When
+        let nextOrder = order.next()
+        // Then
+        let expectedResult: Order = .second
+        XCTAssertEqual(nextOrder, expectedResult)
+    }
+
+    func testPreviousCase() {
+        enum Order: CaseIterable {
+            case first
+            case second
+            case third
+        }
+        // Given
+        let order: Order = .third
+        // When
+        let previousOrder = order.previous()
+        // Then
+        let expectedResult: Order = .second
+        XCTAssertEqual(previousOrder, expectedResult)
+    }
     
     // MARK: - Date
     
@@ -151,21 +246,59 @@ final class UtilityToolboxTests: XCTestCase {
         let date = Date()
         print(date.ddmmyyyy)
     }
+
+    // MARK: - Limit Sized
+    func testLimitSized() {
+        struct Website {
+            let name: String
+            @LimitSized(100) var users: [String]
+        }
+        // Given
+        var website: Website = Website(name: "Test")
+        // When
+        website.users = Array(repeating: "Web User", count: 150)
+        // Then
+        let userCount: Int = 100
+        XCTAssertEqual(website.users.count, userCount)
+    }
+
+    // MARK: - Repeat while
+    func testRepeatWhile() {
+        // Given
+        var isCompleted: Bool = false
+        var count: Int = 0
+        let limit = 50
+        // When
+        repeatWhile(limit: limit,
+                    repeatedCompletion: {
+            count += 1
+        },
+                    endCompletion: {
+            isCompleted = true
+        })
+        // Then
+        let expectedResult = count == 50 && isCompleted
+        XCTAssertTrue(expectedResult)
+    }
     
     // MARK: - Managers
     
-    func testAPIManager() async {
+    func testGetAPIManager() async throws {
         
-        struct Wikipedia: Codable {
-            let query: String
+        struct Response: Codable {
+            var results: [Result]
+        }
+
+        struct Result: Codable, Equatable {
+            var trackId: Int
+            var trackName: String
+            var collectionName: String
         }
         
         let apiManager = APIManager()
-        let wikipedia: Wikipedia? = try? await apiManager.getRequest(url: "")
-        let query = wikipedia?.query
+        let response: Response = try await apiManager.get(url: "https://itunes.apple.com/search?term=taylor+swift&entity=song")
+        let query = response.results
         
-        let expectedResult = ""
-        
-        XCTAssertEqual(query, expectedResult)
+        XCTAssertNotEqual(query, [])
     }
 }

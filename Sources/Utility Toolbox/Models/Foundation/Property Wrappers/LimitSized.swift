@@ -21,7 +21,7 @@ public struct LimitSized<Element> {
         }
         set {
             elements = newValue
-            if elements.count > limit { elements.removeLast() }
+            if elements.count > limit { elements.removeLast(elements.count - limit) }
         }
     }
 }
