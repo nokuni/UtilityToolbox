@@ -73,10 +73,10 @@ extension SFSymbol {
         SFTimeSymbol.allCases
     }
     public static var timeNames: [String] {
-        SFSymbol.accessibility.map { $0.rawValue }
+        SFSymbol.time.map { $0.rawValue }
     }
     public static var timeSymbols: [String] {
-        SFSymbol.accessibility.map { $0.symbol }
+        SFSymbol.time.map { $0.symbol }
     }
 }
 
@@ -86,10 +86,10 @@ extension SFSymbol {
         SFPrivacyAndSecuritySymbol.allCases
     }
     public static var privacyAndSecurityNames: [String] {
-        SFSymbol.accessibility.map { $0.rawValue }
+        SFSymbol.privacyAndSecurity.map { $0.rawValue }
     }
     public static var privacyAndSecuritySymbols: [String] {
-        SFSymbol.accessibility.map { $0.symbol }
+        SFSymbol.privacyAndSecurity.map { $0.symbol }
     }
 }
 
@@ -99,10 +99,10 @@ extension SFSymbol {
         SFDevicesSymbol.allCases
     }
     public static var devicesNames: [String] {
-        SFSymbol.accessibility.map { $0.rawValue }
+        SFSymbol.devices.map { $0.rawValue }
     }
     public static var devicesSymbols: [String] {
-        SFSymbol.accessibility.map { $0.symbol }
+        SFSymbol.devices.map { $0.symbol }
     }
 }
 
@@ -112,22 +112,35 @@ extension SFSymbol {
         SFShapesSymbol.allCases
     }
     public static var shapesNames: [String] {
-        SFSymbol.accessibility.map { $0.rawValue }
+        SFSymbol.shapes.map { $0.rawValue }
     }
     public static var shapesSymbols: [String] {
-        SFSymbol.accessibility.map { $0.symbol }
+        SFSymbol.shapes.map { $0.symbol }
     }
 }
 
-// MARK: - Aroows
+// MARK: - Arrows
 extension SFSymbol {
     public static var arrows: [SFArrowsSymbol] {
         SFArrowsSymbol.allCases
     }
     public static var arrowsNames: [String] {
-        SFSymbol.accessibility.map { $0.rawValue }
+        SFSymbol.arrows.map { $0.rawValue }
     }
     public static var arrowsSymbols: [String] {
-        SFSymbol.accessibility.map { $0.symbol }
+        SFSymbol.arrows.map { $0.symbol }
+    }
+}
+
+// MARK: - Maths
+extension SFSymbol {
+    public static var maths: [SFArrowsSymbol] {
+        SFArrowsSymbol.allCases
+    }
+    public static var mathsNames: [String] {
+        SFSymbol.maths.map { $0.rawValue }
+    }
+    public static var mathsSymbols: [String] {
+        SFSymbol.maths.map { $0.symbol }
     }
 }
