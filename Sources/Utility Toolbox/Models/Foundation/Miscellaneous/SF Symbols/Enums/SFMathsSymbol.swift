@@ -119,118 +119,118 @@ public enum SFMathsSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀃫
     case numberSquareFill = "number.square.fill"
 
-    var symbols: String {
+    var symbol: String {
         switch self {
         case .xSquareRoot:
-            <#code#>
+            return "􀓪"
         case .angle:
-            <#code#>
+            return "􁑡"
         case .compassDrawing:
-            <#code#>
+            return "􁔗"
         case .sum:
-            <#code#>
+            return "􀘽"
         case .percent:
-            <#code#>
+            return "􀘾"
         case .function:
-            <#code#>
+            return "􀅮"
         case .plus:
-            <#code#>
+            return "􀅼"
         case .plusCircle:
-            <#code#>
+            return "􀁌"
         case .plusCircleFill:
-            <#code#>
+            return "􀁍"
         case .plusSquare:
-            <#code#>
+            return "􀃜"
         case .plusSquareFill:
-            <#code#>
+            return "􀃝"
         case .plusRectangle:
-            <#code#>
+            return "􀏇"
         case .plusRectangleFill:
-            <#code#>
+            return "􀏈"
         case .minus:
-            <#code#>
+            return "􀅽"
         case .minusCircle:
-            <#code#>
+            return "􀁎"
         case .minusCircleFill:
-            <#code#>
+            return "􀁏"
         case .minusSquare:
-            <#code#>
+            return "􀃞"
         case .minusSquareFill:
-            <#code#>
+            return "􀃟"
         case .minusRectangle:
-            <#code#>
+            return "􀏉"
         case .minusRectangleFill:
-            <#code#>
+            return "􀏊"
         case .plusMinus:
-            <#code#>
+            return "􀛺"
         case .plusMinusCircle:
-            <#code#>
+            return "􀍶"
         case .plusMinusCircleFill:
-            <#code#>
+            return "􀘝"
         case .plusForwardSlashMinus:
-            <#code#>
+            return "􀅺"
         case .minusForwardSlashPlus:
-            <#code#>
+            return "􀅻"
         case .multiply:
-            <#code#>
+            return "􀅾"
         case .multiplyCircle:
-            <#code#>
+            return "􀁐"
         case .multiplyCircleFill:
-            <#code#>
+            return "􀁑"
         case .multiplySquare:
-            <#code#>
+            return "􀃠"
         case .multiplySquareFill:
-            <#code#>
+            return "􀃡"
         case .divide:
-            <#code#>
+            return "􀅿"
         case .divideCircle:
-            <#code#>
+            return "􀁒"
         case .divideCircleFill:
-            <#code#>
+            return "􀁓"
         case .divideSquare:
-            <#code#>
+            return "􀃢"
         case .divideSquareFill:
-            <#code#>
+            return "􀃣"
         case .equal:
-            <#code#>
+            return "􀆀"
         case .equalCircle:
-            <#code#>
+            return "􀁔"
         case .equalCircleFill:
-            <#code#>
+            return "􀁕"
         case .equalSquare:
-            <#code#>
+            return "􀃤"
         case .equalSquareFill:
-            <#code#>
+            return "􀃥"
         case .lessthan:
-            <#code#>
+            return "􀆁"
         case .lessthanCircle:
-            <#code#>
+            return "􀁘"
         case .lessthanCircleFill:
-            <#code#>
+            return "􀁙"
         case .lessthanSquare:
-            <#code#>
+            return "􀃦"
         case .lessthanSquareFill:
-            <#code#>
+            return "􀃧"
         case .greaterthan:
-            <#code#>
+            return "􀆂"
         case .greaterthanCircle:
-            <#code#>
+            return "􀁖"
         case .greaterthanCircleFill:
-            <#code#>
+            return "􀁗"
         case .greaterthanSquare:
-            <#code#>
+            return "􀃨"
         case .greaterthanSquareFill:
-            <#code#>
+            return "􀃩"
         case .number:
-            <#code#>
+            return "􀆃"
         case .numberCircle:
-            <#code#>
+            return "􀁚"
         case .numberCircleFill:
-            <#code#>
+            return "􀁛"
         case .numberSquare:
-            <#code#>
+            return "􀃪"
         case .numberSquareFill:
-            <#code#>
+            return "􀃫"
         }
     }
 }

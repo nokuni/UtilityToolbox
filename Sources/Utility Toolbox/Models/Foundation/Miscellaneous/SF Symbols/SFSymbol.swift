@@ -134,13 +134,52 @@ extension SFSymbol {
 
 // MARK: - Maths
 extension SFSymbol {
-    public static var maths: [SFArrowsSymbol] {
-        SFArrowsSymbol.allCases
+    public static var maths: [SFMathsSymbol] {
+        SFMathsSymbol.allCases
     }
     public static var mathsNames: [String] {
         SFSymbol.maths.map { $0.rawValue }
     }
     public static var mathsSymbols: [String] {
         SFSymbol.maths.map { $0.symbol }
+    }
+}
+
+// MARK: - Transport
+extension SFSymbol {
+    public static var transport: [SFTransportSymbol] {
+        SFTransportSymbol.allCases
+    }
+    public static var transportNames: [String] {
+        SFSymbol.transport.map { $0.rawValue }
+    }
+    public static var transportSymbols: [String] {
+        SFSymbol.transport.map { $0.symbol }
+    }
+}
+
+// MARK: - Text Formatting
+extension SFSymbol {
+    public static var textFormatting: [SFTextFormattingSymbol] {
+        SFTextFormattingSymbol.allCases
+    }
+    public static var textFormattingNames: [String] {
+        SFSymbol.textFormatting.map { $0.rawValue }
+    }
+    public static var textFormattingSymbols: [String] {
+        SFSymbol.textFormatting.map { $0.symbol }
+    }
+}
+
+// MARK: - Media
+extension SFSymbol {
+    public static var media: [SFMediaSymbol] {
+        SFMediaSymbol.allCases
+    }
+    public static var mediaNames: [String] {
+        SFSymbol.media.map { $0.rawValue }
+    }
+    public static var mediaSymbols: [String] {
+        SFSymbol.media.map { $0.symbol }
     }
 }
