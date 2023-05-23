@@ -1,8 +1,8 @@
 //
-//  View.swift
+//  ViewUtils.swift
 //  
 //
-//  Created by Maertens Yann-Christophe on 22/02/23.
+//  Created by Maertens Yann-Christophe on 23/05/23.
 //
 
 import SwiftUI
@@ -31,13 +31,5 @@ extension View {
     public func onAnimationCompleted<Value: VectorArithmetic>(for value: Value,
                                                        completion: @escaping () -> Void) -> AnimationCompletion<Value> {
         modifier(AnimationCompletionObserverModifier(observedValue: value, completion: completion))
-    }
-}
-
-// MARK: - Buttons
-extension View {
-    /// Press button effect.
-    public func pressEffect(pressure: CGFloat = 0.95) -> some View {
-        buttonStyle(PressEffectButtonStyle(pressure: pressure))
     }
 }
