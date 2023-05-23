@@ -9,6 +9,8 @@ import Foundation
 
 public class BundleManager {
 
+    public init() { }
+
     private enum BundleError: String, Error {
         case wrongURL = "The file name does not exists."
         case noData = "The data from the file does not exists."
