@@ -190,6 +190,16 @@ extension SFSymbol {
         SFHealthSymbol.allCases
     }
     public static var healthNames: [String] {
-        SFSymbol.media.map { $0.rawValue }
+        SFSymbol.health.map { $0.rawValue }
+    }
+}
+
+// MARK: - Nature
+extension SFSymbol {
+    public static var nature: [SFNatureSymbol] {
+        SFNatureSymbol.allCases
+    }
+    public static var natureNames: [String] {
+        SFSymbol.nature.map { $0.rawValue }
     }
 }
