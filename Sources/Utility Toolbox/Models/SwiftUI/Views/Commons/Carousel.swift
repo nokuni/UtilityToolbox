@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-public struct Carousel<Content: View, T: Identifiable>: View {
+public protocol CarouselProtocol: Identifiable {
+    func action()
+}
+
+public struct Carousel<Content: View, T: CarouselProtocol>: View {
     
     public var content: (T) -> Content
     public var items: [T]
@@ -46,7 +50,6 @@ public struct Carousel<Content: View, T: Identifiable>: View {
     }
     
     public var body: some View {
-        
         GeometryReader { proxy in
             
             HStack(spacing: spacing) {
@@ -60,9 +63,14 @@ public struct Carousel<Content: View, T: Identifiable>: View {
             .gesture(
                 DragGesture()
                     .updating($offset, body: { value, out, _ in
-                        out = currentIndex == 0 && value.translation.width > 0 ?
-                        value.translation.width - (value.translation.width / 2) :
-                        value.translation.width
+                        switch true {
+                        case currentIndex == 0 && value.translation.width > 0:
+                            out = value.translation.width - (value.translation.width / 2)
+                        case currentIndex == (items.count - 1) && value.translation.width < 0:
+                            out = value.translation.width - (value.translation.width / 2)
+                        default:
+                            out = value.translation.width
+                        }
                     })
                     .onEnded({ value in
                         let offsetX = value.translation.width

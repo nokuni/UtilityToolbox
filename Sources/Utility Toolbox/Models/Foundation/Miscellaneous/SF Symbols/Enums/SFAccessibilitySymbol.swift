@@ -193,188 +193,97 @@ public enum SFAccessibilitySymbol: String, CaseIterable, SFSymbolProtocol {
 
     var symbol: String {
         switch self {
-        case .figureStandLineDottedFigureStand:
-            return "􀳿"
-        case .figureRoll:
-            return "􁈑"
-        case .figureRollRunningPace:
-            return "􁌈"
-        case .cursorArrowRays:
-            return "􀇰"
-        case .cursorArrowMotionLines:
-            return "􀣠"
-        case .cursorArrowMotionLinesClick:
-            return "􀣡"
-        case .cursorArrowClickBadgeClock:
-            return "􀮴"
-        case .cursorArrowAndSquareOnSquareDashed:
-            return "􀮐"
-        case .cursorArrowClick:
-            return "􀭆"
-        case .cursorArrowClick2:
-            return "􀭇"
-        case .contextualMenuAndCursorArrow:
-            return "􀭈"
-        case .fileMenuAndCursorArrow:
-            return "􀯪"
-        case .dotCircleAndHandPointUpLeftFill:
-            return "􀺪"
-        case .dotCircleAndCursorArrow:
-            return "􀫍"
-        case .plusMagnifyingGlass:
-            return "􀊬"
-        case .minusMagnifyingGlass:
-            return "􀊭"
-        case .smallcircleFilledCircle:
-            return "􀍷"
-        case .smallcircleFilledCircleFill:
-            return "􀕩"
-        case .circleHexagonPath:
-            return "􀬎"
-        case .circleHexagonPathFill:
-            return "􀬏"
-        case .squareGrid3x3TopLeftFilled:
-            return "􀦴"
-        case .squareGrid3x3TopMiddleFilled:
-            return "􀦵"
-        case .squareGrid3x3TopRightFilled:
-            return "􀦶"
-        case .squareGrid3x3MiddleLeftFilled:
-            return "􀦷"
-        case .squareGrid3x3MiddleFilled:
-            return "􀦸"
-        case .squareGrid3x3MiddleRightFilled:
-            return "􀦹"
-        case .squareGrid3x3BottomLeftFilled:
-            return "􀦺"
-        case .squareGrid3x3BottomMiddleFilled:
-            return "􀦻"
-        case .squareGrid3x3BottomRightFilled:
-            return "􀦼"
-        case .quoteBubble:
-            return "􀌮"
-        case .quoteBubbleFill:
-            return "􀌯"
-        case .captionsBubble:
-            return "􀌴"
-        case .captionsBubbleFill:
-            return "􀌵"
-        case .rectangle3GroupBubbleLeft:
-            return "􀬄"
-        case .rectangle3GroupBubbleLeftFill:
-            return "􀬅"
-        case .ellipsisBubble:
-            return "􀕺"
-        case .ellipsisBubbleFill:
-            return "􀕻"
-        case .teletype:
-            return "􀍈"
-        case .teletypeCircle:
-            return "􀜅"
-        case .teletypeCircleFill:
-            return "􀜆"
-        case .teletypeAnswer:
-            return "􀙰"
-        case .teletypeAnswerCircle:
-            return "􀴦"
-        case .teletypeAnswerCircleFill:
-            return "􀴧"
-        case .rectangleAndTextMagnifyingGlass:
-            return "􀬸"
-        case .arrowUpAndDownAndSparkles:
-            return "􁒏"
-        case .digitalcrownArrowClockwise:
-            return "􀻖"
-        case .digitalcrownArrowClockwiseFill:
-            return "􀻗"
-        case .digitalcrownArrowCounterclockwise:
-            return "􀻘"
-        case .digitalcrownArrowCounterclockwiseFill:
-            return "􀻙"
-        case .digitalcrownPress:
-            return "􀴡"
-        case .digitalcrownPressFill:
-            return "􀴢"
-        case .hare:
-            return "􀓎"
-        case .hareFill:
-            return "􀓏"
-        case .tortoise:
-            return "􀓐"
-        case .tortoiseFill:
-            return "􀓑"
-        case .eye:
-            return "􀋭"
-        case .eyeFill:
-            return "􀋮"
-        case .eyeCircle:
-            return "􀛿"
-        case .eyeCircleFill:
-            return "􀜀"
-        case .eyeSquare:
-            return "􀽇"
-        case .eyeSquareFill:
-            return "􀽈"
-        case .eyeSlash:
-            return "􀋯"
-        case .eyeSlashFill:
-            return "􀋰"
-        case .eyeSlashCircle:
-            return "􀜁"
-        case .eyeSlashCircleFill:
-            return "􀜂"
-        case .eyeTrianglebadgeExclamationMark:
-            return "􁂔"
-        case .eyeTrianglebadgeExclamationMarkFill:
-            return "􁂕"
-        case .ear:
-            return "􀜣"
-        case .earBadgeCheckmark:
-            return "􀦿"
-        case .earTrianglebadgeExclamationMark:
-            return "􀧁"
-        case .earAndWaveform:
-            return "􀵣"
-        case .earFill:
-            return "􀞇"
-        case .hearingDeviceEar:
-            return "􀪓"
-        case .hearingDeviceEarFill:
-            return "􁉗"
-        case .hearingDeviceAndSignalMeter:
-            return "􁎏"
-        case .hearingDeviceAndSignalMeterFill:
-            return "􁎐"
-        case .handTap:
-            return "􀬁"
-        case .handTapFill:
-            return "􀬂"
-        case .handPointUp:
-            return "􀤹"
-        case .handPointUpFill:
-            return "􀤺"
-        case .handPointUpBraille:
-            return "􀦂"
-        case .handPointUpBrailleFill:
-            return "􀦃"
-        case .waveformAndMagnifyingGlass:
-            return "􀻾"
-        case .dotArrowtrianglesUpRightDownLeftCircle:
-            return "􀝯"
-        case .textFormatSizeSmaller:
-            return "􀵷"
-        case .textFormatSizeLarger:
-            return "􀵿"
-        case .textFormatSize:
-            return "􀅐"
-        case .characterDuployan:
-            return "􁓖"
-        case .aMagnify:
-            return "􀤍"
-        case .arrowUpAndDownAndArrowLeftAndRight:
-            return "􀧐"
-        case .arrowUpLeftAndDownRightAndArrowUpRightAndDownLeft:
-            return "􀬑"
+        case .figureStandLineDottedFigureStand: return "􀳿"
+        case .figureRoll: return "􁈑"
+        case .figureRollRunningPace: return "􁌈"
+        case .cursorArrowRays: return "􀇰"
+        case .cursorArrowMotionLines: return "􀣠"
+        case .cursorArrowMotionLinesClick: return "􀣡"
+        case .cursorArrowClickBadgeClock: return "􀮴"
+        case .cursorArrowAndSquareOnSquareDashed: return "􀮐"
+        case .cursorArrowClick: return "􀭆"
+        case .cursorArrowClick2: return "􀭇"
+        case .contextualMenuAndCursorArrow: return "􀭈"
+        case .fileMenuAndCursorArrow: return "􀯪"
+        case .dotCircleAndHandPointUpLeftFill: return "􀺪"
+        case .dotCircleAndCursorArrow: return "􀫍"
+        case .plusMagnifyingGlass: return "􀊬"
+        case .minusMagnifyingGlass: return "􀊭"
+        case .smallcircleFilledCircle: return "􀍷"
+        case .smallcircleFilledCircleFill: return "􀕩"
+        case .circleHexagonPath: return "􀬎"
+        case .circleHexagonPathFill: return "􀬏"
+        case .squareGrid3x3TopLeftFilled: return "􀦴"
+        case .squareGrid3x3TopMiddleFilled: return "􀦵"
+        case .squareGrid3x3TopRightFilled: return "􀦶"
+        case .squareGrid3x3MiddleLeftFilled: return "􀦷"
+        case .squareGrid3x3MiddleFilled: return "􀦸"
+        case .squareGrid3x3MiddleRightFilled: return "􀦹"
+        case .squareGrid3x3BottomLeftFilled: return "􀦺"
+        case .squareGrid3x3BottomMiddleFilled: return "􀦻"
+        case .squareGrid3x3BottomRightFilled: return "􀦼"
+        case .quoteBubble: return "􀌮"
+        case .quoteBubbleFill: return "􀌯"
+        case .captionsBubble: return "􀌴"
+        case .captionsBubbleFill: return "􀌵"
+        case .rectangle3GroupBubbleLeft: return "􀬄"
+        case .rectangle3GroupBubbleLeftFill: return "􀬅"
+        case .ellipsisBubble: return "􀕺"
+        case .ellipsisBubbleFill: return "􀕻"
+        case .teletype: return "􀍈"
+        case .teletypeCircle: return "􀜅"
+        case .teletypeCircleFill: return "􀜆"
+        case .teletypeAnswer: return "􀙰"
+        case .teletypeAnswerCircle: return "􀴦"
+        case .teletypeAnswerCircleFill: return "􀴧"
+        case .rectangleAndTextMagnifyingGlass: return "􀬸"
+        case .arrowUpAndDownAndSparkles: return "􁒏"
+        case .digitalcrownArrowClockwise: return "􀻖"
+        case .digitalcrownArrowClockwiseFill: return "􀻗"
+        case .digitalcrownArrowCounterclockwise: return "􀻘"
+        case .digitalcrownArrowCounterclockwiseFill: return "􀻙"
+        case .digitalcrownPress: return "􀴡"
+        case .digitalcrownPressFill: return "􀴢"
+        case .hare: return "􀓎"
+        case .hareFill: return "􀓏"
+        case .tortoise: return "􀓐"
+        case .tortoiseFill: return "􀓑"
+        case .eye: return "􀋭"
+        case .eyeFill: return "􀋮"
+        case .eyeCircle: return "􀛿"
+        case .eyeCircleFill: return "􀜀"
+        case .eyeSquare: return "􀽇"
+        case .eyeSquareFill: return "􀽈"
+        case .eyeSlash: return "􀋯"
+        case .eyeSlashFill: return "􀋰"
+        case .eyeSlashCircle: return "􀜁"
+        case .eyeSlashCircleFill: return "􀜂"
+        case .eyeTrianglebadgeExclamationMark: return "􁂔"
+        case .eyeTrianglebadgeExclamationMarkFill: return "􁂕"
+        case .ear: return "􀜣"
+        case .earBadgeCheckmark: return "􀦿"
+        case .earTrianglebadgeExclamationMark: return "􀧁"
+        case .earAndWaveform: return "􀵣"
+        case .earFill: return "􀞇"
+        case .hearingDeviceEar: return "􀪓"
+        case .hearingDeviceEarFill: return "􁉗"
+        case .hearingDeviceAndSignalMeter: return "􁎏"
+        case .hearingDeviceAndSignalMeterFill: return "􁎐"
+        case .handTap: return "􀬁"
+        case .handTapFill: return "􀬂"
+        case .handPointUp: return "􀤹"
+        case .handPointUpFill: return "􀤺"
+        case .handPointUpBraille: return "􀦂"
+        case .handPointUpBrailleFill: return "􀦃"
+        case .waveformAndMagnifyingGlass: return "􀻾"
+        case .dotArrowtrianglesUpRightDownLeftCircle: return "􀝯"
+        case .textFormatSizeSmaller: return "􀵷"
+        case .textFormatSizeLarger: return "􀵿"
+        case .textFormatSize: return "􀅐"
+        case .characterDuployan: return "􁓖"
+        case .aMagnify: return "􀤍"
+        case .arrowUpAndDownAndArrowLeftAndRight: return "􀧐"
+        case .arrowUpLeftAndDownRightAndArrowUpRightAndDownLeft: return "􀬑"
         }
     }
 }

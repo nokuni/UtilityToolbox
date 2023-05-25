@@ -183,3 +183,13 @@ extension SFSymbol {
         SFSymbol.media.map { $0.symbol }
     }
 }
+
+// MARK: - Health
+extension SFSymbol {
+    public static var health: [SFHealthSymbol] {
+        SFHealthSymbol.allCases
+    }
+    public static var healthNames: [String] {
+        SFSymbol.media.map { $0.rawValue }
+    }
+}

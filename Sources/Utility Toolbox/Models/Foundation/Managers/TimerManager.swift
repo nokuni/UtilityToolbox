@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TimerManager.swift
 //  
 //
 //  Created by Maertens Yann-Christophe on 15/03/23.

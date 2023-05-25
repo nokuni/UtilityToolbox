@@ -166,6 +166,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to GET data.
     public func get<M: Codable>(url: String,
                                 successCompletion: (() -> Void)? = nil,
                                 failureCompletion: (() -> Void)? = nil) async throws -> M {
@@ -179,6 +180,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to GET data with an ID.
     public func get<M: Codable>(url: String,
                                 id: Int,
                                 successCompletion: (() -> Void)? = nil,
@@ -193,6 +195,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to POST data with an ID.
     public func post<M: Codable>(url: String,
                                  value: M,
                                  successCompletion: (() -> Void)? = nil,
@@ -207,6 +210,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to PUT data.
     public func put<M: Codable>(url: String,
                                 value: M,
                                 successCompletion: (() -> Void)? = nil,
@@ -221,6 +225,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to PUT data with an ID.
     public func put<M: Codable>(url: String,
                                 id: Int,
                                 value: M,
@@ -236,6 +241,7 @@ public final class APIManager {
         }
     }
     
+    /// Simple formatted method to DELETE data with an ID.
     public func delete<M: Codable>(url: String,
                                    id: Int,
                                    successCompletion: (() -> Void)? = nil,
