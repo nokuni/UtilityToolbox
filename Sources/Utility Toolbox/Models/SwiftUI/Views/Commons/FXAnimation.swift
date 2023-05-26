@@ -44,6 +44,8 @@ public struct FXAnimation: View {
         if !isAnimationCompleted {
             Image(frames[index])
                 .resizable()
+        } else {
+            EmptyView()
         }
     }
     
