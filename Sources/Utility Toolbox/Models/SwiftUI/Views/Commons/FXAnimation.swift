@@ -26,17 +26,23 @@ public struct FXAnimation: View {
         case frames.isEmpty:
             Text("")
         default:
-            if !animation.isAnimationCompleted {
-                Image(frames[index])
-                    .resizable()
-                    .onAppear {
-                        animation.animate(frames: frames,
-                                          whileAction: incrementIndex,
-                                          endAction: completion,
-                                          isRepeatingForever: isRepeatingForever,
-                                          timeInterval: 0.1)
-                    }
-            }
+            animatedImageView()
+                .onAppear {
+                    animation.animate(frames: frames,
+                                      whileAction: incrementIndex,
+                                      endAction: completion,
+                                      isRepeatingForever: isRepeatingForever,
+                                      timeInterval: 0.1)
+                }
+            
+        }
+    }
+    
+    @ViewBuilder
+    private func animatedImageView() -> some View {
+        if !animation.isAnimationCompleted {
+            Image(frames[index])
+                .resizable()
         }
     }
     
