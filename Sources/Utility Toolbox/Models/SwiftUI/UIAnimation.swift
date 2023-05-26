@@ -42,7 +42,7 @@ final public class UIAnimation {
     private func animationBlock(timer: Timer,
                                 isRepeatingForever: Bool) {
         switch true {
-        case duration > 0:
+        case duration >= 0:
             whileAction?()
             duration -= 1
         case isRepeatingForever:
