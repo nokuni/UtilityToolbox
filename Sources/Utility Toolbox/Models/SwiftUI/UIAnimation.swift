@@ -11,6 +11,7 @@ final public class UIAnimation {
     
     private var timer: Timer?
     private var duration: Int = 0
+    public var isCompleted: Bool = false
     
     private var frames: [String] = []
     public var startAction: (() -> Void)?
@@ -18,8 +19,6 @@ final public class UIAnimation {
     public var endAction: (() -> Void)?
     
     public func cancelTimer() { timer?.invalidate() }
-    
-    public var isRunning: Bool { ((timer?.isValid) != nil) }
     
     public func animate(frames: [String],
                         startAction: (() -> Void)? = nil,
@@ -52,6 +51,7 @@ final public class UIAnimation {
         default:
             timer.invalidate()
             endAction?()
+            isCompleted = true
         }
     }
 }

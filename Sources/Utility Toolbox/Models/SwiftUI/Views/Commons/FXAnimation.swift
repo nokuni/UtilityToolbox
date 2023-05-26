@@ -40,7 +40,7 @@ public struct FXAnimation: View {
     
     @ViewBuilder
     private func animatedImageView() -> some View {
-        if animation.isRunning {
+        if !animation.isCompleted {
             Image(frames[index])
                 .resizable()
         }
