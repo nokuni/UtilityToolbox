@@ -30,7 +30,7 @@ let package = Package(
                 ],
                 path: "Sources/Utility Toolbox"),
         .testTarget(
-            name: "Utility ToolboxTests",
+            name: "UtilityToolboxTests",
             dependencies: ["Utility Toolbox"]
         )
     ]
