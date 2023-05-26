@@ -19,7 +19,7 @@ final public class UIAnimation {
     
     public func cancelTimer() { timer?.invalidate() }
     
-    public var isAnimationCompleted: Bool { duration <= 0 }
+    public var isRunning: Bool { ((timer?.isValid) != nil) }
     
     public func animate(frames: [String],
                         startAction: (() -> Void)? = nil,
