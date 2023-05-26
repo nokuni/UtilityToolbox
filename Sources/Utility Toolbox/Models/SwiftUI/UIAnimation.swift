@@ -27,7 +27,7 @@ final public class UIAnimation {
                         timeInterval: TimeInterval = 1) {
         
         self.frames = frames
-        self.duration = frames.count - 1
+        self.duration = frames.count
         self.startAction = startAction
         self.whileAction = whileAction
         self.endAction = endAction
@@ -46,7 +46,7 @@ final public class UIAnimation {
             whileAction?()
             duration -= 1
         case isRepeatingForever:
-            duration = frames.count - 1
+            duration = frames.count
         default:
             timer.invalidate()
             endAction?()
