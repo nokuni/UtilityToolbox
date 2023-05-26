@@ -44,8 +44,6 @@ public struct FXAnimation: View {
         if !isAnimationCompleted {
             Image(frames[index])
                 .resizable()
-        } else {
-            EmptyView()
         }
     }
     
@@ -56,6 +54,7 @@ public struct FXAnimation: View {
         case isRepeatingForever:
             index = 0
         default:
+            index = 0
             isAnimationCompleted = true
         }
     }
