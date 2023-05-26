@@ -26,15 +26,17 @@ public struct FXAnimation: View {
         case frames.isEmpty:
             Text("")
         default:
-            Image(frames[index])
-                .resizable()
-                .onAppear {
-                    animation.animate(frames: frames,
-                                      whileAction: incrementIndex,
-                                      endAction: completion,
-                                      isRepeatingForever: isRepeatingForever,
-                                      timeInterval: 0.1)
-                }
+            if !animation.isAnimationCompleted {
+                Image(frames[index])
+                    .resizable()
+                    .onAppear {
+                        animation.animate(frames: frames,
+                                          whileAction: incrementIndex,
+                                          endAction: completion,
+                                          isRepeatingForever: isRepeatingForever,
+                                          timeInterval: 0.1)
+                    }
+            }
         }
     }
     
