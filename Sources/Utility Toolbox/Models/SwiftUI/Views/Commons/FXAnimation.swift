@@ -9,6 +9,7 @@ import SwiftUI
 
 public struct FXAnimation: View {
     @State private var index = 0
+    @State private var isAnimationCompleted = false
     private let animation = UIAnimation()
     public var frames: [String]
     public var isRepeatingForever: Bool
@@ -40,7 +41,7 @@ public struct FXAnimation: View {
     
     @ViewBuilder
     private func animatedImageView() -> some View {
-        if !animation.isCompleted {
+        if !isAnimationCompleted {
             Image(frames[index])
                 .resizable()
         }
@@ -53,7 +54,7 @@ public struct FXAnimation: View {
         case isRepeatingForever:
             index = 0
         default:
-            break
+            isAnimationCompleted = true
         }
     }
 }

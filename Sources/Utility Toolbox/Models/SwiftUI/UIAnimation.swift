@@ -11,7 +11,6 @@ final public class UIAnimation {
     
     private var timer: Timer?
     private var duration: Int = 0
-    public var isCompleted: Bool = false
     
     private var frames: [String] = []
     public var startAction: (() -> Void)?
@@ -51,7 +50,6 @@ final public class UIAnimation {
         default:
             timer.invalidate()
             endAction?()
-            isCompleted = true
         }
     }
 }
