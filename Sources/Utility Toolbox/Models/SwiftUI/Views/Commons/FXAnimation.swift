@@ -41,10 +41,9 @@ public struct FXAnimation: View {
     
     @ViewBuilder
     private func animatedImageView() -> some View {
-        if !isAnimationCompleted {
-            Image(frames[index])
-                .resizable()
-        }
+        Image(frames[index])
+            .resizable()
+            .opacity(isAnimationCompleted ? 0 : 1)
     }
     
     func incrementIndex() {
@@ -54,7 +53,6 @@ public struct FXAnimation: View {
         case isRepeatingForever:
             index = 0
         default:
-            index = 0
             isAnimationCompleted = true
         }
     }
