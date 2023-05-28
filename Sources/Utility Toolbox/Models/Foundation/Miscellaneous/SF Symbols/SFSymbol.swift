@@ -192,6 +192,9 @@ extension SFSymbol {
     public static var healthNames: [String] {
         SFSymbol.health.map { $0.rawValue }
     }
+    public static var healthSymbols: [String] {
+        SFSymbol.health.map { $0.symbol }
+    }
 }
 
 // MARK: - Nature

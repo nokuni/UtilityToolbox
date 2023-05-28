@@ -307,46 +307,26 @@ public enum SFWeatherSymbol: String, CaseIterable, SFSymbolProtocol {
 
     var symbol: String {
         switch self {
-        case .sunMin:
-            return "􀆫"
-        case .sinMinFill:
-            return "􀆬"
-        case .sunMax:
-            return "􀆭"
-        case .sunMaxFill:
-            return "􀆮"
-        case .sunMaxCircle:
-            return "􀷎"
-        case .sunMaxCircleFill:
-            return "􀷏"
-        case .sunMaxTriangleBadgeExclamationMark:
-            return "􁜎"
-        case .sunMaxTriangleBadgeExclamationMarkFill:
-            return "􁜏"
-        case .sunrise:
-            return "􀆱"
-        case .sunriseFill:
-            return "􀆲"
-        case .sunriseCircle:
-            return "􁛁"
-        case .sunriseCircleFill:
-            return "􁛂"
-        case .sunset:
-            return "􀆳"
-        case .sunsetFill:
-            return "􀆴"
-        case .sunsetCircle:
-            return "􁛃"
-        case .sunsetCircleFill:
-            return "􁛄"
-        case .sunAndHorizon:
-            return "􀻞"
-        case .sunAndHorizonFill:
-            return "􀻟"
-        case .sunAndHorizonCircle:
-            return "􁛅"
-        case .sunAndHorizonCircleFill:
-            return "􁛆"
+        case .sunMin: return "􀆫"
+        case .sinMinFill: return "􀆬"
+        case .sunMax: return "􀆭"
+        case .sunMaxFill: return "􀆮"
+        case .sunMaxCircle: return "􀷎"
+        case .sunMaxCircleFill: return "􀷏"
+        case .sunMaxTriangleBadgeExclamationMark: return "􁜎"
+        case .sunMaxTriangleBadgeExclamationMarkFill: return "􁜏"
+        case .sunrise: return "􀆱"
+        case .sunriseFill: return "􀆲"
+        case .sunriseCircle: return "􁛁"
+        case .sunriseCircleFill: return "􁛂"
+        case .sunset: return "􀆳"
+        case .sunsetFill: return "􀆴"
+        case .sunsetCircle: return "􁛃"
+        case .sunsetCircleFill: return "􁛄"
+        case .sunAndHorizon: return "􀻞"
+        case .sunAndHorizonFill: return "􀻟"
+        case .sunAndHorizonCircle: return "􁛅"
+        case .sunAndHorizonCircleFill: return "􁛆"
         case .sunDust:
             return "􀆵"
         case .sunDustFill:
@@ -429,180 +409,93 @@ public enum SFWeatherSymbol: String, CaseIterable, SFSymbolProtocol {
             return "􁛕"
         case .cloudFogCircleFill:
             return "􁛖"
-        case .cloudHail:
-            return "􀇌"
-        case .cloudHailFill:
-            return "􀇍"
-        case .cloudHailCircle:
-            return "􁛗"
-        case .cloudHailCircleFill:
-            return "􁛘"
-        case .cloudSnow:
-            return "􀇎"
-        case .cloudSnowFill:
-            return "􀇏"
-        case .cloudSnowCircle:
-            return "􁛙"
-        case .cloudSnowCircleFill:
-            return "􁛚"
-        case .cloudSleet:
-            return "􀇐"
-        case .cloudSleetFill:
-            return "􀇑"
-        case .cloudSleetCircle:
-            return "􁛛"
-        case .cloudSleetCircleFill:
-            return "􁛜"
-        case .cloudBolt:
-            return "􀇒"
-        case .cloudBoltFill:
-            return "􀇓"
-        case .cloudBoltCircle:
-            return "􁛝"
-        case .cloudBoltCircleFill:
-            return "􁛞"
-        case .cloudBoltRain:
-            return "􀇞"
-        case .cloudBoltRainFill:
-            return "􀇟"
-        case .cloudBoltRainCircle:
-            return "􁛟"
-        case .cloudBoltRainCircleFill:
-            return "􁛠"
-        case .cloudSun:
-            return "􀇔"
-        case .cloudSunFill:
-            return "􀇕"
-        case .cloudSunCircle:
-            return "􁛡"
-        case .cloudSunCircleFill:
-            return "􁛢"
-        case .cloudSunRain:
-            return "􀇖"
-        case .cloudSunRainFill:
-            return "􀇗"
-        case .cloudSunRainCircle:
-            return "􁛣"
-        case .cloudSunRainCircleFill:
-            return "􁛤"
-        case .cloudSunBolt:
-            return "􀇘"
-        case .cloudSunBoltFill:
-            return "􀇙"
-        case .cloudSunBoltCircle:
-            return "􁛥"
-        case .cloudSunBoltCircleFill:
-            return "􁛦"
-        case .cloudMoon:
-            return "􀇚"
-        case .cloudMoonFill:
-            return "􀇛"
-        case .cloudMoonCircle:
-            return "􁛧"
-        case .cloudMoonCircleFill:
-            return "􁛨"
-        case .cloudMoonRain:
-            return "􀇜"
-        case .cloudMoonRainFill:
-            return "􀇝"
-        case .cloudMoonRainCircle:
-            return "􁛩"
-        case .cloudMoonRainCircleFill:
-            return "􁛪"
-        case .cloudMoonBolt:
-            return "􀇠"
-        case .cloudMoonBoltFill:
-            return "􀇡"
-        case .cloudMoonBoltCircle:
-            return "􁛫"
-        case .cloudMoonBoltCircleFill:
-            return "􁛬"
-        case .smoke:
-            return "􀇢"
-        case .smokeFill:
-            return "􀇣"
-        case .smokeCircle:
-            return "􁛭"
-        case .smokeCircleFill:
-            return "􁛮"
-        case .wind:
-            return "􀇤"
-        case .windCircle:
-            return "􁛯"
-        case .windCircleFill:
-            return "􁛰"
-        case .windSnow:
-            return "􀇦"
-        case .windSnowCircle:
-            return "􁛱"
-        case .windSnowCircleFill:
-            return "􁛲"
-        case .snowflake:
-            return "􀇥"
-        case .snowflakeCircle:
-            return "􁇌"
-        case .snowflakeCircleFill:
-            return "􁇍"
-        case .snowflakeSlash:
-            return "􁠂"
-        case .tornado:
-            return "􀇧"
-        case .tornadoCircle:
-            return "􁛳"
-        case .tornadoCircleFill:
-            return "􁛴"
-        case .tropicalstorm:
-            return "􀇨"
-        case .tropicalstormCircle:
-            return "􁛵"
-        case .tropicalstormCircleFill:
-            return "􁛶"
-        case .hurricane:
-            return "􀇩"
-        case .hurricaneCircle:
-            return "􁛷"
-        case .hurricaneCircleFill:
-            return "􁛸"
-        case .thermometerSun:
-            return "􀇪"
-        case .thermometerSunFill:
-            return "􀦜"
-        case .thermometerSunCircle:
-            return "􁛹"
-        case .thermometerSunCircleFill:
-            return "􁛺"
-        case .thermometerSnowflake:
-            return "􀇫"
-        case .thermometerSnowflakeCircle:
-            return "􁛻"
-        case .thermometerSnowflakeCircleFill:
-            return "􁛼"
-        case .thermometerLow:
-            return "􁏃"
-        case .thermometerMedium:
-            return "􀇬"
-        case .thermometerHigh:
-            return "􁏄"
-        case .thermometerMediumSlash:
-            return "􁗄"
-        case .aqiLow:
-            return "􀴾"
-        case .aqiMedium:
-            return "􀴿"
-        case .aqiHigh:
-            return "􀵀"
-        case .humidity:
-            return "􁃚"
-        case .humidityFill:
-            return "􁃛"
-        case .carbonMonoxideCloud:
-            return "􁒶"
-        case .carbonMonoxideCloudFill:
-            return "􁒷"
-        case .carbonDioxideCloud:
-            return "􁒸"
-        case .carbonDioxideCloudFill:
-            return "􁒹"
+        case .cloudHail: return "􀇌"
+        case .cloudHailFill: return "􀇍"
+        case .cloudHailCircle: return "􁛗"
+        case .cloudHailCircleFill: return "􁛘"
+        case .cloudSnow: return "􀇎"
+        case .cloudSnowFill: return "􀇏"
+        case .cloudSnowCircle: return "􁛙"
+        case .cloudSnowCircleFill: return "􁛚"
+        case .cloudSleet: return "􀇐"
+        case .cloudSleetFill: return "􀇑"
+        case .cloudSleetCircle: return "􁛛"
+        case .cloudSleetCircleFill: return "􁛜"
+        case .cloudBolt: return "􀇒"
+        case .cloudBoltFill: return "􀇓"
+        case .cloudBoltCircle: return "􁛝"
+        case .cloudBoltCircleFill: return "􁛞"
+        case .cloudBoltRain: return "􀇞"
+        case .cloudBoltRainFill: return "􀇟"
+        case .cloudBoltRainCircle: return "􁛟"
+        case .cloudBoltRainCircleFill: return "􁛠"
+        case .cloudSun: return "􀇔"
+        case .cloudSunFill: return "􀇕"
+        case .cloudSunCircle: return "􁛡"
+        case .cloudSunCircleFill: return "􁛢"
+        case .cloudSunRain: return "􀇖"
+        case .cloudSunRainFill: return "􀇗"
+        case .cloudSunRainCircle: return "􁛣"
+        case .cloudSunRainCircleFill: return "􁛤"
+        case .cloudSunBolt: return "􀇘"
+        case .cloudSunBoltFill: return "􀇙"
+        case .cloudSunBoltCircle: return "􁛥"
+        case .cloudSunBoltCircleFill: return "􁛦"
+        case .cloudMoon: return "􀇚"
+        case .cloudMoonFill: return "􀇛"
+        case .cloudMoonCircle: return "􁛧"
+        case .cloudMoonCircleFill: return "􁛨"
+        case .cloudMoonRain: return "􀇜"
+        case .cloudMoonRainFill: return "􀇝"
+        case .cloudMoonRainCircle: return "􁛩"
+        case .cloudMoonRainCircleFill: return "􁛪"
+        case .cloudMoonBolt: return "􀇠"
+        case .cloudMoonBoltFill: return "􀇡"
+        case .cloudMoonBoltCircle: return "􁛫"
+        case .cloudMoonBoltCircleFill: return "􁛬"
+        case .smoke: return "􀇢"
+        case .smokeFill: return "􀇣"
+        case .smokeCircle: return "􁛭"
+        case .smokeCircleFill: return "􁛮"
+        case .wind: return "􀇤"
+        case .windCircle: return "􁛯"
+        case .windCircleFill: return "􁛰"
+        case .windSnow: return "􀇦"
+        case .windSnowCircle: return "􁛱"
+        case .windSnowCircleFill: return "􁛲"
+        case .snowflake: return "􀇥"
+        case .snowflakeCircle: return "􁇌"
+        case .snowflakeCircleFill: return "􁇍"
+        case .snowflakeSlash: return "􁠂"
+        case .tornado: return "􀇧"
+        case .tornadoCircle: return "􁛳"
+        case .tornadoCircleFill: return "􁛴"
+        case .tropicalstorm: return "􀇨"
+        case .tropicalstormCircle: return "􁛵"
+        case .tropicalstormCircleFill: return "􁛶"
+        case .hurricane: return "􀇩"
+        case .hurricaneCircle: return "􁛷"
+        case .hurricaneCircleFill: return "􁛸"
+        case .thermometerSun: return "􀇪"
+        case .thermometerSunFill: return "􀦜"
+        case .thermometerSunCircle: return "􁛹"
+        case .thermometerSunCircleFill: return "􁛺"
+        case .thermometerSnowflake: return "􀇫"
+        case .thermometerSnowflakeCircle: return "􁛻"
+        case .thermometerSnowflakeCircleFill: return "􁛼"
+        case .thermometerLow: return "􁏃"
+        case .thermometerMedium: return "􀇬"
+        case .thermometerHigh: return "􁏄"
+        case .thermometerMediumSlash: return "􁗄"
+        case .aqiLow: return "􀴾"
+        case .aqiMedium: return "􀴿"
+        case .aqiHigh: return "􀵀"
+        case .humidity: return "􁃚"
+        case .humidityFill: return "􁃛"
+        case .carbonMonoxideCloud: return "􁒶"
+        case .carbonMonoxideCloudFill: return "􁒷"
+        case .carbonDioxideCloud: return "􁒸"
+        case .carbonDioxideCloudFill: return "􁒹"
         }
     }
 }

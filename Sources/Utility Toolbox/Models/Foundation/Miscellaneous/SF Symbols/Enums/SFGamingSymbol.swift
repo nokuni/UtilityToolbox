@@ -265,260 +265,133 @@ public enum SFGamingSymbol: String, CaseIterable, SFSymbolProtocol {
 
     var symbol: String {
         switch self {
-        case .circleSquare:
-            return "􀧺"
-        case .circleSquareFill:
-            return "􀧻"
-        case .rectangleOnRectangle:
-            return "􀏧"
-        case .rectangleFillOnRectangleFill:
-            return "􀏨"
-        case .rectangleOnRectangleCircle:
-            return "􀤽"
-        case .rectangleOnRectangleCircleFill:
-            return "􀤾"
-        case .rectangleOnRectangleSquare:
-            return "􀽏"
-        case .rectangleOnRectangleSquareFill:
-            return "􀽐"
-        case .flagCheckered:
-            return "􁙌"
-        case .flagCheckeredCircle:
-            return "􁝼"
-        case .flagCheckeredCircleFill:
-            return "􁝽"
-        case .flag2Crossed:
-            return "􀶶"
-        case .flag2CrossedFill:
-            return "􀶷"
-        case .flag2CrossedCircle:
-            return "􁜅"
-        case .flag2CrossedCircleFill:
-            return "􁜆"
-        case .flagFilledAndFlagCrossed:
-            return "􀶸"
-        case .flagAndFlagFilledCrossed:
-            return "􁁜"
-        case .flagCheckeredTwoCrossed:
-            return "􁜔"
-        case .house:
-            return "􀎞"
-        case .houseFill:
-            return "􀎟"
-        case .houseCircle:
-            return "􀥆"
-        case .houseCircleFill:
-            return "􀥇"
-        case .gamecontroller:
-            return "􀛸"
-        case .gamecontrollerFill:
-            return "􀛹"
-        case .lJoystick:
-            return "􀦒"
-        case .lJoystickFill:
-            return "􀫁"
-        case .rJoystick:
-            return "􀦓"
-        case .rJoystickFill:
-            return "􀫂"
-        case .lJoystickPressDown:
-            return "􀦔"
-        case .lJoystickPressDownFill:
-            return "􀫃"
-        case .rJoystickPressDown:
-            return "􀦕"
-        case .rJoystickPressDownFill:
-            return "􀫄"
-        case .lJoystickTiltLeft:
-            return "􀿖"
-        case .lJoystickTiltLeftFill:
-            return "􀿗"
-        case .lJoystickTiltRight:
-            return "􀿘"
-        case .lJoystickTiltRightFill:
-            return "􀿙"
-        case .lJoystickTiltUp:
-            return "􀿚"
-        case .lJoystickTiltUpFill:
-            return "􀿛"
-        case .lJoystickTiltDown:
-            return "􀿜"
-        case .lJoystickTiltDownFill:
-            return "􀿝"
-        case .rJoystickTiltLeft:
-            return "􀿞"
-        case .rJoystickTiltLeftFill:
-            return "􀿟"
-        case .rJoystickTiltRight:
-            return "􀿠"
-        case .rJoystickTiltRightFill:
-            return "􀿡"
-        case .rJoystickTiltUp:
-            return "􀿢"
-        case .rJoystickTiltUpFill:
-            return "􀿣"
-        case .rJoystickTiltDown:
-            return "􀿤"
-        case .rJoystickTiltDownFill:
-            return "􀿥"
-        case .circleGridCross:
-            return "􀧸"
-        case .circleGridCrossFill:
-            return "􀧹"
-        case .circleGridCrossLeftFilled:
-            return "􀩄"
-        case .circleGridCrossUpFilled:
-            return "􀩅"
-        case .circleGridCrossRightFilled:
-            return "􀩆"
-        case .circleGridCrossDownFilled:
-            return "􀩇"
-        case .dpad:
-            return "􀨲"
-        case .dpadFill:
-            return "􀧼"
-        case .dpadLeftFilled:
-            return "􀧽"
-        case .dpadUpFilled:
-            return "􀧾"
-        case .dpadRightFilled:
-            return "􀧿"
-        case .dpadDownFilled:
-            return "􀨀"
-        case .circleCircle:
-            return "􀨁"
-        case .circleCircleFill:
-            return "􀨂"
-        case .squareCircle:
-            return "􀨃"
-        case .squareCircleFill:
-            return "􀨄"
-        case .triangleCircle:
-            return "􀨅"
-        case .triangleCircleFill:
-            return "􀨆"
-        case .rectangleRoundedtop:
-            return "􀩸"
-        case .rectangleRoundedtopFill:
-            return "􀩹"
-        case .rectangleRoundedbottom:
-            return "􀩺"
-        case .rectangleRoundedbottomFill:
-            return "􀩻"
-        case .lRectangleRoundedbottom:
-            return "􀨇"
-        case .lRectangleRoundedbottomFill:
-            return "􀨈"
-        case .l1RectangleRoundedbottom:
-            return "􀨉"
-        case .l1RectangleRoundedbottomFill:
-            return "􀨊"
-        case .l2RectangleRoundedtop:
-            return "􀨋"
-        case .l2RectangleRoundedtopFill:
-            return "􀨌"
-        case .rRectangleRoundedbottom:
-            return "􀨍"
-        case .rRectangleRoundedbottomFill:
-            return "􀨎"
-        case .r1RectangleRoundedbottom:
-            return "􀨏"
-        case .r1RectangleRoundedbottomFill:
-            return "􀨐"
-        case .r2RectangleRoundedtop:
-            return "􀨑"
-        case .r2RectangleRoundedtopFill:
-            return "􀨒"
-        case .lbRectangleRoundedbottom:
-            return "􀨓"
-        case .lbRectangleRoundedbottomFill:
-            return "􀨔"
-        case .rbRectangleRoundedbottom:
-            return "􀨕"
-        case .rbRectangleRoundedbottomFill:
-            return "􀨖"
-        case .ltRectangleRoundedtop:
-            return "􀨗"
-        case .ltRectangleRoundedtopFill:
-            return "􀨘"
-        case .rtRectangleRoundedtop:
-            return "􀨙"
-        case .rtRectangleRoundedtopFill:
-            return "􀨚"
-        case .zlRectangleRoundedtop:
-            return "􀨛"
-        case .zlRectangleRoundedtopFill:
-            return "􀨜"
-        case .zrRectangleRoundedtop:
-            return "􀨝"
-        case .zrRectangleRoundedtopFill:
-            return "􀨞"
-        case .playstationLogo:
-            return "􀾈"
-        case .xboxLogo:
-            return "􀾉"
-        case .line3HorizontalCircle:
-            return "􀧱"
-        case .line3HorizontalCircleFill:
-            return "􀧲"
-        case .plus:
-            return "􀅼"
-        case .plusCircle:
-            return "􀁌"
-        case .plusCircleFill:
-            return "􀁍"
-        case .minus:
-            return "􀅽"
-        case .minusCircle:
-            return "􀁎"
-        case .minusCircleFill:
-            return "􀁏"
-        case .xmark:
-            return "􀆄"
-        case .xmarkCircle:
-            return "􀁠"
-        case .xmarkCircleFill:
-            return "􀁡"
-        case .arrowtriangleLeftCircle:
-            return "􀁪"
-        case .arrowtriangleLeftCircleFill:
-            return "􀁫"
-        case .arrowtriangleRightCircle:
-            return "􀁬"
-        case .arrowtriangleRightCircleFill:
-            return "􀁭"
-        case .arrowtriangleUpCircle:
-            return "􀁦"
-        case .arrowtriangleUpCircleFill:
-            return "􀁧"
-        case .arrowtriangleDownCircle:
-            return "􀁨"
-        case .arrowtriangleDownCircleFill:
-            return "􀁩"
-        case .aCircle:
-            return "􀀄"
-        case .aCircleFill:
-            return "􀀅"
-        case .bCircle:
-            return "􀀆"
-        case .bCircleFill:
-            return "􀀇"
-        case .lCircle:
-            return "􀀚"
-        case .lCircleFill:
-            return "􀀛"
-        case .rCircle:
-            return "􀀦"
-        case .rCircleFill:
-            return "􀀧"
-        case .xCircle:
-            return "􀀲"
-        case .xCircleFill:
-            return "􀀳"
-        case .yCircle:
-            return "􀀴"
-        case .yCircleFill:
-            return "􀀵"
+        case .circleSquare: return "􀧺"
+        case .circleSquareFill: return "􀧻"
+        case .rectangleOnRectangle: return "􀏧"
+        case .rectangleFillOnRectangleFill: return "􀏨"
+        case .rectangleOnRectangleCircle: return "􀤽"
+        case .rectangleOnRectangleCircleFill: return "􀤾"
+        case .rectangleOnRectangleSquare: return "􀽏"
+        case .rectangleOnRectangleSquareFill: return "􀽐"
+        case .flagCheckered: return "􁙌"
+        case .flagCheckeredCircle: return "􁝼"
+        case .flagCheckeredCircleFill: return "􁝽"
+        case .flag2Crossed: return "􀶶"
+        case .flag2CrossedFill: return "􀶷"
+        case .flag2CrossedCircle: return "􁜅"
+        case .flag2CrossedCircleFill: return "􁜆"
+        case .flagFilledAndFlagCrossed: return "􀶸"
+        case .flagAndFlagFilledCrossed: return "􁁜"
+        case .flagCheckeredTwoCrossed: return "􁜔"
+        case .house: return "􀎞"
+        case .houseFill: return "􀎟"
+        case .houseCircle: return "􀥆"
+        case .houseCircleFill: return "􀥇"
+        case .gamecontroller: return "􀛸"
+        case .gamecontrollerFill: return "􀛹"
+        case .lJoystick: return "􀦒"
+        case .lJoystickFill: return "􀫁"
+        case .rJoystick: return "􀦓"
+        case .rJoystickFill: return "􀫂"
+        case .lJoystickPressDown: return "􀦔"
+        case .lJoystickPressDownFill: return "􀫃"
+        case .rJoystickPressDown: return "􀦕"
+        case .rJoystickPressDownFill: return "􀫄"
+        case .lJoystickTiltLeft: return "􀿖"
+        case .lJoystickTiltLeftFill: return "􀿗"
+        case .lJoystickTiltRight: return "􀿘"
+        case .lJoystickTiltRightFill: return "􀿙"
+        case .lJoystickTiltUp: return "􀿚"
+        case .lJoystickTiltUpFill: return "􀿛"
+        case .lJoystickTiltDown: return "􀿜"
+        case .lJoystickTiltDownFill: return "􀿝"
+        case .rJoystickTiltLeft: return "􀿞"
+        case .rJoystickTiltLeftFill: return "􀿟"
+        case .rJoystickTiltRight: return "􀿠"
+        case .rJoystickTiltRightFill: return "􀿡"
+        case .rJoystickTiltUp: return "􀿢"
+        case .rJoystickTiltUpFill: return "􀿣"
+        case .rJoystickTiltDown: return "􀿤"
+        case .rJoystickTiltDownFill: return "􀿥"
+        case .circleGridCross: return "􀧸"
+        case .circleGridCrossFill: return "􀧹"
+        case .circleGridCrossLeftFilled: return "􀩄"
+        case .circleGridCrossUpFilled: return "􀩅"
+        case .circleGridCrossRightFilled: return "􀩆"
+        case .circleGridCrossDownFilled: return "􀩇"
+        case .dpad: return "􀨲"
+        case .dpadFill: return "􀧼"
+        case .dpadLeftFilled: return "􀧽"
+        case .dpadUpFilled: return "􀧾"
+        case .dpadRightFilled: return "􀧿"
+        case .dpadDownFilled: return "􀨀"
+        case .circleCircle: return "􀨁"
+        case .circleCircleFill: return "􀨂"
+        case .squareCircle: return "􀨃"
+        case .squareCircleFill: return "􀨄"
+        case .triangleCircle: return "􀨅"
+        case .triangleCircleFill: return "􀨆"
+        case .rectangleRoundedtop: return "􀩸"
+        case .rectangleRoundedtopFill: return "􀩹"
+        case .rectangleRoundedbottom: return "􀩺"
+        case .rectangleRoundedbottomFill: return "􀩻"
+        case .lRectangleRoundedbottom: return "􀨇"
+        case .lRectangleRoundedbottomFill: return "􀨈"
+        case .l1RectangleRoundedbottom: return "􀨉"
+        case .l1RectangleRoundedbottomFill: return "􀨊"
+        case .l2RectangleRoundedtop: return "􀨋"
+        case .l2RectangleRoundedtopFill: return "􀨌"
+        case .rRectangleRoundedbottom: return "􀨍"
+        case .rRectangleRoundedbottomFill: return "􀨎"
+        case .r1RectangleRoundedbottom: return "􀨏"
+        case .r1RectangleRoundedbottomFill: return "􀨐"
+        case .r2RectangleRoundedtop: return "􀨑"
+        case .r2RectangleRoundedtopFill: return "􀨒"
+        case .lbRectangleRoundedbottom: return "􀨓"
+        case .lbRectangleRoundedbottomFill: return "􀨔"
+        case .rbRectangleRoundedbottom: return "􀨕"
+        case .rbRectangleRoundedbottomFill: return "􀨖"
+        case .ltRectangleRoundedtop: return "􀨗"
+        case .ltRectangleRoundedtopFill: return "􀨘"
+        case .rtRectangleRoundedtop: return "􀨙"
+        case .rtRectangleRoundedtopFill: return "􀨚"
+        case .zlRectangleRoundedtop: return "􀨛"
+        case .zlRectangleRoundedtopFill: return "􀨜"
+        case .zrRectangleRoundedtop: return "􀨝"
+        case .zrRectangleRoundedtopFill: return "􀨞"
+        case .playstationLogo: return "􀾈"
+        case .xboxLogo: return "􀾉"
+        case .line3HorizontalCircle: return "􀧱"
+        case .line3HorizontalCircleFill: return "􀧲"
+        case .plus: return "􀅼"
+        case .plusCircle: return "􀁌"
+        case .plusCircleFill: return "􀁍"
+        case .minus: return "􀅽"
+        case .minusCircle: return "􀁎"
+        case .minusCircleFill: return "􀁏"
+        case .xmark: return "􀆄"
+        case .xmarkCircle: return "􀁠"
+        case .xmarkCircleFill: return "􀁡"
+        case .arrowtriangleLeftCircle: return "􀁪"
+        case .arrowtriangleLeftCircleFill: return "􀁫"
+        case .arrowtriangleRightCircle: return "􀁬"
+        case .arrowtriangleRightCircleFill: return "􀁭"
+        case .arrowtriangleUpCircle: return "􀁦"
+        case .arrowtriangleUpCircleFill: return "􀁧"
+        case .arrowtriangleDownCircle: return "􀁨"
+        case .arrowtriangleDownCircleFill: return "􀁩"
+        case .aCircle: return "􀀄"
+        case .aCircleFill: return "􀀅"
+        case .bCircle: return "􀀆"
+        case .bCircleFill: return "􀀇"
+        case .lCircle: return "􀀚"
+        case .lCircleFill: return "􀀛"
+        case .rCircle: return "􀀦"
+        case .rCircleFill: return "􀀧"
+        case .xCircle: return "􀀲"
+        case .xCircleFill: return "􀀳"
+        case .yCircle: return "􀀴"
+        case .yCircleFill: return "􀀵"
         }
     }
 }

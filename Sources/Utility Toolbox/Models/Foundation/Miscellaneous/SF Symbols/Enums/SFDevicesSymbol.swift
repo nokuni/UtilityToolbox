@@ -639,634 +639,320 @@ public enum SFDevicesSymbol: String, CaseIterable, SFSymbolProtocol {
 
     var symbol: String {
         switch self {
-        case .keyboard:
-            return "􀇳"
-        case .keyboardFill:
-            return "􀺑"
-        case .keyboardBadgeEllipsis:
-            return "􀫒"
-        case .keyboardBadgeEllipsisFill:
-            return "􁚏"
-        case .keyboardBadgeEye:
-            return "􁔕"
-        case .keyboardBadgeEyeFill:
-            return "􁚐"
-        case .keyboardChevronCompactDown:
-            return "􀓖"
-        case .keyboardChevronCompactDownFill:
-            return "􁚑"
-        case .keyboardChevronCompactLeft:
-            return "􀣭"
-        case .keyboardChevronCompactLeftFill:
-            return "􁚒"
-        case .keyboardOneHandedLeft:
-            return "􀞹"
-        case .keyboardOneHandedLeftFill:
-            return "􁚓"
-        case .keyboardOneHandedRight:
-            return "􀞺"
-        case .keyboardOneHandedRightFill:
-            return "􁚔"
-        case .printer:
-            return "􀎚"
-        case .printerFill:
-            return "􀎛"
-        case .printerFilledAndPaper:
-            return "􀪾"
-        case .printerDotMatrix:
-            return "􀪞"
-        case .printerDotMatrixFill:
-            return "􀪟"
-        case .printerDotMatrixFilledAndPaper:
-            return "􀪿"
-        case .scanner:
-            return "􀪊"
-        case .scannerFill:
-            return "􀪋"
-        case .faxMachine:
-            return "􀪌"
-        case .faxMachineFill:
-            return "􀪍"
-        case .airTagRadioWavesForward:
-            return "􁄼"
-        case .airTagRadioWavesForwardFill:
-            return "􁄽"
-        case .airTag:
-            return "􁄾"
-        case .airTagFill:
-            return "􁄿"
-        case .display:
-            return "􀢹"
-        case .playDisplay:
-            return "􁏴"
-        case .lockDisplay:
-            return "􀼑"
-        case .lockOpenDisplay:
-            return "􀼜"
-        case .displayAndArrowDown:
-            return "􀶽"
-        case .displayTriangleBadgeExclamationMark:
-            return "􀨦"
-        case .display2:
-            return "􀨧"
-        case .desktopComputer:
-            return "􀙗"
-        case .playDesktopComputer:
-            return "􁏳"
-        case .lockDesktopComputer:
-            return "􀼒"
-        case .lockOpenDesktopComputer:
-            return "􀼝"
-        case .desktopComputerAndArrowDown:
-            return "􀶾"
-        case .desktopComputerTriangleBadgeExclamationMark:
-            return "􁃃"
-        case .pc:
-            return "􀥺"
-        case .macProGen1:
-            return "􀪲"
-        case .macProGen1Fill:
-            return "􀼢"
-        case .macProGen2:
-            return "􀦱"
-        case .macProGen2Fill:
-            return "􀦮"
-        case .macProGen3:
-            return "􀪱"
-        case .macProGen3Fill:
-            return "􀼣"
-        case .macProGen3Server:
-            return "􀨳"
-        case .serverRack:
-            return "􀪬"
-        case .xServe:
-            return "􀧘"
-        case .laptopComputer:
-            return "􀟛"
-        case .laptopComputerSlash:
-            return "􁊭"
-        case .playLaptopComputer:
-            return "􁏵"
-        case .lockLaptopComputer:
-            return "􀼓"
-        case .lockOpenLaptopComputer:
-            return "􀼞"
-        case .laptopComputerAndArrowDown:
-            return "􀶿"
-        case .laptopComputerTriangleBadgeExclamationMark:
-            return "􁃂"
-        case .macbookAndIphone:
-            return "􀬩"
-        case .macbookAndIpad:
-            return "􁘞"
-        case .macmini:
-            return "􀪯"
-        case .macminiFill:
-            return "􀪰"
-        case .macstudio:
-            return "􁏍"
-        case .macstudioFill:
-            return "􁏎"
-        case .airPortExpress:
-            return "􀦯"
-        case .airPortExtreme:
-            return "􀑝"
-        case .airPortExtremeTower:
-            return "􀦰"
-        case .ipod:
-            return "􀢺"
-        case .iPodShuffleGen1:
-            return "􀫨"
-        case .iPodShuffleGen2:
-            return "􀫩"
-        case .iPodShuffleGen3:
-            return "􀫪"
-        case .iPodShuffleGen4:
-            return "􀫫"
-        case .iPodTouch:
-            return "􀫧"
-        case .iPodTouchSlash:
-            return "􁂲"
-        case .iPodTouchLandscape:
-            return "􀴐"
-        case .flipPhone:
-            return "􀪴"
-        case .candyBarPhone:
-            return "􀪳"
-        case .iPhoneGen1:
-            return "􀟝"
-        case .iPhoneGen1Circle:
-            return "􁄥"
-        case .iPhoneGen1CircleFill:
-            return "􁄦"
-        case .iPhoneGen1Landscape:
-            return "􀴎"
-        case .iPhoneGen1RadioWavesLeftAndRight:
-            return "􀡆"
-        case .iPhoneGen1RadioWavesLeftAndRightCircle:
-            return "􁅚"
-        case .iPhoneGen1RadioWavesLeftAndRightCircleFill:
-            return "􁅛"
-        case .iPhoneGen1Slash:
-            return "􀨴"
-        case .iPhoneGen1SlashCircle:
-            return "􁄧"
-        case .iPhoneGen1SlashFill:
-            return "􁄨"
-        case .iPhoneGen1BadgePlay:
-            return "􀐶"
-        case .iPhoneGen2:
-            return "􁟜"
-        case .iPhoneGen2Circle:
-            return "􁟝"
-        case .iPhoneGen2CircleFill:
-            return "􁟞"
-        case .iPhoneGen2Landscape:
-            return "􁟟"
-        case .iPhoneGen2RadioWavesLeftAndRight:
-            return "􁟠"
-        case .iPhoneGen2RadioWavesLeftAndRightCircle:
-            return "􁟡"
-        case .iPhoneGen2RadioWavesLeftAndRightCircleFill:
-            return "􁟢"
-        case .iPhoneGen2Slash:
-            return "􁟣"
-        case .iPhoneGen2SlashCircle:
-            return "􁟤"
-        case .iPhoneGen2SlashCircleFill:
-            return "􁟥"
-        case .iPhoneGen2BadgePlay:
-            return "􁟦"
-        case .iPhoneGen3:
-            return "􁊮"
-        case .iPhoneGen3Circle:
-            return "􁊯"
-        case .iPhoneGen3CircleFill:
-            return "􁊰"
-        case .iPhoneGen3Landscape:
-            return "􁊱"
-        case .iPhoneGen3RadioWavesLeftAndRight:
-            return "􁊲"
-        case .iPhoneGen3RadioWavesLeftAndRightCircle:
-            return "􁊳"
-        case .iPhoneGen3RadioWavesLeftAndRightCircleFill:
-            return "􁊴"
-        case .iPhoneGen3Slash:
-            return "􁊵"
-        case .iPhoneGen3SlashCircle:
-            return "􁊶"
-        case .iPhoneGen3SlashCircleFill:
-            return "􁊷"
-        case .iPhoneGen3BadgePlay:
-            return "􁊸"
-        case .iPhone:
-            return "􀟜"
-        case .iPhoneCircle:
-            return "􁄩"
-        case .iPhoneCircleFill:
-            return "􁄪"
-        case .iPhoneLandscape:
-            return "􀴏"
-        case .iPhoneRadioWavesLeftAndRight:
-            return "􀡇"
-        case .iPhoneRadioWavesLeftAndRightCircle:
-            return "􁅜"
-        case .iPhoneRadioWavesLeftAndRightCircleFill:
-            return "􁅝"
-        case .iPhoneSlash:
-            return "􀨵"
-        case .iPhoneSlashCircle:
-            return "􁄫"
-        case .iPhoneSlashCircleFill:
-            return "􁄬"
-        case .iPhoneBadgePlay:
-            return "􀴑"
-        case .lockIphone:
-            return "􀼔"
-        case .lockOpenIphone:
-            return "􀼟"
-        case .iphoneAndArrowForward:
-            return "􀶼"
-        case .arrowTurnUpForwardIphone:
-            return "􀬫"
-        case .arrowTurnUpForwardIphoneFill:
-            return "􀬬"
-        case .iphoneRearCamera:
-            return "􀾖"
-        case .appsIphone:
-            return "􀟞"
-        case .appsIphoneBadgePlus:
-            return "􀯖"
-        case .appsIphoneLandscape:
-            return "􀮔"
-        case .platterFilledTopIphone:
-            return "􁊿"
-        case .platterFilledBottomIphone:
-            return "􁋀"
-        case .platterFilledTopAndArrowUpIphone:
-            return "􁋁"
-        case .platterFilledBottomAndArrowDownIphone:
-            return "􁋂"
-        case .platter2FilledIphone:
-            return "􀾩"
-        case .platter2FilledIphoneLandscape:
-            return "􀾪"
-        case .iPhoneSmartBatteryCaseGen2:
-            return "􀺏"
-        case .iPhoneSmartBatteryCaseGen1:
-            return "􀺐"
-        case .iPadGen1:
-            return "􀟟"
-        case .iPadGen1BadgePlay:
-            return "􀴒"
-        case .iPadGen1Landscape:
-            return "􀥓"
-        case .iPadGen1LandscapeBadgePlay:
-            return "􀵑"
-        case .iPadGen2:
-            return "􁟧"
-        case .iPadGen2BadgePlay:
-            return "􁟨"
-        case .iPadGen2Landscape:
-            return "􁟩"
-        case .iPadGen2LandscapeBadgePlay:
-            return "􁟪"
-        case .iPad:
-            return "􀟠"
-        case .ipadBadgePlay:
-            return "􀴓"
-        case .iPadLandscape:
-            return "􀥔"
-        case .iPadLandscapeBadgePlay:
-            return "􀵒"
-        case .iPadAndIphone:
-            return "􁄟"
-        case .iPadAndIphoneSlash:
-            return "􁋟"
-        case .lockIpad:
-            return "􀼕"
-        case .lockOpenIpad:
-            return "􀼠"
-        case .iPadAndArrowForward:
-            return "􀷀"
-        case .iPadRearCamera:
-            return "􁀲"
-        case .appsIpad:
-            return "􀮕"
-        case .appsIpadLandscape:
-            return "􀮖"
-        case .platter2FilledIpad:
-            return "􁁍"
-        case .platter2FilledIpadLandscape:
-            return "􁁎"
-        case .applePencil:
-            return "􀺮"
-        case .magicMouse:
-            return "􀺰"
-        case .magicMouseFill:
-            return "􀺱"
-        case .computerMouse:
-            return "􀺣"
-        case .computerMouseFill:
-            return "􀺤"
-        case .appleWatch:
-            return "􀟤"
-        case .appleWatchWatchFace:
-            return "􀫋"
-        case .exclamationMarkAppleWatch:
-            return "􀵄"
-        case .lockAppleWatch:
-            return "􀵅"
-        case .lockOpenAppleWatch:
-            return "􀼡"
-        case .appleWatchRadioWavesLeftAndRight:
-            return "􀢷"
-        case .appleWatchSlash:
-            return "􀨶"
-        case .appleWatchSideRight:
-            return "􀸎"
-        case .watchFaceAppleWatchCase:
-            return "􀺗"
-        case .appleWatchCaseInsetFilled:
-            return "􀴪"
-        case .platterFilledTopAppleWatchCase:
-            return "􁃄"
-        case .platterFilledBottomAppleWatchCase:
-            return "􁃅"
-        case .platterTopAppleWatchCase:
-            return "􁃆"
-        case .platterBottomAppleWatchCase:
-            return "􁃇"
-        case .arrowUpAndDownAndSparkles:
-            return "􁒏"
-        case .digitalcrownArrowClockwise:
-            return "􀻖"
-        case .digitalcrownArrowClockwiseFill:
-            return "􀻗"
-        case .digitalcrownArrowCounterclockwise:
-            return "􀻘"
-        case .digitalcrownArrowCounterclockwiseFill:
-            return "􀻙"
-        case .digitalcrownPress:
-            return "􀴡"
-        case .digitalcrownPressFill:
-            return "􀴢"
-        case .digitalCrownHorizontalArrowClockwise:
-            return "􀻱"
-        case .digitalCrownHorizontalArrowClockwiseFill:
-            return "􀻲"
-        case .digitalCrownHorizontalArrowCounterclockwise:
-            return "􀻳"
-        case .digitalCrownHorizontalArrowCounterclockwiseFill:
-            return "􀻴"
-        case .digitalCrownHorizontalPress:
-            return "􀴣"
-        case .digitalCrownHorizontalPressFill:
-            return "􀴤"
-        case .airPodsMax:
-            return "􀺹"
-        case .beatsHeadphones:
-            return "􀺭"
-        case .headphones:
-            return "􀑈"
-        case .headphonesCircle:
-            return "􀒾"
-        case .headphonesCircleFill:
-            return "􀒿"
-        case .earbuds:
-            return "􀸸"
-        case .earbudsCase:
-            return "􀹥"
-        case .earbudsCaseFill:
-            return "􀹦"
-        case .earpods:
-            return "􀠦"
-        case .airpods:
-            return "􀟥"
-        case .airpodRight:
-            return "􀲋"
-        case .airpodLeft:
-            return "􀲌"
-        case .airPodsChargingCase:
-            return "􀹧"
-        case .airPodsChargingCaseFill:
-            return "􀹨"
-        case .airPodsChargingCaseWireless:
-            return "􀹩"
-        case .airPodsChargingCaseWirelessFill:
-            return "􀹪"
-        case .airPodsPro:
-            return "􀪷"
-        case .airPodProRight:
-            return "􀲍"
-        case .airPodProLeft:
-            return "􀲎"
-        case .airPodsProChargingCaseWireless:
-            return "􀹫"
-        case .airPodsProChargingCaseWirelessFill:
-            return "􀹬"
-        case .airPodsGen3:
-            return "􁄡"
-        case .airPodGen3Right:
-            return "􁄢"
-        case .airPodGen3Left:
-            return "􁄣"
-        case .airPodsGen3ChargingCaseWireless:
-            return "􁅐"
-        case .airPodsGen3ChargingCaseWirelessFill:
-            return "􁅑"
-        case .beatsEarphones:
-            return "􀺒"
-        case .beatsPowerbeatsPro:
-            return "􀹭"
-        case .beatsPowerbeatsProRight:
-            return "􀹮"
-        case .beatsPowerbeatsProLeft:
-            return "􀹯"
-        case .beatsPowerbeats:
-            return "􀻔"
-        case .beatsPowerbeats3:
-            return "􀺯"
-        case .beatsStudioBuds:
-            return "􀾢"
-        case .beatsStudioBudLeft:
-            return "􀾣"
-        case .beatsStudioBudRight:
-            return "􀾤"
-        case .beatsStudioBudsChargingCase:
-            return "􀾥"
-        case .beatsStudioBudsChargingCaseFill:
-            return "􀾦"
-        case .beatsFitPro:
-            return "􁅞"
-        case .beatsFitProLeft:
-            return "􁅟"
-        case .beatsFitProRight:
-            return "􁅠"
-        case .beatsFitProChargingCase:
-            return "􁅡"
-        case .beatsFitProChargingCaseFill:
-            return "􁅢"
-        case .beatsPowerbeatsProChargingCase:
-            return "􀹰"
-        case .beatsPowerbeatsProChargingCaseFill:
-            return "􀹱"
-        case .homePodMini:
-            return "􀷧"
-        case .homePodMiniFill:
-            return "􀷨"
-        case .homePodMini2:
-            return "􀷩"
-        case .homePodMini2Fill:
-            return "􀷪"
-        case .homePodAndHomePodMini:
-            return "􀷫"
-        case .homePodAndHomePodMiniFill:
-            return "􀷬"
-        case .hifiSpeakerAndHomePodMini:
-            return "􀷭"
-        case .hifiSpeakerAndHomePodMiniFill:
-            return "􀷮"
-        case .homePod:
-            return "􀟢"
-        case .homePodFill:
-            return "􀟣"
-        case .homePod2:
-            return "􀮍"
-        case .homePod2Fill:
-            return "􀟳"
-        case .hifiSpeakerAndHomePod:
-            return "􀮎"
-        case .hifiSpeakerAndHomePodFill:
-            return "􀟴"
-        case .hifiSpeaker:
-            return "􀝎"
-        case .hifiSpeakerFill:
-            return "􀝏"
-        case .hifiSpeaker2:
-            return "􀟵"
-        case .hifiSpeaker2Fill:
-            return "􀟶"
-        case .appleTV:
-            return "􀨫"
-        case .appleTVFill:
-            return "􀡴"
-        case .homePodAndAppleTV:
-            return "􀺌"
-        case .homePodAndAppleTVFill:
-            return "􀺍"
-        case .homePodMiniAndAppleTV:
-            return "􀻹"
-        case .homePodMiniAndAppleTVFill:
-            return "􀻺"
-        case .hifiSpeakerAndAppleTV:
-            return "􀻻"
-        case .hifiSpeakerAndAppleTVFill:
-            return "􀻼"
-        case .appleTVRemoteGen1:
-            return "􀼩"
-        case .appleTVRemoteGen1Fill:
-            return "􀼪"
-        case .appleTVRemoteGen2:
-            return "􀼫"
-        case .appleTVRemoteGen2Fill:
-            return "􀼬"
-        case .appleTVRemoteGen3:
-            return "􀝩"
-        case .appleTVRemoteGen3Fill:
-            return "􀝪"
-        case .appleTVRemoteGen4:
-            return "􀼧"
-        case .appleTVRemoteGen4Fill:
-            return "􀼨"
-        case .avRemote:
-            return "􁓺"
-        case .avRemoteFill:
-            return "􁓻"
-        case .magsafeBatteryPack:
-            return "􀺓"
-        case .magsafeBatteryPackFill:
-            return "􀺔"
-        case .mediaStick:
-            return "􀺥"
-        case .cableConnector:
-            return "􀺦"
-        case .cableConnectorHorizontal:
-            return "􀴞"
-        case .tv:
-            return "􀎲"
-        case .tvFill:
-            return "􀒶"
-        case .tvInsetFilled:
-            return "􀷘"
-        case .tvCircle:
-            return "􀎳"
-        case .tvCircleFill:
-            return "􀎴"
-        case .sparklesTV:
-            return "􁅋"
-        case .sparklesTVFill:
-            return "􁅌"
-        case ._4kTV:
-            return "􀦽"
-        case ._4kTVFill:
-            return "􀦾"
-        case .musicNoteTV:
-            return "􀎵"
-        case .musicNoteTVFill:
-            return "􀒷"
-        case .playTV:
-            return "􀵨"
-        case .playTVFill:
-            return "􀵩"
-        case .photoTV:
-            return "􀵪"
-        case .tvAndHifiSpeakerFill:
-            return "􀫑"
-        case .tvAndMediaBox:
-            return "􀲰"
-        case .tvAndMediaBoxFill:
-            return "􁝡"
-        case .car:
-            return "􀙘"
-        case .carFill:
-            return "􀙙"
-        case .carCircle:
-            return "􀭯"
-        case .carCircleFill:
-            return "􀭰"
-        case .carFrontWavesUp:
-            return "􁢱"
-        case .carFrontWavesUpFill:
-            return "􁢲"
-        case .carRear:
-            return "􀽛"
-        case .carRearFill:
-            return "􀽜"
-        case .boltCar:
-            return "􀡞"
-        case .boltCarFill:
-            return "􀝃"
-        case .boltCarCircle:
-            return "􁄲"
-        case .boltCarCircleFill:
-            return "􁄳"
-        case .car2:
-            return "􀝄"
-        case .car2Fill:
-            return "􀝅"
-        case .hearingDeviceEar:
-            return "􀪓"
-        case .hearingDeviceEarFill:
-            return "􁉗"
-        case .hearingDeviceAndSignalMeter:
-            return "􁎏"
-        case .hearingDeviceAndSignalMeterFill:
-            return "􁎐"
-        case .gameController:
-            return "􀛸"
-        case .gameControllerFill:
-            return "􀛹"
+        case .keyboard: return "􀇳"
+        case .keyboardFill: return "􀺑"
+        case .keyboardBadgeEllipsis: return "􀫒"
+        case .keyboardBadgeEllipsisFill: return "􁚏"
+        case .keyboardBadgeEye: return "􁔕"
+        case .keyboardBadgeEyeFill: return "􁚐"
+        case .keyboardChevronCompactDown: return "􀓖"
+        case .keyboardChevronCompactDownFill: return "􁚑"
+        case .keyboardChevronCompactLeft: return "􀣭"
+        case .keyboardChevronCompactLeftFill: return "􁚒"
+        case .keyboardOneHandedLeft: return "􀞹"
+        case .keyboardOneHandedLeftFill: return "􁚓"
+        case .keyboardOneHandedRight: return "􀞺"
+        case .keyboardOneHandedRightFill: return "􁚔"
+        case .printer: return "􀎚"
+        case .printerFill: return "􀎛"
+        case .printerFilledAndPaper: return "􀪾"
+        case .printerDotMatrix: return "􀪞"
+        case .printerDotMatrixFill: return "􀪟"
+        case .printerDotMatrixFilledAndPaper: return "􀪿"
+        case .scanner: return "􀪊"
+        case .scannerFill: return "􀪋"
+        case .faxMachine: return "􀪌"
+        case .faxMachineFill: return "􀪍"
+        case .airTagRadioWavesForward: return "􁄼"
+        case .airTagRadioWavesForwardFill: return "􁄽"
+        case .airTag: return "􁄾"
+        case .airTagFill: return "􁄿"
+        case .display: return "􀢹"
+        case .playDisplay: return "􁏴"
+        case .lockDisplay: return "􀼑"
+        case .lockOpenDisplay: return "􀼜"
+        case .displayAndArrowDown: return "􀶽"
+        case .displayTriangleBadgeExclamationMark: return "􀨦"
+        case .display2: return "􀨧"
+        case .desktopComputer: return "􀙗"
+        case .playDesktopComputer: return "􁏳"
+        case .lockDesktopComputer: return "􀼒"
+        case .lockOpenDesktopComputer: return "􀼝"
+        case .desktopComputerAndArrowDown: return "􀶾"
+        case .desktopComputerTriangleBadgeExclamationMark: return "􁃃"
+        case .pc: return "􀥺"
+        case .macProGen1: return "􀪲"
+        case .macProGen1Fill: return "􀼢"
+        case .macProGen2: return "􀦱"
+        case .macProGen2Fill: return "􀦮"
+        case .macProGen3: return "􀪱"
+        case .macProGen3Fill: return "􀼣"
+        case .macProGen3Server: return "􀨳"
+        case .serverRack: return "􀪬"
+        case .xServe: return "􀧘"
+        case .laptopComputer: return "􀟛"
+        case .laptopComputerSlash: return "􁊭"
+        case .playLaptopComputer: return "􁏵"
+        case .lockLaptopComputer: return "􀼓"
+        case .lockOpenLaptopComputer: return "􀼞"
+        case .laptopComputerAndArrowDown: return "􀶿"
+        case .laptopComputerTriangleBadgeExclamationMark: return "􁃂"
+        case .macbookAndIphone: return "􀬩"
+        case .macbookAndIpad: return "􁘞"
+        case .macmini: return "􀪯"
+        case .macminiFill: return "􀪰"
+        case .macstudio: return "􁏍"
+        case .macstudioFill: return "􁏎"
+        case .airPortExpress: return "􀦯"
+        case .airPortExtreme: return "􀑝"
+        case .airPortExtremeTower: return "􀦰"
+        case .ipod: return "􀢺"
+        case .iPodShuffleGen1: return "􀫨"
+        case .iPodShuffleGen2: return "􀫩"
+        case .iPodShuffleGen3: return "􀫪"
+        case .iPodShuffleGen4: return "􀫫"
+        case .iPodTouch: return "􀫧"
+        case .iPodTouchSlash: return "􁂲"
+        case .iPodTouchLandscape: return "􀴐"
+        case .flipPhone: return "􀪴"
+        case .candyBarPhone: return "􀪳"
+        case .iPhoneGen1: return "􀟝"
+        case .iPhoneGen1Circle: return "􁄥"
+        case .iPhoneGen1CircleFill: return "􁄦"
+        case .iPhoneGen1Landscape: return "􀴎"
+        case .iPhoneGen1RadioWavesLeftAndRight: return "􀡆"
+        case .iPhoneGen1RadioWavesLeftAndRightCircle: return "􁅚"
+        case .iPhoneGen1RadioWavesLeftAndRightCircleFill: return "􁅛"
+        case .iPhoneGen1Slash: return "􀨴"
+        case .iPhoneGen1SlashCircle: return "􁄧"
+        case .iPhoneGen1SlashFill: return "􁄨"
+        case .iPhoneGen1BadgePlay: return "􀐶"
+        case .iPhoneGen2: return "􁟜"
+        case .iPhoneGen2Circle: return "􁟝"
+        case .iPhoneGen2CircleFill: return "􁟞"
+        case .iPhoneGen2Landscape: return "􁟟"
+        case .iPhoneGen2RadioWavesLeftAndRight: return "􁟠"
+        case .iPhoneGen2RadioWavesLeftAndRightCircle: return "􁟡"
+        case .iPhoneGen2RadioWavesLeftAndRightCircleFill: return "􁟢"
+        case .iPhoneGen2Slash: return "􁟣"
+        case .iPhoneGen2SlashCircle: return "􁟤"
+        case .iPhoneGen2SlashCircleFill: return "􁟥"
+        case .iPhoneGen2BadgePlay: return "􁟦"
+        case .iPhoneGen3: return "􁊮"
+        case .iPhoneGen3Circle: return "􁊯"
+        case .iPhoneGen3CircleFill: return "􁊰"
+        case .iPhoneGen3Landscape: return "􁊱"
+        case .iPhoneGen3RadioWavesLeftAndRight: return "􁊲"
+        case .iPhoneGen3RadioWavesLeftAndRightCircle: return "􁊳"
+        case .iPhoneGen3RadioWavesLeftAndRightCircleFill: return "􁊴"
+        case .iPhoneGen3Slash: return "􁊵"
+        case .iPhoneGen3SlashCircle: return "􁊶"
+        case .iPhoneGen3SlashCircleFill: return "􁊷"
+        case .iPhoneGen3BadgePlay: return "􁊸"
+        case .iPhone: return "􀟜"
+        case .iPhoneCircle: return "􁄩"
+        case .iPhoneCircleFill: return "􁄪"
+        case .iPhoneLandscape: return "􀴏"
+        case .iPhoneRadioWavesLeftAndRight: return "􀡇"
+        case .iPhoneRadioWavesLeftAndRightCircle: return "􁅜"
+        case .iPhoneRadioWavesLeftAndRightCircleFill: return "􁅝"
+        case .iPhoneSlash: return "􀨵"
+        case .iPhoneSlashCircle: return "􁄫"
+        case .iPhoneSlashCircleFill: return "􁄬"
+        case .iPhoneBadgePlay: return "􀴑"
+        case .lockIphone: return "􀼔"
+        case .lockOpenIphone: return "􀼟"
+        case .iphoneAndArrowForward: return "􀶼"
+        case .arrowTurnUpForwardIphone: return "􀬫"
+        case .arrowTurnUpForwardIphoneFill: return "􀬬"
+        case .iphoneRearCamera: return "􀾖"
+        case .appsIphone: return "􀟞"
+        case .appsIphoneBadgePlus: return "􀯖"
+        case .appsIphoneLandscape: return "􀮔"
+        case .platterFilledTopIphone: return "􁊿"
+        case .platterFilledBottomIphone: return "􁋀"
+        case .platterFilledTopAndArrowUpIphone: return "􁋁"
+        case .platterFilledBottomAndArrowDownIphone: return "􁋂"
+        case .platter2FilledIphone: return "􀾩"
+        case .platter2FilledIphoneLandscape: return "􀾪"
+        case .iPhoneSmartBatteryCaseGen2: return "􀺏"
+        case .iPhoneSmartBatteryCaseGen1: return "􀺐"
+        case .iPadGen1: return "􀟟"
+        case .iPadGen1BadgePlay: return "􀴒"
+        case .iPadGen1Landscape: return "􀥓"
+        case .iPadGen1LandscapeBadgePlay: return "􀵑"
+        case .iPadGen2: return "􁟧"
+        case .iPadGen2BadgePlay: return "􁟨"
+        case .iPadGen2Landscape: return "􁟩"
+        case .iPadGen2LandscapeBadgePlay: return "􁟪"
+        case .iPad: return "􀟠"
+        case .ipadBadgePlay: return "􀴓"
+        case .iPadLandscape: return "􀥔"
+        case .iPadLandscapeBadgePlay: return "􀵒"
+        case .iPadAndIphone: return "􁄟"
+        case .iPadAndIphoneSlash: return "􁋟"
+        case .lockIpad: return "􀼕"
+        case .lockOpenIpad: return "􀼠"
+        case .iPadAndArrowForward: return "􀷀"
+        case .iPadRearCamera: return "􁀲"
+        case .appsIpad: return "􀮕"
+        case .appsIpadLandscape: return "􀮖"
+        case .platter2FilledIpad: return "􁁍"
+        case .platter2FilledIpadLandscape: return "􁁎"
+        case .applePencil: return "􀺮"
+        case .magicMouse: return "􀺰"
+        case .magicMouseFill: return "􀺱"
+        case .computerMouse: return "􀺣"
+        case .computerMouseFill: return "􀺤"
+        case .appleWatch: return "􀟤"
+        case .appleWatchWatchFace: return "􀫋"
+        case .exclamationMarkAppleWatch: return "􀵄"
+        case .lockAppleWatch: return "􀵅"
+        case .lockOpenAppleWatch: return "􀼡"
+        case .appleWatchRadioWavesLeftAndRight: return "􀢷"
+        case .appleWatchSlash: return "􀨶"
+        case .appleWatchSideRight: return "􀸎"
+        case .watchFaceAppleWatchCase: return "􀺗"
+        case .appleWatchCaseInsetFilled: return "􀴪"
+        case .platterFilledTopAppleWatchCase: return "􁃄"
+        case .platterFilledBottomAppleWatchCase: return "􁃅"
+        case .platterTopAppleWatchCase: return "􁃆"
+        case .platterBottomAppleWatchCase: return "􁃇"
+        case .arrowUpAndDownAndSparkles: return "􁒏"
+        case .digitalcrownArrowClockwise: return "􀻖"
+        case .digitalcrownArrowClockwiseFill: return "􀻗"
+        case .digitalcrownArrowCounterclockwise: return "􀻘"
+        case .digitalcrownArrowCounterclockwiseFill: return "􀻙"
+        case .digitalcrownPress: return "􀴡"
+        case .digitalcrownPressFill: return "􀴢"
+        case .digitalCrownHorizontalArrowClockwise: return "􀻱"
+        case .digitalCrownHorizontalArrowClockwiseFill: return "􀻲"
+        case .digitalCrownHorizontalArrowCounterclockwise: return "􀻳"
+        case .digitalCrownHorizontalArrowCounterclockwiseFill: return "􀻴"
+        case .digitalCrownHorizontalPress: return "􀴣"
+        case .digitalCrownHorizontalPressFill: return "􀴤"
+        case .airPodsMax: return "􀺹"
+        case .beatsHeadphones: return "􀺭"
+        case .headphones: return "􀑈"
+        case .headphonesCircle: return "􀒾"
+        case .headphonesCircleFill: return "􀒿"
+        case .earbuds: return "􀸸"
+        case .earbudsCase: return "􀹥"
+        case .earbudsCaseFill: return "􀹦"
+        case .earpods: return "􀠦"
+        case .airpods: return "􀟥"
+        case .airpodRight: return "􀲋"
+        case .airpodLeft: return "􀲌"
+        case .airPodsChargingCase: return "􀹧"
+        case .airPodsChargingCaseFill: return "􀹨"
+        case .airPodsChargingCaseWireless: return "􀹩"
+        case .airPodsChargingCaseWirelessFill: return "􀹪"
+        case .airPodsPro: return "􀪷"
+        case .airPodProRight: return "􀲍"
+        case .airPodProLeft: return "􀲎"
+        case .airPodsProChargingCaseWireless: return "􀹫"
+        case .airPodsProChargingCaseWirelessFill: return "􀹬"
+        case .airPodsGen3: return "􁄡"
+        case .airPodGen3Right: return "􁄢"
+        case .airPodGen3Left: return "􁄣"
+        case .airPodsGen3ChargingCaseWireless: return "􁅐"
+        case .airPodsGen3ChargingCaseWirelessFill: return "􁅑"
+        case .beatsEarphones: return "􀺒"
+        case .beatsPowerbeatsPro: return "􀹭"
+        case .beatsPowerbeatsProRight: return "􀹮"
+        case .beatsPowerbeatsProLeft: return "􀹯"
+        case .beatsPowerbeats: return "􀻔"
+        case .beatsPowerbeats3: return "􀺯"
+        case .beatsStudioBuds: return "􀾢"
+        case .beatsStudioBudLeft: return "􀾣"
+        case .beatsStudioBudRight: return "􀾤"
+        case .beatsStudioBudsChargingCase: return "􀾥"
+        case .beatsStudioBudsChargingCaseFill: return "􀾦"
+        case .beatsFitPro: return "􁅞"
+        case .beatsFitProLeft: return "􁅟"
+        case .beatsFitProRight: return "􁅠"
+        case .beatsFitProChargingCase: return "􁅡"
+        case .beatsFitProChargingCaseFill: return "􁅢"
+        case .beatsPowerbeatsProChargingCase: return "􀹰"
+        case .beatsPowerbeatsProChargingCaseFill: return "􀹱"
+        case .homePodMini: return "􀷧"
+        case .homePodMiniFill: return "􀷨"
+        case .homePodMini2: return "􀷩"
+        case .homePodMini2Fill: return "􀷪"
+        case .homePodAndHomePodMini: return "􀷫"
+        case .homePodAndHomePodMiniFill: return "􀷬"
+        case .hifiSpeakerAndHomePodMini: return "􀷭"
+        case .hifiSpeakerAndHomePodMiniFill: return "􀷮"
+        case .homePod: return "􀟢"
+        case .homePodFill: return "􀟣"
+        case .homePod2: return "􀮍"
+        case .homePod2Fill: return "􀟳"
+        case .hifiSpeakerAndHomePod: return "􀮎"
+        case .hifiSpeakerAndHomePodFill: return "􀟴"
+        case .hifiSpeaker: return "􀝎"
+        case .hifiSpeakerFill: return "􀝏"
+        case .hifiSpeaker2: return "􀟵"
+        case .hifiSpeaker2Fill: return "􀟶"
+        case .appleTV: return "􀨫"
+        case .appleTVFill: return "􀡴"
+        case .homePodAndAppleTV: return "􀺌"
+        case .homePodAndAppleTVFill: return "􀺍"
+        case .homePodMiniAndAppleTV: return "􀻹"
+        case .homePodMiniAndAppleTVFill: return "􀻺"
+        case .hifiSpeakerAndAppleTV: return "􀻻"
+        case .hifiSpeakerAndAppleTVFill: return "􀻼"
+        case .appleTVRemoteGen1: return "􀼩"
+        case .appleTVRemoteGen1Fill: return "􀼪"
+        case .appleTVRemoteGen2: return "􀼫"
+        case .appleTVRemoteGen2Fill: return "􀼬"
+        case .appleTVRemoteGen3: return "􀝩"
+        case .appleTVRemoteGen3Fill: return "􀝪"
+        case .appleTVRemoteGen4: return "􀼧"
+        case .appleTVRemoteGen4Fill: return "􀼨"
+        case .avRemote: return "􁓺"
+        case .avRemoteFill: return "􁓻"
+        case .magsafeBatteryPack: return "􀺓"
+        case .magsafeBatteryPackFill: return "􀺔"
+        case .mediaStick: return "􀺥"
+        case .cableConnector: return "􀺦"
+        case .cableConnectorHorizontal: return "􀴞"
+        case .tv: return "􀎲"
+        case .tvFill: return "􀒶"
+        case .tvInsetFilled: return "􀷘"
+        case .tvCircle: return "􀎳"
+        case .tvCircleFill: return "􀎴"
+        case .sparklesTV: return "􁅋"
+        case .sparklesTVFill: return "􁅌"
+        case ._4kTV: return "􀦽"
+        case ._4kTVFill: return "􀦾"
+        case .musicNoteTV: return "􀎵"
+        case .musicNoteTVFill: return "􀒷"
+        case .playTV: return "􀵨"
+        case .playTVFill: return "􀵩"
+        case .photoTV: return "􀵪"
+        case .tvAndHifiSpeakerFill: return "􀫑"
+        case .tvAndMediaBox: return "􀲰"
+        case .tvAndMediaBoxFill: return "􁝡"
+        case .car: return "􀙘"
+        case .carFill: return "􀙙"
+        case .carCircle: return "􀭯"
+        case .carCircleFill: return "􀭰"
+        case .carFrontWavesUp: return "􁢱"
+        case .carFrontWavesUpFill: return "􁢲"
+        case .carRear: return "􀽛"
+        case .carRearFill: return "􀽜"
+        case .boltCar: return "􀡞"
+        case .boltCarFill: return "􀝃"
+        case .boltCarCircle: return "􁄲"
+        case .boltCarCircleFill: return "􁄳"
+        case .car2: return "􀝄"
+        case .car2Fill: return "􀝅"
+        case .hearingDeviceEar: return "􀪓"
+        case .hearingDeviceEarFill: return "􁉗"
+        case .hearingDeviceAndSignalMeter: return "􁎏"
+        case .hearingDeviceAndSignalMeterFill: return "􁎐"
+        case .gameController: return "􀛸"
+        case .gameControllerFill: return "􀛹"
         }
     }
 }
