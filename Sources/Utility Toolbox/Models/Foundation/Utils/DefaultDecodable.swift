@@ -43,6 +43,7 @@ public extension KeyedDecodingContainer {
 
 public extension DecodableDefault {
     typealias Source = DecodableDefaultSource
+    typealias Enum = Decodable & RawRepresentable
     typealias List = Decodable & ExpressibleByArrayLiteral
     typealias Map = Decodable & ExpressibleByDictionaryLiteral
     
@@ -57,6 +58,10 @@ public extension DecodableDefault {
         
         public enum EmptyString: Source {
             public static var defaultValue: String { "" }
+        }
+        
+        public enum DefaultEnumCase<T: Enum>: Source {
+            public static var defaultValue: T? { .none }
         }
         
         public enum EmptyList<T: List>: Source {
