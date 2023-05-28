@@ -56,12 +56,12 @@ public extension DecodableDefault {
             public static var defaultValue: Bool { false }
         }
         
-        public enum EmptyString: Source {
-            public static var defaultValue: String { "" }
-        }
-        
         public enum DefaultEnumCase<T: Enum>: Source {
             public static var defaultValue: T? { .none }
+        }
+        
+        public enum EmptyString: Source {
+            public static var defaultValue: String { "" }
         }
         
         public enum EmptyList<T: List>: Source {
@@ -93,6 +93,7 @@ public extension DecodableDefault {
 public extension DecodableDefault {
     typealias True = Wrapper<Sources.True>
     typealias False = Wrapper<Sources.False>
+    typealias DefaultEnumCase<T: Enum> = Wrapper<Sources.DefaultEnumCase<T>>
     typealias EmptyString = Wrapper<Sources.EmptyString>
     typealias EmptyList<T: List> = Wrapper<Sources.EmptyList<T>>
     typealias EmptyMap<T: Map> = Wrapper<Sources.EmptyMap<T>>
