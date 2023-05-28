@@ -230,6 +230,10 @@ public extension Array where Element: Hashable {
         let counts = Dictionary(mappedItems, uniquingKeysWith: +)
         return counts
     }
+    
+    mutating func removeDuplicates() {
+        self = self.uniqued().map { $0 }
+    }
 }
 
 // MARK: - String Element
