@@ -77,6 +77,12 @@ public extension Array {
         }
     }
     
+    mutating func removeLast(until size: Int) {
+        while self.count > size {
+            self.removeLast()
+        }
+    }
+    
     var isNotEmpty: Bool {
         !self.isEmpty
     }
