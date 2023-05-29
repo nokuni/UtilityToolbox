@@ -133,128 +133,67 @@ public enum SFTransportSymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .figureWalk:
-            return "􀝢"
-        case .figureWalkCircle:
-            return "􀝣"
-        case .figureWalkCircleFill:
-            return "􀝤"
-        case .figureWalkDiamond:
-            return "􀪢"
-        case .figureWalkDiamondFill:
-            return "􀪣"
-        case .figureWave:
-            return "􀝻"
-        case .figureWaveCircle:
-            return "􀝼"
-        case .figureWaveCircleFill:
-            return "􀝽"
-        case .airplane:
-            return "􀑓"
-        case .airplaneCircle:
-            return "􀒸"
-        case .airplaneCircleFill:
-            return "􀒹"
-        case .airplaneArrival:
-            return "􀷯"
-        case .airplaneDeparture:
-            return "􀷰"
-        case .car:
-            return "􀙘"
-        case .carFill:
-            return "􀙙"
-        case .carCircle:
-            return "􀭯"
-        case .carCircleFill:
-            return "􀭰"
-        case .carFrontWavesUp:
-            return "􁢱"
-        case .carFrontWavesUpFill:
-            return "􁢲"
-        case .carRear:
-            return "􀽛"
-        case .carRearFill:
-            return "􀽜"
-        case .boltCar:
-            return "􀡞"
-        case .boltCarFill:
-            return "􀝃"
-        case .boltCarCircle:
-            return "􁄲"
-        case .boltCarCircleFill:
-            return "􁄳"
-        case .car2:
-            return "􀝄"
-        case .car2Fill:
-            return "􀝅"
-        case .bus:
-            return "􀝈"
-        case .busFill:
-            return "􀝉"
-        case .busDoubleDecker:
-            return "􀜛"
-        case .busDoubleDeckerFill:
-            return "􀜜"
-        case .tram:
-            return "􀝆"
-        case .tramFill:
-            return "􀝇"
-        case .tramCircle:
-            return "􀲛"
-        case .tramCircleFill:
-            return "􀲜"
-        case .tramFillTunnel:
-            return "􀜝"
-        case .cableCar:
-            return "􀷶"
-        case .cableCarFill:
-            return "􀷷"
-        case .ferry:
-            return "􀸅"
-        case .ferryFill:
-            return "􀸆"
-        case .carFerry:
-            return "􀸌"
-        case .carFerryFill:
-            return "􀸍"
-        case .trainSideFrontCar:
-            return "􀼮"
-        case .trainSideMiddleCar:
-            return "􀼯"
-        case .trainSideRearCar:
-            return "􀼰"
-        case .boxTruck:
-            return "􁁾"
-        case .boxTruckFill:
-            return "􁁿"
-        case .boxTruckBadgeClock:
-            return "􁂀"
-        case .boxTruckBadgeClockFill:
-            return "􁂁"
-        case .bicycle:
-            return "􀡥"
-        case .bicycleCircle:
-            return "􀱬"
-        case .bicycleCircleFill:
-            return "􀱭"
-        case .scooter:
-            return "􁈌"
-        case .sailboat:
-            return "􁋴"
-        case .sailboatFill:
-            return "􁋵"
-        case .sailboatCircle:
-            return "􁞘"
-        case .sailboatCircleFill:
-            return "􁞙"
-        case .fuelPump:
-            return "􀵞"
-        case .fuelPumpFill:
-            return "􀵟"
-        case .fuelPumpCircle:
-            return "􀵠"
-        case .fuelPumpCircleFill:
-            return "􀵡"
+        case .figureWalk: return "􀝢"
+        case .figureWalkCircle: return "􀝣"
+        case .figureWalkCircleFill: return "􀝤"
+        case .figureWalkDiamond: return "􀪢"
+        case .figureWalkDiamondFill: return "􀪣"
+        case .figureWave: return "􀝻"
+        case .figureWaveCircle: return "􀝼"
+        case .figureWaveCircleFill: return "􀝽"
+        case .airplane: return "􀑓"
+        case .airplaneCircle: return "􀒸"
+        case .airplaneCircleFill: return "􀒹"
+        case .airplaneArrival: return "􀷯"
+        case .airplaneDeparture: return "􀷰"
+        case .car: return "􀙘"
+        case .carFill: return "􀙙"
+        case .carCircle: return "􀭯"
+        case .carCircleFill: return "􀭰"
+        case .carFrontWavesUp: return "􁢱"
+        case .carFrontWavesUpFill: return "􁢲"
+        case .carRear: return "􀽛"
+        case .carRearFill: return "􀽜"
+        case .boltCar: return "􀡞"
+        case .boltCarFill: return "􀝃"
+        case .boltCarCircle: return "􁄲"
+        case .boltCarCircleFill: return "􁄳"
+        case .car2: return "􀝄"
+        case .car2Fill: return "􀝅"
+        case .bus: return "􀝈"
+        case .busFill: return "􀝉"
+        case .busDoubleDecker: return "􀜛"
+        case .busDoubleDeckerFill: return "􀜜"
+        case .tram: return "􀝆"
+        case .tramFill: return "􀝇"
+        case .tramCircle: return "􀲛"
+        case .tramCircleFill: return "􀲜"
+        case .tramFillTunnel: return "􀜝"
+        case .cableCar: return "􀷶"
+        case .cableCarFill: return "􀷷"
+        case .ferry: return "􀸅"
+        case .ferryFill: return "􀸆"
+        case .carFerry: return "􀸌"
+        case .carFerryFill: return "􀸍"
+        case .trainSideFrontCar: return "􀼮"
+        case .trainSideMiddleCar: return "􀼯"
+        case .trainSideRearCar: return "􀼰"
+        case .boxTruck: return "􁁾"
+        case .boxTruckFill: return "􁁿"
+        case .boxTruckBadgeClock: return "􁂀"
+        case .boxTruckBadgeClockFill: return "􁂁"
+        case .bicycle: return "􀡥"
+        case .bicycleCircle: return "􀱬"
+        case .bicycleCircleFill: return "􀱭"
+        case .scooter: return "􁈌"
+        case .sailboat: return "􁋴"
+        case .sailboatFill: return "􁋵"
+        case .sailboatCircle: return "􁞘"
+        case .sailboatCircleFill: return "􁞙"
+        case .fuelPump: return "􀵞"
+        case .fuelPumpFill: return "􀵟"
+        case .fuelPumpCircle: return "􀵠"
+        case .fuelPumpCircleFill: return "􀵡"
         }
     }
 }

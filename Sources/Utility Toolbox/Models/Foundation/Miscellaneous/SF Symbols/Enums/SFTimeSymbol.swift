@@ -79,74 +79,40 @@ public enum SFTimeSymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .clock:
-            return "􀐫"
-        case .clockFill:
-            return "􀐬"
-        case .clockCircle:
-            return "􁆸"
-        case .clockCircleFill:
-            return "􁆹"
-        case .clockBadge:
-            return "􁙜"
-        case .clockBadgeFill:
-            return "􁙝"
-        case .clockBadgeCheckMark:
-            return "􀹴"
-        case .clockBadgeCheckMarkFill:
-            return "􀹵"
-        case .clockBadgeXMark:
-            return "􁜒"
-        case .clockBadgeXMarkFill:
-            return "􁜓"
-        case .clockBadgeQuestionMark:
-            return "􁜱"
-        case .clockBadgeQuestionMarkFill:
-            return "􁜲"
-        case .clockBadgeExclamationMark:
-            return "􀹶"
-        case .clockBadgeExclamationMarkFill:
-            return "􀹷"
-        case .deskclock:
-            return "􀡑"
-        case .deskclockFill:
-            return "􀡒"
-        case .alarm:
-            return "􀐭"
-        case .alarmFill:
-            return "􀐮"
-        case .alarmWavesLeftAndRight:
-            return "􁗀"
-        case .alarmWavesLeftAndRightFill:
-            return "􁗁"
-        case .stopwatch:
-            return "􀐯"
-        case .stopwatchFill:
-            return "􀐰"
-        case .timer:
-            return "􀐱"
-        case .timerCircle:
-            return "􁙅"
-        case .timerCircleFill:
-            return "􁙆"
-        case .timerSquare:
-            return "􀭄"
-        case .clockArrowCirclePath:
-            return "􀣔"
-        case .clockArrow2CirclePath:
-            return "􀯛"
-        case .hourglass:
-            return "􀖇"
-        case .hourglassCircle:
-            return "􁇛"
-        case .hourglassCircleFill:
-            return "􁇜"
-        case .hourglassBadgePlus:
-            return "􀣬"
-        case .hourglassBottomHalfFilled:
-            return "􀖈"
-        case .hourglassTopHalfFilled:
-            return "􀖉"
+        case .clock: return "􀐫"
+        case .clockFill: return "􀐬"
+        case .clockCircle: return "􁆸"
+        case .clockCircleFill: return "􁆹"
+        case .clockBadge: return "􁙜"
+        case .clockBadgeFill: return "􁙝"
+        case .clockBadgeCheckMark: return "􀹴"
+        case .clockBadgeCheckMarkFill: return "􀹵"
+        case .clockBadgeXMark: return "􁜒"
+        case .clockBadgeXMarkFill: return "􁜓"
+        case .clockBadgeQuestionMark: return "􁜱"
+        case .clockBadgeQuestionMarkFill: return "􁜲"
+        case .clockBadgeExclamationMark: return "􀹶"
+        case .clockBadgeExclamationMarkFill: return "􀹷"
+        case .deskclock: return "􀡑"
+        case .deskclockFill: return "􀡒"
+        case .alarm: return "􀐭"
+        case .alarmFill: return "􀐮"
+        case .alarmWavesLeftAndRight: return "􁗀"
+        case .alarmWavesLeftAndRightFill: return "􁗁"
+        case .stopwatch: return "􀐯"
+        case .stopwatchFill: return "􀐰"
+        case .timer: return "􀐱"
+        case .timerCircle: return "􁙅"
+        case .timerCircleFill: return "􁙆"
+        case .timerSquare: return "􀭄"
+        case .clockArrowCirclePath: return "􀣔"
+        case .clockArrow2CirclePath: return "􀯛"
+        case .hourglass: return "􀖇"
+        case .hourglassCircle: return "􁇛"
+        case .hourglassCircleFill: return "􁇜"
+        case .hourglassBadgePlus: return "􀣬"
+        case .hourglassBottomHalfFilled: return "􀖈"
+        case .hourglassTopHalfFilled: return "􀖉"
         }
     }
 }

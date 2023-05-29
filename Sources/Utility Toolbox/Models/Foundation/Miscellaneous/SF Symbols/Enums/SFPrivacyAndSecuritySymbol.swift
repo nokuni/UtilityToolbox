@@ -281,276 +281,141 @@ public enum SFPrivacyAndSecuritySymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .lockDoc:
-            return "􀢍"
-        case .lockDocFill:
-            return "􀢎"
-        case .networkBadgeShieldHalfFilled:
-            return "􁅏"
-        case .handRaisedSquareOnSquare:
-            return "􀴨"
-        case .handRaisedSquareOnSquareFill:
-            return "􀴩"
-        case .exclamationMarkTriangle:
-            return "􀇾"
-        case .exclamationMarkTriangleFill:
-            return "􀇿"
-        case .seal:
-            return "􀟆"
-        case .sealFill:
-            return "􀟇"
-        case .checkMarkSeal:
-            return "􀇺"
-        case .checkMarkSealFill:
-            return "􀇻"
-        case .xMarkSeal:
-            return "􀇼"
-        case .xMarkSealFill:
-            return "􀇽"
-        case .shield:
-            return "􀙦"
-        case .shieldFill:
-            return "􀙧"
-        case .shieldLeftHalfFilled:
-            return "􀙨"
-        case .shieldRightHalfFilled:
-            return "􀿮"
-        case .shieldSlash:
-            return "􀞡"
-        case .shieldSlashFill:
-            return "􀞢"
-        case .shieldLeftHalfFilledSlash:
-            return "􀲊"
-        case .firewall:
-            return "􁙾"
-        case .firewallFill:
-            return "􁙿"
-        case .checkMarkICloud:
-            return "􀢓"
-        case .checkMarkICloudFill:
-            return "􀢔"
-        case .lockICloud:
-            return "􀙵"
-        case .lockICloudFill:
-            return "􀙶"
-        case .keyICloud:
-            return "􀢕"
-        case .keyICloudFill:
-            return "􀢖"
-        case .checkMarkMessage:
-            return "􁐕"
-        case .checkMarkMessageFill:
-            return "􁐖"
-        case .exclamationMarkBubble:
-            return "􀌬"
-        case .exclamationMarkBubbleFill:
-            return "􀌭"
-        case .exclamationMarkBubbleCircle:
-            return "􁆶"
-        case .exclamationMarkBubbleCircleFill:
-            return "􁆷"
-        case .bubbleLeftAndExclamationMarkBubbleRight:
-            return "􁃒"
-        case .bubbleLeftAndExclamationMarkBubbleRightFill:
-            return "􁃓"
-        case .envelopeBadgeShieldHalfFilled:
-            return "􀫙"
-        case .envelopeBadgeShieldHalfFilledFill:
-            return "􀫚"
-        case .noSign:
-            return "􀍼"
-        case .noSignApp:
-            return "􁝊"
-        case .noSignAppFill:
-            return "􁝋"
-        case .lock:
-            return "􀎠"
-        case .lockFill:
-            return "􀎡"
-        case .lockCircle:
-            return "􀒲"
-        case .lockCircleFill:
-            return "􀒳"
-        case .lockSquare:
-            return "􀢵"
-        case .lockSquareFill:
-            return "􀢶"
-        case .lockSquareStack:
-            return "􀡜"
-        case .lockSquareStackFill:
-            return "􀡝"
-        case .lockRectangle:
-            return "􀢈"
-        case .lockRectangleFill:
-            return "􀢉"
-        case .lockRectangleStack:
-            return "􀢱"
-        case .lockRectangleStackFill:
-            return "􀢲"
-        case .lockRectangleOnRectangle:
-            return "􀢳"
-        case .lockRectangleOnRectangleFill:
-            return "􀢴"
-        case .lockShield:
-            return "􀞙"
-        case .lockShieldFill:
-            return "􀞚"
-        case .lockSlash:
-            return "􀎢"
-        case .lockSlashFill:
-            return "􀎣"
-        case .lockTriangleBadgeExclamationMark:
-            return "􁙍"
-        case .lockTriangleBadgeExclamationMarkFill:
-            return "􁙎"
-        case .exclamationMarkLock:
-            return "􁙥"
-        case .exclamationMarkLockFill:
-            return "􁙦"
-        case .lockOpen:
-            return "􀎤"
-        case .lockOpenFill:
-            return "􀎥"
-        case .lockOpenTriangleBadgeExclamationMark:
-            return "􁜗"
-        case .lockOpenTriangleBadgeExclamationMarkFill:
-            return "􁜘"
-        case .lockRotation:
-            return "􀑙"
-        case .lockOpenRotation:
-            return "􀑚"
-        case .key:
-            return "􀟕"
-        case .keyFill:
-            return "􀟖"
-        case .keyRadioWavesForward:
-            return "􁠯"
-        case .keyRadioWavesForwardFill:
-            return "􁠰"
-        case .keyHorizontal:
-            return "􁠱"
-        case .keyHorizontalFill:
-            return "􁠲"
-        case .questionMarkKeyFilled:
-            return "􁠳"
-        case .faceID:
-            return "􀎽"
-        case .lockDisplay:
-            return "􀼑"
-        case .lockOpenDisplay:
-            return "􀼜"
-        case .lockDesktopComputer:
-            return "􀼒"
-        case .lockOpenDesktopComputer:
-            return "􀼝"
-        case .lockLaptopComputer:
-            return "􀼓"
-        case .lockOpenLaptopComputer:
-            return "􀼞"
-        case .lockIphone:
-            return "􀼔"
-        case .lockOpenIphone:
-            return "􀼟"
-        case .lockIpad:
-            return "􀼕"
-        case .lockOpenIpad:
-            return "􀼠"
-        case .lockAppleWatch:
-            return "􀵅"
-        case .lockOpenAppleWatch:
-            return "􀼡"
-        case .eye:
-            return "􀋭"
-        case .eyeFill:
-            return "􀋮"
-        case .eyeCircle:
-            return "􀛿"
-        case .eyeCircleFill:
-            return "􀜀"
-        case .eyeSquare:
-            return "􀽇"
-        case .eyeSquareFill:
-            return "􀽈"
-        case .eyeSlash:
-            return "􀋯"
-        case .eyeSlashFill:
-            return "􀋰"
-        case .eyeSlashCircle:
-            return "􀜁"
-        case .eyeSlashCircleFill:
-            return "􀜂"
-        case .eyeTrianglebadgeExclamationMark:
-            return "􁂔"
-        case .eyeTrianglebadgeExclamationMarkFill:
-            return "􁂕"
-        case .handRaised:
-            return "􀉻"
-        case .handRaisedFill:
-            return "􀉼"
-        case .handRaisedCircle:
-            return "􀷊"
-        case .handRaisedCircleFill:
-            return "􀷋"
-        case .handRaisedSquare:
-            return "􀽓"
-        case .handRaisedSquareFill:
-            return "􀽔"
-        case .handRaisedApp:
-            return "􁝌"
-        case .handRaisedAppFill:
-            return "􁝍"
-        case .handRaisedSlash:
-            return "􀉽"
-        case .handRaisedSlashFill:
-            return "􀉾"
-        case .keyViewFinder:
-            return "􁎕"
-        case .touchID:
-            return "􀟒"
-        case .exclamationMarkShield:
-            return "􀞟"
-        case .exclamationMarkShieldFill:
-            return "􀞠"
-        case .xMarkShield:
-            return "􀞝"
-        case .xMarkShieldFill:
-            return "􀞞"
-        case .checkMark:
-            return "􀆅"
-        case .checkMarkCircle:
-            return "􀁢"
-        case .checkMarkCircleFill:
-            return "􀁣"
-        case .checkMarkCircleBadgeQuestionMark:
-            return "􁜞"
-        case .checkMarkCircleBadgeQuestionMarkFill:
-            return "􁜟"
-        case .checkMarkCircleBadgeXMark:
-            return "􁜢"
-        case .checkMarkCircleBadgeXMarkFill:
-            return "􁜣"
-        case .checkMarkCircleTriangleBadgeExclamationMark:
-            return "􁃎"
-        case .checkMarkSquare:
-            return "􀃲"
-        case .checkMarkSquareFill:
-            return "􀃳"
-        case .checkMarkRectangle:
-            return "􀏋"
-        case .checkMarkRectangleFill:
-            return "􀏌"
-        case .checkMarkRectanglePortrait:
-            return "􀡮"
-        case .checkMarkRectanglePortraitFill:
-            return "􀡯"
-        case .checkMarkDiamond:
-            return "􁁚"
-        case .checkMarkDiamondFill:
-            return "􁁛"
-        case .checkMarkShield:
-            return "􀞛"
-        case .checkMarkShieldFill:
-            return "􀞜"
+        case .lockDoc: return "􀢍"
+        case .lockDocFill: return "􀢎"
+        case .networkBadgeShieldHalfFilled: return "􁅏"
+        case .handRaisedSquareOnSquare: return "􀴨"
+        case .handRaisedSquareOnSquareFill: return "􀴩"
+        case .exclamationMarkTriangle: return "􀇾"
+        case .exclamationMarkTriangleFill: return "􀇿"
+        case .seal: return "􀟆"
+        case .sealFill: return "􀟇"
+        case .checkMarkSeal: return "􀇺"
+        case .checkMarkSealFill: return "􀇻"
+        case .xMarkSeal: return "􀇼"
+        case .xMarkSealFill: return "􀇽"
+        case .shield: return "􀙦"
+        case .shieldFill: return "􀙧"
+        case .shieldLeftHalfFilled: return "􀙨"
+        case .shieldRightHalfFilled: return "􀿮"
+        case .shieldSlash: return "􀞡"
+        case .shieldSlashFill: return "􀞢"
+        case .shieldLeftHalfFilledSlash: return "􀲊"
+        case .firewall: return "􁙾"
+        case .firewallFill: return "􁙿"
+        case .checkMarkICloud: return "􀢓"
+        case .checkMarkICloudFill: return "􀢔"
+        case .lockICloud: return "􀙵"
+        case .lockICloudFill: return "􀙶"
+        case .keyICloud: return "􀢕"
+        case .keyICloudFill: return "􀢖"
+        case .checkMarkMessage: return "􁐕"
+        case .checkMarkMessageFill: return "􁐖"
+        case .exclamationMarkBubble: return "􀌬"
+        case .exclamationMarkBubbleFill: return "􀌭"
+        case .exclamationMarkBubbleCircle: return "􁆶"
+        case .exclamationMarkBubbleCircleFill: return "􁆷"
+        case .bubbleLeftAndExclamationMarkBubbleRight: return "􁃒"
+        case .bubbleLeftAndExclamationMarkBubbleRightFill: return "􁃓"
+        case .envelopeBadgeShieldHalfFilled: return "􀫙"
+        case .envelopeBadgeShieldHalfFilledFill: return "􀫚"
+        case .noSign: return "􀍼"
+        case .noSignApp: return "􁝊"
+        case .noSignAppFill: return "􁝋"
+        case .lock: return "􀎠"
+        case .lockFill: return "􀎡"
+        case .lockCircle: return "􀒲"
+        case .lockCircleFill: return "􀒳"
+        case .lockSquare: return "􀢵"
+        case .lockSquareFill: return "􀢶"
+        case .lockSquareStack: return "􀡜"
+        case .lockSquareStackFill: return "􀡝"
+        case .lockRectangle: return "􀢈"
+        case .lockRectangleFill: return "􀢉"
+        case .lockRectangleStack: return "􀢱"
+        case .lockRectangleStackFill: return "􀢲"
+        case .lockRectangleOnRectangle: return "􀢳"
+        case .lockRectangleOnRectangleFill: return "􀢴"
+        case .lockShield: return "􀞙"
+        case .lockShieldFill: return "􀞚"
+        case .lockSlash: return "􀎢"
+        case .lockSlashFill: return "􀎣"
+        case .lockTriangleBadgeExclamationMark: return "􁙍"
+        case .lockTriangleBadgeExclamationMarkFill: return "􁙎"
+        case .exclamationMarkLock: return "􁙥"
+        case .exclamationMarkLockFill: return "􁙦"
+        case .lockOpen: return "􀎤"
+        case .lockOpenFill: return "􀎥"
+        case .lockOpenTriangleBadgeExclamationMark: return "􁜗"
+        case .lockOpenTriangleBadgeExclamationMarkFill: return "􁜘"
+        case .lockRotation: return "􀑙"
+        case .lockOpenRotation: return "􀑚"
+        case .key: return "􀟕"
+        case .keyFill: return "􀟖"
+        case .keyRadioWavesForward: return "􁠯"
+        case .keyRadioWavesForwardFill: return "􁠰"
+        case .keyHorizontal: return "􁠱"
+        case .keyHorizontalFill: return "􁠲"
+        case .questionMarkKeyFilled: return "􁠳"
+        case .faceID: return "􀎽"
+        case .lockDisplay: return "􀼑"
+        case .lockOpenDisplay: return "􀼜"
+        case .lockDesktopComputer: return "􀼒"
+        case .lockOpenDesktopComputer: return "􀼝"
+        case .lockLaptopComputer: return "􀼓"
+        case .lockOpenLaptopComputer: return "􀼞"
+        case .lockIphone: return "􀼔"
+        case .lockOpenIphone: return "􀼟"
+        case .lockIpad: return "􀼕"
+        case .lockOpenIpad: return "􀼠"
+        case .lockAppleWatch: return "􀵅"
+        case .lockOpenAppleWatch: return "􀼡"
+        case .eye: return "􀋭"
+        case .eyeFill: return "􀋮"
+        case .eyeCircle: return "􀛿"
+        case .eyeCircleFill: return "􀜀"
+        case .eyeSquare: return "􀽇"
+        case .eyeSquareFill: return "􀽈"
+        case .eyeSlash: return "􀋯"
+        case .eyeSlashFill: return "􀋰"
+        case .eyeSlashCircle: return "􀜁"
+        case .eyeSlashCircleFill: return "􀜂"
+        case .eyeTrianglebadgeExclamationMark: return "􁂔"
+        case .eyeTrianglebadgeExclamationMarkFill: return "􁂕"
+        case .handRaised: return "􀉻"
+        case .handRaisedFill: return "􀉼"
+        case .handRaisedCircle: return "􀷊"
+        case .handRaisedCircleFill: return "􀷋"
+        case .handRaisedSquare: return "􀽓"
+        case .handRaisedSquareFill: return "􀽔"
+        case .handRaisedApp: return "􁝌"
+        case .handRaisedAppFill: return "􁝍"
+        case .handRaisedSlash: return "􀉽"
+        case .handRaisedSlashFill: return "􀉾"
+        case .keyViewFinder: return "􁎕"
+        case .touchID: return "􀟒"
+        case .exclamationMarkShield: return "􀞟"
+        case .exclamationMarkShieldFill: return "􀞠"
+        case .xMarkShield: return "􀞝"
+        case .xMarkShieldFill: return "􀞞"
+        case .checkMark: return "􀆅"
+        case .checkMarkCircle: return "􀁢"
+        case .checkMarkCircleFill: return "􀁣"
+        case .checkMarkCircleBadgeQuestionMark: return "􁜞"
+        case .checkMarkCircleBadgeQuestionMarkFill: return "􁜟"
+        case .checkMarkCircleBadgeXMark: return "􁜢"
+        case .checkMarkCircleBadgeXMarkFill: return "􁜣"
+        case .checkMarkCircleTriangleBadgeExclamationMark: return "􁃎"
+        case .checkMarkSquare: return "􀃲"
+        case .checkMarkSquareFill: return "􀃳"
+        case .checkMarkRectangle: return "􀏋"
+        case .checkMarkRectangleFill: return "􀏌"
+        case .checkMarkRectanglePortrait: return "􀡮"
+        case .checkMarkRectanglePortraitFill: return "􀡯"
+        case .checkMarkDiamond: return "􁁚"
+        case .checkMarkDiamondFill: return "􁁛"
+        case .checkMarkShield: return "􀞛"
+        case .checkMarkShieldFill: return "􀞜"
         }
     }
 }

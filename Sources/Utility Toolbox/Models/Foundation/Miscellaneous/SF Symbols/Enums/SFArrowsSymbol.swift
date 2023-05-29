@@ -699,694 +699,350 @@ public enum SFArrowsSymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .arrowshapeLeft:
-            return "􁉄"
-        case .arrowshapeLeftFill:
-            return "􁉅"
-        case .arrowshapeRight:
-            return "􁉂"
-        case .arrowshapeRightFill:
-            return "􁉃"
-        case .arrowshapeBackward:
-            return "􁉈"
-        case .arrowshapeBackwardFill:
-            return "􁉉"
-        case .arrowshapeForward:
-            return "􁉆"
-        case .arrowshapeForwardFill:
-            return "􁉇"
-        case .arrowshapeTurnUpLeft:
-            return "􀉌"
-        case .arrowshapeTurnUpLeftFill:
-            return "􀉍"
-        case .arrowshapeTurnUpLeftCircle:
-            return "􀉎"
-        case .arrowshapeTurnUpLeftCircleFill:
-            return "􀉏"
-        case .arrowshapeTurnUpBackward:
-            return "􀰚"
-        case .arrowshapeTurnUpBackwardFill:
-            return "􀰛"
-        case .arrowshapeTurnUpBackwardCircle:
-            return "􀰜"
-        case .arrowshapeTurnUpBackwardCircleFill:
-            return "􀰝"
-        case .arrowshapeTurnUpBackwardBadgeClock:
-            return "􁎱"
-        case .arrowshapeTurnUpBackwardBadgeClockFill:
-            return "􁖾"
-        case .arrowshapeTurnUpRight:
-            return "􀉐"
-        case .arrowshapeTurnUpRightFill:
-            return "􀉑"
-        case .arrowshapeTurnUpRightCircle:
-            return "􀉒"
-        case .arrowshapeTurnUpRightCircleFill:
-            return "􀉓"
-        case .arrowshapeTurnUpForward:
-            return "􀰞"
-        case .arrowshapeTurnUpForwardFill:
-            return "􀰟"
-        case .arrowshapeTurnUpForwardCircle:
-            return "􀰠"
-        case .arrowshapeTurnUpForwardCircleFill:
-            return "􀰡"
-        case .arrowshapeTurnUpLeft2:
-            return "􀉔"
-        case .arrowshapeTurnUpLeft2Fill:
-            return "􀉕"
-        case .arrowshapeTurnUpLeft2Circle:
-            return "􀉖"
-        case .arrowshapeTurnUpLeft2CircleFill:
-            return "􀉗"
-        case .arrowshapeTurnUpBackward2:
-            return "􀰢"
-        case .arrowshapeTurnUpBackward2Fill:
-            return "􀰣"
-        case .arrowshapeTurnUpBackward2Circle:
-            return "􀰤"
-        case .arrowshapeTurnUpBackward2CircleFill:
-            return "􀰥"
-        case .arrowshapeZigzagRight:
-            return "􀉘"
-        case .arrowshapeZigzagRightFill:
-            return "􀒐"
-        case .arrowshapeZigzagForward:
-            return "􀰦"
-        case .arrowshapeZigzagForwardFill:
-            return "􀰧"
-        case .arrowshapeBounceRight:
-            return "􀉙"
-        case .arrowshapeBounceRightFill:
-            return "􀒑"
-        case .arrowshapeBounceForward:
-            return "􀰨"
-        case .arrowshapeBounceForwardFill:
-            return "􀰩"
-        case .arrowDownApp:
-            return "􀯴"
-        case .arrowDownAppFill:
-            return "􀯵"
-        case .arrowUpForwardApp:
-            return "􀮵"
-        case .arrowUpForwardAppFill:
-            return "􀮶"
-        case .arrowUpHeart:
-            return "􀲕"
-        case .arrowUpHeartFill:
-            return "􀲖"
-        case .arrowDownHeart:
-            return "􀲗"
-        case .arrowDownHeartFill:
-            return "􀲘"
-        case .arrowClockwiseHeart:
-            return "􀧡"
-        case .arrowClockwiseHeartFill:
-            return "􀧢"
-        case .location:
-            return "􀋑"
-        case .locationFill:
-            return "􀋒"
-        case .locationCircle:
-            return "􀋕"
-        case .locationCircleFill:
-            return "􀋖"
-        case .locationSquare:
-            return "􀼻"
-        case .locationSquareFill:
-            return "􀼼"
-        case .locationSlash:
-            return "􀘬"
-        case .locationSlashFill:
-            return "􀘭"
-        case .locationSlashCircle:
-            return "􁙇"
-        case .locationSlashCircleFill:
-            return "􁙈"
-        case .locationNorth:
-            return "􀋓"
-        case .locationNorthFill:
-            return "􀋔"
-        case .locationNorthCircle:
-            return "􀷌"
-        case .locationNorthCircleFill:
-            return "􀷍"
-        case .locationNorthLine:
-            return "􀋗"
-        case .locationNorthLinefill:
-            return "􀋘"
-        case .leafArrowTriangleCirclePath:
-            return "􀙜"
-        case .arrowTriangleLeftAndLineVerticalAndArrowTriangleRight:
-            return "􀠉"
-        case .arrowTriangleLeftAndLineVerticalAndArrowTriangleRightFill:
-            return "􀟦"
-        case .arrowTriangleRightAndLineVerticalAndArrowTriangleLeft:
-            return "􀠊"
-        case .arrowTriangleRightAndLineVerticalAndArrowTriangleLeftFill:
-            return "􀟧"
-        case .chevronLeft:
-            return "􀆉"
-        case .chevronLeftCircle:
-            return "􀁲"
-        case .chevronLeftCircleFill:
-            return "􀁳"
-        case .chevronLeftSquare:
-            return "􀄂"
-        case .chevronLeftSquareFill:
-            return "􀄃"
-        case .chevronBackward:
-            return "􀯶"
-        case .chevronBackwardCircle:
-            return "􀯷"
-        case .chevronBackwardCircleFill:
-            return "􀯸"
-        case .chevronBackwardSquare:
-            return "􀯹"
-        case .chevronBackwardSquareFill:
-            return "􀯺"
-        case .chevronRight:
-            return "􀆊"
-        case .chevronRightCircle:
-            return "􀁴"
-        case .chevronRightCircleFill:
-            return "􀁵"
-        case .chevronRightSquare:
-            return "􀄄"
-        case .chevronRightSquareFill:
-            return "􀄅"
-        case .chevronForward:
-            return "􀯻"
-        case .chevronForwardCircle:
-            return "􀯼"
-        case .chevronForwardCircleFill:
-            return "􀯽"
-        case .chevronForwardSquare:
-            return "􀯾"
-        case .chevronForwardSquareFill:
-            return "􀯿"
-        case .chevronLeft2:
-            return "􀆋"
-        case .chevronBackward2:
-            return "􀰪"
-        case .chevronRight2:
-            return "􀆌"
-        case .chevronForward2:
-            return "􀰫"
-        case .chevronUp:
-            return "􀆇"
-        case .chevronUpCircle:
-            return "􀁮"
-        case .chevronUpCircleFill:
-            return "􀁯"
-        case .chevronUpSquare:
-            return "􀃾"
-        case .chevronUpSquareFill:
-            return "􀃿"
-        case .chevronDown:
-            return "􀆈"
-        case .chevronDownCircle:
-            return "􀁰"
-        case .chevronDownCircleFill:
-            return "􀁱"
-        case .chevronDownSquare:
-            return "􀄀"
-        case .chevronDownSquareFill:
-            return "􀄁"
-        case .chevronUpChevronDown:
-            return "􀆏"
-        case .chevronCompactUp:
-            return "􀆐"
-        case .chevronCompactDown:
-            return "􀆑"
-        case .chevronCompactLeft:
-            return "􀆒"
-        case .chevronCompactRight:
-            return "􀆓"
-        case .arrowLeft:
-            return "􀄪"
-        case .arrowLeftCircle:
-            return "􀁺"
-        case .arrowLeftCircleFill:
-            return "􀁻"
-        case .arrowLeftSquare:
-            return "􀄊"
-        case .arrowLeftSquareFill:
-            return "􀄋"
-        case .arrowBackward:
-            return "􀰌"
-        case .arrowBackwardCircle:
-            return "􀰍"
-        case .arrowBackwardCircleFill:
-            return "􀰎"
-        case .arrowBackwardSquare:
-            return "􀰏"
-        case .arrowBackwardSquareFill:
-            return "􀰐"
-        case .arrowRight:
-            return "􀄫"
-        case .arrowRightCircle:
-            return "􀁼"
-        case .arrowRightCircleFill:
-            return "􀁽"
-        case .arrowRightSquare:
-            return "􀄌"
-        case .arrowRightSquareFill:
-            return "􀄍"
-        case .arrowForward:
-            return "􀰑"
-        case .arrowForwardCircle:
-            return "􀰒"
-        case .arrowForwardCircleFill:
-            return "􀰓"
-        case .arrowForwardSquare:
-            return "􀰔"
-        case .arrowForwardSquareFill:
-            return "􀰕"
-        case .arrowUp:
-            return "􀄨"
-        case .arrowUpCircle:
-            return "􀁶"
-        case .arrowUpCircleFill:
-            return "􀁷"
-        case .arrowUpSquare:
-            return "􀄆"
-        case .arrowUpSquareFill:
-            return "􀄇"
-        case .arrowUpCircleBadgeClock:
-            return "􁎳"
-        case .arrowDown:
-            return "􀄩"
-        case .arrowDownCircle:
-            return "􀁸"
-        case .arrowDownCircleFill:
-            return "􀁹"
-        case .arrowDownSquare:
-            return "􀄈"
-        case .arrowDownSquareFill:
-            return "􀄉"
-        case .arrowUpLeft:
-            return "􀄮"
-        case .arrowUpLeftcircle:
-            return "􀂂"
-        case .arrowUpLeftCircleFill:
-            return "􀂃"
-        case .arrowUpLeftSquare:
-            return "􀄒"
-        case .arrowUpLeftSquareFill:
-            return "􀄓"
-        case .arrowUpBackward:
-            return "􀰹"
-        case .arrowUpBackwardCircle:
-            return "􀰺"
-        case .arrowUpBackwardCircleFill:
-            return "􀰻"
-        case .arrowUpBackwardSquare:
-            return "􀰼"
-        case .arrowUpBackwardSquareFill:
-            return "􀰽"
-        case .arrowUpRight:
-            return "􀄯"
-        case .arrowUpRightCircle:
-            return "􀂄"
-        case .arrowUpRightCircleFill:
-            return "􀂅"
-        case .arrowUpRightSquare:
-            return "􀄔"
-        case .arrowUpRightSquareFill:
-            return "􀄕"
-        case .arrowUpForward:
-            return "􀰾"
-        case .arrowUpForwardCircle:
-            return "􀰿"
-        case .arrowUpForwardCircleFill:
-            return "􀱀"
-        case .arrowUpForwardSquare:
-            return "􀱁"
-        case .arrowUpForwardSquareFill:
-            return "􀱂"
-        case .arrowDownLeft:
-            return "􀄰"
-        case .arrowDownLeftCircle:
-            return "􀂆"
-        case .arrowDownLeftCircleFill:
-            return "􀂇"
-        case .arrowDownLeftSquare:
-            return "􀄖"
-        case .arrowDownLeftSquareFill:
-            return "􀄗"
-        case .arrowDownBackward:
-            return "􀱃"
-        case .arrowDownBackwardCircle:
-            return "􀱄"
-        case .arrowDownBackwardCircleFill:
-            return "􀱅"
-        case .arrowDownBackwardSquare:
-            return "􀱆"
-        case .arrowDownBackwardSquareFill:
-            return "􀱇"
-        case .arrowDownRight:
-            return "􀄱"
-        case .arrowDownRightCircle:
-            return "􀂈"
-        case .arrowDownRightCircleFill:
-            return "􀂉"
-        case .arrowDownRightSquare:
-            return "􀄘"
-        case .arrowDownRightSquareFill:
-            return "􀄙"
-        case .arrowDownForward:
-            return "􀱈"
-        case .arrowDownForwardCircle:
-            return "􀱉"
-        case .arrowDownForwardCircleFill:
-            return "􀱊"
-        case .arrowDownForwardSquare:
-            return "􀱋"
-        case .arrowDownForwardSquareFill:
-            return "􀱌"
-        case .arrowLeftArrowRight:
-            return "􀄭"
-        case .arrowLeftArrowRightCircle:
-            return "􀂀"
-        case .arrowLeftArrowRightCircleFill:
-            return "􀂁"
-        case .arrowLeftArrowRightSquare:
-            return "􀄐"
-        case .arrowLeftArrowRightSquareFill:
-            return "􀄑"
-        case .arrowUpArrowDown:
-            return "􀄬"
-        case .arrowUpArrowDownCircle:
-            return "􀁾"
-        case .arrowUpArrowDownCircleFill:
-            return "􀁿"
-        case .arrowupArrowDownSquare:
-            return "􀄎"
-        case .arrowupArrowDownSquareFill:
-            return "􀄏"
-        case .arrowTurnDownLeft:
-            return "􀄴"
-        case .arrowTurnUpLeft:
-            return "􀄸"
-        case .arrowTurnDownRight:
-            return "􀄵"
-        case .arrowTurnUpRight:
-            return "􀄹"
-        case .arrowTurnRightUp:
-            return "􀄲"
-        case .arrowTurnLeftUp:
-            return "􀄶"
-        case .arrowTurnRightDown:
-            return "􀄳"
-        case .arrowTurnLeftDown:
-            return "􀄷"
-        case .arrowUturnLeft:
-            return "􀄼"
-        case .arrowUturnLeftCircle:
-            return "􀂎"
-        case .arrowUturnLeftCircleFill:
-            return "􀂏"
-        case .arrowUturnLeftCircleBadgeEllipsis:
-            return "􀞸"
-        case .arrowUturnLeftSquare:
-            return "􀄞"
-        case .arrowUturnLeftSquareFill:
-            return "􀄟"
-        case .arrowUturnBackward:
-            return "􀱍"
-        case .arrowUturnBackwardCircle:
-            return "􀱎"
-        case .arrowUturnBackwardCircleFill:
-            return "􀱏"
-        case .arrowUturnBackwardCircleBadgeEllipsis:
-            return "􀱐"
-        case .arrowUturnbackwardSquare:
-            return "􀱑"
-        case .arrowUturnBackwardSquareFill:
-            return "􀱒"
-        case .arrowUturnRight:
-            return "􀄽"
-        case .arrowUturnRightCircle:
-            return "􀂐"
-        case .arrowUturnRightCircleFill:
-            return "􀂑"
-        case .arrowUturnRightSquare:
-            return "􀄠"
-        case .arrowUturnRightSquareFill:
-            return "􀄡"
-        case .arrowUturnForward:
-            return "􀱓"
-        case .arrowUturnForwardCircle:
-            return "􀱔"
-        case .arrowUturnForwardCircleFill:
-            return "􀱕"
-        case .arrowUturnForwardSquare:
-            return "􀱖"
-        case .arrowUturnForwardSquareFill:
-            return "􀱗"
-        case .arrowUturnUp:
-            return "􀄺"
-        case .arrowUturnUpCircle:
-            return "􀂊"
-        case .arrowUturnUpCircleFill:
-            return "􀂋"
-        case .arrowUturnUpSquare:
-            return "􀄚"
-        case .arrowUturnUpSquareFill:
-            return "􀄛"
-        case .arrowUturnDown:
-            return "􀄻"
-        case .arrowUturnDownCircle:
-            return "􀂌"
-        case .arrowUturnDownCircleFill:
-            return "􀂍"
-        case .arrowUturnDownSquare:
-            return "􀄜"
-        case .arrowUturnDownSquareFill:
-            return "􀄝"
-        case .arrowUpAndDownAndArrowLeftAndRight:
-            return "􀧐"
-        case .arrowUpLeftAndDownRightAndArrowUpRightAndDownLeft:
-            return "􀬑"
-        case .arrowLeftAndRight:
-            return "􀄾"
-        case .arrowLeftAndRightCircle:
-            return "􀑾"
-        case .arrowLeftAndRightCircleFill:
-            return "􀑿"
-        case .arrowLeftAndRightSquare:
-            return "􀒀"
-        case .arrowLeftAndRightSquareFill:
-            return "􀒁"
-        case .arrowUpAndDown:
-            return "􀑹"
-        case .arrowUpAndDownCircle:
-            return "􀑺"
-        case .arrowUpAndDownCircleFill:
-            return "􀑻"
-        case .arrowUpAndDownSquare:
-            return "􀑼"
-        case .arrowUpAndDownSquareFill:
-            return "􀑽"
-        case .arrowUpToLine:
-            return "􀄿"
-        case .arrowUpToLineCompact:
-            return "􀅃"
-        case .arrowUpToLineCircle:
-            return "􀓆"
-        case .arrowUpToLineCircleFill:
-            return "􀓇"
-        case .arrowDownToLine:
-            return "􀅀"
-        case .arrowDownToLineCompact:
-            return "􀅄"
-        case .arrowDownToLineCircle:
-            return "􀓈"
-        case .arrowDownToLineCircleFill:
-            return "􀓉"
-        case .arrowLeftToLine:
-            return "􀅁"
-        case .arrowLeftToLineCompact:
-            return "􀅅"
-        case .arrowLeftToLineCircle:
-            return "􀓊"
-        case .arrowLeftToLineCircleFill:
-            return "􀓋"
-        case .arrowBackwardToLine:
-            return "􁂊"
-        case .arrowBackwardToLineCircle:
-            return "􁂌"
-        case .arrowBackwardToLineCircleFill:
-            return "􁂍"
-        case .arrowRightToLine:
-            return "􀅂"
-        case .arrowRightToLineCompact:
-            return "􀅆"
-        case .arrowRightToLineCircle:
-            return "􀓌"
-        case .arrowRightToLineCircleFill:
-            return "􀓍"
-        case .arrowForwardToLine:
-            return "􁂎"
-        case .arrowForwardToLineCircle:
-            return "􁂐"
-        case .arrowForwardToLineCircleFill:
-            return "􁂑"
-        case .arrowLeftAndLineVerticalAndArrowRight:
-            return "􀚋"
-        case .arrowRightAndLineVerticalAndArrowLeft:
-            return "􀚌"
-        case .arrowDownAndLineHorizontalAndArrowUp:
-            return "􀚍"
-        case .arrowUpAndLineHorizontalAndArrowDown:
-            return "􀚎"
-        case .arrowClockwise:
-            return "􀅈"
-        case .arrowClockwiseCircle:
-            return "􀚁"
-        case .arrowClockwiseCircleFill:
-            return "􀚂"
-        case .arrowCounterclockwise:
-            return "􀅉"
-        case .arrowCounterclockwiseCircle:
-            return "􀚃"
-        case .arrowCounterclockwiseCircleFill:
-            return "􀚄"
-        case .arrowUpLeftAndArrowDownRight:
-            return "􀅊"
-        case .arrowUpLeftAndArrowDownRightCircle:
-            return "􀧛"
-        case .arrowUpLeftAndArrowDownRightCircleFill:
-            return "􀧜"
-        case .arrowUpBackwardAndArrowDownForward:
-            return "􀱶"
-        case .arrowUpBackwardAndArrowDownForwardCircle:
-            return "􀱷"
-        case .arrowUpBackwardAndArrowDownForwardCircleFill:
-            return "􀱸"
-        case .arrowDownRightAndArrowUpLeft:
-            return "􀅋"
-        case .arrowDownRightAndArrowUpLeftCircle:
-            return "􀫞"
-        case .arrowDownRightAndArrowUpLeftCircleFill:
-            return "􀫟"
-        case .arrowDownForwardAndArrowUpBackward:
-            return "􀱻"
-        case .arrowDownForwardAndArrowUpBackwardCircle:
-            return "􀱼"
-        case .arrowDownForwardAndArrowUpBackwardCircleFill:
-            return "􀱽"
-        case ._return:
-            return "􀅇"
-        case .returnLeft:
-            return "􁂆"
-        case .returnRight:
-            return "􁂇"
-        case .arrow2SquarePath:
-            return "􀅌"
-        case .arrowTriangle2CirclePath:
-            return "􀊯"
-        case .arrowTriangle2CirclePathCircle:
-            return "􀖊"
-        case .arrowTriangle2CirclePathCircleFill:
-            return "􀖋"
-        case .exclamationMarkArrowTriangle2CirclePath:
-            return "􀢤"
-        case .gearShapeArrowTriangle2CirclePath:
-            return "􁐂"
-        case .arrowTriangleCapsulePath:
-            return "􀤖"
-        case .arrow3TrianglePath:
-            return "􀙛"
-        case .arrowTriangleTurnUpRightDiamond:
-            return "􀙞"
-        case .arrowTriangleTurnUpRightDiamondFill:
-            return "􀙟"
-        case .arrowTriangleTurnUpRightCircle:
-            return "􀟷"
-        case .arrowTriangleTurnUpRightCircleFill:
-            return "􀟸"
-        case .arrowTriangleMerge:
-            return "􀖄"
-        case .arrowTriangleSwap:
-            return "􀖅"
-        case .arrowTriangleBranch:
-            return "􀙠"
-        case .arrowTrianglePull:
-            return "􀙡"
-        case .arrowtriangleLeft:
-            return "􀓄"
-        case .arrowtriangleLeftFill:
-            return "􀄦"
-        case .arrowtriangleLeftCircle:
-            return "􀁪"
-        case .arrowtriangleLeftCircleFill:
-            return "􀁫"
-        case .arrowtriangleLeftSquare:
-            return "􀃺"
-        case .arrowtriangleLeftSquareFill:
-            return "􀃻"
-        case .arrowtriangleBackward:
-            return "􀰀"
-        case .arrowtriangleBackwardFill:
-            return "􀰁"
-        case .arrowtriangleBackwardCircle:
-            return "􀰂"
-        case .arrowtriangleBackwardCircleFill:
-            return "􀰃"
-        case .arrowtriangleBackwardSquare:
-            return "􀰄"
-        case .arrowtriangleBackwardSquareFill:
-            return "􀰅"
-        case .arrowtriangleRight:
-            return "􀓅"
-        case .arrowtriangleRightFill:
-            return "􀄧"
-        case .arrowtriangleRightCircle:
-            return "􀁬"
-        case .arrowtriangleRightCircleFill:
-            return "􀁭"
-        case .arrowtriangleRightSquare:
-            return "􀃼"
-        case .arrowtriangleRightSquareFill:
-            return "􀃽"
-        case .arrowtriangleForward:
-            return "􀰆"
-        case .arrowtriangleForwardFill:
-            return "􀰇"
-        case .arrowtriangleForwardCircle:
-            return "􀰈"
-        case .arrowtriangleForwardCircleFill:
-            return "􀰉"
-        case .arrowtriangleForwardSquare:
-            return "􀰊"
-        case .arrowtriangleForwardSquareFill:
-            return "􀰋"
-        case .arrowtriangleUp:
-            return "􀓂"
-        case .arrowtriangleUpFill:
-            return "􀄤"
-        case .arrowtriangleUpCircle:
-            return "􀁦"
-        case .arrowtriangleUpCircleFill:
-            return "􀁧"
-        case .arrowtriangleUpSquare:
-            return "􀃶"
-        case .arrowtriangleUpSquareFill:
-            return "􀃷"
-        case .arrowtriangleDown:
-            return "􀓃"
-        case .arrowtriangleDownFill:
-            return "􀄥"
-        case .arrowtriangleDownCircle:
-            return "􀁨"
-        case .arrowtriangleDownCircleFill:
-            return "􀁩"
-        case .arrowtriangleDownSquare:
-            return "􀃸"
-        case .arrowtriangleDownSquareFill:
-            return "􀃹"
+        case .arrowshapeLeft: return "􁉄"
+        case .arrowshapeLeftFill: return "􁉅"
+        case .arrowshapeRight: return "􁉂"
+        case .arrowshapeRightFill: return "􁉃"
+        case .arrowshapeBackward: return "􁉈"
+        case .arrowshapeBackwardFill: return "􁉉"
+        case .arrowshapeForward: return "􁉆"
+        case .arrowshapeForwardFill: return "􁉇"
+        case .arrowshapeTurnUpLeft: return "􀉌"
+        case .arrowshapeTurnUpLeftFill: return "􀉍"
+        case .arrowshapeTurnUpLeftCircle: return "􀉎"
+        case .arrowshapeTurnUpLeftCircleFill: return "􀉏"
+        case .arrowshapeTurnUpBackward: return "􀰚"
+        case .arrowshapeTurnUpBackwardFill: return "􀰛"
+        case .arrowshapeTurnUpBackwardCircle: return "􀰜"
+        case .arrowshapeTurnUpBackwardCircleFill: return "􀰝"
+        case .arrowshapeTurnUpBackwardBadgeClock: return "􁎱"
+        case .arrowshapeTurnUpBackwardBadgeClockFill: return "􁖾"
+        case .arrowshapeTurnUpRight: return "􀉐"
+        case .arrowshapeTurnUpRightFill: return "􀉑"
+        case .arrowshapeTurnUpRightCircle: return "􀉒"
+        case .arrowshapeTurnUpRightCircleFill: return "􀉓"
+        case .arrowshapeTurnUpForward: return "􀰞"
+        case .arrowshapeTurnUpForwardFill: return "􀰟"
+        case .arrowshapeTurnUpForwardCircle: return "􀰠"
+        case .arrowshapeTurnUpForwardCircleFill: return "􀰡"
+        case .arrowshapeTurnUpLeft2: return "􀉔"
+        case .arrowshapeTurnUpLeft2Fill: return "􀉕"
+        case .arrowshapeTurnUpLeft2Circle: return "􀉖"
+        case .arrowshapeTurnUpLeft2CircleFill: return "􀉗"
+        case .arrowshapeTurnUpBackward2: return "􀰢"
+        case .arrowshapeTurnUpBackward2Fill: return "􀰣"
+        case .arrowshapeTurnUpBackward2Circle: return "􀰤"
+        case .arrowshapeTurnUpBackward2CircleFill: return "􀰥"
+        case .arrowshapeZigzagRight: return "􀉘"
+        case .arrowshapeZigzagRightFill: return "􀒐"
+        case .arrowshapeZigzagForward: return "􀰦"
+        case .arrowshapeZigzagForwardFill: return "􀰧"
+        case .arrowshapeBounceRight: return "􀉙"
+        case .arrowshapeBounceRightFill: return "􀒑"
+        case .arrowshapeBounceForward: return "􀰨"
+        case .arrowshapeBounceForwardFill: return "􀰩"
+        case .arrowDownApp: return "􀯴"
+        case .arrowDownAppFill: return "􀯵"
+        case .arrowUpForwardApp: return "􀮵"
+        case .arrowUpForwardAppFill: return "􀮶"
+        case .arrowUpHeart: return "􀲕"
+        case .arrowUpHeartFill: return "􀲖"
+        case .arrowDownHeart: return "􀲗"
+        case .arrowDownHeartFill: return "􀲘"
+        case .arrowClockwiseHeart: return "􀧡"
+        case .arrowClockwiseHeartFill: return "􀧢"
+        case .location: return "􀋑"
+        case .locationFill: return "􀋒"
+        case .locationCircle: return "􀋕"
+        case .locationCircleFill: return "􀋖"
+        case .locationSquare: return "􀼻"
+        case .locationSquareFill: return "􀼼"
+        case .locationSlash: return "􀘬"
+        case .locationSlashFill: return "􀘭"
+        case .locationSlashCircle: return "􁙇"
+        case .locationSlashCircleFill: return "􁙈"
+        case .locationNorth: return "􀋓"
+        case .locationNorthFill: return "􀋔"
+        case .locationNorthCircle: return "􀷌"
+        case .locationNorthCircleFill: return "􀷍"
+        case .locationNorthLine: return "􀋗"
+        case .locationNorthLinefill: return "􀋘"
+        case .leafArrowTriangleCirclePath: return "􀙜"
+        case .arrowTriangleLeftAndLineVerticalAndArrowTriangleRight: return "􀠉"
+        case .arrowTriangleLeftAndLineVerticalAndArrowTriangleRightFill: return "􀟦"
+        case .arrowTriangleRightAndLineVerticalAndArrowTriangleLeft: return "􀠊"
+        case .arrowTriangleRightAndLineVerticalAndArrowTriangleLeftFill: return "􀟧"
+        case .chevronLeft: return "􀆉"
+        case .chevronLeftCircle: return "􀁲"
+        case .chevronLeftCircleFill: return "􀁳"
+        case .chevronLeftSquare: return "􀄂"
+        case .chevronLeftSquareFill: return "􀄃"
+        case .chevronBackward: return "􀯶"
+        case .chevronBackwardCircle: return "􀯷"
+        case .chevronBackwardCircleFill: return "􀯸"
+        case .chevronBackwardSquare: return "􀯹"
+        case .chevronBackwardSquareFill: return "􀯺"
+        case .chevronRight: return "􀆊"
+        case .chevronRightCircle: return "􀁴"
+        case .chevronRightCircleFill: return "􀁵"
+        case .chevronRightSquare: return "􀄄"
+        case .chevronRightSquareFill: return "􀄅"
+        case .chevronForward: return "􀯻"
+        case .chevronForwardCircle: return "􀯼"
+        case .chevronForwardCircleFill: return "􀯽"
+        case .chevronForwardSquare: return "􀯾"
+        case .chevronForwardSquareFill: return "􀯿"
+        case .chevronLeft2: return "􀆋"
+        case .chevronBackward2: return "􀰪"
+        case .chevronRight2: return "􀆌"
+        case .chevronForward2: return "􀰫"
+        case .chevronUp: return "􀆇"
+        case .chevronUpCircle: return "􀁮"
+        case .chevronUpCircleFill: return "􀁯"
+        case .chevronUpSquare: return "􀃾"
+        case .chevronUpSquareFill: return "􀃿"
+        case .chevronDown: return "􀆈"
+        case .chevronDownCircle: return "􀁰"
+        case .chevronDownCircleFill: return "􀁱"
+        case .chevronDownSquare: return "􀄀"
+        case .chevronDownSquareFill: return "􀄁"
+        case .chevronUpChevronDown: return "􀆏"
+        case .chevronCompactUp: return "􀆐"
+        case .chevronCompactDown: return "􀆑"
+        case .chevronCompactLeft: return "􀆒"
+        case .chevronCompactRight: return "􀆓"
+        case .arrowLeft: return "􀄪"
+        case .arrowLeftCircle: return "􀁺"
+        case .arrowLeftCircleFill: return "􀁻"
+        case .arrowLeftSquare: return "􀄊"
+        case .arrowLeftSquareFill: return "􀄋"
+        case .arrowBackward: return "􀰌"
+        case .arrowBackwardCircle: return "􀰍"
+        case .arrowBackwardCircleFill: return "􀰎"
+        case .arrowBackwardSquare: return "􀰏"
+        case .arrowBackwardSquareFill: return "􀰐"
+        case .arrowRight: return "􀄫"
+        case .arrowRightCircle: return "􀁼"
+        case .arrowRightCircleFill: return "􀁽"
+        case .arrowRightSquare: return "􀄌"
+        case .arrowRightSquareFill: return "􀄍"
+        case .arrowForward: return "􀰑"
+        case .arrowForwardCircle: return "􀰒"
+        case .arrowForwardCircleFill: return "􀰓"
+        case .arrowForwardSquare: return "􀰔"
+        case .arrowForwardSquareFill: return "􀰕"
+        case .arrowUp: return "􀄨"
+        case .arrowUpCircle: return "􀁶"
+        case .arrowUpCircleFill: return "􀁷"
+        case .arrowUpSquare: return "􀄆"
+        case .arrowUpSquareFill: return "􀄇"
+        case .arrowUpCircleBadgeClock: return "􁎳"
+        case .arrowDown: return "􀄩"
+        case .arrowDownCircle: return "􀁸"
+        case .arrowDownCircleFill: return "􀁹"
+        case .arrowDownSquare: return "􀄈"
+        case .arrowDownSquareFill: return "􀄉"
+        case .arrowUpLeft: return "􀄮"
+        case .arrowUpLeftcircle: return "􀂂"
+        case .arrowUpLeftCircleFill: return "􀂃"
+        case .arrowUpLeftSquare: return "􀄒"
+        case .arrowUpLeftSquareFill: return "􀄓"
+        case .arrowUpBackward: return "􀰹"
+        case .arrowUpBackwardCircle: return "􀰺"
+        case .arrowUpBackwardCircleFill: return "􀰻"
+        case .arrowUpBackwardSquare: return "􀰼"
+        case .arrowUpBackwardSquareFill: return "􀰽"
+        case .arrowUpRight: return "􀄯"
+        case .arrowUpRightCircle: return "􀂄"
+        case .arrowUpRightCircleFill: return "􀂅"
+        case .arrowUpRightSquare: return "􀄔"
+        case .arrowUpRightSquareFill: return "􀄕"
+        case .arrowUpForward: return "􀰾"
+        case .arrowUpForwardCircle: return "􀰿"
+        case .arrowUpForwardCircleFill: return "􀱀"
+        case .arrowUpForwardSquare: return "􀱁"
+        case .arrowUpForwardSquareFill: return "􀱂"
+        case .arrowDownLeft: return "􀄰"
+        case .arrowDownLeftCircle: return "􀂆"
+        case .arrowDownLeftCircleFill: return "􀂇"
+        case .arrowDownLeftSquare: return "􀄖"
+        case .arrowDownLeftSquareFill: return "􀄗"
+        case .arrowDownBackward: return "􀱃"
+        case .arrowDownBackwardCircle: return "􀱄"
+        case .arrowDownBackwardCircleFill: return "􀱅"
+        case .arrowDownBackwardSquare: return "􀱆"
+        case .arrowDownBackwardSquareFill: return "􀱇"
+        case .arrowDownRight: return "􀄱"
+        case .arrowDownRightCircle: return "􀂈"
+        case .arrowDownRightCircleFill: return "􀂉"
+        case .arrowDownRightSquare: return "􀄘"
+        case .arrowDownRightSquareFill: return "􀄙"
+        case .arrowDownForward: return "􀱈"
+        case .arrowDownForwardCircle: return "􀱉"
+        case .arrowDownForwardCircleFill: return "􀱊"
+        case .arrowDownForwardSquare: return "􀱋"
+        case .arrowDownForwardSquareFill: return "􀱌"
+        case .arrowLeftArrowRight: return "􀄭"
+        case .arrowLeftArrowRightCircle: return "􀂀"
+        case .arrowLeftArrowRightCircleFill: return "􀂁"
+        case .arrowLeftArrowRightSquare: return "􀄐"
+        case .arrowLeftArrowRightSquareFill: return "􀄑"
+        case .arrowUpArrowDown: return "􀄬"
+        case .arrowUpArrowDownCircle: return "􀁾"
+        case .arrowUpArrowDownCircleFill: return "􀁿"
+        case .arrowupArrowDownSquare: return "􀄎"
+        case .arrowupArrowDownSquareFill: return "􀄏"
+        case .arrowTurnDownLeft: return "􀄴"
+        case .arrowTurnUpLeft: return "􀄸"
+        case .arrowTurnDownRight: return "􀄵"
+        case .arrowTurnUpRight: return "􀄹"
+        case .arrowTurnRightUp: return "􀄲"
+        case .arrowTurnLeftUp: return "􀄶"
+        case .arrowTurnRightDown: return "􀄳"
+        case .arrowTurnLeftDown: return "􀄷"
+        case .arrowUturnLeft: return "􀄼"
+        case .arrowUturnLeftCircle: return "􀂎"
+        case .arrowUturnLeftCircleFill: return "􀂏"
+        case .arrowUturnLeftCircleBadgeEllipsis: return "􀞸"
+        case .arrowUturnLeftSquare: return "􀄞"
+        case .arrowUturnLeftSquareFill: return "􀄟"
+        case .arrowUturnBackward: return "􀱍"
+        case .arrowUturnBackwardCircle: return "􀱎"
+        case .arrowUturnBackwardCircleFill: return "􀱏"
+        case .arrowUturnBackwardCircleBadgeEllipsis: return "􀱐"
+        case .arrowUturnbackwardSquare: return "􀱑"
+        case .arrowUturnBackwardSquareFill: return "􀱒"
+        case .arrowUturnRight: return "􀄽"
+        case .arrowUturnRightCircle: return "􀂐"
+        case .arrowUturnRightCircleFill: return "􀂑"
+        case .arrowUturnRightSquare: return "􀄠"
+        case .arrowUturnRightSquareFill: return "􀄡"
+        case .arrowUturnForward: return "􀱓"
+        case .arrowUturnForwardCircle: return "􀱔"
+        case .arrowUturnForwardCircleFill: return "􀱕"
+        case .arrowUturnForwardSquare: return "􀱖"
+        case .arrowUturnForwardSquareFill: return "􀱗"
+        case .arrowUturnUp: return "􀄺"
+        case .arrowUturnUpCircle: return "􀂊"
+        case .arrowUturnUpCircleFill: return "􀂋"
+        case .arrowUturnUpSquare: return "􀄚"
+        case .arrowUturnUpSquareFill: return "􀄛"
+        case .arrowUturnDown: return "􀄻"
+        case .arrowUturnDownCircle: return "􀂌"
+        case .arrowUturnDownCircleFill: return "􀂍"
+        case .arrowUturnDownSquare: return "􀄜"
+        case .arrowUturnDownSquareFill: return "􀄝"
+        case .arrowUpAndDownAndArrowLeftAndRight: return "􀧐"
+        case .arrowUpLeftAndDownRightAndArrowUpRightAndDownLeft: return "􀬑"
+        case .arrowLeftAndRight: return "􀄾"
+        case .arrowLeftAndRightCircle: return "􀑾"
+        case .arrowLeftAndRightCircleFill: return "􀑿"
+        case .arrowLeftAndRightSquare: return "􀒀"
+        case .arrowLeftAndRightSquareFill: return "􀒁"
+        case .arrowUpAndDown: return "􀑹"
+        case .arrowUpAndDownCircle: return "􀑺"
+        case .arrowUpAndDownCircleFill: return "􀑻"
+        case .arrowUpAndDownSquare: return "􀑼"
+        case .arrowUpAndDownSquareFill: return "􀑽"
+        case .arrowUpToLine: return "􀄿"
+        case .arrowUpToLineCompact: return "􀅃"
+        case .arrowUpToLineCircle: return "􀓆"
+        case .arrowUpToLineCircleFill: return "􀓇"
+        case .arrowDownToLine: return "􀅀"
+        case .arrowDownToLineCompact: return "􀅄"
+        case .arrowDownToLineCircle: return "􀓈"
+        case .arrowDownToLineCircleFill: return "􀓉"
+        case .arrowLeftToLine: return "􀅁"
+        case .arrowLeftToLineCompact: return "􀅅"
+        case .arrowLeftToLineCircle: return "􀓊"
+        case .arrowLeftToLineCircleFill: return "􀓋"
+        case .arrowBackwardToLine: return "􁂊"
+        case .arrowBackwardToLineCircle: return "􁂌"
+        case .arrowBackwardToLineCircleFill: return "􁂍"
+        case .arrowRightToLine: return "􀅂"
+        case .arrowRightToLineCompact: return "􀅆"
+        case .arrowRightToLineCircle: return "􀓌"
+        case .arrowRightToLineCircleFill: return "􀓍"
+        case .arrowForwardToLine: return "􁂎"
+        case .arrowForwardToLineCircle: return "􁂐"
+        case .arrowForwardToLineCircleFill: return "􁂑"
+        case .arrowLeftAndLineVerticalAndArrowRight: return "􀚋"
+        case .arrowRightAndLineVerticalAndArrowLeft: return "􀚌"
+        case .arrowDownAndLineHorizontalAndArrowUp: return "􀚍"
+        case .arrowUpAndLineHorizontalAndArrowDown: return "􀚎"
+        case .arrowClockwise: return "􀅈"
+        case .arrowClockwiseCircle: return "􀚁"
+        case .arrowClockwiseCircleFill: return "􀚂"
+        case .arrowCounterclockwise: return "􀅉"
+        case .arrowCounterclockwiseCircle: return "􀚃"
+        case .arrowCounterclockwiseCircleFill: return "􀚄"
+        case .arrowUpLeftAndArrowDownRight: return "􀅊"
+        case .arrowUpLeftAndArrowDownRightCircle: return "􀧛"
+        case .arrowUpLeftAndArrowDownRightCircleFill: return "􀧜"
+        case .arrowUpBackwardAndArrowDownForward: return "􀱶"
+        case .arrowUpBackwardAndArrowDownForwardCircle: return "􀱷"
+        case .arrowUpBackwardAndArrowDownForwardCircleFill: return "􀱸"
+        case .arrowDownRightAndArrowUpLeft: return "􀅋"
+        case .arrowDownRightAndArrowUpLeftCircle: return "􀫞"
+        case .arrowDownRightAndArrowUpLeftCircleFill: return "􀫟"
+        case .arrowDownForwardAndArrowUpBackward: return "􀱻"
+        case .arrowDownForwardAndArrowUpBackwardCircle: return "􀱼"
+        case .arrowDownForwardAndArrowUpBackwardCircleFill: return "􀱽"
+        case ._return: return "􀅇"
+        case .returnLeft: return "􁂆"
+        case .returnRight: return "􁂇"
+        case .arrow2SquarePath: return "􀅌"
+        case .arrowTriangle2CirclePath: return "􀊯"
+        case .arrowTriangle2CirclePathCircle: return "􀖊"
+        case .arrowTriangle2CirclePathCircleFill: return "􀖋"
+        case .exclamationMarkArrowTriangle2CirclePath: return "􀢤"
+        case .gearShapeArrowTriangle2CirclePath: return "􁐂"
+        case .arrowTriangleCapsulePath: return "􀤖"
+        case .arrow3TrianglePath: return "􀙛"
+        case .arrowTriangleTurnUpRightDiamond: return "􀙞"
+        case .arrowTriangleTurnUpRightDiamondFill: return "􀙟"
+        case .arrowTriangleTurnUpRightCircle: return "􀟷"
+        case .arrowTriangleTurnUpRightCircleFill: return "􀟸"
+        case .arrowTriangleMerge: return "􀖄"
+        case .arrowTriangleSwap: return "􀖅"
+        case .arrowTriangleBranch: return "􀙠"
+        case .arrowTrianglePull: return "􀙡"
+        case .arrowtriangleLeft: return "􀓄"
+        case .arrowtriangleLeftFill: return "􀄦"
+        case .arrowtriangleLeftCircle: return "􀁪"
+        case .arrowtriangleLeftCircleFill: return "􀁫"
+        case .arrowtriangleLeftSquare: return "􀃺"
+        case .arrowtriangleLeftSquareFill: return "􀃻"
+        case .arrowtriangleBackward: return "􀰀"
+        case .arrowtriangleBackwardFill: return "􀰁"
+        case .arrowtriangleBackwardCircle: return "􀰂"
+        case .arrowtriangleBackwardCircleFill: return "􀰃"
+        case .arrowtriangleBackwardSquare: return "􀰄"
+        case .arrowtriangleBackwardSquareFill: return "􀰅"
+        case .arrowtriangleRight: return "􀓅"
+        case .arrowtriangleRightFill: return "􀄧"
+        case .arrowtriangleRightCircle: return "􀁬"
+        case .arrowtriangleRightCircleFill: return "􀁭"
+        case .arrowtriangleRightSquare: return "􀃼"
+        case .arrowtriangleRightSquareFill: return "􀃽"
+        case .arrowtriangleForward: return "􀰆"
+        case .arrowtriangleForwardFill: return "􀰇"
+        case .arrowtriangleForwardCircle: return "􀰈"
+        case .arrowtriangleForwardCircleFill: return "􀰉"
+        case .arrowtriangleForwardSquare: return "􀰊"
+        case .arrowtriangleForwardSquareFill: return "􀰋"
+        case .arrowtriangleUp: return "􀓂"
+        case .arrowtriangleUpFill: return "􀄤"
+        case .arrowtriangleUpCircle: return "􀁦"
+        case .arrowtriangleUpCircleFill: return "􀁧"
+        case .arrowtriangleUpSquare: return "􀃶"
+        case .arrowtriangleUpSquareFill: return "􀃷"
+        case .arrowtriangleDown: return "􀓃"
+        case .arrowtriangleDownFill: return "􀄥"
+        case .arrowtriangleDownCircle: return "􀁨"
+        case .arrowtriangleDownCircleFill: return "􀁩"
+        case .arrowtriangleDownSquare: return "􀃸"
+        case .arrowtriangleDownSquareFill: return "􀃹"
         }
     }
 }

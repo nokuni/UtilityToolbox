@@ -205,4 +205,7 @@ extension SFSymbol {
     public static var natureNames: [String] {
         SFSymbol.nature.map { $0.rawValue }
     }
+    public static var natureSymbols: [String] {
+        SFSymbol.nature.map { $0.symbol }
+    }
 }

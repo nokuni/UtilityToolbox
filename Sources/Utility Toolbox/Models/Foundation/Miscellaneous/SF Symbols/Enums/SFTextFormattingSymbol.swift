@@ -127,122 +127,64 @@ public enum SFTextFormattingSymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .fleuron:
-            return "􁓯"
-        case .fleuronFill:
-            return "􁓔"
-        case .signature:
-            return "􀙤"
-        case .listBullet:
-            return "􀋲"
-        case .listBulletCircle:
-            return "􀻧"
-        case .listBulletCircleFill:
-            return "􀻨"
-        case .listDash:
-            return "􀋱"
-        case .listTriangle:
-            return "􀢽"
-        case .listBulletIndent:
-            return "􀋳"
-        case .listNumber:
-            return "􀋴"
-        case .listStar:
-            return "􀣩"
-        case .increaseIndent:
-            return "􀋵"
-        case .decreaseIndent:
-            return "􀋶"
-        case .decreaseQuoteLevel:
-            return "􀝿"
-        case .increaseQuoteLevel:
-            return "􀞀"
-        case .quoteLevel:
-            return "􁖖"
-        case .textAlignLeft:
-            return "􀌀"
-        case .textAlignCenter:
-            return "􀌁"
-        case .textAlignRight:
-            return "􀌂"
-        case .textJustify:
-            return "􀌃"
-        case .textJustifyLeft:
-            return "􀌄"
-        case .textJustifyRight:
-            return "􀌅"
-        case .textJustifyLeading:
-            return "􁉀"
-        case .textJustifyTrailing:
-            return "􁉁"
-        case .textRedaction:
-            return "􀧎"
-        case .textWordSpacing:
-            return "􀵫"
-        case .arrowUpAndDownTextHorizontal:
-            return "􀵬"
-        case .arrowLeftAndRightTextVertical:
-            return "􁖭"
-        case .character:
-            return "􀅏"
-        case .textformatSizeSmaller:
-            return "􀵷"
-        case .textformatSizeLarger:
-            return "􀵿"
-        case .textformatSize:
-            return "􀅐"
-        case .textformat:
-            return "􀅒"
-        case .textformatAlt:
-            return "􀅑"
-        case .textformatSuperscript:
-            return "􀓢"
-        case .textformatSubscript:
-            return "􀓡"
-        case .abc:
-            return "􀥊"
-        case .textformatAbc:
-            return "􀅯"
-        case .textformatAbcDottedUnderline:
-            return "􀅰"
-        case .bold:
-            return "􀅓"
-        case .italic:
-            return "􀅔"
-        case .underline:
-            return "􀅕"
-        case .strikethrough:
-            return "􀅖"
-        case .shadow:
-            return "􀨡"
-        case .boldItalicUnderline:
-            return "􀅗"
-        case .boldUnderline:
-            return "􀅘"
-        case .characterCursorIbeam:
-            return "􀅫"
-        case .textformat123:
-            return "􀅱"
-        case ._123rectangle:
-            return "􁂷"
-        case ._123rectangleFill:
-            return "􁂸"
-        case .textFormat12:
-            return "􁖻"
-        case .characterTextbox:
-            return "􀅶"
-        case .numberSign:
-            return "􁓘"
-        case .characterSutton:
-            return "􁓗"
-        case .characterDuployan:
-            return "􁓖"
-        case .characterPhonetic:
-            return "􁓕"
-        case .aMagnify:
-            return "􀤍"
-        case .paragraphSign:
-            return "􀒆"
+        case .fleuron: return "􁓯"
+        case .fleuronFill: return "􁓔"
+        case .signature: return "􀙤"
+        case .listBullet: return "􀋲"
+        case .listBulletCircle: return "􀻧"
+        case .listBulletCircleFill: return "􀻨"
+        case .listDash: return "􀋱"
+        case .listTriangle: return "􀢽"
+        case .listBulletIndent: return "􀋳"
+        case .listNumber: return "􀋴"
+        case .listStar: return "􀣩"
+        case .increaseIndent: return "􀋵"
+        case .decreaseIndent: return "􀋶"
+        case .decreaseQuoteLevel: return "􀝿"
+        case .increaseQuoteLevel: return "􀞀"
+        case .quoteLevel: return "􁖖"
+        case .textAlignLeft: return "􀌀"
+        case .textAlignCenter: return "􀌁"
+        case .textAlignRight: return "􀌂"
+        case .textJustify: return "􀌃"
+        case .textJustifyLeft: return "􀌄"
+        case .textJustifyRight: return "􀌅"
+        case .textJustifyLeading: return "􁉀"
+        case .textJustifyTrailing: return "􁉁"
+        case .textRedaction: return "􀧎"
+        case .textWordSpacing: return "􀵫"
+        case .arrowUpAndDownTextHorizontal: return "􀵬"
+        case .arrowLeftAndRightTextVertical: return "􁖭"
+        case .character: return "􀅏"
+        case .textformatSizeSmaller: return "􀵷"
+        case .textformatSizeLarger: return "􀵿"
+        case .textformatSize: return "􀅐"
+        case .textformat: return "􀅒"
+        case .textformatAlt: return "􀅑"
+        case .textformatSuperscript: return "􀓢"
+        case .textformatSubscript: return "􀓡"
+        case .abc: return "􀥊"
+        case .textformatAbc: return "􀅯"
+        case .textformatAbcDottedUnderline: return "􀅰"
+        case .bold: return "􀅓"
+        case .italic: return "􀅔"
+        case .underline: return "􀅕"
+        case .strikethrough: return "􀅖"
+        case .shadow: return "􀨡"
+        case .boldItalicUnderline: return "􀅗"
+        case .boldUnderline: return "􀅘"
+        case .characterCursorIbeam: return "􀅫"
+        case .textformat123: return "􀅱"
+        case ._123rectangle: return "􁂷"
+        case ._123rectangleFill: return "􁂸"
+        case .textFormat12: return "􁖻"
+        case .characterTextbox: return "􀅶"
+        case .numberSign: return "􁓘"
+        case .characterSutton: return "􁓗"
+        case .characterDuployan: return "􁓖"
+        case .characterPhonetic: return "􁓕"
+        case .aMagnify: return "􀤍"
+        case .paragraphSign: return "􀒆"
         }
     }
 }

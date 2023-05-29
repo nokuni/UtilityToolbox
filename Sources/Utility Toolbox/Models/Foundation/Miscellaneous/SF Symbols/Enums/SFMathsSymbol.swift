@@ -121,116 +121,61 @@ public enum SFMathsSymbol: String, CaseIterable, SFSymbolProtocol {
 
     var symbol: String {
         switch self {
-        case .xSquareRoot:
-            return "􀓪"
-        case .angle:
-            return "􁑡"
-        case .compassDrawing:
-            return "􁔗"
-        case .sum:
-            return "􀘽"
-        case .percent:
-            return "􀘾"
-        case .function:
-            return "􀅮"
-        case .plus:
-            return "􀅼"
-        case .plusCircle:
-            return "􀁌"
-        case .plusCircleFill:
-            return "􀁍"
-        case .plusSquare:
-            return "􀃜"
-        case .plusSquareFill:
-            return "􀃝"
-        case .plusRectangle:
-            return "􀏇"
-        case .plusRectangleFill:
-            return "􀏈"
-        case .minus:
-            return "􀅽"
-        case .minusCircle:
-            return "􀁎"
-        case .minusCircleFill:
-            return "􀁏"
-        case .minusSquare:
-            return "􀃞"
-        case .minusSquareFill:
-            return "􀃟"
-        case .minusRectangle:
-            return "􀏉"
-        case .minusRectangleFill:
-            return "􀏊"
-        case .plusMinus:
-            return "􀛺"
-        case .plusMinusCircle:
-            return "􀍶"
-        case .plusMinusCircleFill:
-            return "􀘝"
-        case .plusForwardSlashMinus:
-            return "􀅺"
-        case .minusForwardSlashPlus:
-            return "􀅻"
-        case .multiply:
-            return "􀅾"
-        case .multiplyCircle:
-            return "􀁐"
-        case .multiplyCircleFill:
-            return "􀁑"
-        case .multiplySquare:
-            return "􀃠"
-        case .multiplySquareFill:
-            return "􀃡"
-        case .divide:
-            return "􀅿"
-        case .divideCircle:
-            return "􀁒"
-        case .divideCircleFill:
-            return "􀁓"
-        case .divideSquare:
-            return "􀃢"
-        case .divideSquareFill:
-            return "􀃣"
-        case .equal:
-            return "􀆀"
-        case .equalCircle:
-            return "􀁔"
-        case .equalCircleFill:
-            return "􀁕"
-        case .equalSquare:
-            return "􀃤"
-        case .equalSquareFill:
-            return "􀃥"
-        case .lessthan:
-            return "􀆁"
-        case .lessthanCircle:
-            return "􀁘"
-        case .lessthanCircleFill:
-            return "􀁙"
-        case .lessthanSquare:
-            return "􀃦"
-        case .lessthanSquareFill:
-            return "􀃧"
-        case .greaterthan:
-            return "􀆂"
-        case .greaterthanCircle:
-            return "􀁖"
-        case .greaterthanCircleFill:
-            return "􀁗"
-        case .greaterthanSquare:
-            return "􀃨"
-        case .greaterthanSquareFill:
-            return "􀃩"
-        case .number:
-            return "􀆃"
-        case .numberCircle:
-            return "􀁚"
-        case .numberCircleFill:
-            return "􀁛"
-        case .numberSquare:
-            return "􀃪"
-        case .numberSquareFill:
-            return "􀃫"
+        case .xSquareRoot: return "􀓪"
+        case .angle: return "􁑡"
+        case .compassDrawing: return "􁔗"
+        case .sum: return "􀘽"
+        case .percent: return "􀘾"
+        case .function: return "􀅮"
+        case .plus: return "􀅼"
+        case .plusCircle: return "􀁌"
+        case .plusCircleFill: return "􀁍"
+        case .plusSquare: return "􀃜"
+        case .plusSquareFill: return "􀃝"
+        case .plusRectangle: return "􀏇"
+        case .plusRectangleFill: return "􀏈"
+        case .minus: return "􀅽"
+        case .minusCircle: return "􀁎"
+        case .minusCircleFill: return "􀁏"
+        case .minusSquare: return "􀃞"
+        case .minusSquareFill: return "􀃟"
+        case .minusRectangle: return "􀏉"
+        case .minusRectangleFill: return "􀏊"
+        case .plusMinus: return "􀛺"
+        case .plusMinusCircle: return "􀍶"
+        case .plusMinusCircleFill: return "􀘝"
+        case .plusForwardSlashMinus: return "􀅺"
+        case .minusForwardSlashPlus: return "􀅻"
+        case .multiply: return "􀅾"
+        case .multiplyCircle: return "􀁐"
+        case .multiplyCircleFill: return "􀁑"
+        case .multiplySquare: return "􀃠"
+        case .multiplySquareFill: return "􀃡"
+        case .divide: return "􀅿"
+        case .divideCircle: return "􀁒"
+        case .divideCircleFill: return "􀁓"
+        case .divideSquare: return "􀃢"
+        case .divideSquareFill: return "􀃣"
+        case .equal: return "􀆀"
+        case .equalCircle: return "􀁔"
+        case .equalCircleFill: return "􀁕"
+        case .equalSquare: return "􀃤"
+        case .equalSquareFill: return "􀃥"
+        case .lessthan: return "􀆁"
+        case .lessthanCircle: return "􀁘"
+        case .lessthanCircleFill: return "􀁙"
+        case .lessthanSquare: return "􀃦"
+        case .lessthanSquareFill: return "􀃧"
+        case .greaterthan: return "􀆂"
+        case .greaterthanCircle: return "􀁖"
+        case .greaterthanCircleFill: return "􀁗"
+        case .greaterthanSquare: return "􀃨"
+        case .greaterthanSquareFill: return "􀃩"
+        case .number: return "􀆃"
+        case .numberCircle: return "􀁚"
+        case .numberCircleFill: return "􀁛"
+        case .numberSquare: return "􀃪"
+        case .numberSquareFill: return "􀃫"
         }
     }
 }

@@ -327,88 +327,47 @@ public enum SFWeatherSymbol: String, CaseIterable, SFSymbolProtocol {
         case .sunAndHorizonFill: return "􀻟"
         case .sunAndHorizonCircle: return "􁛅"
         case .sunAndHorizonCircleFill: return "􁛆"
-        case .sunDust:
-            return "􀆵"
-        case .sunDustFill:
-            return "􀆶"
-        case .sunDustCircle:
-            return "􁛇"
-        case .sunDustCircleFill:
-            return "􁛈"
-        case .sunHaze:
-            return "􀆷"
-        case .sunHazeFill:
-            return "􀆸"
-        case .sunHazeCircle:
-            return "􁛉"
-        case .sunHazeCircleFill:
-            return "􁛊"
-        case .moon:
-            return "􀆹"
-        case .moonFill:
-            return "􀆺"
-        case .moonCircle:
-            return "􀆻"
-        case .moonCircleFill:
-            return "􀆼"
-        case .moonHaze:
-            return "􁑯"
-        case .moonHazeFill:
-            return "􁑰"
-        case .moonHazeCircle:
-            return "􁜷"
-        case .moonHazeCircleFill:
-            return "􁜸"
-        case .sparkles:
-            return "􀆿"
-        case .moonStars:
-            return "􀇀"
-        case .moonStarsFill:
-            return "􀇁"
-        case .moonStarsCircle:
-            return "􁛋"
-        case .moonStarsCircleFill:
-            return "􁛌"
-        case .cloud:
-            return "􀇂"
-        case .cloudFill:
-            return "􀇃"
-        case .cloudCircle:
-            return "􁛍"
-        case .cloudCircleFill:
-            return "􁛎"
-        case .cloudDrizzle:
-            return "􀇄"
-        case .cloudDrizzleFill:
-            return "􀇅"
-        case .cloudDrizzleCircle:
-            return "􁛏"
-        case .cloudDrizzleCircleFill:
-            return "􁛐"
-        case .cloudRain:
-            return "􀇆"
-        case .cloudRainFill:
-            return "􀇇"
-        case .cloudRainCircle:
-            return "􁛑"
-        case .cloudRainCircleFill:
-            return "􁛒"
-        case .cloudHeavyRain:
-            return "􀇈"
-        case .cloudHeavyRainFill:
-            return "􀇉"
-        case .cloudHeavyRainCircle:
-            return "􁛓"
-        case .cloudHeavyRainCircleFill:
-            return "􁛔"
-        case .cloudFog:
-            return "􀇊"
-        case .cloudFogFill:
-            return "􀇋"
-        case .cloudFogCircle:
-            return "􁛕"
-        case .cloudFogCircleFill:
-            return "􁛖"
+        case .sunDust: return "􀆵"
+        case .sunDustFill: return "􀆶"
+        case .sunDustCircle: return "􁛇"
+        case .sunDustCircleFill: return "􁛈"
+        case .sunHaze: return "􀆷"
+        case .sunHazeFill: return "􀆸"
+        case .sunHazeCircle: return "􁛉"
+        case .sunHazeCircleFill: return "􁛊"
+        case .moon: return "􀆹"
+        case .moonFill: return "􀆺"
+        case .moonCircle: return "􀆻"
+        case .moonCircleFill: return "􀆼"
+        case .moonHaze: return "􁑯"
+        case .moonHazeFill: return "􁑰"
+        case .moonHazeCircle: return "􁜷"
+        case .moonHazeCircleFill: return "􁜸"
+        case .sparkles: return "􀆿"
+        case .moonStars: return "􀇀"
+        case .moonStarsFill: return "􀇁"
+        case .moonStarsCircle: return "􁛋"
+        case .moonStarsCircleFill: return "􁛌"
+        case .cloud: return "􀇂"
+        case .cloudFill: return "􀇃"
+        case .cloudCircle: return "􁛍"
+        case .cloudCircleFill: return "􁛎"
+        case .cloudDrizzle: return "􀇄"
+        case .cloudDrizzleFill: return "􀇅"
+        case .cloudDrizzleCircle: return "􁛏"
+        case .cloudDrizzleCircleFill: return "􁛐"
+        case .cloudRain: return "􀇆"
+        case .cloudRainFill: return "􀇇"
+        case .cloudRainCircle: return "􁛑"
+        case .cloudRainCircleFill: return "􁛒"
+        case .cloudHeavyRain: return "􀇈"
+        case .cloudHeavyRainFill: return "􀇉"
+        case .cloudHeavyRainCircle: return "􁛓"
+        case .cloudHeavyRainCircleFill: return "􁛔"
+        case .cloudFog: return "􀇊"
+        case .cloudFogFill: return "􀇋"
+        case .cloudFogCircle: return "􁛕"
+        case .cloudFogCircleFill: return "􁛖"
         case .cloudHail: return "􀇌"
         case .cloudHailFill: return "􀇍"
         case .cloudHailCircle: return "􁛗"

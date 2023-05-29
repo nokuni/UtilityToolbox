@@ -189,184 +189,95 @@ public enum SFMediaSymbol: String, CaseIterable, SFSymbolProtocol {
     
     var symbol: String {
         switch self {
-        case .play:
-            return "􀊃"
-        case .playFill:
-            return "􀊄"
-        case .playCircle:
-            return "􀊕"
-        case .playCircleFill:
-            return "􀊖"
-        case .playSquare:
-            return "􀽍"
-        case .playSquareFill:
-            return "􀽎"
-        case .playRectangle:
-            return "􀊙"
-        case .playRectangleFill:
-            return "􀊚"
-        case .playSquareStack:
-            return "􁟼"
-        case .playSquareStackFill:
-            return "􁟽"
-        case .playSlash:
-            return "􀪅"
-        case .playSlashFill:
-            return "􀪆"
-        case .pause:
-            return "􀊅"
-        case .pauseFill:
-            return "􀊆"
-        case .pauseCircle:
-            return "􀊗"
-        case .pauseCircleFill:
-            return "􀊘"
-        case .pauseRectangle:
-            return "􀊛"
-        case .pauseRectangleFill:
-            return "􀊜"
-        case .stop:
-            return "􀛶"
-        case .stopFill:
-            return "􀛷"
-        case .stopCircle:
-            return "􀜪"
-        case .stopCircleFill:
-            return "􀜫"
-        case .recordCircle:
-            return "􀢙"
-        case .recordCircleFill:
-            return "􀢚"
-        case .playpause:
-            return "􀊇"
-        case .playpauseFill:
-            return "􀊈"
-        case .playpauseCircle:
-            return "􁚞"
-        case .playpauseCircleFill:
-            return "􁚟"
-        case .backward:
-            return "􀊉"
-        case .backwardFill:
-            return "􀊊"
-        case .backwardCircle:
-            return "􀺃"
-        case .backwardCircleFill:
-            return "􀺄"
-        case .forward:
-            return "􀊋"
-        case .forwardFill:
-            return "􀊌"
-        case .forwardCircle:
-            return "􀺅"
-        case .forwardCircleFill:
-            return "􀺆"
-        case .backwardEnd:
-            return "􀊍"
-        case .backwardEndFill:
-            return "􀊎"
-        case .backwardEndCircle:
-            return "􁋮"
-        case .backwardEndCircleFill:
-            return "􁋯"
-        case .forwardEnd:
-            return "􀊏"
-        case .forwardEndFill:
-            return "􀊐"
-        case .forwardEndCircle:
-            return "􁋰"
-        case .forwardEndCircleFill:
-            return "􁋱"
-        case .backwardEndAlt:
-            return "􀊑"
-        case .backwardEndAltFill:
-            return "􀊒"
-        case .forwardEndAlt:
-            return "􀊓"
-        case .forwardEndAltFill:
-            return "􀊔"
-        case .backwardFrame:
-            return "􀩨"
-        case .backwardFrameFill:
-            return "􀩩"
-        case .forwardFrame:
-            return "􀩪"
-        case .forwardFrameFill:
-            return "􀩫"
-        case .shuffle:
-            return "􀊝"
-        case .shuffleCircle:
-            return "􀵉"
-        case .shuffleCircleFill:
-            return "􀵊"
-        case ._repeat:
-            return "􀊞"
-        case .repeatCircle:
-            return "􀵋"
-        case .repeatCircleFill:
-            return "􀵌"
-        case .repeat1:
-            return "􀊟"
-        case .repeat1Circle:
-            return "􀵍"
-        case .repeat1CircleFill:
-            return "􀵎"
-        case .infinity:
-            return "􀯠"
-        case .infinityCircle:
-            return "􀵏"
-        case .infinityCircleFill:
-            return "􀵐"
-        case .arrowRectanglePath:
-            return "􀣁"
-        case .goForward:
-            return "􀍿"
-        case .goBackward:
-            return "􀎀"
-        case .goForward5:
-            return "􀶰"
-        case .goBackward5:
-            return "􀶱"
-        case .goForward10:
-            return "􀎁"
-        case .goBackward10:
-            return "􀎂"
-        case .goForward15:
-            return "􀎃"
-        case .goBackward15:
-            return "􀎄"
-        case .goForward30:
-            return "􀎅"
-        case .goBackward30:
-            return "􀎆"
-        case .goForward45:
-            return "􀎇"
-        case .goBackward45:
-            return "􀎈"
-        case .goForward60:
-            return "􀎉"
-        case .goBackward60:
-            return "􀎊"
-        case .goForward75:
-            return "􀘤"
-        case .goBackward75:
-            return "􀘥"
-        case .goForward90:
-            return "􀘦"
-        case .goBackward90:
-            return "􀘧"
-        case .goForwardPlus:
-            return "􀘨"
-        case .goBackwardMinus:
-            return "􀘩"
-        case .textInsert:
-            return "􀋽"
-        case .textAppend:
-            return "􀋾"
-        case .textLineFirstAndArrowTriangleForward:
-            return "􁘿"
-        case .textLineLastAndArrowTriangleForward:
-            return "􁙀"
+        case .play: return "􀊃"
+        case .playFill: return "􀊄"
+        case .playCircle: return "􀊕"
+        case .playCircleFill: return "􀊖"
+        case .playSquare: return "􀽍"
+        case .playSquareFill: return "􀽎"
+        case .playRectangle: return "􀊙"
+        case .playRectangleFill: return "􀊚"
+        case .playSquareStack: return "􁟼"
+        case .playSquareStackFill: return "􁟽"
+        case .playSlash: return "􀪅"
+        case .playSlashFill: return "􀪆"
+        case .pause: return "􀊅"
+        case .pauseFill: return "􀊆"
+        case .pauseCircle: return "􀊗"
+        case .pauseCircleFill: return "􀊘"
+        case .pauseRectangle: return "􀊛"
+        case .pauseRectangleFill: return "􀊜"
+        case .stop: return "􀛶"
+        case .stopFill: return "􀛷"
+        case .stopCircle: return "􀜪"
+        case .stopCircleFill: return "􀜫"
+        case .recordCircle: return "􀢙"
+        case .recordCircleFill: return "􀢚"
+        case .playpause: return "􀊇"
+        case .playpauseFill: return "􀊈"
+        case .playpauseCircle: return "􁚞"
+        case .playpauseCircleFill: return "􁚟"
+        case .backward: return "􀊉"
+        case .backwardFill: return "􀊊"
+        case .backwardCircle: return "􀺃"
+        case .backwardCircleFill: return "􀺄"
+        case .forward: return "􀊋"
+        case .forwardFill: return "􀊌"
+        case .forwardCircle: return "􀺅"
+        case .forwardCircleFill: return "􀺆"
+        case .backwardEnd: return "􀊍"
+        case .backwardEndFill: return "􀊎"
+        case .backwardEndCircle: return "􁋮"
+        case .backwardEndCircleFill: return "􁋯"
+        case .forwardEnd: return "􀊏"
+        case .forwardEndFill: return "􀊐"
+        case .forwardEndCircle: return "􁋰"
+        case .forwardEndCircleFill: return "􁋱"
+        case .backwardEndAlt: return "􀊑"
+        case .backwardEndAltFill: return "􀊒"
+        case .forwardEndAlt: return "􀊓"
+        case .forwardEndAltFill: return "􀊔"
+        case .backwardFrame: return "􀩨"
+        case .backwardFrameFill: return "􀩩"
+        case .forwardFrame: return "􀩪"
+        case .forwardFrameFill: return "􀩫"
+        case .shuffle: return "􀊝"
+        case .shuffleCircle: return "􀵉"
+        case .shuffleCircleFill: return "􀵊"
+        case ._repeat: return "􀊞"
+        case .repeatCircle: return "􀵋"
+        case .repeatCircleFill: return "􀵌"
+        case .repeat1: return "􀊟"
+        case .repeat1Circle: return "􀵍"
+        case .repeat1CircleFill: return "􀵎"
+        case .infinity: return "􀯠"
+        case .infinityCircle: return "􀵏"
+        case .infinityCircleFill: return "􀵐"
+        case .arrowRectanglePath: return "􀣁"
+        case .goForward: return "􀍿"
+        case .goBackward: return "􀎀"
+        case .goForward5: return "􀶰"
+        case .goBackward5: return "􀶱"
+        case .goForward10: return "􀎁"
+        case .goBackward10: return "􀎂"
+        case .goForward15: return "􀎃"
+        case .goBackward15: return "􀎄"
+        case .goForward30: return "􀎅"
+        case .goBackward30: return "􀎆"
+        case .goForward45: return "􀎇"
+        case .goBackward45: return "􀎈"
+        case .goForward60: return "􀎉"
+        case .goBackward60: return "􀎊"
+        case .goForward75: return "􀘤"
+        case .goBackward75: return "􀘥"
+        case .goForward90: return "􀘦"
+        case .goBackward90: return "􀘧"
+        case .goForwardPlus: return "􀘨"
+        case .goBackwardMinus: return "􀘩"
+        case .textInsert: return "􀋽"
+        case .textAppend: return "􀋾"
+        case .textLineFirstAndArrowTriangleForward: return "􁘿"
+        case .textLineLastAndArrowTriangleForward: return "􁙀"
         }
     }
 }
