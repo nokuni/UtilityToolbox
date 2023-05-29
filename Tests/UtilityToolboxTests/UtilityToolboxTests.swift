@@ -4,12 +4,12 @@ import SpriteKit
 
 final class UtilityToolboxTests: XCTestCase {
     
+    override class func setUp() {
+        
+    }
     
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        //XCTAssertEqual(Utility_Toolbox().text, "Hello, World!")
+    override func tearDownWithError() throws {
+        
     }
     
     // MARK: Arrays
@@ -144,6 +144,26 @@ final class UtilityToolboxTests: XCTestCase {
         
         XCTAssertEqual(values, expectedResult)
     }
+    
+    func testRemoveDuplicates() {
+        // Given
+        var fruits = ["Apple", "Kiwi", "Orange", "Orange", "Cherry", "Banana", "Cherry", "Kiwi"]
+        // When
+        fruits.removeDuplicates()
+        // Then
+        let expectedResult = ["Apple", "Kiwi", "Orange", "Cherry", "Banana"]
+        XCTAssertEqual(fruits, expectedResult)
+    }
+    
+    func testRemoveLastUntil() {
+        // Given
+        var fruits = ["Apple", "Kiwi", "Orange", "Cherry", "Banana", "Mango"]
+        // When
+        fruits.removeLast(until: 2)
+        // Then
+        let expectedResult = ["Apple", "Kiwi"]
+        XCTAssertEqual(fruits, expectedResult)
+    }
 
     // MARK: - String
 
@@ -195,6 +215,16 @@ final class UtilityToolboxTests: XCTestCase {
         let expectedResult: Substring = "ñori"
         XCTAssertEqual(letter, expectedResult)
     }
+    
+    func testWordCount() {
+        // Given
+        let sentence = "The weather is not good today."
+        // When
+        let wordCount = sentence.wordCount
+        // Then
+        let expectedResult: Int = 6
+        XCTAssertEqual(wordCount, expectedResult)
+    }
 
     // MARK: - Int
 
@@ -244,6 +274,18 @@ final class UtilityToolboxTests: XCTestCase {
         // Then
         let expectedResult: Int = 31
         XCTAssertEqual(percentageValue, expectedResult)
+    }
+    
+    // MARK: - Double
+    
+    func testWithoutTrailingZeros() {
+        // Given
+        var decimal: Double = 34.3456
+        // When
+        let result = decimal.withoutTrailingZeros()
+        // Then
+        let expectedResult = "34"
+        XCTAssertEqual(result, expectedResult)
     }
 
     // MARK: - Protocol Case Iterable

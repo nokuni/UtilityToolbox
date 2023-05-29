@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BundleManager {
+public final class BundleManager {
 
     public init() { }
 

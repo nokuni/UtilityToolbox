@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class UIAnimation {
+public final class UIAnimation {
     
     private var timer: Timer?
     private var duration: Int = 0

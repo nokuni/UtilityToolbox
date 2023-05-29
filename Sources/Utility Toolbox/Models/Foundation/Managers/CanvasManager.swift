@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public class CanvasManager: ObservableObject {
+public final class CanvasManager: ObservableObject {
     
     public init(lineColor: Color = .black, lineWidth: Double = 5.0) {
         self.lineColor = lineColor

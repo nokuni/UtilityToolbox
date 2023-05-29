@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class AsyncManager {
+public final class AsyncManager {
     
     /// Load an asynchronous content synchronously.
     public static func loadContent(content: @escaping () async throws -> Void,

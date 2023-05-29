@@ -28,13 +28,13 @@ public extension String {
     var uInt: UInt {
         return UInt(self.dropFirst(2), radix: 16) ?? 0
     }
-
+    
     /// Returns an UInt32 from the string.
     func intoUInt32(from dictionary: [Int: UInt32]) -> UInt32? {
         let number = expression.expressionValue(with: dictionary, context: nil) as? UInt32
         return number
     }
-
+    
     /// Returns a decoded HTML string.
     func withoutHTMLEncoding() throws -> String? {
         guard let data = self.data(using: .utf8) else { return nil }
@@ -48,6 +48,11 @@ public extension String {
         )
         return attr.string
     }
+    
+    var wordCount: Int {
+        let regex = try? NSRegularExpression(pattern: "\\w+")
+        return regex?.numberOfMatches(in: self, range: NSRange(location: 0, length: self.utf16.count)) ?? 0
+    }
 }
 
 // MARK: - LocalizedError
@@ -59,38 +64,38 @@ extension String: LocalizedError {
 // MARK: - Subscripts
 
 extension String {
-
+    
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
-
+    
     subscript (bounds: CountableRange<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         if end < start { return "" }
         return self[start..<end]
     }
-
+    
     subscript (bounds: CountableClosedRange<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         if end < start { return "" }
         return self[start...end]
     }
-
+    
     subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(endIndex, offsetBy: -1)
         if end < start { return "" }
         return self[start...end]
     }
-
+    
     subscript (bounds: PartialRangeThrough<Int>) -> Substring {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         if end < startIndex { return "" }
         return self[startIndex...end]
     }
-
+    
     subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         if end < startIndex { return "" }

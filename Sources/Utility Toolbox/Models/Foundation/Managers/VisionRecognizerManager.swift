@@ -12,7 +12,7 @@ import Vision
 // The text in the image needs to have a great/high contrast for more recognition accuracy.
 
 /// An object that manages text recognition.
-public class VisionRecognizerManager {
+public final class VisionRecognizerManager {
     
     public init() { }
     
