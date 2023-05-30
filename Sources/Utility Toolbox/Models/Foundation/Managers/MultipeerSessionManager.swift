@@ -13,7 +13,7 @@ import os
 // In the app Info properties, add Bonjour Services.
 // Then add 2 properties representing the service type.
 // Item0: _my-service._tcp
-// Item0: _my-service._udp
+// Item1: _my-service._udp
 // PS: The 2 properties need to have the ._tcp and ._udp in the info file. But in the code you can ignore the underscores and the extension and use it as "my-service".
 
 // In your app target, add mac as a supported destination. It will automatically unlock App Sandbox in Signing and Capabilities. You will need to enable Incoming Connections (server) and Outgoing Connections (client).

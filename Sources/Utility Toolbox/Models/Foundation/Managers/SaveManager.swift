@@ -44,4 +44,8 @@ public final class SaveManager {
         container.viewContext.delete(object)
         try? save()
     }
+    
+    public func deleteAll(objects: [NSManagedObject]) {
+        objects.forEach { container.viewContext.delete($0) }
+    }
 }
