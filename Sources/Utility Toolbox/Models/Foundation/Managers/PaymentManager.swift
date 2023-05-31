@@ -11,9 +11,7 @@ public typealias PaymentCompletionHandler = (Bool) -> Void
 
 public class PaymentManager: NSObject {
     
-    public init(paymentRequest: PKPaymentRequest) {
-        self.paymentRequest = paymentRequest
-    }
+    public init() { }
     
     public var paymentRequest: PKPaymentRequest
     private var paymentController: PKPaymentAuthorizationController?
@@ -36,8 +34,8 @@ public class PaymentManager: NSObject {
 extension PaymentManager: PKPaymentAuthorizationControllerDelegate {
     
     public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController,
-                                        didAuthorizePayment payment: PKPayment,
-                                        completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+                                               didAuthorizePayment payment: PKPayment,
+                                               completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         
         // Perform some very basic validation on the provided contact information
         if payment.shippingContact?.emailAddress == nil || payment.shippingContact?.phoneNumber == nil {

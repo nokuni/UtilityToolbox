@@ -70,6 +70,73 @@ func deleteUser(userID: Int) async throws -> User {
 }
 ```
 
+## Async Manager
+
+```swift
+func content() async throws { // Async await content }
+
+func completion() { // Completion }
+
+AsyncManager.loadContent(content: content, completion: completion)
+```
+
+## Payment Manager
+
+```swift
+var paymentRequest: PKPaymentRequest {
+    let item = PKPaymentSummaryItem(label: "Balloon", amount: NSDecimalNumber(value: 3.14), type: .final)
+    let request = PKPaymentRequest()
+    request.paymentSummaryItems = [item]
+    request.merchantIdentifier = "merchant.com.YOURDOMAIN.YOURAPPNAME"
+    request.merchantCapabilities = .capability3DS
+    request.countryCode = "US"
+    request.currencyCode = "USD"
+    request.requiredShippingContactFields = [.phoneNumber, .emailAddress]
+    request.supportedNetworks = [.visa, ]
+}
+
+struct MyPaymentView: View {
+    var paymentManager = PaymentManager()
+    var body: some View {
+        PayWithApplePayButton {
+            paymentManager.startPayment(paymentRequest: paymentRequest) { result in
+                result ? print("Success") : print("Failure")
+            }
+        }
+    }
+}
+```
+
+## Bundle Manager
+
+```swift
+let manager = BundleManager()
+let countries: [Country] = try? manager.decodeJSON("countries", fileExtension: "json")
+```
+
+## Canvas
+
+```swift
+struct MyCanvasView: View {
+   @StateObject var canvasManager = CanvasManager(lineColor: .blue, lineWidth: 10.0) 
+   var body: some View {
+      CanvasBoard(manager: canvasManager)
+        .frame(width: 300, height: 300)
+   }
+}
+```
+
+## FX Animation
+```swift
+struct MyFXAnimationView: View {
+   let frames: [String] = ["sparks0", "sparks1", "sparks2"]
+   var body: some View {
+      FXAnimation(frames: frames, isRepeatingForever: true)
+        .scaledToFit()
+   }
+}
+```
+
 ## SF Symbols
 
 ```swift
