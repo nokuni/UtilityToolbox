@@ -11,9 +11,8 @@ public typealias PaymentCompletionHandler = (Bool) -> Void
 
 public class PaymentManager: NSObject {
     
-    public init() { }
+    override public init() { }
     
-    public var paymentRequest: PKPaymentRequest
     private var paymentController: PKPaymentAuthorizationController?
     private var paymentStatus = PKPaymentAuthorizationStatus.failure
     private var completionHandler: PaymentCompletionHandler?
