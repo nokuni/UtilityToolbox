@@ -233,7 +233,6 @@ struct MyCarouselView: View {
 
 ```swift
 struct MyShapesView: View {
-    @State var index: Int = 0
     var body: some View {
        VStack {
           Diamond()
