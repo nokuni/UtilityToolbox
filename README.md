@@ -28,10 +28,10 @@ func failureCompletion() { // Failure }
 
 func postUser() async throws -> User {
    let newUser = User(name: String)
-   let user: User = manager.get(url: url, 
-                                value: newUser
-                                successCompletion: successCompletion, 
-                                failureCompletion: failureCompletion)
+   let user: User = manager.post(url: url, 
+                                 value: newUser
+                                 successCompletion: successCompletion, 
+                                 failureCompletion: failureCompletion)
    return user
 }
 ```
@@ -45,7 +45,7 @@ func successCompletion() { // Success }
 func failureCompletion() { // Failure }
 
 func putUser(user: User) async throws -> User {
-   let user: User = manager.get(url: url, 
+   let user: User = manager.put(url: url, 
                                 value: user
                                 successCompletion: successCompletion, 
                                 failureCompletion: failureCompletion)
@@ -62,10 +62,10 @@ func successCompletion() { // Success }
 func failureCompletion() { // Failure }
 
 func deleteUser(userID: Int) async throws -> User {
-   let user: User = manager.get(url: url, 
-                                id: userID,
-                                successCompletion: successCompletion, 
-                                failureCompletion: failureCompletion)
+   let user: User = manager.delete(url: url, 
+                                   id: userID,
+                                   successCompletion: successCompletion, 
+                                   failureCompletion: failureCompletion)
    return user
 }
 ```
