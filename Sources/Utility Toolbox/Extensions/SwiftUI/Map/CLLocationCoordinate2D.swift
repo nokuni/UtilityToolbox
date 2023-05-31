@@ -13,3 +13,10 @@ public extension CLLocationCoordinate2D {
         self.init(latitude: capital.coordinates.latitude, longitude: capital.coordinates.longitude)
     }
 }
+
+struct MyMapView: View {
+    @State var capital = MKCoordinateRegion(capital: .amsterdam)
+    var body: some View {
+        Map(coordinateRegion: $capital)
+    }
+}

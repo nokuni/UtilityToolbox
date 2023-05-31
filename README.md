@@ -1,5 +1,97 @@
 # Utility Toolbox
 
+## API Manager
+
+**GET**
+```swift
+let manager = APIManager()
+let url = "http://localhost:8000/users"
+
+func successCompletion() { // Success }
+func failureCompletion() { // Failure }
+
+func getUsers() async throws -> [User] {
+   let users: [User] = manager.get(url: url, 
+                                   successCompletion: successCompletion, 
+                                   failureCompletion: failureCompletion)
+   return users
+}
+```
+
+**POST**
+```swift
+let manager = APIManager()
+let url = "http://localhost:8000/api/auth/signup/"
+
+func successCompletion() { // Success }
+func failureCompletion() { // Failure }
+
+func postUser() async throws -> User {
+   let newUser = User(name: String)
+   let user: User = manager.get(url: url, 
+                                value: newUser
+                                successCompletion: successCompletion, 
+                                failureCompletion: failureCompletion)
+   return user
+}
+```
+
+**PUT**
+```swift
+let manager = APIManager()
+let url = "http://localhost:8000/user/"
+
+func successCompletion() { // Success }
+func failureCompletion() { // Failure }
+
+func putUser(user: User) async throws -> User {
+   let user: User = manager.get(url: url, 
+                                value: user
+                                successCompletion: successCompletion, 
+                                failureCompletion: failureCompletion)
+   return user
+}
+```
+
+**DELETE**
+```swift
+let manager = APIManager()
+let url = "http://localhost:8000/user/"
+
+func successCompletion() { // Success }
+func failureCompletion() { // Failure }
+
+func deleteUser(userID: Int) async throws -> User {
+   let user: User = manager.get(url: url, 
+                                id: userID,
+                                successCompletion: successCompletion, 
+                                failureCompletion: failureCompletion)
+   return user
+}
+```
+
+## SF Symbols
+
+```swift
+struct SFSymbolImageView: View {
+   var body: some View {
+      Image(sfSymbol: SFMathsSymbol.multiply)
+   }
+}
+```
+
+## MapKit
+
+**World capital**
+```swift
+struct MyMapView: View {
+    @State var capital = MKCoordinateRegion(capital: .amsterdam)
+    var body: some View {
+        Map(coordinateRegion: $capital)
+    }
+}
+```
+
 ## Extensions
 
 ### **Array & Collections**
