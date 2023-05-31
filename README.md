@@ -70,6 +70,47 @@ func deleteUser(userID: Int) async throws -> User {
 }
 ```
 
+## Save Manager
+
+**Fetch saves**
+```swift
+let manager = SaveManager()
+let countries: [CountryEntity]
+
+func fetchCountries() {
+    guard let fetchedSaves: [CountryEntity] = try? saveManager.fetchedObjects(entityName: "CountryEntity") else { return }
+    countries = fetchedSaves
+}
+```
+
+**Save**
+```swift
+let manager = SaveManager()
+
+func save() { try? manager.save() }
+```
+
+**Delete save**
+```swift
+let manager = SaveManager()
+let countries: [CountryEntity]
+
+func deleteCountry(_ country: CountryEntity) {
+    withAnimation {
+        saveManager.delete(country)
+        fetchCountries()
+    }
+}
+```
+
+**Delete all save**
+```swift
+let manager = SaveManager()
+let countries: [CountryEntity]
+
+manager.deleteAll(objects: countries)
+```
+
 ## Async Manager
 
 ```swift
@@ -144,6 +185,64 @@ struct SFSymbolImageView: View {
    var body: some View {
       Image(sfSymbol: SFMathsSymbol.multiply)
    }
+}
+```
+
+## Custom Font
+
+```swift
+struct MyCustomFontText: View {
+   var body: some View {
+      Text("Hello World")
+        .font(.custom(systemName: .americanTypewriter, size: 15))
+   }
+}
+```
+
+## Carousel
+
+```swift
+struct Student: Identifiable {
+    var id = UUID()
+    var name: String
+}
+
+var students: [Student] = [
+    Student(name: "John"),
+    Student(name: "Mary"),
+    Student(name: "Harry"),
+    Student(name: "Kate"),
+    Student(name: "Patrick"),
+]
+
+struct MyCarouselView: View {
+    @State var index: Int = 0
+    var body: some View {
+        Carousel(index: $index, items: students) { student in
+            RoundedRectangle(cornerRadius: 15)
+                .overlay(
+                    Text(student.name)
+                        .foregroundColor(.white)
+                )
+        }
+    }
+}
+```
+
+## Shapes
+
+```swift
+struct MyShapesView: View {
+    @State var index: Int = 0
+    var body: some View {
+       VStack {
+          Diamond()
+          Heart()
+          Hexagon()
+          Star(corners: 5, smoothness: 0.45)
+          Triangle()
+       }
+    }
 }
 ```
 

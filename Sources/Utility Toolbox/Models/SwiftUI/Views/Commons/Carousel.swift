@@ -7,11 +7,7 @@
 
 import SwiftUI
 
-public protocol CarouselProtocol: Identifiable {
-    func action()
-}
-
-public struct Carousel<Content: View, T: CarouselProtocol>: View {
+public struct Carousel<Content: View, T: Identifiable>: View {
     
     public var content: (T) -> Content
     public var items: [T]
