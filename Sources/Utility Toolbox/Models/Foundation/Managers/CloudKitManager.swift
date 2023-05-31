@@ -11,6 +11,8 @@ public final class CloudKitManager: ObservableObject {
     
     public init(configuration: CloudConfiguration) {
         self.configuration = configuration
+        container = CKContainer.default()
+        database = container.publicCloudDatabase
         Task { try await setUpCloud() }
     }
     
@@ -27,6 +29,8 @@ public final class CloudKitManager: ObservableObject {
         public var username: String
     }
     
+    public let container: CKContainer
+    public let database: CKDatabase
     public var configuration: CloudConfiguration
     
     private enum AccountStatus: String, LocalizedError {
@@ -37,8 +41,9 @@ public final class CloudKitManager: ObservableObject {
         case granted, couldNotComplete, denied, initialState, unknown
     }
     
+    /// Update the cloud status.
     public func cloudStatus() async throws {
-        let status = try await CKContainer.default().accountStatus()
+        let status = try await container.accountStatus()
         DispatchQueue.main.async {
             switch status {
             case .couldNotDetermine: self.configuration.accountStatus = AccountStatus.couldNotDetermine.rawValue
@@ -51,23 +56,26 @@ public final class CloudKitManager: ObservableObject {
         }
     }
     
+    /// Fetch a user from the CloudKit container.
     public func fetchUser() async throws {
-        let userRecordID = try await CKContainer.default().userRecordID()
-        let userIdentity = try await CKContainer.default().userIdentity(forUserRecordID: userRecordID)
+        let userRecordID = try await container.userRecordID()
+        let userIdentity = try await container.userIdentity(forUserRecordID: userRecordID)
         if let givenName = userIdentity?.nameComponents?.givenName { configuration.username = givenName }
     }
     
+    /// Returns the user ID.
     public func userID() -> String {
         var userID = ""
-        CKContainer.default().fetchUserRecordID { id, error in
+        container.fetchUserRecordID { id, error in
             guard let id = id else { return }
             DispatchQueue.main.async { userID = id.recordName }
         }
         return userID
     }
     
+    /// Request permissions to the CloudKit container.
     public func requestPermissions() async throws {
-        let permission = try await CKContainer.default().requestApplicationPermission(.userDiscoverability)
+        let permission = try await container.requestApplicationPermission(.userDiscoverability)
         DispatchQueue.main.async {
             switch permission {
             case .granted: self.configuration.permissionStatus = PermissionStatus.granted.rawValue
@@ -79,6 +87,7 @@ public final class CloudKitManager: ObservableObject {
         }
     }
     
+    /// Fetch cloud status, permissions and user.
     private func setUpCloud() async throws {
         do {
             try await cloudStatus()
@@ -89,16 +98,67 @@ public final class CloudKitManager: ObservableObject {
         }
     }
     
-    public func addQueryOperation(_ operation: CKDatabaseOperation) {
-        CKContainer.default().publicCloudDatabase.add(operation)
+    // MARK: - CRUD
+    
+    typealias RecordCompletion = (Result<CKRecord, Error>) -> Void
+    typealias RecordIDCompletion = (Result<CKRecord.ID, Error>) -> Void
+    
+    /// Create a record on the CloudKit database.
+    func createRecord(recordType: String,
+                      recordData: [String: CKRecordValue],
+                      completion: @escaping RecordCompletion) {
+        let recordID = CKRecord.ID(recordName: UUID().uuidString)
+        let record = CKRecord(recordType: recordType, recordID: recordID)
+        
+        for (key, value) in recordData {
+            record[key] = value
+        }
+        
+        self.database.save(record) { (record, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let record = record {
+                completion(.success(record))
+            }
+        }
     }
     
-    public func saveRecord(_ record: CKRecord, and fetch: () -> Void) async throws {
-        do {
-            try await CKContainer.default().publicCloudDatabase.save(record)
-            fetch()
-        } catch {
-            print("Error saving cloud data")
+    /// Read a record on the CloudKit database.
+    func fetchRecord(recordID: CKRecord.ID, completion: @escaping RecordCompletion) {
+        self.database.fetch(withRecordID: recordID) { (record, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let record = record {
+                completion(.success(record))
+            }
+        }
+    }
+    
+    /// Update a record on the CloudKit database.
+    func updateRecord(record: CKRecord,
+                      recordData: [String: CKRecordValue],
+                      completion: @escaping RecordCompletion) {
+        for (key, value) in recordData {
+            record[key] = value
+        }
+        
+        self.database.save(record) { (record, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let record = record {
+                completion(.success(record))
+            }
+        }
+    }
+    
+    /// Update a record on the CloudKit database.
+    func deleteRecord(recordID: CKRecord.ID, completion: @escaping RecordIDCompletion) {
+        self.database.delete(withRecordID: recordID) { (recordID, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let recordID = recordID {
+                completion(.success(recordID))
+            }
         }
     }
 }
