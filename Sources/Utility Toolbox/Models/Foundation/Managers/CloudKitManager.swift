@@ -104,8 +104,8 @@ public final class CloudKitManager: ObservableObject {
     
     /// Create a record on the CloudKit database.
     public func createRecord(recordType: String,
-                      recordData: [String: CKRecordValue],
-                      completion: @escaping RecordCompletion) {
+                             recordData: [String: CKRecordValue?],
+                             completion: @escaping RecordCompletion) {
         let recordID = CKRecord.ID(recordName: UUID().uuidString)
         let record = CKRecord(recordType: recordType, recordID: recordID)
         
@@ -135,8 +135,8 @@ public final class CloudKitManager: ObservableObject {
     
     /// Update a record on the CloudKit database.
     public func updateRecord(record: CKRecord,
-                      recordData: [String: CKRecordValue],
-                      completion: @escaping RecordCompletion) {
+                             recordData: [String: CKRecordValue],
+                             completion: @escaping RecordCompletion) {
         for (key, value) in recordData {
             record[key] = value
         }
