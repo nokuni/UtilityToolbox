@@ -21,9 +21,11 @@ public final class SaveManager {
     public var container: NSPersistentContainer
 
     /// Returns all objects from the 
-    public func fetchedObjects<R: NSFetchRequestResult>(entityName: String) throws -> [R] {
+    public func fetchedObjects<R: NSFetchRequestResult>(entityName: String,
+                                                        sorting: [NSSortDescriptor]?) throws -> [R] {
         do {
             let request = NSFetchRequest<R>(entityName: entityName)
+            request.sortDescriptors = sorting
             return try container.viewContext.fetch(request)
         } catch {
             throw SaveError.unableToFetch.rawValue
