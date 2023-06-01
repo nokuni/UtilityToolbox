@@ -280,7 +280,7 @@ final class UtilityToolboxTests: XCTestCase {
     
     func testWithoutTrailingZeros() {
         // Given
-        var decimal: Double = 34.3456
+        let decimal: Double = 34.3456
         // When
         let result = decimal.withoutTrailingZeros()
         // Then

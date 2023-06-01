@@ -22,7 +22,7 @@ public final class SaveManager {
 
     /// Returns all objects from the 
     public func fetchedObjects<R: NSFetchRequestResult>(entityName: String,
-                                                        sorting: [NSSortDescriptor]?) throws -> [R] {
+                                                        sorting: [NSSortDescriptor]? = nil) throws -> [R] {
         do {
             let request = NSFetchRequest<R>(entityName: entityName)
             request.sortDescriptors = sorting
