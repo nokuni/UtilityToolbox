@@ -12,6 +12,7 @@ public final class CloudKitManager: ObservableObject {
     public init() {
         container = CKContainer.default()
         database = container.publicCloudDatabase
+        AsyncManager.loadContent(content: setUpCloud)
     }
     
     public struct CloudConfiguration {

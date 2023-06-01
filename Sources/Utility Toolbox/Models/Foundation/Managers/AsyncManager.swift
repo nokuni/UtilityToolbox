@@ -11,7 +11,7 @@ public final class AsyncManager {
     
     /// Load an asynchronous content synchronously.
     public static func loadContent(content: @escaping () async throws -> Void,
-                                   completion: (() -> Void)?) {
+                                   completion: (() -> Void)? = nil) {
         Task {
             try await content()
             completion?()
