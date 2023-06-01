@@ -99,11 +99,11 @@ public final class CloudKitManager: ObservableObject {
     
     // MARK: - CRUD
     
-    typealias RecordCompletion = (Result<CKRecord, Error>) -> Void
-    typealias RecordIDCompletion = (Result<CKRecord.ID, Error>) -> Void
+    public typealias RecordCompletion = (Result<CKRecord, Error>) -> Void
+    public typealias RecordIDCompletion = (Result<CKRecord.ID, Error>) -> Void
     
     /// Create a record on the CloudKit database.
-    func createRecord(recordType: String,
+    public func createRecord(recordType: String,
                       recordData: [String: CKRecordValue],
                       completion: @escaping RecordCompletion) {
         let recordID = CKRecord.ID(recordName: UUID().uuidString)
@@ -123,7 +123,7 @@ public final class CloudKitManager: ObservableObject {
     }
     
     /// Read a record on the CloudKit database.
-    func fetchRecord(recordID: CKRecord.ID, completion: @escaping RecordCompletion) {
+    public func fetchRecord(recordID: CKRecord.ID, completion: @escaping RecordCompletion) {
         self.database.fetch(withRecordID: recordID) { (record, error) in
             if let error = error {
                 completion(.failure(error))
@@ -134,7 +134,7 @@ public final class CloudKitManager: ObservableObject {
     }
     
     /// Update a record on the CloudKit database.
-    func updateRecord(record: CKRecord,
+    public func updateRecord(record: CKRecord,
                       recordData: [String: CKRecordValue],
                       completion: @escaping RecordCompletion) {
         for (key, value) in recordData {
@@ -151,7 +151,7 @@ public final class CloudKitManager: ObservableObject {
     }
     
     /// Update a record on the CloudKit database.
-    func deleteRecord(recordID: CKRecord.ID, completion: @escaping RecordIDCompletion) {
+    public func deleteRecord(recordID: CKRecord.ID, completion: @escaping RecordIDCompletion) {
         self.database.delete(withRecordID: recordID) { (recordID, error) in
             if let error = error {
                 completion(.failure(error))
