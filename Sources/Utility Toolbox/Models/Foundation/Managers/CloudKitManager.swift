@@ -9,11 +9,9 @@ import CloudKit
 
 public final class CloudKitManager: ObservableObject {
     
-    public init(configuration: CloudConfiguration) {
-        self.configuration = configuration
+    public init() {
         container = CKContainer.default()
         database = container.publicCloudDatabase
-        Task { try await setUpCloud() }
     }
     
     public struct CloudConfiguration {
@@ -31,7 +29,7 @@ public final class CloudKitManager: ObservableObject {
     
     public let container: CKContainer
     public let database: CKDatabase
-    public var configuration: CloudConfiguration
+    public var configuration: CloudConfiguration = CloudConfiguration()
     
     private enum AccountStatus: String, LocalizedError {
         case couldNotDetermine, available, restricted, noAccount, temporarilyUnavailable, unknown
