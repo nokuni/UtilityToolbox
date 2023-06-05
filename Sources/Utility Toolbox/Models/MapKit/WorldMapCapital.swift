@@ -51,6 +51,24 @@ public enum WorldMapCapital {
     case budapest
     case buenosAires
     case bujumbura
+    case cairo
+    case canberra
+    case caracas
+    case castries
+    case cayenne
+    case charlotteAmali
+    case chisinau
+    case conakry
+    case copenhagen
+    case dakar
+    case damascus
+    case dhaka
+    case dili
+    case djibouti
+    case dodoma
+    case doha
+    case dublin
+    case dushanbe
 
     public var coordinates: CLLocationCoordinate2D {
         switch self {
@@ -140,6 +158,42 @@ public enum WorldMapCapital {
             return CLLocationCoordinate2D(latitude: 36.3, longitude: 60)
         case .bujumbura:
             return CLLocationCoordinate2D(latitude: 3.16, longitude: 29.18)
+        case .cairo:
+            return CLLocationCoordinate2D(latitude: 30.01, longitude: 31.14)
+        case .canberra:
+            return CLLocationCoordinate2D(latitude: 35.15, longitude: 149.08)
+        case .caracas:
+            return CLLocationCoordinate2D(latitude: 10.3, longitude: 66.55)
+        case .castries:
+            return CLLocationCoordinate2D(latitude: 14.02, longitude: 60.58)
+        case .cayenne:
+            return CLLocationCoordinate2D(latitude: 5.05, longitude: 52.18)
+        case .charlotteAmali:
+            return CLLocationCoordinate2D(latitude: 18.21, longitude: 64.56)
+        case .chisinau:
+            return CLLocationCoordinate2D(latitude: 47.02, longitude: 28.5)
+        case .conakry:
+            return CLLocationCoordinate2D(latitude: 09.29, longitude: 13.49)
+        case .copenhagen:
+            return CLLocationCoordinate2D(latitude: 55.41, longitude: 12.34)
+        case .dakar:
+            return CLLocationCoordinate2D(latitude: 14.34, longitude: 17.29)
+        case .damascus:
+            return CLLocationCoordinate2D(latitude: 33.3, longitude: 36.18)
+        case .dhaka:
+            return CLLocationCoordinate2D(latitude: 23.43, longitude: 90.26)
+        case .dili:
+            return CLLocationCoordinate2D(latitude: 8.29, longitude: 125.34)
+        case .djibouti:
+            return CLLocationCoordinate2D(latitude: 11.08, longitude: 42.2)
+        case .dodoma:
+            return CLLocationCoordinate2D(latitude: 6.08, longitude: 35.45)
+        case .doha:
+            return CLLocationCoordinate2D(latitude: 25.15, longitude: 51.35)
+        case .dublin:
+            return CLLocationCoordinate2D(latitude: 53.21, longitude: 6.15)
+        case .dushanbe:
+            return CLLocationCoordinate2D(latitude: 38.33, longitude: 68.48)
         }
     }
 }
