@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension SortComparator {
+public extension SortComparator {
     /// Returns the reverse of the sort.
     var reverse: Self  {
         var reverse = self
