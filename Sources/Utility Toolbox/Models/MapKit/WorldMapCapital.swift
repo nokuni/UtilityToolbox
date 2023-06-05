@@ -24,6 +24,33 @@ public enum WorldMapCapital {
     case astana
     case asuncion
     case athens
+    case baghdad
+    case baku
+    case bamako
+    case bandarSeriBegawan
+    case bangkok
+    case bangui
+    case banjul
+    case basseTerre
+    case basseterre
+    case beijing
+    case beirut
+    case belgrade
+    case belmopan
+    case berlin
+    case bern
+    case bishkek
+    case bissau
+    case bogota
+    case brasilia
+    case bratislava
+    case brazzaville
+    case bridgetown
+    case brussels
+    case bucuresti
+    case budapest
+    case buenosAires
+    case bujumbura
 
     public var coordinates: CLLocationCoordinate2D {
         switch self {
@@ -59,6 +86,60 @@ public enum WorldMapCapital {
             return CLLocationCoordinate2D(latitude: 25.1, longitude: 57.3)
         case .athens:
             return CLLocationCoordinate2D(latitude: 37.58, longitude: 23.46)
+        case .baghdad:
+            return CLLocationCoordinate2D(latitude: 33.2, longitude: 44.3)
+        case .baku:
+            return CLLocationCoordinate2D(latitude: 40.29, longitude: 49.56)
+        case .bamako:
+            return CLLocationCoordinate2D(latitude: 12.34, longitude: 7.55)
+        case .bandarSeriBegawan:
+            return CLLocationCoordinate2D(latitude: 4.52, longitude: 115)
+        case .bangkok:
+            return CLLocationCoordinate2D(latitude: 13.45, longitude: 100.35)
+        case .bangui:
+            return CLLocationCoordinate2D(latitude: 4.23, longitude: 18.35)
+        case .banjul:
+            return CLLocationCoordinate2D(latitude: 13.28, longitude: 16.4)
+        case .basseTerre:
+            return CLLocationCoordinate2D(latitude: 16, longitude: 61.44)
+        case .basseterre:
+            return CLLocationCoordinate2D(latitude: 17.17, longitude: 62.43)
+        case .beijing:
+            return CLLocationCoordinate2D(latitude: 39.55, longitude: 116.2)
+        case .beirut:
+            return CLLocationCoordinate2D(latitude: 33.53, longitude: 35.31)
+        case .belgrade:
+            return CLLocationCoordinate2D(latitude: 44.5, longitude: 20.37)
+        case .belmopan:
+            return CLLocationCoordinate2D(latitude: 17.18, longitude: 88.3)
+        case .berlin:
+            return CLLocationCoordinate2D(latitude: 52.3, longitude: 13.25)
+        case .bern:
+            return CLLocationCoordinate2D(latitude: 46.57, longitude: 7.28)
+        case .bishkek:
+            return CLLocationCoordinate2D(latitude: 42.54, longitude: 74.46)
+        case .bissau:
+            return CLLocationCoordinate2D(latitude: 11.45, longitude: 15.45)
+        case .bogota:
+            return CLLocationCoordinate2D(latitude: 4.34, longitude: 74)
+        case .brasilia:
+            return CLLocationCoordinate2D(latitude: 15.47, longitude: 47.55)
+        case .bratislava:
+            return CLLocationCoordinate2D(latitude: 48.1, longitude: 17.07)
+        case .brazzaville:
+            return CLLocationCoordinate2D(latitude: 4.09, longitude: 15.12)
+        case .bridgetown:
+            return CLLocationCoordinate2D(latitude: 13.05, longitude: 59.3)
+        case .brussels:
+            return CLLocationCoordinate2D(latitude: 50.51, longitude: 4.21)
+        case .bucuresti:
+            return CLLocationCoordinate2D(latitude: 44.27, longitude: 26.1)
+        case .budapest:
+            return CLLocationCoordinate2D(latitude: 47.29, longitude: 19.05)
+        case .buenosAires:
+            return CLLocationCoordinate2D(latitude: 36.3, longitude: 60)
+        case .bujumbura:
+            return CLLocationCoordinate2D(latitude: 3.16, longitude: 29.18)
         }
     }
 }

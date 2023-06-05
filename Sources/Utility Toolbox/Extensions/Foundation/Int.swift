@@ -8,6 +8,9 @@
 import Foundation
 
 public extension Int {
+
+    /// Convert and returns as a Double
+    var double: Double { Double(self) }
     
     /// Returns a string with an amount of leading zeros (number included).
     func leadingZeros(amount: Int) -> String {

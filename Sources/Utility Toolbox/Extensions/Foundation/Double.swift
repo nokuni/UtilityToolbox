@@ -8,6 +8,10 @@
 import Foundation
 
 public extension Double {
+
+    /// Convert and returns as an Int
+    var int: Int { Int(self) }
+
     func percentageValue(percentage: Double) -> Double {
         return (percentage * self) / 100
     }

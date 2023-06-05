@@ -38,11 +38,6 @@ public func reflected<S>(value: S) -> [String: Any] {
     return result
 }
 
-public func isImageInAssets(image: String) -> Bool {
-    let uiImage = UIImage(named: image)
-    return uiImage != nil
-}
-
 public func isImagesInAssets(images: [String]) -> Bool {
     let uiImages = images.compactMap { UIImage(named: $0) }
     return uiImages.count == images.count
