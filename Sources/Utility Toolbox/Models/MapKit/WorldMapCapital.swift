@@ -7,7 +7,7 @@
 
 import MapKit
 
-public enum WorldMapCapital {
+public enum WorldMapCapital: CaseIterable {
     case abuDhabi
     case abuja
     case accra
@@ -69,6 +69,44 @@ public enum WorldMapCapital {
     case doha
     case dublin
     case dushanbe
+    case fortDeFrance
+    case freetown
+    case funafuti
+    case gaborone
+    case george
+    case georgetown
+    case guatemala
+    case hanoi
+    case harare
+    case havana
+    case helsinki
+    case honiara
+    case islamabad
+    case jakarta
+    case jerusalem
+    case kabul
+    case kampala
+    case kathmandu
+    case khartoum
+    case kiev
+    case kigali
+    case kingstonJamaica
+    case kingstonNorfolkIsland
+    case kingstown
+    case kinshasa
+    case kuala
+    case kuwait
+    case laPaz
+    case libreville
+    case lilongwe
+    case lima
+    case lisbon
+    case ljubljana
+    case lome
+    case london
+    case luanda
+    case lusaka
+    case luxembourg
 
     public var coordinates: CLLocationCoordinate2D {
         switch self {
@@ -194,6 +232,82 @@ public enum WorldMapCapital {
             return CLLocationCoordinate2D(latitude: 53.21, longitude: 6.15)
         case .dushanbe:
             return CLLocationCoordinate2D(latitude: 38.33, longitude: 68.48)
+        case .fortDeFrance:
+            return CLLocationCoordinate2D(latitude: 14.36, longitude: 61.02)
+        case .freetown:
+            return CLLocationCoordinate2D(latitude: 8.3, longitude: 13.17)
+        case .funafuti:
+            return CLLocationCoordinate2D(latitude: 8.31, longitude: 179.13)
+        case .gaborone:
+            return CLLocationCoordinate2D(latitude: 24.45, longitude: 25.57)
+        case .george:
+            return CLLocationCoordinate2D(latitude: 19.20, longitude: 81.24)
+        case .georgetown:
+            return CLLocationCoordinate2D(latitude: 6.5, longitude: 58.12)
+        case .guatemala:
+            return CLLocationCoordinate2D(latitude: 14.40, longitude: 90.22)
+        case .hanoi:
+            return CLLocationCoordinate2D(latitude: 21.05, longitude: 105.55)
+        case .harare:
+            return CLLocationCoordinate2D(latitude: 17.43, longitude: 31.02)
+        case .havana:
+            return CLLocationCoordinate2D(latitude: 23.08, longitude: 82.22)
+        case .helsinki:
+            return CLLocationCoordinate2D(latitude: 60.15, longitude: 25.03)
+        case .honiara:
+            return CLLocationCoordinate2D(latitude: 9.27, longitude: 159.57)
+        case .islamabad:
+            return CLLocationCoordinate2D(latitude: 33.40, longitude: 73.10)
+        case .jakarta:
+            return CLLocationCoordinate2D(latitude: 06.09, longitude: 106.49)
+        case .jerusalem:
+            return CLLocationCoordinate2D(latitude: 31.71, longitude: 35.10)
+        case .kabul:
+            return CLLocationCoordinate2D(latitude: 34.28, longitude: 69.11)
+        case .kampala:
+            return CLLocationCoordinate2D(latitude: 0.2, longitude: 32.3)
+        case .kathmandu:
+            return CLLocationCoordinate2D(latitude: 27.45, longitude: 85.2)
+        case .khartoum:
+            return CLLocationCoordinate2D(latitude: 15.31, longitude: 32.35)
+        case .kiev:
+            return CLLocationCoordinate2D(latitude: 50.30, longitude: 30.28)
+        case .kigali:
+            return CLLocationCoordinate2D(latitude: 1.59, longitude: 30.04)
+        case .kingstonJamaica:
+            return CLLocationCoordinate2D(latitude: 18, longitude: 76.5)
+        case .kingstonNorfolkIsland:
+            return CLLocationCoordinate2D(latitude: 45.20, longitude: 168.43)
+        case .kingstown:
+            return CLLocationCoordinate2D(latitude: 13.1, longitude: 61.1)
+        case .kinshasa:
+            return CLLocationCoordinate2D(latitude: 4.2, longitude: 15.15)
+        case .kuala:
+            return CLLocationCoordinate2D(latitude: 3.09, longitude: 101.41)
+        case .kuwait:
+            return CLLocationCoordinate2D(latitude: 29.3, longitude: 48)
+        case .laPaz:
+            return CLLocationCoordinate2D(latitude: 16.2, longitude: 68.1)
+        case .libreville:
+            return CLLocationCoordinate2D(latitude: 00.25, longitude: 9.26)
+        case .lilongwe:
+            return CLLocationCoordinate2D(latitude: 14, longitude: 33.48)
+        case .lima:
+            return CLLocationCoordinate2D(latitude: 12, longitude: 77)
+        case .lisbon:
+            return CLLocationCoordinate2D(latitude: 38.42, longitude: 9.1)
+        case .ljubljana:
+            return CLLocationCoordinate2D(latitude: 46.04, longitude: 14.33)
+        case .lome:
+            return CLLocationCoordinate2D(latitude: 6.09, longitude: 1.2)
+        case .london:
+            return CLLocationCoordinate2D(latitude: 51.36, longitude: 0.05)
+        case .luanda:
+            return CLLocationCoordinate2D(latitude: 8.5, longitude: 13.15)
+        case .lusaka:
+            return CLLocationCoordinate2D(latitude: 15.28, longitude: 28.16)
+        case .luxembourg:
+            return CLLocationCoordinate2D(latitude: 49.37, longitude: 6.09)
         }
     }
 }
