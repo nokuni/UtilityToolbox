@@ -63,7 +63,7 @@ extension String: LocalizedError {
 
 // MARK: - Subscripts
 
-extension String {
+public extension String {
     
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
