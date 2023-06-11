@@ -18,7 +18,7 @@ import os
 
 // In your app target, add mac as a supported destination. It will automatically unlock App Sandbox in Signing and Capabilities. You will need to enable Incoming Connections (server) and Outgoing Connections (client).
 
-enum LocalInviteStatus {
+public enum LocalInviteStatus {
     case accepted
     case declined
     case unknown
