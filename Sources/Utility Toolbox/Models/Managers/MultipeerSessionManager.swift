@@ -142,20 +142,20 @@ extension MultipeerSessionManager: MCSessionDelegate {
             // Peer disconnected
             DispatchQueue.main.async {
                 self.paired = false
+                self.localInviteStatus = .declined
             }
             // Peer disconnected, start accepting invitaions again
             serviceAdvertiser.startAdvertisingPeer()
-            localInviteStatus = .declined
             log.info("MCSessionState: NOT CONNECTED")
             break
         case MCSessionState.connected:
             // Peer connected
             DispatchQueue.main.async {
                 self.paired = true
+                self.localInviteStatus = .accepted
             }
             // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
-            localInviteStatus = .accepted
             log.info("MCSessionState: CONNECTED")
             break
         default:
@@ -184,11 +184,18 @@ extension MultipeerSessionManager: MCSessionDelegate {
         log.error("Receiving streams is not supported")
     }
 
-    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+    public func session(_ session: MCSession,
+                        didStartReceivingResourceWithName resourceName: String,
+                        fromPeer peerID: MCPeerID,
+                        with progress: Progress) {
         log.error("Receiving resources is not supported")
     }
 
-    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+    public func session(_ session: MCSession,
+                        didFinishReceivingResourceWithName resourceName: String,
+                        fromPeer peerID: MCPeerID,
+                        at localURL: URL?,
+                        withError error: Error?) {
         log.error("Receiving resources is not supported")
     }
 
