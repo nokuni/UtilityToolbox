@@ -112,9 +112,6 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
                         foundPeer peerID: MCPeerID,
                         withDiscoveryInfo info: [String : String]?) {
         log.info("ServiceBrowser found peer: \(peerID)")
-        DispatchQueue.main.async {
-            self.log.info("\(self.session.connectedPeers)")
-        }
         // Add the peer to the list of available peers
         DispatchQueue.main.async {
             if !self.availablePeers.contains(peerID) {
