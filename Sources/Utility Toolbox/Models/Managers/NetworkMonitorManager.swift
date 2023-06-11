@@ -10,18 +10,19 @@ import SwiftUI
 
 public class NetworkMonitorManager: ObservableObject {
     private let networkMonitor = NWPathMonitor()
-    private let workerQueue = DispatchQueue(label: "Monitor")
-    public var isConnected = false
-
-    public init() {
+    private let queue = DispatchQueue(label: "Monitor")
+    @Published private(set) var isConnected = false
+    
+    private func checkConnection() {
         networkMonitor.pathUpdateHandler = { path in
-            self.isConnected = path.status == .satisfied
-            Task {
-                await MainActor.run {
-                    self.objectWillChange.send()
-                }
+            DispatchQueue.main.async {
+                self.isConnected = path.status == .satisfied
             }
         }
-        networkMonitor.start(queue: workerQueue)
+        networkMonitor.start(queue: queue)
+    }
+    
+    public init() {
+        checkConnection()
     }
 }
