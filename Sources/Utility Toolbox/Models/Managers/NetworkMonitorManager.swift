@@ -11,7 +11,7 @@ import SwiftUI
 public class NetworkMonitorManager: ObservableObject {
     private let networkMonitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "Monitor")
-    @Published private(set) var isConnected = false
+    @Published public var isConnected = false
     
     private func checkConnection() {
         networkMonitor.pathUpdateHandler = { path in
