@@ -145,6 +145,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
             }
             // Peer disconnected, start accepting invitaions again
             serviceAdvertiser.startAdvertisingPeer()
+            localInviteStatus = .declined
             log.info("MCSessionState: NOT CONNECTED")
             break
         case MCSessionState.connected:
@@ -154,6 +155,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
             }
             // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
+            localInviteStatus = .accepted
             log.info("MCSessionState: CONNECTED")
             break
         default:
