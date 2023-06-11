@@ -112,6 +112,7 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
                         foundPeer peerID: MCPeerID,
                         withDiscoveryInfo info: [String : String]?) {
         log.info("ServiceBrowser found peer: \(peerID)")
+        log.info(session.connectedPeers)
         // Add the peer to the list of available peers
         DispatchQueue.main.async {
             if !self.availablePeers.contains(peerID) {
@@ -144,10 +145,9 @@ extension MultipeerSessionManager: MCSessionDelegate {
                 self.paired = false
                 self.localInviteStatus = .declined
             }
-            // Peer disconnected, start accepting invitaions again
+            // Peer disconnected, start accepting invitations again
             serviceAdvertiser.startAdvertisingPeer()
             log.info("MCSessionState: NOT CONNECTED")
-            break
         case MCSessionState.connected:
             // Peer connected
             DispatchQueue.main.async {
@@ -157,14 +157,12 @@ extension MultipeerSessionManager: MCSessionDelegate {
             // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
             log.info("MCSessionState: CONNECTED")
-            break
         default:
             // Peer connecting or something else
             DispatchQueue.main.async {
                 self.paired = false
             }
             log.info("MCSessionState: UNKNOWN")
-            break
         }
     }
 
