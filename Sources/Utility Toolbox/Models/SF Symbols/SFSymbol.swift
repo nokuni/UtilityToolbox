@@ -209,3 +209,16 @@ extension SFSymbol {
         SFSymbol.nature.map { $0.symbol }
     }
 }
+
+// MARK: - Variable
+extension SFSymbol {
+    public static var variable: [SFVariableSymbol] {
+        SFVariableSymbol.allCases
+    }
+    public static var variableNames: [String] {
+        SFSymbol.variable.map { $0.rawValue }
+    }
+    public static var variableSymbols: [String] {
+        SFSymbol.variable.map { $0.symbol }
+    }
+}
