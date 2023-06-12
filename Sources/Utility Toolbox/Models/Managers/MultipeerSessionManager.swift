@@ -18,6 +18,12 @@ import os
 
 // In your app target, add mac as a supported destination. It will automatically unlock App Sandbox in Signing and Capabilities. You will need to enable Incoming Connections (server) and Outgoing Connections (client).
 
+public enum LocalInviteStatus {
+    case accepted
+    case declined
+    case unknown
+}
+
 public class MultipeerSessionManager: NSObject, ObservableObject {
     private var serviceType: String
     private var myPeerID: MCPeerID
@@ -31,6 +37,7 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
     @Published public var hasReceivedInvite: Bool = false
     @Published public var receivedInviteFrom: MCPeerID? = nil
     @Published public var paired: Bool = false
+    @Published public var localInviteStatus: LocalInviteStatus = .unknown
     @Published public var invitationHandler: ((Bool, MCSession?) -> Void)?
 
     private let log = Logger()
@@ -78,7 +85,10 @@ extension MultipeerSessionManager: MCNearbyServiceAdvertiserDelegate {
         log.error("ServiceAdvertiser didNotStartAdvertisingPeer: \(String(describing: error))")
     }
 
-    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
+                           didReceiveInvitationFromPeer peerID: MCPeerID,
+                           withContext context: Data?,
+                           invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         log.info("didReceiveInvitationFromPeer \(peerID)")
 
         DispatchQueue.main.async {
@@ -98,11 +108,15 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
         log.error("ServiceBroser didNotStartBrowsingForPeers: \(String(describing: error))")
     }
 
-    public func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+    public func browser(_ browser: MCNearbyServiceBrowser,
+                        foundPeer peerID: MCPeerID,
+                        withDiscoveryInfo info: [String : String]?) {
         log.info("ServiceBrowser found peer: \(peerID)")
         // Add the peer to the list of available peers
         DispatchQueue.main.async {
-            self.availablePeers.append(peerID)
+            if !self.availablePeers.contains(peerID) {
+                self.availablePeers.append(peerID)
+            }
         }
     }
 
@@ -118,7 +132,9 @@ extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
 }
 
 extension MultipeerSessionManager: MCSessionDelegate {
-    public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+    public func session(_ session: MCSession,
+                        peer peerID: MCPeerID,
+                        didChange state: MCSessionState) {
         log.info("peer \(peerID) didChangeState: \(state.rawValue)")
 
         switch state {
@@ -126,47 +142,64 @@ extension MultipeerSessionManager: MCSessionDelegate {
             // Peer disconnected
             DispatchQueue.main.async {
                 self.paired = false
+                self.localInviteStatus = .declined
             }
-            // Peer disconnected, start accepting invitaions again
+            // Peer disconnected, start accepting invitations again
             serviceAdvertiser.startAdvertisingPeer()
-            break
+            log.info("MCSessionState: NOT CONNECTED")
         case MCSessionState.connected:
             // Peer connected
             DispatchQueue.main.async {
                 self.paired = true
+                self.localInviteStatus = .accepted
             }
             // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
-            break
+            log.info("MCSessionState: CONNECTED")
         default:
             // Peer connecting or something else
             DispatchQueue.main.async {
                 self.paired = false
             }
-            break
+            log.info("MCSessionState: UNKNOWN")
         }
     }
 
-    public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+    public func session(_ session: MCSession,
+                        didReceive data: Data,
+                        fromPeer peerID: MCPeerID) {
         log.info("didReceive \(data)")
         DispatchQueue.main.async {
             self.receivedData = data
         }
     }
 
-    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    public func session(_ session: MCSession,
+                        didReceive stream: InputStream,
+                        withName streamName: String,
+                        fromPeer peerID: MCPeerID) {
         log.error("Receiving streams is not supported")
     }
 
-    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+    public func session(_ session: MCSession,
+                        didStartReceivingResourceWithName resourceName: String,
+                        fromPeer peerID: MCPeerID,
+                        with progress: Progress) {
         log.error("Receiving resources is not supported")
     }
 
-    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+    public func session(_ session: MCSession,
+                        didFinishReceivingResourceWithName resourceName: String,
+                        fromPeer peerID: MCPeerID,
+                        at localURL: URL?,
+                        withError error: Error?) {
         log.error("Receiving resources is not supported")
     }
 
-    public func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
+    public func session(_ session: MCSession,
+                        didReceiveCertificate certificate: [Any]?,
+                        fromPeer peerID: MCPeerID,
+                        certificateHandler: @escaping (Bool) -> Void) {
         certificateHandler(true)
     }
 }

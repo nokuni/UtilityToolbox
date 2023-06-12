@@ -57,7 +57,7 @@ public extension String {
 
 // MARK: - Conversions
 
-extension String {
+public extension String {
 
     /// Returns the localized key version
     var localizedKey: LocalizedStringKey {
