@@ -2,7 +2,7 @@ import XCTest
 import SpriteKit
 @testable import Utility_Toolbox
 
-final class UtilityToolboxTests: XCTestCase {
+final class ExtensionTests: XCTestCase {
     
     override class func setUp() {
         
@@ -287,38 +287,6 @@ final class UtilityToolboxTests: XCTestCase {
         let expectedResult = "34"
         XCTAssertEqual(result, expectedResult)
     }
-
-    // MARK: - Protocol Case Iterable
-
-    func testNextCase() {
-        enum Order: CaseIterable {
-            case first
-            case second
-            case third
-        }
-        // Given
-        let order: Order = .first
-        // When
-        let nextOrder = order.next()
-        // Then
-        let expectedResult: Order = .second
-        XCTAssertEqual(nextOrder, expectedResult)
-    }
-
-    func testPreviousCase() {
-        enum Order: CaseIterable {
-            case first
-            case second
-            case third
-        }
-        // Given
-        let order: Order = .third
-        // When
-        let previousOrder = order.previous()
-        // Then
-        let expectedResult: Order = .second
-        XCTAssertEqual(previousOrder, expectedResult)
-    }
     
     // MARK: - Date
     
@@ -362,7 +330,6 @@ final class UtilityToolboxTests: XCTestCase {
     }
     
     // MARK: - API Manager
-    
     func testGetRequest() async throws {
         
         struct Response: Codable {
