@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct AnimatedText: View {
+    @ObservedObject var uiAnimatedText = UIAnimatedText()
     @State private var prompt = ""
     @State private var currentIndex: Int = 0
     private let timer = Timer.publish(every: 0.05,
@@ -40,5 +41,11 @@ public struct AnimatedText: View {
         }
         prompt.append(text[currentIndex])
         currentIndex += 1
+    }
+}
+
+class UIAnimatedText: ObservableObject {
+    func completeWriting(prompt: inout String, text: String) {
+        prompt = text
     }
 }
