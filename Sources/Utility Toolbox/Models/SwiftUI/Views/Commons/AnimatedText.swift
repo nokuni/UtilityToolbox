@@ -17,8 +17,10 @@ public struct AnimatedText: View {
     public var text: String
     public var completion: (() -> Void)?
     
-    public init(text: String,
+    public init(uiAnimatedText: UIAnimatedText,
+                text: String,
                 completion: (() -> Void)? = nil) {
+        self.uiAnimatedText = uiAnimatedText
         self.text = text
         self.completion = completion
     }
