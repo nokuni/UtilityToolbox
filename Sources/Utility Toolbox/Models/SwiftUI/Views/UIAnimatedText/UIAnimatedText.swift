@@ -13,9 +13,9 @@ public class UIAnimatedText: ObservableObject {
     
     private var timer: Timer?
     
-    public var text: String
-    public var speed: TextSpeed
-    public var completion: (() -> Void)?
+    public var text: String = ""
+    public var speed: TextSpeed = .normal
+    public var completion: (() -> Void)? = nil
     
     public enum TextSpeed: CGFloat {
         case verySlow = 0.2
@@ -25,12 +25,7 @@ public class UIAnimatedText: ObservableObject {
         case veryFast = 0.01
     }
     
-    public init(text: String = "",
-                speed: TextSpeed = .normal,
-                completion: (() -> Void)? = nil) {
-        self.text = text
-        self.speed = speed
-        self.completion = completion
+    public init() {
         self.startWriting()
     }
     
