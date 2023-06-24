@@ -29,7 +29,7 @@ public class UITextManager: ObservableObject {
         self.startWriting()
     }
     
-    public func startWriting() {
+    private func startWriting() {
         timer = Timer.scheduledTimer(withTimeInterval: speed.rawValue, repeats: true, block: write)
     }
     
@@ -47,5 +47,11 @@ public class UITextManager: ObservableObject {
     public func completeWriting(text: String) {
         timer?.invalidate()
         prompt = text
+    }
+    
+    public func resetWriting() {
+        timer?.invalidate()
+        prompt = ""
+        currentIndex = 0
     }
 }
