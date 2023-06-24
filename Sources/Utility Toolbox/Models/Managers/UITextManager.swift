@@ -29,10 +29,6 @@ public class UITextManager: ObservableObject {
         self.startWriting()
     }
     
-    private func startWriting() {
-        timer = Timer.scheduledTimer(withTimeInterval: speed.rawValue, repeats: true, block: write)
-    }
-    
     private func write(timer: Timer) {
         let isWriting = currentIndex < (text.count - 1)
         guard isWriting else {
@@ -42,6 +38,10 @@ public class UITextManager: ObservableObject {
         }
         prompt.append(text[currentIndex])
         currentIndex += 1
+    }
+    
+    public func startWriting() {
+        timer = Timer.scheduledTimer(withTimeInterval: speed.rawValue, repeats: true, block: write)
     }
     
     public func completeWriting(text: String) {
