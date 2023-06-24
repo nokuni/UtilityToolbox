@@ -29,7 +29,7 @@ public class UITextManager: ObservableObject {
         self.startWriting()
     }
     
-    private func startWriting() {
+    public func startWriting() {
         timer = Timer.scheduledTimer(withTimeInterval: speed.rawValue, repeats: true, block: write)
     }
     
