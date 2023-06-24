@@ -8,31 +8,31 @@
 import SwiftUI
 
 public struct AnimatedText: View {
-    @ObservedObject public var uiAnimatedText: UIAnimatedText
+    @ObservedObject public var manager: UITextManager
     var text: String
-    var speed: UIAnimatedText.TextSpeed
+    var speed: UITextManager.TextSpeed
     var completion: (() -> Void)?
     
-    public init(uiAnimatedText: UIAnimatedText,
+    public init(manager: UITextManager,
                 text: String,
-                speed: UIAnimatedText.TextSpeed,
+                speed: UITextManager.TextSpeed,
                 completion: (() -> Void)?) {
-        self.uiAnimatedText = uiAnimatedText
+        self.manager = manager
         self.text = text
         self.speed = speed
         self.completion = completion
     }
     
     public var body: some View {
-        Text(uiAnimatedText.prompt)
+        Text(manager.prompt)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity,
                    alignment: .topLeading)
             .onAppear {
-                uiAnimatedText.text = text
-                uiAnimatedText.speed = speed
-                uiAnimatedText.completion = completion
+                manager.text = text
+                manager.speed = speed
+                manager.completion = completion
             }
     }
 }
