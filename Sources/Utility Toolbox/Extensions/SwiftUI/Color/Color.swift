@@ -34,6 +34,8 @@ public extension Color {
     
     /// The color for the main background of your interface.
     static let background = Color(UIColor.systemBackground)
+    
+    static let transparent = Color.white.opacity(0.01)
 }
 
 // MARK: - Color Panel
