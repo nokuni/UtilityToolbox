@@ -167,17 +167,8 @@ public final class APIManager {
     }
     
     /// Simple formatted method to GET data.
-    public func get<M: Codable>(url: String,
-                                successCompletion: (() -> Void)? = nil,
-                                failureCompletion: (() -> Void)? = nil) async throws -> M {
-        do {
-            let data: M = try await getRequest(url: url)
-            successCompletion?()
-            return data
-        } catch let error {
-            failureCompletion?()
-            throw error.localizedDescription
-        }
+    public func get<M: Codable>(url: String) async throws -> M {
+        try await getRequest(url: url)
     }
     
     /// Simple formatted method to GET data with an ID.

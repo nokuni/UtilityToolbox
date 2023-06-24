@@ -7,18 +7,53 @@
 
 import Foundation
 
+extension Collection {
+    subscript<Value>(map keyPath: KeyPath<Element, Value>) -> [Value] {
+        get { map { $0[keyPath: keyPath] } }
+    }
+
+    subscript<Value>(map keyPath: ReferenceWritableKeyPath<Element, Value>) -> [Value] {
+        get { self[map: keyPath as KeyPath<Element, Value>] }
+        nonmutating set {
+            for (i, value) in zip(indices, newValue) {
+                self[i][keyPath: keyPath] = value
+            }
+        }
+    }
+}
+
+extension MutableCollection {
+    subscript<Value>(map keyPath: WritableKeyPath<Element, Value>) -> [Value] {
+        get { self[map: keyPath as KeyPath<Element, Value>] }
+        set {
+            for (i, value) in zip(indices, newValue) {
+                self[i][keyPath: keyPath] = value
+            }
+        }
+    }
+}
+
 public protocol SFSymbolProtocol {
     var rawValue: String { get }
 }
 
-public struct SFSymbol {
-    public init() { }
+public enum SFSymbol {
+    case sfGamingSymbol(SFGamingSymbol)
+    case sfWeatherSymbol(SFWeatherSymbol)
+    case sfAccessibilitySymbol(SFAccessibilitySymbol)
+    case sfTimeSymbol(SFTimeSymbol)
+    case sfPrivacyAndSecuritySymbol(SFPrivacyAndSecuritySymbol)
+    case sfDevicesSymbol(SFDevicesSymbol)
+    case sfShapesSymbol(SFShapesSymbol)
 }
 
 // MARK: - All
 extension SFSymbol {
     public static var all: [[SFSymbolProtocol]] {
         [gaming, weather, accessibility, time]
+    }
+    public static var allSFSymbols: [SFSymbolProtocol] {
+        SFSymbol.all.joined().map { $0 }
     }
     public static var allNames: [String] {
         [gamingNames, weatherNames, accessibilityNames, timeNames].joined().map { $0 }
