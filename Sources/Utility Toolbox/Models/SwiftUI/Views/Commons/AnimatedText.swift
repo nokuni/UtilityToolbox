@@ -45,6 +45,7 @@ public struct AnimatedText: View {
 }
 
 public class UIAnimatedText: ObservableObject {
+    public init() { }
     public func completeWriting(prompt: inout String, text: String) {
         prompt = text
     }
