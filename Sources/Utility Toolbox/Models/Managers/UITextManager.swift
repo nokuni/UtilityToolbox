@@ -30,7 +30,7 @@ public class UITextManager: ObservableObject {
     }
     
     private func write(timer: Timer) {
-        let isWriting = currentIndex < (text.count - 1)
+        let isWriting = currentIndex < text.count
         guard isWriting else {
             completion?()
             timer.invalidate()
