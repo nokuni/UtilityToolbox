@@ -261,3 +261,21 @@ public extension Array where Element == String {
         }
     }
 }
+
+// MARK: - Probability
+
+public extension Array where Element: Probability {
+    func randomItemWithOdds() -> Element? {
+        guard !self.isEmpty else { return nil }
+        var elementList = [Element]()
+        let capacity = self.map { $0.odds }.reduce(0, +)
+        elementList.reserveCapacity(capacity)
+        for element in self {
+            elementList.append(contentsOf: [Element](
+                repeating: element,
+                count: element.odds)
+            )
+        }
+        return elementList.randomElement()!
+    }
+}
