@@ -403,3 +403,25 @@ let frequencies = values.elementFrequencies()
 print(frequencies)
 // [[1: 1], [2: 3], [3: 2], [4: 2]]
 ```
+**Random element with odds**
+```swift
+func randomElementWithOdds() -> Element?
+```
+```swift
+// Need to conform the method to Probability
+struct Student: Probability {
+  let name: String
+  var odds: Int
+}
+
+let students: [Student] = [
+  Student(name: "Jean", odds: 10),
+  Student(name: "Paul", odds: 30),
+  Student(name: "Jack", odds: 20),
+  Student(name: "Julie", odds: 15),
+  Student(name: "Gerard", odds: 25),
+]
+
+print(students.randomElementWithOdds)
+// This will print a random student depending on its odd
+```

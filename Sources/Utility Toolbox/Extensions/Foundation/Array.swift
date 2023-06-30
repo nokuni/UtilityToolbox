@@ -265,7 +265,7 @@ public extension Array where Element == String {
 // MARK: - Probability
 
 public extension Array where Element: Probability {
-    func randomItemWithOdds() -> Element? {
+    func randomElementWithOdds() -> Element? {
         guard !self.isEmpty else { return nil }
         var elementList = [Element]()
         let capacity = self.map { $0.odds }.reduce(0, +)
