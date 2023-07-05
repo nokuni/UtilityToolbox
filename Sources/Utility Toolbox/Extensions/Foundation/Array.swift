@@ -7,6 +7,7 @@
 
 import Foundation
 import Algorithms
+import SpriteKit
 
 // MARK: - Core
 
@@ -277,5 +278,15 @@ public extension Array where Element: Probability {
             )
         }
         return elementList.randomElement()!
+    }
+}
+
+// MARK: - SKNode
+
+public extension Array where Element: SKNode {
+    /// Returns nodes with a specific name.
+    func childNodes(named name: String) -> [SKNode] {
+        let nodes = self.filter { $0.name?.contains(name) ?? false }
+        return nodes
     }
 }
