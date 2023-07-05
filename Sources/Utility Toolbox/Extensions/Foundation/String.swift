@@ -71,7 +71,13 @@ public extension String {
 
     /// Returns the numbers in the string (do not include negatives or decimals)
     var extractedNumber: Int? {
-        Int(components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+        let digits = CharacterSet.decimalDigits.inverted
+        return Int(components(separatedBy: digits).joined())
+    }
+    
+    var withoutDigits: String? {
+        let digits = CharacterSet.decimalDigits
+        return self.components(separatedBy: digits).joined().trimmingCharacters(in: .whitespaces)
     }
 
     /// Used to convert strings of hex code. ex: "0x00FF00" into 0x00FF00
