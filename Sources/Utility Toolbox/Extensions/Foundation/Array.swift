@@ -289,4 +289,9 @@ public extension Array where Element: SKNode {
         let nodes = self.filter { $0.name?.contains(name) ?? false }
         return nodes
     }
+    
+    /// Returns true if a node with a specific name is existing and false otherwise.
+    func isExistingChildNode(named name: String) -> Bool {
+        self.childNodes(named: name).isNotEmpty
+    }
 }
