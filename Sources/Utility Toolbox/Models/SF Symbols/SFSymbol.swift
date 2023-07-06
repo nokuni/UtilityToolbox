@@ -7,32 +7,6 @@
 
 import Foundation
 
-extension Collection {
-    subscript<Value>(map keyPath: KeyPath<Element, Value>) -> [Value] {
-        get { map { $0[keyPath: keyPath] } }
-    }
-
-    subscript<Value>(map keyPath: ReferenceWritableKeyPath<Element, Value>) -> [Value] {
-        get { self[map: keyPath as KeyPath<Element, Value>] }
-        nonmutating set {
-            for (i, value) in zip(indices, newValue) {
-                self[i][keyPath: keyPath] = value
-            }
-        }
-    }
-}
-
-extension MutableCollection {
-    subscript<Value>(map keyPath: WritableKeyPath<Element, Value>) -> [Value] {
-        get { self[map: keyPath as KeyPath<Element, Value>] }
-        set {
-            for (i, value) in zip(indices, newValue) {
-                self[i][keyPath: keyPath] = value
-            }
-        }
-    }
-}
-
 public protocol SFSymbolProtocol {
     var rawValue: String { get }
 }
@@ -45,6 +19,14 @@ public enum SFSymbol {
     case sfPrivacyAndSecuritySymbol(SFPrivacyAndSecuritySymbol)
     case sfDevicesSymbol(SFDevicesSymbol)
     case sfShapesSymbol(SFShapesSymbol)
+    case sfArrowsSymbol(SFArrowsSymbol)
+    case sfMathsSymbol(SFMathsSymbol)
+    case sfTransportSymbol(SFTransportSymbol)
+    case sfTextFormattingSymbol(SFTextFormattingSymbol)
+    case sfMediaSymbol(SFMediaSymbol)
+    case sfHealthSymbol(SFHealthSymbol)
+    case sfNatureSymbol(SFNatureSymbol)
+    case sfVariableSymbol(SFVariableSymbol)
 }
 
 // MARK: - All
@@ -254,6 +236,19 @@ extension SFSymbol {
         SFSymbol.variable.map { $0.rawValue }
     }
     public static var variableSymbols: [String] {
+        SFSymbol.variable.map { $0.symbol }
+    }
+}
+
+// MARK: - Home
+extension SFSymbol {
+    public static var home: [SFHomeSymbol] {
+        SFHomeSymbol.allCases
+    }
+    public static var homeNames: [String] {
+        SFSymbol.variable.map { $0.rawValue }
+    }
+    public static var homeSymbols: [String] {
         SFSymbol.variable.map { $0.symbol }
     }
 }

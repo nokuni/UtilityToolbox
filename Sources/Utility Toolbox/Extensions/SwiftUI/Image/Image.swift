@@ -27,7 +27,10 @@ public extension Image {
         }
         return nil
     }
+}
 
+// MARK: - SF Symbols
+public extension Image {
     init(sfGaming: SFGamingSymbol) {
         self.init(systemName: sfGaming.rawValue)
     }
@@ -85,6 +88,10 @@ public extension Image {
     }
 
     init(sfVariable: SFVariableSymbol) {
+        self.init(systemName: sfVariable.rawValue)
+    }
+    
+    init(sfVariable: SFHomeSymbol) {
         self.init(systemName: sfVariable.rawValue)
     }
 }
