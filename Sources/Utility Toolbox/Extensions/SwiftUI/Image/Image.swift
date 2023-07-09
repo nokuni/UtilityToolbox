@@ -11,13 +11,16 @@ public extension Image {
     
     /// Zoomed center of an image
     func cropped(cornerRadius: CGFloat = 0,
+                 corners: UIRectCorner = .allCorners,
                  zoomedPart: Alignment = .center) -> some View {
         GeometryReader { geo in
             self
                 .resizable()
                 .scaledToFill()
                 .frame(width: geo.size.width, height: geo.size.height, alignment: zoomedPart)
-                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                .clipShape(
+                    RoundedCorner(radius: cornerRadius, corners: corners)
+                )
         }
     }
     
