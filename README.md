@@ -82,6 +82,7 @@ func deleteCountry(_ country: CountryEntity) {
 **Delete all save**
 ```swift
 let manager = SaveManager()
+let countries: [CountryEntity] = []
 
 manager.deleteAll(objects: countries)
 ```
@@ -99,6 +100,8 @@ AsyncManager.loadContent(content: content, completion: completion)
 ## Payment Manager
 
 ```swift
+import PassKit
+
 var paymentRequest: PKPaymentRequest {
     let item = PKPaymentSummaryItem(label: "Balloon", amount: NSDecimalNumber(value: 3.14), type: .final)
     let request = PKPaymentRequest()
@@ -156,9 +159,15 @@ struct MyFXAnimationView: View {
 ## SF Symbols
 
 ```swift
-struct SFSymbolImageView: View {
+struct SFMathsImageView: View {
    var body: some View {
-      Image(sfSymbol: SFMathsSymbol.multiply)
+      Image(sfMaths: .multiply)
+   }
+}
+
+struct SFNatureImageView: View {
+   var body: some View {
+      Image(sfNature: .sunMax)
    }
 }
 ```
