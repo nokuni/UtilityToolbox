@@ -8,13 +8,8 @@ let manager = APIManager()
 let url = "http://localhost:8000/users"
 
 func getUsers() async throws -> [User] {
-   do {
-      let users: [User] = try manager.get(url: url)
-      return users
-   } catch {
-      print(error)
-   }
-   return []
+    let users: [User] = try? manager.get(url: url)
+    return users ?? []
 }
 ```
 
