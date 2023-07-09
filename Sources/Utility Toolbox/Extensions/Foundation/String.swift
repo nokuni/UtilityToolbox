@@ -90,6 +90,13 @@ public extension String {
         let number = expression.expressionValue(with: dictionary, context: nil) as? UInt32
         return number
     }
+    
+    mutating func replaceMultipleOccurrences(_ occurrences: [(oldValue: String,
+                                                              newValue: String)]) {
+        for occurrence in occurrences {
+            self = self.replacingOccurrences(of: occurrence.oldValue, with: occurrence.newValue)
+        }
+    }
 }
 
 // MARK: - Checks
