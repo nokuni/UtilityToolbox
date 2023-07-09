@@ -52,7 +52,7 @@ func deleteUser(userID: Int) async throws -> User? {
 **Fetch saves**
 ```swift
 let manager = SaveManager()
-let countries: [CountryEntity]
+let countries: [CountryEntity] = []
 
 func fetchCountries() {
     guard let fetchedSaves: [CountryEntity] = try? saveManager.fetchedObjects(entityName: "CountryEntity") else { return }
@@ -70,7 +70,6 @@ func save() { try? manager.save() }
 **Delete save**
 ```swift
 let manager = SaveManager()
-let countries: [CountryEntity]
 
 func deleteCountry(_ country: CountryEntity) {
     withAnimation {
@@ -83,7 +82,6 @@ func deleteCountry(_ country: CountryEntity) {
 **Delete all save**
 ```swift
 let manager = SaveManager()
-let countries: [CountryEntity]
 
 manager.deleteAll(objects: countries)
 ```
