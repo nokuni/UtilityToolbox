@@ -34,6 +34,6 @@ public struct AnimatedText: View {
                 manager.speed = speed
                 manager.completion = completion
             }
-            .accessibilityLabel(text)
+            .accessibilityLabel(text.localizedKey)
     }
 }
