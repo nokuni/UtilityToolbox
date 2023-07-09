@@ -97,7 +97,28 @@ func completion() { // Completion }
 AsyncManager.loadContent(content: content, completion: completion)
 ```
 
-## Payment Manager
+## Bundle Manager
+
+```swift
+let manager = BundleManager()
+let countries: [Country] = try? manager.decodeJSON("countries", fileExtension: "json")
+```
+
+## SwiftUI
+
+**Canvas**
+
+```swift
+struct MyCanvasView: View {
+   @StateObject var canvasManager = CanvasManager(lineColor: .blue, lineWidth: 10.0) 
+   var body: some View {
+      CanvasBoard(manager: canvasManager)
+        .frame(width: 300, height: 300)
+   }
+}
+```
+
+**Payment Manager**
 
 ```swift
 import PassKit
@@ -126,26 +147,8 @@ struct MyPaymentView: View {
 }
 ```
 
-## Bundle Manager
+**FX Animation**
 
-```swift
-let manager = BundleManager()
-let countries: [Country] = try? manager.decodeJSON("countries", fileExtension: "json")
-```
-
-## Canvas
-
-```swift
-struct MyCanvasView: View {
-   @StateObject var canvasManager = CanvasManager(lineColor: .blue, lineWidth: 10.0) 
-   var body: some View {
-      CanvasBoard(manager: canvasManager)
-        .frame(width: 300, height: 300)
-   }
-}
-```
-
-## FX Animation
 ```swift
 struct MyFXAnimationView: View {
    let frames: [String] = ["sparks0", "sparks1", "sparks2"]
@@ -156,7 +159,7 @@ struct MyFXAnimationView: View {
 }
 ```
 
-## SF Symbols
+**SF Symbols**
 
 ```swift
 struct SFMathsImageView: View {
@@ -172,7 +175,7 @@ struct SFNatureImageView: View {
 }
 ```
 
-## Custom Font
+**Custom Font**
 
 ```swift
 struct MyCustomFontText: View {
@@ -183,7 +186,82 @@ struct MyCustomFontText: View {
 }
 ```
 
-## Carousel
+**New colors**
+
+The colors exists in the XCode Color Panel but not available on Color yet.
+
+```swift
+struct CroppedImageView: View {
+   var body: some View {
+      VStack {
+         Rectangle()
+           .foregroundColor(.salmon)
+         Rectangle()
+           .foregroundColor(.banana)
+         Rectangle()
+           .foregroundColor(.strawberry)
+      }
+   }
+}
+```
+
+**AcceptOnlyNumbers**
+
+```swift
+struct PhoneNumberFieldView: View {
+   @State var number = ""
+   var body: some View {
+      TextField("Number", text: $number)
+        .acceptOnlyNumbers(text: $number)
+   }
+}
+```
+
+**LimitText**
+
+```swift
+struct UsernameFieldView: View {
+   @State var username = ""
+   var body: some View {
+      TextField("Username", text: $username)
+        .limitText(text: $username, limit: 15)
+   }
+}
+```
+
+**Tooltip**
+
+```swift
+struct TooltipView: View {
+    @State var isPresented = false
+    var body: some View {
+        Button {
+            isPresented.toggle()
+        } label: {
+            Text("Tap me")
+        }
+        .tooltip(isPresented: $isPresented,
+                 arrowDirection: .up) {
+            Text("This is the tooltip content !")
+        }
+    }
+}
+```
+
+**Center Cropped**
+
+It will crop the image by focusing on a specific part.
+
+```swift
+struct CroppedImageView: View {
+   var body: some View {
+      Image("Portrait")
+        .centerCropped(zoomedPart: .top)
+   }
+}
+```
+
+**Carousel**
 
 ```swift
 struct Student: Identifiable {
@@ -213,7 +291,7 @@ struct MyCarouselView: View {
 }
 ```
 
-## Shapes
+**Shapes**
 
 ```swift
 struct MyShapesView: View {
@@ -229,10 +307,11 @@ struct MyShapesView: View {
 }
 ```
 
-## MapKit
-
 **World capital**
+
 ```swift
+import MapKit
+
 struct MyMapView: View {
     @State var capital = MKCoordinateRegion(capital: .amsterdam)
     var body: some View {
