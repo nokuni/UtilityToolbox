@@ -46,7 +46,7 @@ public class UITextManager: ObservableObject {
     
     public func completeWriting(text: String) {
         timer?.invalidate()
-        prompt = text
+        prompt = text.localized()
     }
     
     public func resetWriting() {
