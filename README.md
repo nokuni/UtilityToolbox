@@ -7,14 +7,14 @@
 let manager = APIManager()
 let url = "http://localhost:8000/users"
 
-func successCompletion() { // Success }
-func failureCompletion() { // Failure }
-
 func getUsers() async throws -> [User] {
-   let users: [User] = manager.get(url: url, 
-                                   successCompletion: successCompletion, 
-                                   failureCompletion: failureCompletion)
-   return users
+   do {
+      let users: [User] = try manager.get(url: url)
+      return users
+   } catch {
+      print(error)
+   }
+   return []
 }
 ```
 
@@ -23,15 +23,9 @@ func getUsers() async throws -> [User] {
 let manager = APIManager()
 let url = "http://localhost:8000/api/auth/signup/"
 
-func successCompletion() { // Success }
-func failureCompletion() { // Failure }
-
-func postUser() async throws -> User {
+func postUser() async throws -> User? {
    let newUser = User(name: String)
-   let user: User = manager.post(url: url, 
-                                 value: newUser
-                                 successCompletion: successCompletion, 
-                                 failureCompletion: failureCompletion)
+   let user: User = try? manager.post(url: url, value: newUser)
    return user
 }
 ```
@@ -41,14 +35,8 @@ func postUser() async throws -> User {
 let manager = APIManager()
 let url = "http://localhost:8000/user/"
 
-func successCompletion() { // Success }
-func failureCompletion() { // Failure }
-
-func putUser(user: User) async throws -> User {
-   let user: User = manager.put(url: url, 
-                                value: user
-                                successCompletion: successCompletion, 
-                                failureCompletion: failureCompletion)
+func putUser(user: User) async throws -> User? {
+   let user: User = try? manager.put(url: url, value: user)
    return user
 }
 ```
@@ -58,14 +46,8 @@ func putUser(user: User) async throws -> User {
 let manager = APIManager()
 let url = "http://localhost:8000/user/"
 
-func successCompletion() { // Success }
-func failureCompletion() { // Failure }
-
-func deleteUser(userID: Int) async throws -> User {
-   let user: User = manager.delete(url: url, 
-                                   id: userID,
-                                   successCompletion: successCompletion, 
-                                   failureCompletion: failureCompletion)
+func deleteUser(userID: Int) async throws -> User? {
+   let user: User = try? manager.delete(url: url, id: userID)
    return user
 }
 ```
