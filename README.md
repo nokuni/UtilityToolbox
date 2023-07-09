@@ -248,7 +248,7 @@ struct TooltipView: View {
 }
 ```
 
-**Center Cropped**
+**Cropped**
 
 It will crop the image by focusing on a specific part.
 
@@ -256,7 +256,7 @@ It will crop the image by focusing on a specific part.
 struct CroppedImageView: View {
    var body: some View {
       Image("Portrait")
-        .centerCropped(zoomedPart: .top)
+        .cropped(zoomedPart: .top)
    }
 }
 ```

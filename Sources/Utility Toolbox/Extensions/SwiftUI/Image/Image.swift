@@ -10,8 +10,8 @@ import SwiftUI
 public extension Image {
     
     /// Zoomed center of an image
-    func centerCropped(cornerRadius: CGFloat = 0,
-                       zoomedPart: Alignment = .center) -> some View {
+    func cropped(cornerRadius: CGFloat = 0,
+                 zoomedPart: Alignment = .center) -> some View {
         GeometryReader { geo in
             self
                 .resizable()
