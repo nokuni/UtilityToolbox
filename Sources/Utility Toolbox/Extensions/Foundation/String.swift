@@ -91,10 +91,23 @@ public extension String {
         return number
     }
     
+    /// Replaces multiple strings in which all occurrences of targeted strings in a specified range of the string are replaced by other strings.
     mutating func replaceMultipleOccurrences(_ occurrences: [(oldValue: String,
                                                               newValue: String)]) {
         for occurrence in occurrences {
             self = self.replacingOccurrences(of: occurrence.oldValue, with: occurrence.newValue)
+        }
+    }
+    
+    /// Inserts a new string at the specified offset.
+    mutating func insert(string: String, offset: Int) {
+        guard offset >= 0 else { return }
+        guard offset <= self.count else { return }
+        var startingOffset = offset
+        for character in string {
+            let stringIndex = self.index(self.startIndex, offsetBy: startingOffset)
+            self.insert(character, at: stringIndex)
+            startingOffset += 1
         }
     }
 }
