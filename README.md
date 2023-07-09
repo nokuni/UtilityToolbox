@@ -191,7 +191,7 @@ struct MyCustomFontText: View {
 The colors exists in the XCode Color Panel but not available on Color yet.
 
 ```swift
-struct CroppedImageView: View {
+struct ColorsView: View {
    var body: some View {
       VStack {
          Rectangle()
