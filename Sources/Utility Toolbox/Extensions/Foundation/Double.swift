@@ -16,11 +16,11 @@ public extension Double {
         return (percentage * self) / 100
     }
     
-    func withoutTrailingZeros() -> String {
+    func withoutTrailingZeros() -> String? {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         let number: NSNumber = NSNumber(floatLiteral: self)
-        guard let result = formatter.string(from: number) else { return "" }
+        let result = formatter.string(from: number)
         return result
     }
 }

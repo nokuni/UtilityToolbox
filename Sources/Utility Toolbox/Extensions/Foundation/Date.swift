@@ -41,20 +41,13 @@ public extension Date {
         return calendar.dateComponents(Set(components), from: self)
     }
 
-    private func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
 
-    /// Add components on date.
-    mutating func add(component: Calendar.Component, value: Int) {
-        let calendar = Calendar.current
-        self = calendar.date(byAdding: component, value: value, to: self) ?? Date()
-    }
-
-    /// Returns a date added with components.
-    func addingDate(component: Calendar.Component, value: Int) -> Date {
-        let calendar = Calendar.current
-        return calendar.date(byAdding: component, value: value, to: self) ?? Date()
+    /// Returns a new date by adding a component.
+    func newDateByAdding(value: Int, component: Calendar.Component) -> Date? {
+        Calendar.current.date(byAdding: component, value: value, to: self)
     }
 
     /// Get components from date.

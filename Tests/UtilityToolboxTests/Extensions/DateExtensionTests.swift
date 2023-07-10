@@ -24,7 +24,7 @@ final class DateExtensionTests: XCTestCase {
         dateComponents.day = 1
         dateComponents.month = 1
         dateComponents.year = 2000
-        let date = Calendar(identifier: .gregorian).date(from: dateComponents)
+        let date = Calendar.current.date(from: dateComponents)
         var formattedDate: String? = nil
         let expectedResult = "01/01/2000"
         // When
@@ -38,7 +38,6 @@ final class DateExtensionTests: XCTestCase {
         let currentDate = Date.now
         // When
         dateComponents.month = currentDate.components.month
-        var date = Calendar(identifier: .gregorian).date(from: dateComponents) ?? Date()
         // Then
         XCTAssertEqual(dateComponents.month, currentDate.components.month)
     }
@@ -50,7 +49,7 @@ final class DateExtensionTests: XCTestCase {
         dateComponents.day = currentDate.components.day
         dateComponents.month = currentDate.components.month
         dateComponents.year = currentDate.components.year
-        let date = Calendar(identifier: .gregorian).date(from: dateComponents) ?? Date()
+        let date = Calendar.current.date(from: dateComponents) ?? Date()
         // Then
         XCTAssertTrue(date.isToday)
     }
@@ -59,25 +58,27 @@ final class DateExtensionTests: XCTestCase {
         // Given
         let currentDate = Date.now
         // When
-        dateComponents.day = currentDate.components.day
-        dateComponents.month = currentDate.components.month
-        dateComponents.year = currentDate.components.year
-        var date = Calendar(identifier: .gregorian).date(from: dateComponents) ?? Date()
-        date.add(component: .day, value: -1)
+        let newDate = currentDate.newDateByAdding(value: -1, component: .day) ?? Date()
         // Then
-        XCTAssertTrue(date.isYesterday)
+        XCTAssertTrue(newDate.isYesterday)
     }
     
     func test_isTomorrow_success() throws {
         // Given
         let currentDate = Date.now
         // When
-        dateComponents.day = currentDate.components.day
-        dateComponents.month = currentDate.components.month
-        dateComponents.year = currentDate.components.year
-        var date = Calendar(identifier: .gregorian).date(from: dateComponents) ?? Date()
-        date.add(component: .day, value: 1)
+        let newDate = currentDate.newDateByAdding(value: 1, component: .day) ?? Date()
         // Then
-        XCTAssertTrue(date.isTomorrow)
+        XCTAssertTrue(newDate.isTomorrow)
+    }
+    
+    func test_get_success() throws {
+        // Given
+        // When
+        dateComponents.day = 5
+        let date = Calendar.current.date(from: dateComponents) ?? Date()
+        let component = date.get(.day)
+        // Then
+        XCTAssertEqual(component, 5)
     }
 }

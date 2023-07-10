@@ -213,7 +213,7 @@ public extension Array where Element: RawRepresentable {
     
     /// Returns a UInt32 value from a enum array of UInt32 raw values.
     func withXOROperators() -> UInt32? {
-        guard !isEmpty else { return nil }
+        guard isNotEmpty else { return nil }
         let stringArray = compactMap { "\($0.rawValue)" }
         let string = stringArray.joined(separator: " | ")
         let dictionary = intoDictionary()
@@ -249,10 +249,6 @@ public extension Array where Element: Hashable {
 // MARK: - String Element
 
 public extension Array where Element == String {
-    func replacingOccurences(character: String, newCharacter: String) -> [String] {
-        let result = self.map { $0.replacingOccurrences(of: character, with: newCharacter) }
-        return result
-    }
 
     /// Returns the classical Latin alphabet as a collection.
     static func alphabet(until limit: Int = 27) -> [String] {
@@ -264,8 +260,7 @@ public extension Array where Element == String {
     /// Returns a collection of dictionaries from the alphabet.
     static func alphabetDictionary(until limit: Int = 27) -> [[Int: String]] {
         alphabet().enumerated().map { [$0 : $1] }.filter {
-            if $0.keys.first != nil { return $0.keys.first! < limit }
-            return false
+            $0.keys.first! < limit
         }
     }
 }
@@ -275,15 +270,13 @@ public extension Array where Element == String {
 public extension Array where Element: Probability {
     /// Returns a random element depending on the odds of the collection.
     func randomElementWithOdds() -> Element? {
-        guard !self.isEmpty else { return nil }
+        guard isNotEmpty else { return nil }
         var elementList = [Element]()
         let capacity = self.map { $0.odds }.reduce(0, +)
         elementList.reserveCapacity(capacity)
         for element in self {
-            elementList.append(contentsOf: [Element](
-                repeating: element,
-                count: element.odds)
-            )
+            let elements = [Element](repeating: element, count: element.odds)
+            elementList.append(contentsOf: elements)
         }
         return elementList.randomElement()!
     }

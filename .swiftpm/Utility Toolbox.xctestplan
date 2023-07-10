@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "C5D62DF4-6F7C-4D12-8C98-E6C7BD7A8D20",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "UtilityToolboxTests",
+        "name" : "UtilityToolboxTests"
+      }
+    }
+  ],
+  "version" : 1
+}
