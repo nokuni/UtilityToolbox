@@ -11,9 +11,12 @@ public extension Date {
     
     /// Returns the date in the format dd/mm/yyyy (example: 01/01/2000).
     var ddmmyyyy: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d/MM/yyyy"
-        return formatter.string(from: self)
+        self.formatted(
+            .dateTime
+                .day(.twoDigits)
+                .month(.twoDigits)
+                .year(.defaultDigits)
+        )
     }
     
     /// Returns true if the date is today and false otherwise.

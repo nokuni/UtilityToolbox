@@ -15,10 +15,15 @@ public extension String {
     private var expression: NSExpression {
         return NSExpression(format: self)
     }
+
+    /// Returns the classical Latin alphabet as a String
+    static func alphabet(until limit: Int = 27) -> String {
+        var stringAlphabet = "abcdefghijklmnopqrstuvwxyz"
+        stringAlphabet.removeLast(until: limit)
+        return stringAlphabet
+    }
     
-    static var alphabet: String { "abcdefghijklmnopqrstuvwxyz" }
-    
-    /// Returns a decoded HTML string.
+    /// Returns a decoded HTML string
     func withoutHTMLEncoding() throws -> String? {
         guard let data = self.data(using: .utf8) else { return nil }
         let attr = try NSAttributedString(
@@ -38,7 +43,13 @@ public extension String {
         return regex?.numberOfMatches(in: self, range: NSRange(location: 0, length: self.utf16.count)) ?? 0
     }
 
-    /// Returns the height of string.
+    /// Remove last elements until it reachs the specified collection size.
+    mutating func removeLast(until size: Int) {
+        guard self.isNotEmpty else { return }
+        while self.count > size { self.removeLast() }
+    }
+
+    /// Returns the height of string
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
@@ -46,7 +57,7 @@ public extension String {
         return ceil(boundingBox.height)
     }
 
-    /// Returns the width of string.
+    /// Returns the width of string
     func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
@@ -92,8 +103,7 @@ public extension String {
     }
     
     /// Replaces multiple strings in which all occurrences of targeted strings in a specified range of the string are replaced by other strings.
-    mutating func replaceMultipleOccurrences(_ occurrences: [(oldValue: String,
-                                                              newValue: String)]) {
+    mutating func replaceMultipleOccurrences(_ occurrences: [(oldValue: String, newValue: String)]) {
         for occurrence in occurrences {
             self = self.replacingOccurrences(of: occurrence.oldValue, with: occurrence.newValue)
         }

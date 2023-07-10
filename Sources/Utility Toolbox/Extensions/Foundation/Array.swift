@@ -21,16 +21,16 @@ public extension Array {
     
     /// Returns true if the index of the collection exists, false otherwise.
     func isIndexInBounds(_ index: Int) -> Bool {
-        index < self.count && index >= 0
+        index < count && index >= 0
     }
     
     /// Returns true if the next index exists, false otherwise.
-    func canGoNext(_ index: Int) -> Bool {
+    func canGoNext(from index: Int) -> Bool {
         index < (self.count - 1)
     }
     
     /// Returns true if the previous index exists, false otherwise.
-    func canGoPrevious(_ index: Int) -> Bool {
+    func canGoPrevious(from index: Int) -> Bool {
         index > 0
     }
     
@@ -40,7 +40,8 @@ public extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
-    
+
+    /// Returns a tuple of the first and second half.
     func split() -> (firstPart: [Element], lastPart: [Element]) {
         let half = count / 2
         let firstSplit = self[0 ..< half]
@@ -60,15 +61,15 @@ public extension Array {
     
     /// Remove a random element from the array.
     mutating func removeRandomElement() {
-        guard !isEmpty else { return }
+        guard isNotEmpty else { return }
         let indices = indices
         let randomIndex = indices.randomElement()!
-        self.remove(at: randomIndex)
+        remove(at: randomIndex)
     }
     
     /// Adds a new element at the start of the array.
     mutating func prepend(_ element: Element) {
-        self.insert(element, at: 0)
+        insert(element, at: 0)
     }
     
     /// Returns the nil values replaced by a value.
@@ -77,13 +78,14 @@ public extension Array {
             self[index] = element
         }
     }
-    
+
+    /// Remove last elements until it reachs the specified collection size.
     mutating func removeLast(until size: Int) {
-        while self.count > size {
-            self.removeLast()
-        }
+        guard isNotEmpty else { return }
+        while count > size { removeLast() }
     }
-    
+
+    /// A boolean value indicating whether the collection is not empty.
     var isNotEmpty: Bool {
         !self.isEmpty
     }
@@ -96,7 +98,7 @@ public extension Array where Element: Comparable {
     /// Returns the index of the maximum value.
     func maxIndex() -> Int? {
         guard let highest = self.max() else { return nil }
-        guard let index = firstIndex(where: { $0 == highest }) else { return nil }
+        let index = firstIndex(where: { $0 == highest })
         return index
     }
 }
@@ -109,7 +111,8 @@ public extension Array where Element: Equatable {
         let filteredArray = self.filter { $0 == element }
         return filteredArray.count
     }
-    
+
+    /// Returns a tuple of the first and second half from a centered element.
     func split(from element: Element) -> (firstPart: [Element], secondPart: [Element])? {
         guard let elementIndex = self.firstIndex(of: element) else { return nil }
         let firstSplit = self[0 ..< elementIndex]
@@ -250,13 +253,17 @@ public extension Array where Element == String {
         let result = self.map { $0.replacingOccurrences(of: character, with: newCharacter) }
         return result
     }
-    
-    static var alphabet: [String] {
-        String.alphabet.map { String($0) }
+
+    /// Returns the classical Latin alphabet as a collection.
+    static func alphabet(until limit: Int = 27) -> [String] {
+        var alphabetArray = String.alphabet().map { String($0) }
+        alphabetArray.removeLast(until: limit)
+        return alphabetArray
     }
-    
+
+    /// Returns a collection of dictionaries from the alphabet.
     static func alphabetDictionary(until limit: Int = 27) -> [[Int: String]] {
-        alphabet.enumerated().map { [$0 : $1] }.filter {
+        alphabet().enumerated().map { [$0 : $1] }.filter {
             if $0.keys.first != nil { return $0.keys.first! < limit }
             return false
         }
@@ -266,6 +273,7 @@ public extension Array where Element == String {
 // MARK: - Probability
 
 public extension Array where Element: Probability {
+    /// Returns a random element depending on the odds of the collection.
     func randomElementWithOdds() -> Element? {
         guard !self.isEmpty else { return nil }
         var elementList = [Element]()
