@@ -1,5 +1,5 @@
 //
-//  ProtocolTests.swift
+//  CaseIterableTests.swift
 //  
 //
 //  Created by Yann Christophe MAERTENS on 12/06/2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Utility_Toolbox
 
-final class ProtocolTests: XCTestCase {
+final class CaseIterableTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

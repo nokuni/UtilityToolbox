@@ -33,16 +33,6 @@ final class ExtensionTests: XCTestCase {
         XCTAssertEqual(extractedNumber, expectedResult)
     }
 
-    func testUInt() {
-        // Given
-        let colorHexString = "0x00FF00"
-        // When
-        let colorHex = colorHexString.uInt
-        // Then
-        let expectedResult: UInt = 0x00FF00
-        XCTAssertEqual(colorHex, expectedResult)
-    }
-
     func testStringSubscript() {
         // Given
         let word = "Señorita"
@@ -71,75 +61,6 @@ final class ExtensionTests: XCTestCase {
         // Then
         let expectedResult: Int = 6
         XCTAssertEqual(wordCount, expectedResult)
-    }
-
-    // MARK: - Int
-
-    func testIsEven() {
-        // Given
-        let number: Int = 982
-        // When
-        let isEven = number.isEven
-        // Then
-        XCTAssertTrue(isEven)
-    }
-
-    func testIsOdd() {
-        // Given
-        let number: Int = 983
-        // When
-        let isOdd = number.isOdd
-        // Then
-        XCTAssertTrue(isOdd)
-    }
-
-    func testDigits() {
-        // Given
-        let number: Int = 5429182
-        // When
-        let digits: [Int] = number.digits
-        // Then
-        let expectedResult: Int = 7
-        XCTAssertEqual(digits.count, expectedResult)
-    }
-
-    func testLeadingZeros() {
-        // Given
-        let number: Int = 39831
-        // When
-        let leadingZeros: String = number.leadingZeros(amount: 2)
-        // Then
-        let expectedResult: String = "0039831"
-        XCTAssertEqual(leadingZeros, expectedResult)
-    }
-
-    func testPercentageValue() {
-        // Given
-        let value: Int = 100
-        // When
-        let percentageValue: Int = value.percentageValue(percentage: 31)
-        // Then
-        let expectedResult: Int = 31
-        XCTAssertEqual(percentageValue, expectedResult)
-    }
-    
-    // MARK: - Double
-    
-    func testWithoutTrailingZeros() {
-        // Given
-        let decimal: Double = 34.3456
-        // When
-        let result = decimal.withoutTrailingZeros()
-        // Then
-        let expectedResult = "34"
-        XCTAssertEqual(result, expectedResult)
-    }
-    
-    // MARK: - Date
-    
-    func testDDMMYYDate() {
-        let date = Date()
-        print(date.ddmmyyyy)
     }
 
     // MARK: - Limit Sized

@@ -84,8 +84,8 @@ public extension String {
     }
     
     /// Used to convert strings of hex code. ex: "0x00FF00" into 0x00FF00
-    var uInt: UInt {
-        return UInt(self.dropFirst(2), radix: 16) ?? 0
+    var uInt: UInt? {
+        return UInt(self.dropFirst(2), radix: 16)
     }
     
     /// Returns an UInt32 from the string.
