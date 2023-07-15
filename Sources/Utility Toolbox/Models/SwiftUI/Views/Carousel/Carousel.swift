@@ -58,6 +58,7 @@ public struct Carousel<Content: View, Card: Hashable>: View {
                                height: height)
                 }
             }
+            .padding(.horizontal, spacing)
             .offset(x: viewXOffset(proxy: proxy))
             .gesture(dragGesture(proxy: proxy))
         }
