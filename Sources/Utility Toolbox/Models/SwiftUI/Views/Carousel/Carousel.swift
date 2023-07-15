@@ -16,7 +16,7 @@ import SwiftUI
 
 private typealias DragGestureValue = GestureStateGesture<DragGesture, CGFloat>.Value
 
-public struct Carousel<Content: View, Card: Hashable>: View {
+public struct Carousel<Content: View, Card: Identifiable>: View {
     
     public var content: (Card) -> Content
     public var cards: [Card]
@@ -52,7 +52,7 @@ public struct Carousel<Content: View, Card: Hashable>: View {
     public var body: some View {
         GeometryReader { proxy in
             HStack(spacing: spacing) {
-                ForEach(cards, id: \.self) { card in
+                ForEach(cards) { card in
                     content(card)
                         .frame(width: contentFrameWidth(proxy: proxy),
                                height: height)
