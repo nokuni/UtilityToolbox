@@ -92,3 +92,8 @@ public extension Color {
     static let bubblegum = Color(red: 255/255, green: 133/255, blue: 255/255)
     static let carnation = Color(red: 255/255, green: 138/255, blue: 216/255)
 }
+
+// MARK: - Interface
+public extension Color {
+    static let keyboard = Color(red: 200/255, green: 211/255, blue: 224/255)
+}
