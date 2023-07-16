@@ -12,13 +12,16 @@ public struct FXAnimation: View {
     @State private var isAnimationCompleted = false
     private let animation = UIAnimation()
     public var frames: [String]
+    public var hasFrameTransition: Bool
     public var isRepeatingForever: Bool
     public var completion: (() -> Void)?
     
     public init(frames: [String],
+                hasFrameTransition: Bool = false,
                 isRepeatingForever: Bool = false,
                 completion: (() -> Void)? = nil) {
         self.frames = frames
+        self.hasFrameTransition = hasFrameTransition
         self.isRepeatingForever = isRepeatingForever
         self.completion = completion
     }
@@ -29,11 +32,21 @@ public struct FXAnimation: View {
         default:
             animatedImageView()
                 .onAppear {
-                    animation.animate(frames: frames,
-                                      whileAction: incrementIndex,
-                                      endAction: completion,
-                                      isRepeatingForever: isRepeatingForever,
-                                      timeInterval: 0.1)
+                    if hasFrameTransition {
+                        withAnimation {
+                            animation.animate(frames: frames,
+                                              whileAction: incrementIndex,
+                                              endAction: completion,
+                                              isRepeatingForever: isRepeatingForever,
+                                              timeInterval: 0.1)
+                        }
+                    } else {
+                        animation.animate(frames: frames,
+                                          whileAction: incrementIndex,
+                                          endAction: completion,
+                                          isRepeatingForever: isRepeatingForever,
+                                          timeInterval: 0.1)
+                    }
                 }
             
         }
