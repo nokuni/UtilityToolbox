@@ -13,15 +13,18 @@ public struct FXAnimation: View {
     private let animation = UIAnimation()
     public var frames: [String]
     public var hasFrameTransition: Bool
+    public var timeInterval: TimeInterval
     public var isRepeatingForever: Bool
     public var completion: (() -> Void)?
     
     public init(frames: [String],
                 hasFrameTransition: Bool = false,
+                timeInterval: TimeInterval = 0.1,
                 isRepeatingForever: Bool = false,
                 completion: (() -> Void)? = nil) {
         self.frames = frames
         self.hasFrameTransition = hasFrameTransition
+        self.timeInterval = timeInterval
         self.isRepeatingForever = isRepeatingForever
         self.completion = completion
     }
@@ -36,7 +39,7 @@ public struct FXAnimation: View {
                                       whileAction: incrementIndex,
                                       endAction: completion,
                                       isRepeatingForever: isRepeatingForever,
-                                      timeInterval: 0.1)
+                                      timeInterval: timeInterval)
                 }
         }
     }
@@ -49,7 +52,18 @@ public struct FXAnimation: View {
     }
     
     func incrementIndex() {
-        withAnimation {
+        if hasFrameTransition {
+            withAnimation {
+                switch true {
+                case index < frames.count - 1:
+                    index += 1
+                case isRepeatingForever:
+                    index = 0
+                default:
+                    isAnimationCompleted = true
+                }
+            }
+        } else {
             switch true {
             case index < frames.count - 1:
                 index += 1
