@@ -32,23 +32,12 @@ public struct FXAnimation: View {
         default:
             animatedImageView()
                 .onAppear {
-                    if hasFrameTransition {
-                        withAnimation {
-                            animation.animate(frames: frames,
-                                              whileAction: incrementIndex,
-                                              endAction: completion,
-                                              isRepeatingForever: isRepeatingForever,
-                                              timeInterval: 0.1)
-                        }
-                    } else {
-                        animation.animate(frames: frames,
-                                          whileAction: incrementIndex,
-                                          endAction: completion,
-                                          isRepeatingForever: isRepeatingForever,
-                                          timeInterval: 0.1)
-                    }
+                    animation.animate(frames: frames,
+                                      whileAction: incrementIndex,
+                                      endAction: completion,
+                                      isRepeatingForever: isRepeatingForever,
+                                      timeInterval: 0.1)
                 }
-            
         }
     }
     
@@ -60,13 +49,15 @@ public struct FXAnimation: View {
     }
     
     func incrementIndex() {
-        switch true {
-        case index < frames.count - 1:
-            index += 1
-        case isRepeatingForever:
-            index = 0
-        default:
-            isAnimationCompleted = true
+        withAnimation {
+            switch true {
+            case index < frames.count - 1:
+                index += 1
+            case isRepeatingForever:
+                index = 0
+            default:
+                isAnimationCompleted = true
+            }
         }
     }
 }
