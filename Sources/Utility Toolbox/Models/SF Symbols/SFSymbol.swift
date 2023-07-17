@@ -252,3 +252,15 @@ extension SFSymbol {
         SFSymbol.variable.map { $0.symbol }
     }
 }
+// MARK: - Objects and tools
+extension SFSymbol {
+    public static var objectAndTools: [SFObjectsAndTools] {
+        SFObjectsAndTools.allCases
+    }
+    public static var objectAndToolsNames: [String] {
+        SFSymbol.variable.map { $0.rawValue }
+    }
+    public static var objectAndToolsSymbols: [String] {
+        SFSymbol.variable.map { $0.symbol }
+    }
+}
