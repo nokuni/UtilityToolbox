@@ -12,9 +12,11 @@ public final class AsyncManager {
     /// Load an asynchronous content synchronously.
     public static func loadContent(content: @escaping () async throws -> Void,
                                    completion: (() -> Void)? = nil) {
-        Task {
-            try await content()
-            completion?()
+        DispatchQueue.main.async {
+            Task {
+                try await content()
+                completion?()
+            }
         }
     }
 }
