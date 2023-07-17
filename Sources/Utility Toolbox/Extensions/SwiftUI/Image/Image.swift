@@ -95,7 +95,11 @@ public extension Image {
         self.init(systemName: sfVariable.rawValue)
     }
     
-    init(sfVariable: SFHomeSymbol) {
-        self.init(systemName: sfVariable.rawValue)
+    init(sfHome: SFHomeSymbol) {
+        self.init(systemName: sfHome.rawValue)
+    }
+    
+    init(sfObjectsAndTools: SFObjectsAndTools) {
+        self.init(systemName: sfObjectsAndTools.rawValue)
     }
 }
