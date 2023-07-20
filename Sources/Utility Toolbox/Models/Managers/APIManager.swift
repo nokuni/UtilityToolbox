@@ -35,6 +35,7 @@ public final class APIManager {
                  cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
         var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
         urlRequest.httpMethod = httpMethod.rawValue
+        return urlRequest
     }
     
     func getDecoder(dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
