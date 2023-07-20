@@ -25,6 +25,28 @@ public final class APIManager {
         case noData = "No DATA"
     }
     
+    func getURL(_ url: String) throws -> URL {
+        guard let url = URL(string: url) else { throw APIError.badURL.rawValue }
+        return url
+    }
+    
+    func getRequest(url: URL,
+                 httpMethod: HTTPMethod,
+                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
+        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
+        urlRequest.httpMethod = httpMethod.rawValue
+    }
+    
+    func getDecoder(dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                    dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                    keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = keyDecodingStrategy
+        decoder.dateDecodingStrategy = dateDecodingStrategy
+        decoder.dataDecodingStrategy = dataDecodingStrategy
+        return decoder
+    }
+    
     /// Returns the data from the GET request.
     public func getRequest<M: Codable>(url: String,
                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
@@ -32,19 +54,19 @@ public final class APIManager {
                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         
-        guard let url = URL(string: url) else { throw APIError.badURL.rawValue }
+        let url: URL = try getURL(url)
         
-        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
-        urlRequest.httpMethod = HTTPMethod.get.rawValue
+        let request = getRequest(url: url, httpMethod: HTTPMethod.get)
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = keyDecodingStrategy
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.dataDecodingStrategy = dataDecodingStrategy
+        let decoder = getDecoder(dateDecodingStrategy: dateDecodingStrategy,
+                                 dataDecodingStrategy: dataDecodingStrategy,
+                                 keyDecodingStrategy: keyDecodingStrategy)
         
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.badResponse.rawValue }
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw APIError.badResponse.rawValue
+        }
         
         return try decoder.decode(M.self, from: data)
     }
@@ -72,9 +94,15 @@ public final class APIManager {
         let object = try encode(value)
         urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
         
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        
-        return try decoder.decode(M.self, from: data)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        print(data)
+        print(response)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw APIError.badResponse.rawValue
+        }
+        let decodedData = try decoder.decode(M.self, from: data)
+        print(decodedData)
+        return decodedData
     }
     
     /// Returns the data from the PUT request.
@@ -99,7 +127,11 @@ public final class APIManager {
         let object = try encode(value)
         urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
         
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw APIError.badResponse.rawValue
+        }
         
         return try decoder.decode(M.self, from: data)
     }
