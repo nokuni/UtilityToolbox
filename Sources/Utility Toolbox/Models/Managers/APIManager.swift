@@ -191,8 +191,8 @@ public final class APIManager {
     }
     
     /// Simple formatted method to GET data with an ID.
-    public func get<M: Codable>(url: String, id: Int) async throws -> M {
-        try await getRequest(url: url + "\(id)")
+    public func get<M: Codable>(url: String, id: Int, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        try await getRequest(url: url + "\(id)", keyDecodingStrategy: keyDecodingStrategy)
     }
     
     /// Simple formatted method to POST data.
