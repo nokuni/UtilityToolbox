@@ -143,6 +143,11 @@ public extension String {
         let uiImage = UIImage(named: self)
         return uiImage != nil
     }
+    
+    func isLastCharacter(_ character: Character) -> Bool {
+        guard self.isNotEmpty else { return false }
+        return self.last == character
+    }
 }
 
 // MARK: - LocalizedError

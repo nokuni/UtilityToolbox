@@ -21,22 +21,29 @@ public final class APIManager {
     }
     
     private enum APIError: String {
-        case badURL = "The URL for the request is wrong"
-        case badResponse = "Server ERROR"
-        case noData = "No DATA"
+        case url = "The URL for the request is wrong"
+        case response = "Server ERROR"
+        case data = "No DATA"
+        case decoding = "Something went wrong on decoding the data"
+        case encoding = "Something went wrong on encoding the data"
     }
     
     private func getURL(_ url: String) throws -> URL {
-        guard let url = URL(string: url) else { throw APIError.badURL.rawValue }
+        guard let url = URL(string: url) else { throw APIError.url.rawValue }
         return url
     }
     
     private func urlRequest(url: URL,
                             httpMethod: HTTPMethod,
                             cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
-        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
-        urlRequest.httpMethod = httpMethod.rawValue
-        return urlRequest
+        var request = URLRequest(url: url, cachePolicy: cachePolicy)
+        request.httpMethod = httpMethod.rawValue
+        if httpMethod == .post || httpMethod == .put {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        }
+        
+        return request
     }
     
     private func getDecoder(dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
@@ -53,166 +60,166 @@ public final class APIManager {
         try await URLSession.shared.data(for: request)
     }
     
-    /// Returns the data from the GET request.
-    public func getRequest<M: Codable>(url: String,
-                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                       dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                       dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        
-        let url: URL = try getURL(url)
-        
-        let request = urlRequest(url: url,
-                                 httpMethod: HTTPMethod.get,
-                                 cachePolicy: cachePolicy)
-        
-        let decoder = getDecoder(dateDecodingStrategy: dateDecodingStrategy,
-                                 dataDecodingStrategy: dataDecodingStrategy,
-                                 keyDecodingStrategy: keyDecodingStrategy)
-        
-        let (data, response) = try await sharedData(request: request)
-        
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            throw APIError.badResponse.rawValue
+    private func encodedObject<T: Codable>(value: T) throws -> Data {
+        do {
+            let object = try encode(value)
+            return try JSONSerialization.data(withJSONObject: object)
+        } catch {
+            throw APIError.encoding.rawValue
         }
-        
-        return try decoder.decode(M.self, from: data)
     }
     
-    /// Returns the data from the POST request.
-    public func postRequest<M: Codable>(url: String,
-                                        value: M,
-                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        
+    private func requestedData(request: URLRequest) async throws -> (data: Data, response: URLResponse) {
+        do {
+            return try await sharedData(request: request)
+        } catch {
+            throw APIError.response.rawValue
+        }
+    }
+    
+    private func decodedData<T: Codable>(request: URLRequest,
+                                         decoder: JSONDecoder) async throws -> T {
+        do {
+            let data = try await requestedData(request: request).data
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            throw APIError.decoding.rawValue
+        }
+    }
+    
+    private func cleanURL(_ url: String) -> String {
+        let hasLastSlash: Bool = url.isLastCharacter("/")
+        let slash: String = hasLastSlash ? "/" : ""
+        return hasLastSlash ? url : "\(url)\(slash)"
+    }
+    
+    /// Returns the data from the HTTP request.
+    private func request<T: Codable>(url: String,
+                                     value: T? = nil,
+                                     httpMethod: HTTPMethod,
+                                     cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                     dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                     dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                     keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
         let url: URL = try getURL(url)
         
         var request = urlRequest(url: url,
-                                 httpMethod: HTTPMethod.post,
+                                 httpMethod: httpMethod,
                                  cachePolicy: cachePolicy)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if httpMethod == .post || httpMethod == .put {
+            request.httpBody = try encodedObject(value: value)
+        }
         
         let decoder = getDecoder(dateDecodingStrategy: dateDecodingStrategy,
                                  dataDecodingStrategy: dataDecodingStrategy,
                                  keyDecodingStrategy: keyDecodingStrategy)
         
-        let object = try encode(value)
-        request.httpBody = try? JSONSerialization.data(withJSONObject: object)
-        
-        let (data, response) = try await sharedData(request: request)
-        
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            throw APIError.badResponse.rawValue
-        }
-        
-        return try decoder.decode(M.self, from: data)
+        return try await decodedData(request: request, decoder: decoder)
     }
     
-    /// Returns the data from the PUT request.
-    public func putRequest<M: Codable>(url: String,
-                                       value: M,
-                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                       dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                       dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        guard let url = URL(string: url) else { throw APIError.badURL.rawValue }
-        
-        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
-        urlRequest.httpMethod = HTTPMethod.put.rawValue
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = keyDecodingStrategy
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.dataDecodingStrategy = dataDecodingStrategy
-        
-        let object = try encode(value)
-        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: object)
-        
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            throw APIError.badResponse.rawValue
-        }
-        
-        return try decoder.decode(M.self, from: data)
+    /// Simple formatted method to GET data.
+    public func get<T: Codable>(url: String,
+                                cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
+        try await request(url: url,
+                          httpMethod: .get,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
     }
     
-    /// Delete the data from the DELETE request.
-    public func deleteRequest<M: Codable>(url: String,
-                                          cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
-                                          dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                                          dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-                                          keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        
-        guard let url = URL(string: url) else { throw APIError.badURL.rawValue }
-        
-        var urlRequest = URLRequest(url: url, cachePolicy: cachePolicy)
-        urlRequest.httpMethod = HTTPMethod.delete.rawValue
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = keyDecodingStrategy
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.dataDecodingStrategy = dataDecodingStrategy
-        
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.badResponse.rawValue }
-        
-        return try decoder.decode(M.self, from: data)
+    /// Simple formatted method to GET data with an ID.
+    public func get<T: Codable>(url: String,
+                                id: Int,
+                                cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
+        try await request(url: "\(cleanURL(url))\(id)",
+                          httpMethod: .get,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
     }
     
-    public func uploadImage(url: String,
-                            parameters: [String: Any],
-                            image: UIImage) async throws -> String? {
+    /// Simple formatted method to POST data.
+    public func post<T: Codable>(url: String,
+                                 value: T,
+                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
+        try await request(url: url,
+                          httpMethod: .post,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to PUT data.
+    public func put<T: Codable>(url: String,
+                                value: T,
+                                cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
+        try await request(url: url,
+                          httpMethod: .put,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to PUT data with an ID.
+    public func put<M: Codable>(url: String,
+                                id: Int,
+                                value: M,
+                                cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        try await request(url: "\(cleanURL(url))\(id)",
+                          httpMethod: .put,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to DELETE data with an ID.
+    public func delete<M: Codable>(url: String,
+                                   id: Int,
+                                   cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                   dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                   dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                   keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        try await request(url: "\(cleanURL(url))\(id)",
+                          httpMethod: .delete,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Upload image.
+    public func uploadImage(image: UIImage,
+                            url: String,
+                            parameters: [String: Any]) async throws -> String? {
         guard let url = URL(string: url) else { return nil }
         guard let photo = ImageData(withImage: image, forKey: "image") else { return nil }
         var multipartForm = MultipartFormData(parameters: parameters, photos: [photo])
         multipartForm.addFields()
         let request = URLRequest(url: url, multipartFormData: multipartForm)
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            print(response)
-            let imageURL = try! JSONDecoder().decode(DataImageResponse.self, from: data)
-            return imageURL.data
-        } catch {
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-    
-    /// Simple formatted method to GET data.
-    public func get<M: Codable>(url: String, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        try await getRequest(url: url, keyDecodingStrategy: keyDecodingStrategy)
-    }
-    
-    /// Simple formatted method to GET data with an ID.
-    public func get<M: Codable>(url: String, id: Int, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
-        try await getRequest(url: url + "\(id)", keyDecodingStrategy: keyDecodingStrategy)
-    }
-    
-    /// Simple formatted method to POST data.
-    public func post<M: Codable>(url: String, value: M) async throws -> M {
-        try await postRequest(url: url, value: value)
-    }
-    
-    /// Simple formatted method to PUT data.
-    public func put<M: Codable>(url: String, value: M) async throws -> M {
-        try await putRequest(url: url, value: value)
-    }
-    
-    /// Simple formatted method to PUT data with an ID.
-    public func put<M: Codable>(url: String, id: Int, value: M) async throws -> M {
-        try await putRequest(url: url + "\(id)", value: value)
-    }
-    
-    /// Simple formatted method to DELETE data with an ID.
-    public func delete<M: Codable>(url: String, id: Int) async throws -> M {
-        try await deleteRequest(url: url + "\(id)")
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let imageURL = try JSONDecoder().decode(DataImageResponse.self, from: data)
+        return imageURL.data
     }
 }
 
