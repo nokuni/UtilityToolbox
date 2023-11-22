@@ -97,6 +97,8 @@ public final class APIManager {
     private func request<T: Codable>(url: String,
                                      value: T? = nil,
                                      httpMethod: HTTPMethod,
+                                     key: String? = nil,
+                                     htttpHeaderField: String? = nil,
                                      cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                      dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                      dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -106,6 +108,10 @@ public final class APIManager {
         var request = urlRequest(url: url,
                                  httpMethod: httpMethod,
                                  cachePolicy: cachePolicy)
+        
+        if let key, let htttpHeaderField {
+            request.addValue(key, forHTTPHeaderField: htttpHeaderField)
+        }
         
         if httpMethod == .post || httpMethod == .put {
             request.httpBody = try encodedObject(value: value)
@@ -120,12 +126,16 @@ public final class APIManager {
     
     /// Simple formatted method to GET data.
     public func get<T: Codable>(url: String,
+                                key: String? = nil,
+                                htttpHeaderField: String? = nil,
                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
         try await request(url: url,
                           httpMethod: .get,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
@@ -135,12 +145,16 @@ public final class APIManager {
     /// Simple formatted method to GET data with an ID.
     public func get<T: Codable>(url: String,
                                 id: Int,
+                                key: String? = nil,
+                                htttpHeaderField: String? = nil,
                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
         try await request(url: "\(cleanURL(url))\(id)",
                           httpMethod: .get,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
