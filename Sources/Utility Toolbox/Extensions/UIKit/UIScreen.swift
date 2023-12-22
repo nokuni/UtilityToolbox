@@ -1,13 +1,13 @@
 //
-//  File.swift
-//  
+//  UIScreen.swift
+//
 //
 //  Created by Yann Christophe Maertens on 22/12/2023.
 //
 
 import UIKit
 
-extension UIScreen {
+public extension UIScreen {
     static var width: CGFloat {
         let screen = self.init()
         return screen.bounds.width
