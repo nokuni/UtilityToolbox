@@ -43,7 +43,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
     public func body(content: Content) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .foregroundColor(backgroundColor)
-            .frame(maxWidth: UIScreen.main.bounds.width,
+            .frame(maxWidth: UIScreen.width,
                    minHeight: scrollViewContentSize.height,
                    maxHeight: scrollViewContentSize.height)
             .shadow(color: shadow.0, radius: shadow.1, x: shadow.2, y: shadow.3)

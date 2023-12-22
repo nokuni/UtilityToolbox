@@ -30,7 +30,7 @@ struct TooltipController<Content: View>: UIViewControllerRepresentable {
             
             if let hostingController = uiViewController.presentedViewController as? CustomHostingView<Content> {
                 hostingController.rootView = content
-                let size = CGSize(width: UIScreen.main.bounds.width - padding, height: UIScreen.main.bounds.height - padding)
+                let size = CGSize(width: UIScreen.width - padding, height: UIScreen.height - padding)
                 hostingController.preferredContentSize = hostingController.view.systemLayoutSizeFitting(size)
             }
             

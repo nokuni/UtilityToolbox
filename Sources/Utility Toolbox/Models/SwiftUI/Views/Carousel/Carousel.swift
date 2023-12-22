@@ -35,7 +35,7 @@ public struct Carousel<Content: View, Card: Identifiable>: View {
     /// cards: The cards elements.
     /// content: The card content.
     
-    public init(height: CGFloat = UIScreen.main.bounds.height * 0.25,
+    public init(height: CGFloat = UIScreen.height * 0.25,
                 spacing: CGFloat = 13,
                 trailingSpace: CGFloat = 100,
                 index: Binding<Int>,

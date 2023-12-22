@@ -12,7 +12,7 @@ public extension CGPoint {
 
     /// The center position of the current device.
     static var center: CGPoint {
-        return CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
+        return CGPoint(x: UIScreen.midX, y: UIScreen.midY)
     }
     
     static func + (point: CGPoint, value: CGFloat) -> CGPoint {

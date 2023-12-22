@@ -11,7 +11,7 @@ public extension CGSize {
 
     /// The screen size of the current device.
     static var screen: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        return CGSize(width: UIScreen.width, height: UIScreen.height)
     }
     
     static func + (size: CGSize, value: CGFloat) -> CGSize {
