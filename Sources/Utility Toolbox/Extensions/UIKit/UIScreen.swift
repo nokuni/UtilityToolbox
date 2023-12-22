@@ -6,45 +6,38 @@
 //
 
 import UIKit
+import SwiftUI
 
 public extension UIScreen {
     static var width: CGFloat {
-        let screen = self.init()
-        return screen.bounds.width
+        return UIScreen.main.bounds.size.width
     }
     
     static var height: CGFloat {
-        let screen = self.init()
-        return screen.bounds.width
+        return UIScreen.main.bounds.size.height
     }
     
     static var minX: CGFloat {
-        let screen = self.init()
-        return screen.bounds.minX
+        return UIScreen.main.bounds.minX
     }
     
     static var midX: CGFloat {
-        let screen = self.init()
-        return screen.bounds.midX
+        return UIScreen.main.bounds.midX
     }
     
     static var maxX: CGFloat {
-        let screen = self.init()
-        return screen.bounds.maxX
+        return UIScreen.main.bounds.maxX
     }
     
     static var minY: CGFloat {
-        let screen = self.init()
-        return screen.bounds.minY
+        return UIScreen.main.bounds.minY
     }
     
     static var midY: CGFloat {
-        let screen = self.init()
-        return screen.bounds.midY
+        return UIScreen.main.bounds.midY
     }
     
     static var maxY: CGFloat {
-        let screen = self.init()
-        return screen.bounds.maxY
+        return UIScreen.main.bounds.maxY
     }
 }

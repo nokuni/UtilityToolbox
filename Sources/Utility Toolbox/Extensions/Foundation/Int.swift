@@ -19,14 +19,10 @@ public extension Int {
     }
     
     /// Returns true if this value is even and false otherwise.
-    var isEven: Bool {
-        isMultiple(of: 2)
-    }
+    var isEven: Bool { isMultiple(of: 2) }
     
     /// Returns true if this value is odd and false otherwise.
-    var isOdd: Bool {
-        !isMultiple(of: 2)
-    }
+    var isOdd: Bool { !isEven }
     
     func percentageValue(percentage: Int) -> Int {
         return (percentage * self) / 100

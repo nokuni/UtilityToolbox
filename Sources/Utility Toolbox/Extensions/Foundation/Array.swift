@@ -25,14 +25,10 @@ public extension Array {
     }
     
     /// Returns true if the next index exists, false otherwise
-    func canGoNext(from index: Int) -> Bool {
-        index < (self.count - 1)
-    }
+    func canGoNext(from index: Int) -> Bool { index < (self.count - 1) }
     
     /// Returns true if the previous index exists, false otherwise
-    func canGoPrevious(from index: Int) -> Bool {
-        index > 0
-    }
+    func canGoPrevious(from index: Int) -> Bool { index > 0 }
     
     /// Returns a splitted array with parts of the same size
     func splitted(into size: Int) -> [[Element]] {
