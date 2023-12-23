@@ -174,6 +174,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
         DispatchQueue.main.async {
             self.receivedData = data
             self.receivedDataCompletion?(self)
+            self.receivedDataCompletion = nil
         }
     }
 
