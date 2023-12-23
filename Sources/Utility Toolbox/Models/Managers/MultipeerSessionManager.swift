@@ -31,6 +31,7 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
     public let serviceAdvertiser: MCNearbyServiceAdvertiser
     public let serviceBrowser: MCNearbyServiceBrowser
     public let session: MCSession
+    public var receivedDataCompletion: (() -> Void)?
     
     @Published public var availablePeers: [MCPeerID] = []
     @Published public var receivedData: Data = Data()
@@ -172,6 +173,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
         log.info("didReceive \(data)")
         DispatchQueue.main.async {
             self.receivedData = data
+            self.receivedDataCompletion?()
         }
     }
 
