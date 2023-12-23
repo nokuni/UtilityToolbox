@@ -72,6 +72,7 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
             log.info("sendMove: \(String(describing: data)) to \(self.session.connectedPeers[0].displayName)")
             do {
                 try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+                print("Peer data send")
             } catch {
                 log.error("Error sending: \(String(describing: error))")
             }

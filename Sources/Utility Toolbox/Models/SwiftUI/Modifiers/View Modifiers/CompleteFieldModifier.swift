@@ -63,7 +63,7 @@ public struct CompleteFieldModifier<Field: RawRepresentable & Hashable>: ViewMod
                         Button(action: {
                             self.text.wrappedValue = ""
                         }) {
-                            Image(systemName: "multiply.circle.fill")
+                            Image(systemName: SFMathsSymbol.multiplyCircleFill.rawValue)
                         }
                         .foregroundColor(textColor)
                     }
