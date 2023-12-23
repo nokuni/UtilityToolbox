@@ -93,7 +93,7 @@ public enum SFPrivacyAndSecuritySymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀎠
     case lock = "lock"
     /// 􀎡
-    case lockFill = "lockFill"
+    case lockFill = "lock.fill"
     /// 􀒲
     case lockCircle = "lock.circle"
     /// 􀒳
