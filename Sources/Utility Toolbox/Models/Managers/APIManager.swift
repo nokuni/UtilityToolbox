@@ -169,6 +169,7 @@ public final class APIManager {
                                  dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                  keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
         try await request(url: url,
+                          value: value,
                           httpMethod: .post,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
@@ -184,6 +185,7 @@ public final class APIManager {
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
         try await request(url: url,
+                          value: value,
                           httpMethod: .put,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
@@ -200,6 +202,7 @@ public final class APIManager {
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
                                 keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
         try await request(url: "\(cleanURL(url))\(id)",
+                          value: value,
                           httpMethod: .put,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
