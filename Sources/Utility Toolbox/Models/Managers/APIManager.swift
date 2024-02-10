@@ -80,8 +80,8 @@ public final class APIManager {
     private func decodedData<T: Codable>(request: URLRequest,
                                          decoder: JSONDecoder) async throws -> T {
         do {
-            let data = try await requestedData(request: request).data
-            return try decoder.decode(T.self, from: data)
+            let request = try await requestedData(request: request)
+            return try decoder.decode(T.self, from: request.data)
         } catch {
             throw APIError.decoding.rawValue
         }
@@ -121,7 +121,9 @@ public final class APIManager {
                                  dataDecodingStrategy: dataDecodingStrategy,
                                  keyDecodingStrategy: keyDecodingStrategy)
         
-        return try await decodedData(request: request, decoder: decoder)
+        let data: T = try await decodedData(request: request, decoder: decoder)
+        
+        return data
     }
     
     /// Simple formatted method to GET data.
