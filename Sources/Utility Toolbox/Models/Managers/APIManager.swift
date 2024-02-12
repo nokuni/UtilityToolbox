@@ -166,6 +166,8 @@ public final class APIManager {
     /// Simple formatted method to POST data.
     public func post<T: Codable>(url: String,
                                  value: T,
+                                 key: String? = nil,
+                                 htttpHeaderField: String? = nil,
                                  cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                  dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                  dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -173,6 +175,8 @@ public final class APIManager {
         try await request(url: url,
                           value: value,
                           httpMethod: .post,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
