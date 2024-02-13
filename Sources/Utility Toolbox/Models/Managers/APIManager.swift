@@ -1,6 +1,6 @@
 //
 //  APIManager.swift
-//  
+//
 //
 //  Created by Yann Christophe MAERTENS on 13/03/2023.
 //
@@ -17,6 +17,7 @@ public final class APIManager {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
+        case patch = "PATCH"
         case delete = "DELETE"
     }
     
@@ -216,6 +217,65 @@ public final class APIManager {
         try await request(url: "\(cleanURL(url))\(id)",
                           value: value,
                           httpMethod: .put,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to PATCH data.
+    public func patch<T: Codable>(url: String,
+                                  value: T,
+                                  key: String? = nil,
+                                  htttpHeaderField: String? = nil,
+                                  cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                  dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                  dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                  keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> T {
+        try await request(url: url,
+                          value: value,
+                          httpMethod: .patch,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to PATCH data with an ID.
+    public func patch<M: Codable>(url: String,
+                                  id: Int,
+                                  value: M,
+                                  key: String? = nil,
+                                  htttpHeaderField: String? = nil,
+                                  cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                  dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                  dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                  keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        try await request(url: "\(cleanURL(url))\(id)",
+                          value: value,
+                          httpMethod: .patch,
+                          key: key,
+                          htttpHeaderField: htttpHeaderField,
+                          cachePolicy: cachePolicy,
+                          dateDecodingStrategy: dateDecodingStrategy,
+                          dataDecodingStrategy: dataDecodingStrategy,
+                          keyDecodingStrategy: keyDecodingStrategy)
+    }
+    
+    /// Simple formatted method to DELETE data.
+    public func delete<M: Codable>(url: String,
+                                   key: String? = nil,
+                                   htttpHeaderField: String? = nil,
+                                   cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                   dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                                   dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
+                                   keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async throws -> M {
+        try await request(url: url,
+                          httpMethod: .delete,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
                           cachePolicy: cachePolicy,
