@@ -65,16 +65,16 @@ public final class APIManager {
         do {
             let object = try encode(value)
             return try JSONSerialization.data(withJSONObject: object)
-        } catch {
-            throw APIError.encoding.rawValue
+        } catch let error {
+            throw "\(APIError.encoding.rawValue): \(error.localizedDescription)"
         }
     }
     
     private func requestedData(request: URLRequest) async throws -> (data: Data, response: URLResponse) {
         do {
             return try await sharedData(request: request)
-        } catch {
-            throw APIError.response.rawValue
+        } catch let error {
+            throw "\(APIError.response.rawValue): \(error.localizedDescription)"
         }
     }
     
@@ -83,8 +83,8 @@ public final class APIManager {
         do {
             let request = try await requestedData(request: request)
             return try decoder.decode(T.self, from: request.data)
-        } catch {
-            throw APIError.decoding.rawValue
+        } catch let error {
+            throw "\(APIError.decoding.rawValue): \(error.localizedDescription)"
         }
     }
     
