@@ -39,7 +39,7 @@ public final class APIManager {
                             cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: cachePolicy)
         request.httpMethod = httpMethod.rawValue
-        if httpMethod == .post || httpMethod == .put {
+        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         }
@@ -114,7 +114,7 @@ public final class APIManager {
             request.addValue(key, forHTTPHeaderField: htttpHeaderField)
         }
         
-        if httpMethod == .post || httpMethod == .put {
+        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
             request.httpBody = try encodedObject(value: value)
         }
         
