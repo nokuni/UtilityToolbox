@@ -17,6 +17,10 @@ public extension Color {
         self.init(red: red, green: green, blue: blue, opacity: alpha)
     }
     
+    var uiColor: UIColor {
+        UIColor(self)
+    }
+    
     /// A sixth-level shade of gray that adapts to the environment.
     static let whiteGray = Color(UIColor.systemGray6)
     
