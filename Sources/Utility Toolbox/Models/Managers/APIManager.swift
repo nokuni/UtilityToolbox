@@ -41,8 +41,7 @@ public final class APIManager {
     /// Returns an URL with a slash at the end
     private func cleanURL(_ url: String) -> String {
         let hasLastSlash: Bool = url.isLastCharacter("/")
-        let slash: String = hasLastSlash ? "/" : ""
-        return hasLastSlash ? url : "\(url)\(slash)"
+        return hasLastSlash ? url : "\(url)/"
     }
     
     // MARK: - DATA DECODING
