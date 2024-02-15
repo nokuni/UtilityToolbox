@@ -36,6 +36,19 @@ func putUser(user: User) async throws -> User? {
 }
 ```
 
+```
+
+**PATCH**
+```swift
+let manager = APIManager()
+let url = "http://localhost:8000/user/"
+
+func patchUser(user: User) async throws -> User? {
+   let user: User = try? manager.patch(url: url, value: user)
+   return user
+}
+```
+
 **DELETE**
 ```swift
 let manager = APIManager()
@@ -132,7 +145,7 @@ var paymentRequest: PKPaymentRequest {
     request.countryCode = "US"
     request.currencyCode = "USD"
     request.requiredShippingContactFields = [.phoneNumber, .emailAddress]
-    request.supportedNetworks = [.visa, ]
+    request.supportedNetworks = [.visa]
 }
 
 struct MyPaymentView: View {

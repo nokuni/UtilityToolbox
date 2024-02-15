@@ -165,6 +165,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to POST data.
+    @discardableResult
     public func post<T: Codable>(url: String,
                                  value: T,
                                  key: String? = nil,
@@ -185,6 +186,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to PUT data.
+    @discardableResult
     public func put<T: Codable>(url: String,
                                 value: T,
                                 key: String? = nil,
@@ -205,6 +207,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to PUT data with an ID.
+    @discardableResult
     public func put<M: Codable>(url: String,
                                 id: Int,
                                 value: M,
@@ -226,6 +229,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to PATCH data.
+    @discardableResult
     public func patch<T: Codable>(url: String,
                                   value: T,
                                   key: String? = nil,
@@ -246,6 +250,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to PATCH data with an ID.
+    @discardableResult
     public func patch<M: Codable>(url: String,
                                   id: Int,
                                   value: M,
@@ -267,6 +272,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to DELETE data.
+    @discardableResult
     public func delete<M: Codable>(url: String,
                                    key: String? = nil,
                                    htttpHeaderField: String? = nil,
@@ -285,6 +291,7 @@ public final class APIManager {
     }
     
     /// Simple formatted method to DELETE data with an ID.
+    @discardableResult
     public func delete<M: Codable>(url: String,
                                    id: Int,
                                    key: String? = nil,
