@@ -17,16 +17,14 @@ public func repeatWhile(limit: Int, repeatedCompletion: (() -> Void)? = nil, end
     } while currentLimit > 0
 }
 
-public func encode<T>(_ value: T) throws -> [String: Any]? where T : Encodable {
+public func encode<T>(_ value: T) throws -> [String: Any] where T : Encodable {
     let encoder = JSONEncoder()
     let data = try encoder.encode(value)
-    let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-    return object
+    return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
 }
 
 public func inData<M: Codable>(value: M) throws -> Data? {
     let object = try encode(value)
-    guard let object else { return nil }
     let data = try? JSONSerialization.data(withJSONObject: object)
     return data
 }
