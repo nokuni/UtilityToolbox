@@ -28,6 +28,7 @@ extension View {
     ///   - completion: The completion callback to call once the animation completes.
     /// - Returns: A modified `View` instance with the observer attached.
     public typealias AnimationCompletion<Value: VectorArithmetic> = ModifiedContent<Self, AnimationCompletionObserverModifier<Value>>
+    @available(swift, deprecated: 5.9, message: "onAnimationCompleted is deprecated: Use withAnimation with a completion instead.")
     public func onAnimationCompleted<Value: VectorArithmetic>(for value: Value,
                                                        completion: @escaping () -> Void) -> AnimationCompletion<Value> {
         modifier(AnimationCompletionObserverModifier(observedValue: value, completion: completion))
