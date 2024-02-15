@@ -17,6 +17,7 @@ public extension Color {
         self.init(red: red, green: green, blue: blue, opacity: alpha)
     }
     
+    /// Returns a UIColor
     var uiColor: UIColor {
         UIColor(self)
     }

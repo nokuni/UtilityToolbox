@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 
 extension UIColor {
+    /// Returns a Color
     var swiftUIColor: Color {
         Color(self)
     }
