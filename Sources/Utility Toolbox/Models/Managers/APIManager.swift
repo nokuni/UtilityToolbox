@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+fileprivate typealias Response = (Data, URLResponse)
+
 public final class APIManager {
     
     public init() { }
@@ -29,23 +31,21 @@ public final class APIManager {
         case encoding = "Something went wrong on encoding the data"
     }
     
+    // MARK: - URL
+    
     private func getURL(_ url: String) throws -> URL {
         guard let url = URL(string: url) else { throw APIError.url.rawValue }
         return url
     }
     
-    private func urlRequest(url: URL,
-                            httpMethod: HTTPMethod,
-                            cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
-        var request = URLRequest(url: url, cachePolicy: cachePolicy)
-        request.httpMethod = httpMethod.rawValue
-        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-        }
-        
-        return request
+    /// Returns an URL with a slash at the end
+    private func cleanURL(_ url: String) -> String {
+        let hasLastSlash: Bool = url.isLastCharacter("/")
+        let slash: String = hasLastSlash ? "/" : ""
+        return hasLastSlash ? url : "\(url)\(slash)"
     }
+    
+    // MARK: - DATA DECODING
     
     private func getDecoder(dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                             dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -57,7 +57,7 @@ public final class APIManager {
         return decoder
     }
     
-    private func sharedData(request: URLRequest) async throws -> (Data, URLResponse) {
+    private func sharedData(request: URLRequest) async throws -> Response {
         try await URLSession.shared.data(for: request)
     }
     
@@ -88,10 +88,19 @@ public final class APIManager {
         }
     }
     
-    private func cleanURL(_ url: String) -> String {
-        let hasLastSlash: Bool = url.isLastCharacter("/")
-        let slash: String = hasLastSlash ? "/" : ""
-        return hasLastSlash ? url : "\(url)\(slash)"
+    // MARK: REQUEST
+    
+    private func urlRequest(url: URL,
+                            httpMethod: HTTPMethod,
+                            cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
+        var request = URLRequest(url: url, cachePolicy: cachePolicy)
+        request.httpMethod = httpMethod.rawValue
+        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        }
+        
+        return request
     }
     
     /// Returns the data from the HTTP request.
@@ -126,6 +135,8 @@ public final class APIManager {
         
         return data
     }
+    
+    // MARK: - GET
     
     /// Simple formatted method to GET data.
     public func get<T: Codable>(url: String,
@@ -164,6 +175,8 @@ public final class APIManager {
                           keyDecodingStrategy: keyDecodingStrategy)
     }
     
+    // MARK: - POST
+    
     /// Simple formatted method to POST data.
     @discardableResult
     public func post<T: Codable>(url: String,
@@ -184,6 +197,8 @@ public final class APIManager {
                           dataDecodingStrategy: dataDecodingStrategy,
                           keyDecodingStrategy: keyDecodingStrategy)
     }
+    
+    // MARK: - PUT
     
     /// Simple formatted method to PUT data.
     @discardableResult
@@ -228,6 +243,8 @@ public final class APIManager {
                           keyDecodingStrategy: keyDecodingStrategy)
     }
     
+    // MARK: - PATCH
+    
     /// Simple formatted method to PATCH data.
     @discardableResult
     public func patch<T: Codable>(url: String,
@@ -271,6 +288,8 @@ public final class APIManager {
                           keyDecodingStrategy: keyDecodingStrategy)
     }
     
+    // MARK: - DELETE
+    
     /// Simple formatted method to DELETE data.
     @discardableResult
     public func delete<M: Codable>(url: String,
@@ -310,106 +329,19 @@ public final class APIManager {
                           keyDecodingStrategy: keyDecodingStrategy)
     }
     
+    // MARK: - IMAGE UPLOAD
+    
     /// Upload image.
     public func uploadImage(image: UIImage,
                             url: String,
                             parameters: [String: Any]) async throws -> String? {
         guard let url = URL(string: url) else { return nil }
-        guard let photo = ImageData(withImage: image, forKey: "image") else { return nil }
-        var multipartForm = MultipartFormData(parameters: parameters, photos: [photo])
+        guard let photo = ImageUploader.ImageData(withImage: image, forKey: "image") else { return nil }
+        var multipartForm = ImageUploader.MultipartFormData(parameters: parameters, photos: [photo])
         multipartForm.addFields()
         let request = URLRequest(url: url, multipartFormData: multipartForm)
         let (data, _) = try await URLSession.shared.data(for: request)
-        let imageURL = try JSONDecoder().decode(DataImageResponse.self, from: data)
+        let imageURL = try JSONDecoder().decode(ImageUploader.DataImageResponse.self, from: data)
         return imageURL.data
     }
-}
-
-/// Image file upload method
-struct ImageData {
-    let key: String
-    let filename: String
-    let data: Data
-    let mimeType: String
-    init?(withImage image: UIImage, forKey key: String) {
-        self.key = key
-        self.mimeType = "image/jpeg"
-        self.filename = "imagefile.jpg"
-        guard let data = image.jpegData(compressionQuality: 0.7) else { return nil }
-        self.data = data
-    }
-}
-
-/// Image response upload response method
-struct DataImageResponse: Codable {
-    var data: String
-}
-
-/// Image upload field configuration method
-struct MultipartFormData {
-    let boundary: String = UUID().uuidString
-    private(set) var httpBody = Data()
-    var parameters: [String: Any]
-    var photos: [ImageData]
-    
-    init(parameters: [String: Any], photos: [ImageData]) {
-        self.parameters = parameters
-        self.photos = photos
-    }
-    
-    let lineBreak = "\r\n"
-    
-    mutating func addFields() {
-        for (key, value) in parameters {
-            httpBody.append("--\(boundary + lineBreak)")
-            httpBody.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)")
-            httpBody.append("\(value as! String + lineBreak)")
-        }
-        
-        for photo in photos {
-            httpBody.append("--\(boundary + lineBreak)")
-            httpBody.append("Content-Disposition: form-data; name=\"\(photo.key)\"; filename=\"\(photo.filename)\"\(lineBreak)")
-            httpBody.append("Content-Type: \(photo.mimeType + lineBreak + lineBreak)")
-            httpBody.append(photo.data)
-            httpBody.append(lineBreak)
-        }
-        
-        httpBody.append("--\(boundary)--\(lineBreak)")
-    }
-}
-
-extension URLRequest {
-    init(url: URL,
-         timeoutInterval: TimeInterval = 60,
-         multipartFormData: MultipartFormData) {
-        self.init(url: url, timeoutInterval: timeoutInterval)
-        let boundary = multipartFormData.boundary
-        httpMethod = "POST"
-        httpShouldHandleCookies = false
-        setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        var body = multipartFormData.httpBody
-        body.append("--\(boundary)--")
-        httpBody = body
-    }
-}
-
-fileprivate extension Data {
-    mutating func append(_ string: String) {
-        guard let data = string.data(using: .utf8) else { return }
-        append(data)
-    }
-    
-    mutating func addField(_ string: String) {
-        append(string)
-        append(.httpFieldDelimiter)
-    }
-    
-    mutating func addField(_ data: Data) {
-        append(data)
-        append(.httpFieldDelimiter)
-    }
-}
-
-fileprivate extension String {
-    static let httpFieldDelimiter = "\r\n"
 }

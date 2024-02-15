@@ -25,6 +25,10 @@ public enum LocalInviteStatus {
 }
 
 public class MultipeerSessionManager: NSObject, ObservableObject {
+    
+    public typealias Invitation = (Bool, MCSession?) -> Void
+    public typealias Certificate = (Bool) -> Void
+    
     private var serviceType: String
     private var myPeerID: MCPeerID
     
@@ -39,7 +43,7 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
     @Published public var receivedInviteFrom: MCPeerID? = nil
     @Published public var paired: Bool = false
     @Published public var localInviteStatus: LocalInviteStatus = .unknown
-    @Published public var invitationHandler: ((Bool, MCSession?) -> Void)?
+    @Published public var invitationHandler: Invitation?
 
     private let log = Logger()
 
@@ -52,6 +56,8 @@ public class MultipeerSessionManager: NSObject, ObservableObject {
         self.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
         self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
         self.serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType)
+        
+        self.invitationHandler = nil
 
         super.init()
 
@@ -90,7 +96,7 @@ extension MultipeerSessionManager: MCNearbyServiceAdvertiserDelegate {
     public func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                            didReceiveInvitationFromPeer peerID: MCPeerID,
                            withContext context: Data?,
-                           invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+                           invitationHandler: @escaping Invitation) {
         log.info("didReceiveInvitationFromPeer \(peerID)")
 
         DispatchQueue.main.async {
@@ -203,7 +209,7 @@ extension MultipeerSessionManager: MCSessionDelegate {
     public func session(_ session: MCSession,
                         didReceiveCertificate certificate: [Any]?,
                         fromPeer peerID: MCPeerID,
-                        certificateHandler: @escaping (Bool) -> Void) {
+                        certificateHandler: @escaping Certificate) {
         certificateHandler(true)
     }
 }

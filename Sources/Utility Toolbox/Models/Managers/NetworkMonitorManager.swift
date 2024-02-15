@@ -8,6 +8,7 @@
 import Network
 import SwiftUI
 
+/// Manage and monitor your network
 public class NetworkMonitorManager: ObservableObject {
     private let networkMonitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "Monitor")
