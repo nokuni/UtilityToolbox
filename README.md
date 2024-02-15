@@ -36,8 +36,6 @@ func putUser(user: User) async throws -> User? {
 }
 ```
 
-```
-
 **PATCH**
 ```swift
 let manager = APIManager()
