@@ -140,7 +140,7 @@ public final class APIManager {
         
         if isSubmittingData(httpMethod: httpMethod) {
             for requestValue in requestValues {
-                let value = "\(requestValue.mediaType)/\(requestValue.mediaSubType)"
+                let value = "\(requestValue.mediaType.rawValue)/\(requestValue.mediaSubType.rawValue)"
                 let httpHeader = requestValue.httpHeader
                 request.addValue(value, forHTTPHeaderField: httpHeader.rawValue)
             }
