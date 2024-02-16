@@ -35,6 +35,11 @@ public extension Image {
 
 // MARK: - SF Symbols
 public extension Image {
+    
+    init(sfSymbol: SFSymbolProtocol) {
+        self.init(systemName: sfSymbol.rawValue)
+    }
+    
     init(sfGaming: SFGamingSymbol) {
         self.init(systemName: sfGaming.rawValue)
     }

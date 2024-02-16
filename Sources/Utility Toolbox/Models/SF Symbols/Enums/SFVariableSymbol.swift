@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SFVariableSymbol: String, CaseIterable {
+public enum SFVariableSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀈏
     case rectangleAndPencilAndEllipsis = "rectangle.and.pencil.and.ellipsis"
     /// 􀩮
@@ -359,7 +359,7 @@ public enum SFVariableSymbol: String, CaseIterable {
     /// 􁇵
     case ellipsisCurlyBraces = "ellipsis.curlybraces"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .rectangleAndPencilAndEllipsis: return "􀈏"
         case .externaldriveBadgeWifi: return "􀩮"

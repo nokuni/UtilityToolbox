@@ -507,7 +507,7 @@ public enum SFNatureSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􁕕
     case fossilShellFill = "fossil.shell.fill"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .globeAmericas: return "􀵱"
         case .globeAmericasFill: return "􀵲"

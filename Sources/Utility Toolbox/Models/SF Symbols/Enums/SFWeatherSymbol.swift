@@ -305,7 +305,7 @@ public enum SFWeatherSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􁒹
     case carbonDioxideCloudFill = "carbon.dioxide.cloud.fill"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .sunMin: return "􀆫"
         case .sinMinFill: return "􀆬"

@@ -119,7 +119,7 @@ public enum SFMathsSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀃫
     case numberSquareFill = "number.square.fill"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .xSquareRoot: return "􀓪"
         case .angle: return "􁑡"

@@ -167,7 +167,7 @@ public enum SFHealthSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀟫
     case waveformPathEcgRectangleFill = "waveform.path.ecg.rectangle.fill"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .listBulletClipboard: return "􀼏"
         case .listBulletClipboardFill: return "􀼐"

@@ -131,7 +131,7 @@ public enum SFTransportSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀵡
     case fuelPumpCircleFill = "fuelpump.circle.fill"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .figureWalk: return "􀝢"
         case .figureWalkCircle: return "􀝣"

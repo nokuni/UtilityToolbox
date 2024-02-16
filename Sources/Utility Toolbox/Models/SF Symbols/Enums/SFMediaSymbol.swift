@@ -187,7 +187,7 @@ public enum SFMediaSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􁙀
     case textLineLastAndArrowTriangleForward = "text.line.last.and.arrowtriangle.forward"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .play: return "􀊃"
         case .playFill: return "􀊄"

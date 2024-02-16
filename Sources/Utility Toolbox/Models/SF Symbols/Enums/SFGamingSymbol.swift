@@ -263,7 +263,7 @@ public enum SFGamingSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀀵
     case yCircleFill = "y.circle.fill"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .circleSquare: return "􀧺"
         case .circleSquareFill: return "􀧻"

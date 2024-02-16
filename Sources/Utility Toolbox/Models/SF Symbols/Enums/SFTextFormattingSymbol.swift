@@ -125,7 +125,7 @@ public enum SFTextFormattingSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀒆
     case paragraphSign = "paragraphsign"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .fleuron: return "􁓯"
         case .fleuronFill: return "􁓔"

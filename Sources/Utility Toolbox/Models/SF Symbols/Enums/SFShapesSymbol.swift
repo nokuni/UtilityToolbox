@@ -87,7 +87,7 @@ public enum SFShapesSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀩻
     case rectangleRoundedBottomFill = "rectangle.roundedbottom.fill"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .circle: return "􀀀"
         case .circleFill: return "􀀁"

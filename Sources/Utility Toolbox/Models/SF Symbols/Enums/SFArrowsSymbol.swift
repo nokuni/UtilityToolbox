@@ -1,6 +1,6 @@
 //
 //  SFArrowsSymbol.swift
-//  
+//
 //
 //  Created by Maertens Yann-Christophe on 19/05/23.
 //
@@ -697,7 +697,7 @@ public enum SFArrowsSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀃹
     case arrowtriangleDownSquareFill = "arrowtriangle.down.square.fill"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .arrowshapeLeft: return "􁉄"
         case .arrowshapeLeftFill: return "􁉅"

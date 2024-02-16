@@ -613,4 +613,8 @@ public enum SFHomeSymbol: String, CaseIterable, SFSymbolProtocol {
     case avRemote = "av.remote"
     /// 􁓻
     case avRemoteFill = "av.remote.fill"
+    
+    public var symbol: String {
+        return ""
+    }
 }

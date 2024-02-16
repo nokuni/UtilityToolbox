@@ -279,7 +279,7 @@ public enum SFPrivacyAndSecuritySymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀞜
     case checkMarkShieldFill = "checkmark.shield.fill"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .lockDoc: return "􀢍"
         case .lockDocFill: return "􀢎"

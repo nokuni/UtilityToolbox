@@ -1,6 +1,6 @@
 //
 //  SFAccessibilitySymbol.swift
-//  
+//
 //
 //  Created by Yann Christophe MAERTENS on 15/05/2023.
 //
@@ -190,8 +190,8 @@ public enum SFAccessibilitySymbol: String, CaseIterable, SFSymbolProtocol {
     case arrowUpAndDownAndArrowLeftAndRight = "arrow.up.and.down.and.arrow.left.and.right"
     /// 􀬑
     case arrowUpLeftAndDownRightAndArrowUpRightAndDownLeft = "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left"
-
-    var symbol: String {
+    
+    public var symbol: String {
         switch self {
         case .figureStandLineDottedFigureStand: return "􀳿"
         case .figureRoll: return "􁈑"

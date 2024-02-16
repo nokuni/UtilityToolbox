@@ -637,7 +637,7 @@ public enum SFDevicesSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀛹
     case gameControllerFill = "gamecontroller.fill"
 
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .keyboard: return "􀇳"
         case .keyboardFill: return "􀺑"

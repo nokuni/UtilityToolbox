@@ -9,6 +9,7 @@ import Foundation
 
 public protocol SFSymbolProtocol {
     var rawValue: String { get }
+    var symbol: String { get }
 }
 
 public enum SFSymbol {
@@ -32,16 +33,16 @@ public enum SFSymbol {
 // MARK: - All
 extension SFSymbol {
     public static var all: [[SFSymbolProtocol]] {
-        [gaming, weather, accessibility, time]
+        [gaming, weather, accessibility, time, privacyAndSecurity, devices, shapes, arrows, maths, transport, textFormatting, media, health, nature, variable, home, objectAndTools]
     }
     public static var allSFSymbols: [SFSymbolProtocol] {
         SFSymbol.all.joined().map { $0 }
     }
     public static var allNames: [String] {
-        [gamingNames, weatherNames, accessibilityNames, timeNames].joined().map { $0 }
+        SFSymbol.allSFSymbols.map { $0.rawValue }
     }
     public static var allSymbols: [String] {
-        [gamingSymbols, weatherSymbols, accessibilitySymbols, timeSymbols].joined().map { $0 }
+        SFSymbol.allSFSymbols.map { $0.symbol }
     }
 }
 

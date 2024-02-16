@@ -77,7 +77,7 @@ public enum SFTimeSymbol: String, CaseIterable, SFSymbolProtocol {
     /// 􀖉
     case hourglassTopHalfFilled = "hourglass.tophalf.filled"
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .clock: return "􀐫"
         case .clockFill: return "􀐬"
