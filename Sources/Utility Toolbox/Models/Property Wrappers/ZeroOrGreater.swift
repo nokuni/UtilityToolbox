@@ -1,5 +1,5 @@
 //
-//  ZeroOrGreaterInteger.swift
+//  ZeroOrGreater.swift
 //
 //
 //  Created by Yann Christophe Maertens on 16/02/2024.
@@ -16,5 +16,17 @@ import Foundation
     
     init(wrappedValue: Int) {
         self.wrappedValue = max(wrappedValue, 0)
+    }
+}
+
+@propertyWrapper struct ZeroOrGreaterDouble {
+    var wrappedValue: Double {
+        didSet {
+            wrappedValue = max(wrappedValue, 0.0)
+        }
+    }
+    
+    init(wrappedValue: Double) {
+        self.wrappedValue = max(wrappedValue, 0.0)
     }
 }

@@ -16,9 +16,7 @@ public struct LimitSized<Element> {
     }
     private var elements = [Element]()
     public var wrappedValue: [Element] {
-        get {
-            return elements
-        }
+        get { elements }
         set {
             elements = newValue
             if elements.count > limit { elements.removeLast(elements.count - limit) }
