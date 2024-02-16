@@ -12,21 +12,21 @@ public class MapFinder : NSObject, ObservableObject {
     private typealias MapSearchPromise = ((Result<[MKLocalSearchCompletion], Error>) -> Void)
     private typealias MapSearchFuture = Future<[MKLocalSearchCompletion], Error>
     
-    @Published var locationResults : [MKLocalSearchCompletion] = []
-    @Published var inputs = ""
+    @Published public var locationResults : [MKLocalSearchCompletion] = []
+    @Published public var inputs = ""
     
-    var region: MKCoordinateRegion
-    var resultTypes: MKLocalSearchCompleter.ResultType
-    var isUpdatingOnInputChange: Bool
+    public var region: MKCoordinateRegion
+    public var resultTypes: MKLocalSearchCompleter.ResultType
+    public var isUpdatingOnInputChange: Bool
     
     private var cancellables : Set<AnyCancellable> = []
     
     private var searchCompleter = MKLocalSearchCompleter()
     private var currentPromise : MapSearchPromise?
     
-    init(region: MKCoordinateRegion = MKCoordinateRegion(.world),
-         resultTypes: MKLocalSearchCompleter.ResultType = .pointOfInterest,
-         isUpdatingOnInputChange: Bool = true) {
+    public init(region: MKCoordinateRegion = MKCoordinateRegion(.world),
+                resultTypes: MKLocalSearchCompleter.ResultType = .pointOfInterest,
+                isUpdatingOnInputChange: Bool = true) {
         self.region = region
         self.resultTypes = resultTypes
         self.isUpdatingOnInputChange = isUpdatingOnInputChange
