@@ -189,7 +189,7 @@ struct MyTextAnimationView: View {
 **ChronoDisplay**
 
 ```swift
-struct MyTextAnimationView: View {
+struct MyChronoView: View {
    @StateObject var chronoManager = ChronoManager()
    var body: some View {
         ChronoDisplay(chronoManager: chronoManager)
