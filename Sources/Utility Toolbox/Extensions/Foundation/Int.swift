@@ -13,8 +13,9 @@ public extension Int {
     var double: Double { Double(self) }
     
     /// Returns a string with an amount of leading zeros (number included).
-    func leadingZeros(amount: Int) -> String {
-        let result = String(format: "%0\(self.digits.count + amount)d", self)
+    func leadingZeros(amount: Int, isStatic: Bool = false) -> String {
+        let number = isStatic ? digits.count + amount : amount
+        let result = String(format: "%0\(number)d", self)
         return result
     }
     
