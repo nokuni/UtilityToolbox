@@ -31,6 +31,41 @@ public final class APIManager {
         case encoding = "Something went wrong on encoding the data"
     }
     
+    public enum MediaType: String {
+        case application
+        case audio
+        case font
+        case example
+        case image
+        case message
+        case model
+        case multipart
+        case text
+        case video
+    }
+    
+    public enum MediaSubType: String {
+        case json
+        case css
+        case html
+        case text
+    }
+    
+    public enum HTTPHeader: String {
+        case contentType = "Content-Type"
+        case accept = "Accept"
+        case authorization = "Authorization"
+    }
+    
+    public typealias RequestValue = (mediaType: MediaType, mediaSubType: MediaSubType, httpHeader: HTTPHeader)
+    
+    private var commonRequestValues: [RequestValue] {
+        [
+            (MediaType.application, MediaSubType.json, HTTPHeader.contentType),
+            (MediaType.application, MediaSubType.json, HTTPHeader.accept),
+        ]
+    }
+    
     // MARK: - URL
     
     private func getURL(_ url: String) throws -> URL {
@@ -89,14 +124,26 @@ public final class APIManager {
     
     // MARK: REQUEST
     
+    private func isSubmittingData(httpMethod: HTTPMethod) -> Bool {
+        httpMethod == .post || httpMethod == .put || httpMethod == .patch
+    }
+    
     private func urlRequest(url: URL,
                             httpMethod: HTTPMethod,
+                            additionalRequestValues: [RequestValue] = [],
                             cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: cachePolicy)
         request.httpMethod = httpMethod.rawValue
-        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var requestValues = commonRequestValues
+        requestValues.append(contentsOf: additionalRequestValues)
+        
+        if isSubmittingData(httpMethod: httpMethod) {
+            for requestValue in requestValues {
+                let value = "\(requestValue.mediaType)/\(requestValue.mediaSubType)"
+                let httpHeader = requestValue.httpHeader
+                request.addValue(value, forHTTPHeaderField: httpHeader.rawValue)
+            }
         }
         
         return request
@@ -108,6 +155,7 @@ public final class APIManager {
                                      httpMethod: HTTPMethod,
                                      key: String? = nil,
                                      htttpHeaderField: String? = nil,
+                                     additionalRequestValues: [RequestValue] = [],
                                      cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                      dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                      dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -116,13 +164,14 @@ public final class APIManager {
         
         var request = urlRequest(url: url,
                                  httpMethod: httpMethod,
+                                 additionalRequestValues: additionalRequestValues,
                                  cachePolicy: cachePolicy)
         
         if let key, let htttpHeaderField {
             request.addValue(key, forHTTPHeaderField: htttpHeaderField)
         }
         
-        if httpMethod == .post || httpMethod == .put || httpMethod == .patch {
+        if isSubmittingData(httpMethod: httpMethod) {
             request.httpBody = try encodedObject(value: value)
         }
         
@@ -182,6 +231,7 @@ public final class APIManager {
                                  value: T,
                                  key: String? = nil,
                                  htttpHeaderField: String? = nil,
+                                 additionalRequestValues: [RequestValue] = [],
                                  cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                  dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                  dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -191,6 +241,7 @@ public final class APIManager {
                           httpMethod: .post,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
+                          additionalRequestValues: additionalRequestValues,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
@@ -205,6 +256,7 @@ public final class APIManager {
                                 value: T,
                                 key: String? = nil,
                                 htttpHeaderField: String? = nil,
+                                additionalRequestValues: [RequestValue] = [],
                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -214,6 +266,7 @@ public final class APIManager {
                           httpMethod: .put,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
+                          additionalRequestValues: additionalRequestValues,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
@@ -227,6 +280,7 @@ public final class APIManager {
                                 value: M,
                                 key: String? = nil,
                                 htttpHeaderField: String? = nil,
+                                additionalRequestValues: [RequestValue] = [],
                                 cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                 dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -236,6 +290,7 @@ public final class APIManager {
                           httpMethod: .put,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
+                          additionalRequestValues: additionalRequestValues,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
@@ -250,6 +305,7 @@ public final class APIManager {
                                   value: T,
                                   key: String? = nil,
                                   htttpHeaderField: String? = nil,
+                                  additionalRequestValues: [RequestValue] = [],
                                   cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                   dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                   dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -259,6 +315,7 @@ public final class APIManager {
                           httpMethod: .patch,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
+                          additionalRequestValues: additionalRequestValues,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
@@ -272,6 +329,7 @@ public final class APIManager {
                                   value: M,
                                   key: String? = nil,
                                   htttpHeaderField: String? = nil,
+                                  additionalRequestValues: [RequestValue] = [],
                                   cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                   dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                   dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
@@ -281,6 +339,7 @@ public final class APIManager {
                           httpMethod: .patch,
                           key: key,
                           htttpHeaderField: htttpHeaderField,
+                          additionalRequestValues: additionalRequestValues,
                           cachePolicy: cachePolicy,
                           dateDecodingStrategy: dateDecodingStrategy,
                           dataDecodingStrategy: dataDecodingStrategy,
