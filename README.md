@@ -170,6 +170,33 @@ struct MyFXAnimationView: View {
 }
 ```
 
+**UITextAnimation**
+
+```swift
+struct MyTextAnimationView: View {
+   @StateObject var textManager = UITextManager()
+   var body: some View {
+        Text(textManager.prompt)
+            .onAppear {
+                textManager.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                textManager.speed = .verySlow
+                textManager.startWriting()
+            }
+   }
+}
+```
+
+**ChronoDisplay**
+
+```swift
+struct MyTextAnimationView: View {
+   @StateObject var chronoManager = ChronoManager()
+   var body: some View {
+        ChronoDisplay(chronoManager: chronoManager)
+   }
+}
+```
+
 **SF Symbols**
 
 ```swift
@@ -313,6 +340,20 @@ struct MyShapesView: View {
           Hexagon()
           Star(corners: 5, smoothness: 0.45)
           Triangle()
+       }
+    }
+}
+```
+
+**GradientContent**
+
+```swift
+struct MyGradientTextView: View {
+    var body: some View {
+       GradientContent(gradient: Gradient.rainbow, 
+                       startPoint: .leading, 
+                       endPoint: .trailing) {
+            Text("Hello World")
        }
     }
 }
