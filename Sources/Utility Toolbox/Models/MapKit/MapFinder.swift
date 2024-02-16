@@ -15,6 +15,8 @@ public class MapFinder : NSObject, ObservableObject {
     @Published var locationResults : [MKLocalSearchCompletion] = []
     @Published var inputs = ""
     
+    var region: MKCoordinateRegion
+    var resultTypes: MKLocalSearchCompleter.ResultType
     var isUpdatingOnInputChange: Bool
     
     private var cancellables : Set<AnyCancellable> = []
@@ -22,7 +24,11 @@ public class MapFinder : NSObject, ObservableObject {
     private var searchCompleter = MKLocalSearchCompleter()
     private var currentPromise : MapSearchPromise?
     
-    init(isUpdatingOnInputChange: Bool = true) {
+    init(region: MKCoordinateRegion = MKCoordinateRegion(.world),
+         resultTypes: MKLocalSearchCompleter.ResultType = .pointOfInterest,
+         isUpdatingOnInputChange: Bool = true) {
+        self.region = region
+        self.resultTypes = resultTypes
         self.isUpdatingOnInputChange = isUpdatingOnInputChange
         super.init()
         self.searchCompleter.delegate = self
@@ -47,6 +53,8 @@ public class MapFinder : NSObject, ObservableObject {
     private func searchTermToResults(searchTerm: String) -> MapSearchFuture {
         Future { promise in
             self.searchCompleter.queryFragment = searchTerm
+            self.searchCompleter.region = self.region
+            self.searchCompleter.resultTypes = self.resultTypes
             self.currentPromise = promise
         }
     }
