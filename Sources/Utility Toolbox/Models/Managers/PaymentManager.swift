@@ -1,6 +1,6 @@
 //
 //  PaymentManager.swift
-//  
+//
 //
 //  Created by Maertens Yann-Christophe on 31/05/23.
 //
@@ -11,22 +11,22 @@ public typealias PaymentCompletionHandler = (Bool) -> Void
 
 public class PaymentManager: NSObject {
     
-    override public init() { }
+    public override init() { }
     
-    private var paymentController: PKPaymentAuthorizationController?
-    private var paymentStatus = PKPaymentAuthorizationStatus.failure
+    private var controller: PKPaymentAuthorizationController?
+    private var status = PKPaymentAuthorizationStatus.failure
     private var completionHandler: PaymentCompletionHandler?
     
     /// Open an Apple Pay action sheet and start a payment request.
-    public func startPayment(paymentRequest: PKPaymentRequest,
+    public func startPayment(request: PKPaymentRequest,
                              completion: @escaping PaymentCompletionHandler) {
         
         completionHandler = completion
         
         // Display our payment request
-        paymentController = PKPaymentAuthorizationController(paymentRequest: paymentRequest)
-        paymentController?.delegate = self
-        paymentController?.present()
+        controller = PKPaymentAuthorizationController(paymentRequest: request)
+        controller?.delegate = self
+        controller?.present()
     }
 }
 
@@ -38,20 +38,20 @@ extension PaymentManager: PKPaymentAuthorizationControllerDelegate {
         
         // Perform some very basic validation on the provided contact information
         if payment.shippingContact?.emailAddress == nil || payment.shippingContact?.phoneNumber == nil {
-            paymentStatus = .failure
+            status = .failure
         } else {
             // Here you would send the payment token to your server or payment provider to process
             // Once processed, return an appropriate status in the completion handler (success, failure, etc)
-            paymentStatus = .success
+            status = .success
         }
         
-        completion(paymentStatus)
+        completion(status)
     }
     
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         controller.dismiss {
             DispatchQueue.main.async {
-                self.paymentStatus == .success ?
+                self.status == .success ?
                 self.completionHandler?(true) :
                 self.completionHandler?(false)
             }

@@ -16,7 +16,7 @@ public final class VisionRecognizerManager {
     
     public init() { }
     
-    private var results: [String] = []
+    public var results: [String] = []
     
     /// Analyze the text in a CGImage and process the results.
     public func analyzeText(in image: CGImage) {
