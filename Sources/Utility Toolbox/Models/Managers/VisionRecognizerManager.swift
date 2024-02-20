@@ -12,11 +12,11 @@ import Vision
 // The text in the image needs to have a great/high contrast for more recognition accuracy.
 
 /// An object that manages text recognition.
-public final class VisionRecognizerManager {
+public final class VisionRecognizerManager: ObservableObject {
     
     public init() { }
     
-    public var results: [String] = []
+    @Published public var results: [String] = []
     
     /// Analyze the text in a CGImage and process the results.
     public func analyzeText(in image: CGImage) {
