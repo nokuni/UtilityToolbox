@@ -49,7 +49,7 @@ public final class CanvasManager: ObservableObject {
     }
     
     var gesture: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .global)
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
             .onChanged({ value in
                 let newPoint = value.location
                 self.configuration.currentLine.points.append(newPoint)
