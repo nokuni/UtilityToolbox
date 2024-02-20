@@ -13,6 +13,15 @@ public struct CanvasBoard: View {
     public init(manager: CanvasManager) { self.manager = manager }
     
     public var body: some View {
-        manager.canvasView
+        Canvas { context, _ in
+            for line in manager.configuration.lines {
+                var path = Path()
+                path.addLines(line.points)
+                context.stroke(path,
+                               with: .color(line.color),
+                               lineWidth: line.lineWidth)
+            }
+        }
+        .gesture(manager.gesture)
     }
 }

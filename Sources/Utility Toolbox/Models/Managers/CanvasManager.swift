@@ -48,26 +48,7 @@ public final class CanvasManager: ObservableObject {
         public var lineWidth: Double
     }
     
-    @ViewBuilder
-    var canvasView: some View {
-        canvas
-            .gesture(canvasGesture)
-    }
-    
-    @ViewBuilder
-    private var canvas: some View {
-        Canvas { context, _ in
-            for line in self.configuration.lines {
-                var path = Path()
-                path.addLines(line.points)
-                context.stroke(path,
-                               with: .color(line.color),
-                               lineWidth: line.lineWidth)
-            }
-        }
-    }
-    
-    private var canvasGesture: some Gesture {
+    var gesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged({ value in
                 let newPoint = value.location
