@@ -1,6 +1,6 @@
 import XCTest
 import SpriteKit
-@testable import Utility_Toolbox
+@testable import UtilityToolbox
 
 final class ExtensionTests: XCTestCase {
     

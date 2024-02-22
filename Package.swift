@@ -4,15 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "Utility Toolbox",
+    name: "UtilityToolbox",
     platforms: [
         .iOS(.v15)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "Utility Toolbox",
-            targets: ["Utility Toolbox"]),
+            name: "UtilityToolbox",
+            targets: ["UtilityToolbox"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,15 +23,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(name: "Utility Toolbox",
+        .target(name: "UtilityToolbox",
                 dependencies: [
                     .product(name: "Algorithms", package: "swift-algorithms"),
                     .product(name: "Numerics", package: "swift-numerics")
                 ],
-                path: "Sources/Utility Toolbox"),
+                path: "Sources/UtilityToolbox"),
         .testTarget(
             name: "UtilityToolboxTests",
-            dependencies: ["Utility Toolbox"]
+            dependencies: ["UtilityToolbox"]
         ),
     ]
 )

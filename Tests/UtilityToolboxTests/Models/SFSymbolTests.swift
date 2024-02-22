@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Utility_Toolbox
+@testable import UtilityToolbox
 
 final class SFSymbolTests: XCTestCase {
 

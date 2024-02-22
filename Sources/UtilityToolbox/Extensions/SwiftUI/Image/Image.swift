@@ -33,6 +33,18 @@ public extension Image {
     }
 }
 
+public extension Image {
+    func highlighted(color: Color = .black,
+                     alpha: Double = 0.5,
+                     interpolation: Image.Interpolation = .high) -> some View {
+        modifier(ImageHighlightModifier(color: color, alpha: alpha, interpolation: interpolation))
+    }
+    
+    private func modifier<M>(_ modifier: M) -> some View where M: ImageModifier {
+        modifier.body(image: self)
+    }
+}
+
 // MARK: - SF Symbols
 public extension Image {
     
