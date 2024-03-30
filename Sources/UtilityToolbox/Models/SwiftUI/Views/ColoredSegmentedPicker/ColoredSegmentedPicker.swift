@@ -18,7 +18,6 @@ public typealias ColorPicker = RawRepresentable & Hashable & CaseIterable & Colo
 /// A colored segmented picker.
 public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     @Namespace private var animation
-    private var cornerRadius: CGFloat = 6
     
     public var data: [M]
     @Binding public var selection: M
@@ -26,6 +25,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     public var fontSize: CGFloat
     public var fontWeight: Font.Weight
     public var fontDesign: Font.Design
+    public var cornerRadius: CGFloat
     public var backgroundColor: Color
     public var selectedTextColor: Color
     public var unselectedTextColor: Color
@@ -36,6 +36,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
                 fontSize: CGFloat = 13,
                 fontWeight: Font.Weight = .medium,
                 fontDesign: Font.Design = .default,
+                cornerRadius: CGFloat = 6,
                 backgroundColor: Color = Color.transparent,
                 selectedTextColor: Color = Color.background,
                 unselectedTextColor: Color = Color.primary) {
@@ -45,6 +46,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
         self.fontSize = fontSize
         self.fontWeight = fontWeight
         self.fontDesign = fontDesign
+        self.cornerRadius = cornerRadius
         self.backgroundColor = backgroundColor
         self.selectedTextColor = selectedTextColor
         self.unselectedTextColor = unselectedTextColor
