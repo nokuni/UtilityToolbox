@@ -18,28 +18,33 @@ public typealias ColorPicker = RawRepresentable & Hashable & CaseIterable & Colo
 /// A colored segmented picker.
 public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     @Namespace private var animation
-    @ScaledMetric private var height = 29
     private var cornerRadius: CGFloat = 6
     
     public var data: [M]
     @Binding public var selection: M
-    public var font: Font
+    public var height: CGFloat
+    public var fontSize: CGFloat
     public var fontWeight: Font.Weight
+    public var fontDesign: Font.Design
     public var backgroundColor: Color
     public var selectedTextColor: Color
     public var unselectedTextColor: Color
     
     public init(data: [M],
                 selection: Binding<M>,
-                font: Font = .footnote,
+                height: CGFloat = 29,
+                fontSize: CGFloat = 13,
                 fontWeight: Font.Weight = .medium,
+                fontDesign: Font.Design = .default,
                 backgroundColor: Color = Color.transparent,
                 selectedTextColor: Color = Color.background,
                 unselectedTextColor: Color = Color.primary) {
         self.data = data
         self._selection = selection
-        self.font = font
+        self.height = height
+        self.fontSize = fontSize
         self.fontWeight = fontWeight
+        self.fontDesign = fontDesign
         self.backgroundColor = backgroundColor
         self.selectedTextColor = selectedTextColor
         self.unselectedTextColor = unselectedTextColor
@@ -62,8 +67,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     @ViewBuilder
     private func makeText(index: Int) -> some View {
         Text(data[index].content.capitalized)
-            .fontWeight(fontWeight)
-            .font(font)
+            .font(.system(size: fontSize, weight: fontWeight, design: fontDesign))
             .foregroundColor("\(selection)" == "\(data[index])" ? selectedTextColor : unselectedTextColor)
             .padding(.leading, index == 0 ? 5 : 0)
             .padding(.trailing, index == data.count - 1 ? 5 : 0)
