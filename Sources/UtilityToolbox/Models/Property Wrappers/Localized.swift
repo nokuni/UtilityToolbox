@@ -9,7 +9,7 @@ import Foundation
 
 /// Localize string automatically
 @propertyWrapper 
-public struct Localized {
+public struct Localized: Codable {
     public var wrappedValue: String {
         didSet { wrappedValue = wrappedValue.localized() }
     }

@@ -9,7 +9,7 @@ import Foundation
 
 /// Capitalized string automatically
 @propertyWrapper 
-public struct Capitalized {
+public struct Capitalized: Codable {
     public var wrappedValue: String {
         didSet { wrappedValue = wrappedValue.capitalized }
     }
