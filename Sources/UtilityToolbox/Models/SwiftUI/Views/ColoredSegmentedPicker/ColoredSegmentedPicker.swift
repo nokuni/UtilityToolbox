@@ -23,15 +23,24 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     
     public var data: [M]
     @Binding public var selection: M
+    public var font: Font
+    public var fontWeight: Font.Weight
+    public var backgroundColor: Color
     public var selectedTextColor: Color
     public var unselectedTextColor: Color
     
     public init(data: [M],
                 selection: Binding<M>,
-                selectedTextColor: Color = Color(UIColor.systemBackground),
+                font: Font = .footnote,
+                fontWeight: Font.Weight = .medium,
+                backgroundColor: Color = Color.transparent,
+                selectedTextColor: Color = Color.background,
                 unselectedTextColor: Color = Color.primary) {
         self.data = data
         self._selection = selection
+        self.font = font
+        self.fontWeight = fontWeight
+        self.backgroundColor = backgroundColor
         self.selectedTextColor = selectedTextColor
         self.unselectedTextColor = unselectedTextColor
     }
@@ -42,19 +51,19 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
                 makeText(index: index)
             }
         }
-        .background(Color.white.opacity(0.01))
+        .background(Color.transparent)
         .cornerRadius(cornerRadius)
         .background(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .foregroundColor(Color.white.opacity(0.01))
+                .foregroundColor(backgroundColor)
         )
     }
     
     @ViewBuilder
     private func makeText(index: Int) -> some View {
         Text(data[index].content.capitalized)
-            .fontWeight(.medium)
-            .font(.footnote)
+            .fontWeight(fontWeight)
+            .font(font)
             .foregroundColor("\(selection)" == "\(data[index])" ? selectedTextColor : unselectedTextColor)
             .padding(.leading, index == 0 ? 5 : 0)
             .padding(.trailing, index == data.count - 1 ? 5 : 0)
@@ -78,7 +87,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     @ViewBuilder
     private func makeTextBackground(index: Int) -> some View {
         if "\(selection)" != "\(data[index])" {
-            Color.white.opacity(0.01)
+            Color.transparent
         } else {
             selection.color
                 .cornerRadius(cornerRadius)
