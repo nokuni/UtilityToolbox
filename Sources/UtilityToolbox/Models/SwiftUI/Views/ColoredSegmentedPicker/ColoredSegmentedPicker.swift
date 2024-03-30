@@ -29,6 +29,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     public var backgroundColor: Color
     public var selectedTextColor: Color
     public var unselectedTextColor: Color
+    public var isImage: Bool
     
     public init(data: [M],
                 selection: Binding<M>,
@@ -39,7 +40,8 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
                 cornerRadius: CGFloat = 6,
                 backgroundColor: Color = Color.transparent,
                 selectedTextColor: Color = Color.background,
-                unselectedTextColor: Color = Color.primary) {
+                unselectedTextColor: Color = Color.primary,
+                isImage: Bool = false) {
         self.data = data
         self._selection = selection
         self.height = height
@@ -50,6 +52,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
         self.backgroundColor = backgroundColor
         self.selectedTextColor = selectedTextColor
         self.unselectedTextColor = unselectedTextColor
+        self.isImage = isImage
     }
     
     public var body: some View {
@@ -68,7 +71,7 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
     
     @ViewBuilder
     private func makeText(index: Int) -> some View {
-        Text(data[index].content.capitalized)
+        makeContentView(index: index)
             .font(.system(size: fontSize, weight: fontWeight, design: fontDesign))
             .foregroundColor("\(selection)" == "\(data[index])" ? selectedTextColor : unselectedTextColor)
             .padding(.leading, index == 0 ? 5 : 0)
@@ -88,6 +91,15 @@ public struct ColoredSegmentedPicker<M: ColorPicker>: View {
                     selection = data[index]
                 }
             }
+    }
+    
+    @ViewBuilder
+    private func makeContentView(index: Int) -> some View {
+        if isImage {
+            Image(data[index].content)
+        } else {
+            Text(data[index].content.capitalized)
+        }
     }
     
     @ViewBuilder
