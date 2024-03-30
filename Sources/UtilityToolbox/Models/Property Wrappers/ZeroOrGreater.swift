@@ -7,26 +7,28 @@
 
 import Foundation
 
-@propertyWrapper struct ZeroOrGreaterInteger {
-    var wrappedValue: Int {
+@propertyWrapper 
+public struct ZeroOrGreaterInteger {
+    public var wrappedValue: Int {
         didSet {
             wrappedValue = max(wrappedValue, 0)
         }
     }
     
-    init(wrappedValue: Int) {
+    public init(wrappedValue: Int) {
         self.wrappedValue = max(wrappedValue, 0)
     }
 }
 
-@propertyWrapper struct ZeroOrGreaterDouble {
-    var wrappedValue: Double {
+@propertyWrapper 
+public struct ZeroOrGreaterDouble {
+    public var wrappedValue: Double {
         didSet {
             wrappedValue = max(wrappedValue, 0.0)
         }
     }
     
-    init(wrappedValue: Double) {
+    public init(wrappedValue: Double) {
         self.wrappedValue = max(wrappedValue, 0.0)
     }
 }

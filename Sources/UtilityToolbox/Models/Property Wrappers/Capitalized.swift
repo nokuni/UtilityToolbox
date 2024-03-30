@@ -8,12 +8,13 @@
 import Foundation
 
 /// Capitalized string automatically
-@propertyWrapper struct Capitalized {
-    var wrappedValue: String {
+@propertyWrapper 
+public struct Capitalized {
+    public var wrappedValue: String {
         didSet { wrappedValue = wrappedValue.capitalized }
     }
 
-    init(wrappedValue: String) {
+    public init(wrappedValue: String) {
         self.wrappedValue = wrappedValue.capitalized
     }
 }

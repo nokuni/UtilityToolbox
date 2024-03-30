@@ -8,12 +8,13 @@
 import Foundation
 
 /// Localize string automatically
-@propertyWrapper struct Localized {
-    var wrappedValue: String {
+@propertyWrapper 
+public struct Localized {
+    public var wrappedValue: String {
         didSet { wrappedValue = wrappedValue.localized() }
     }
 
-    init(wrappedValue: String) {
+    public init(wrappedValue: String) {
         self.wrappedValue = wrappedValue.localized()
     }
 }
