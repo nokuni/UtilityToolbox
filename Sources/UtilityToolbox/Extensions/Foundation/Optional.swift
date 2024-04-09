@@ -7,31 +7,31 @@
 
 import Foundation
 
-extension Optional where Wrapped == String {
+public extension Optional where Wrapped == String {
     var isNil: Bool {
         return self == nil
     }
 }
 
-extension Optional where Wrapped == Int {
+public extension Optional where Wrapped == Int {
     var isNil: Bool {
         return self == nil
     }
 }
 
-extension Optional where Wrapped == Double {
+public extension Optional where Wrapped == Double {
     var isNil: Bool {
         return self == nil
     }
 }
 
-extension Optional where Wrapped == Date {
+public extension Optional where Wrapped == Date {
     var isNil: Bool {
         return self == nil
     }
 }
 
-extension Optional where Wrapped: Collection {
+public extension Optional where Wrapped: Collection {
     var isNil: Bool {
         return self == nil
     }
