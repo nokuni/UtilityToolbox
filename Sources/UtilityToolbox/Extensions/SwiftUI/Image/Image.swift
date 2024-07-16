@@ -45,6 +45,12 @@ public extension Image {
     }
 }
 
+struct TestingView: View {
+    var body: some View {
+        Image(sfGaming: .minusCircle)
+    }
+}
+
 // MARK: - SF Symbols
 public extension Image {
     
