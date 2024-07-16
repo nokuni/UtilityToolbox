@@ -28,15 +28,13 @@ public class NetworkMonitorManager: NSObject, ObservableObject {
         networkMonitor.start(queue: queue)
     }
     
-    public func requestAuthorization(completion: @escaping (Bool) -> Void) {
-        self.completion = completion
-        
+    public func requestAuthorization(type: String) {
         // Create parameters, and allow browsing over peer-to-peer link.
         let parameters = NWParameters()
         parameters.includePeerToPeer = true
         
         // Browse for a custom service type.
-        let browser = NWBrowser(for: .bonjour(type: "_bonjour._tcp", domain: nil), using: parameters)
+        let browser = NWBrowser(for: .bonjour(type: "\(type)._tcp", domain: nil), using: parameters)
         self.browser = browser
         browser.stateUpdateHandler = { newState in
             switch newState {
@@ -47,13 +45,12 @@ public class NetworkMonitorManager: NSObject, ObservableObject {
             case let .waiting(error):
                 print("Local network permission has been denied: \(error)")
                 self.reset()
-                self.completion?(false)
             default:
                 break
             }
         }
         
-        self.netService = NetService(domain: "local.", type:"_lnp._tcp.", name: "LocalNetworkPrivacy", port: 1100)
+        self.netService = NetService(domain: "local.", type:"\(type)._tcp.", name: "LocalNetworkPrivacy", port: 1100)
         self.netService?.delegate = self
         
         self.browser?.start(queue: .main)
